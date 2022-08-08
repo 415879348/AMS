@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_40"
+        android:layout_margin="@dimen/spsdk_dp_5"
+        android:paddingEnd="@dimen/spsdk_dp_10"
+        android:drawableStart="@mipmap/spsdk_search"
+        android:background="@drawable/spsdk_shape_white_gray_radius_5"
+        android:textSize="@dimen/spsdk_ts_18"
+        android:hint="@string/spsdk_search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/spsdk_color_black_2"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            app:tabIndicatorHeight="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/spsdk_dp_30" />
+
+        <com.esharp.sdk.widget.NoScrollViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

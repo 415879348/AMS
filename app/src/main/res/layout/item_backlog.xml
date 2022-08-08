@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/spsdk_dp_50"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_job_name"
+        style="@style/spsdk_text_standard"
+        android:text="@string/job_name"
+        />
+
+    <TextView
+        android:id="@+id/tv_job_type"
+        style="@style/spsdk_text_standard"
+        android:text="@string/job_type"
+        />
+
+    <TextView
+        android:id="@+id/tv_progress"
+        style="@style/spsdk_text_standard"
+        android:text="@string/progress"
+        />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mtv_handle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_30"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/spsdk_dp_10"
+            android:text="@string/processing"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            app:stv_corner="@dimen/spsdk_dp_15"
+            app:stv_solid="@color/spsdk_color_blue" />
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,77 @@
+{
+       "a": {
+         "nameValuePairs": {
+           "display_type": "notification",
+           "body": {
+             "nameValuePairs": {
+               "after_open": "go_app",
+               "ticker": "(+1)6072087025",
+               "custom": {
+                 "nameValuePairs": {
+                   "msgType": "sms",
+                   "tagColor": "",
+                   "toPhone": "2262717451",
+                   "numberName": "12262717451",
+                   "fromTelCode": "1",
+                   "link": "smsPage",
+                   "messageId": "SMS_1650375149951",
+                   "tagName": "",
+                   "type": "message",
+                   "callerName": "",
+                   "fromNumber": "16072087025",
+                   "accountId": "5gLpNvSLWiOYJwuoExi4AK",
+                   "fromPhone":"6072087025",
+                   "smsId": "SMS_28e22cd1-bfe5-11ec-905f-8dec9ca4b072",
+                   "toTelCode": "1",
+                   "teamId": "0ff4ce478ac24f069ae715a0d7a937f6",
+                   "linkType": "0",
+                   "text": "20",
+                   "time": "2022-04-19T13:32:29.881Z",
+                   "toNumber": "12262717451",
+                   "direction": "in"
+                 }
+               },
+               "title": "(+1)6072087025",
+               "text": "20"
+             }
+           },
+           "msg_id": "uuj0e36165037515312301"
+         }
+       },
+       "activity": "",
+       "after_open": "go_app",
+       "alias": "",
+       "bar_image": "",
+       "builder_id": 0,
+       "clicked": false,
+       "custom": "{\"msgType\":\"sms\",\"tagColor\":\"\",\"toPhone\":\"2262717451\",\"numberName\":\"12262717451\",\"fromTelCode\":\"1\",\"link\":\"smsPage\",\"messageId\":\"SMS_1650375149951\",\"tagName\":\"\",\"type\":\"message\",\"callerName\":\"\",\"fromNumber\":\"16072087025\",\"accountId\":\"5gLpNvSLWiOYJwuoExi4AK\",\"fromPhone\":\"6072087025\",\"smsId\":\"SMS_28e22cd1-bfe5-11ec-905f-8dec9ca4b072\",\"toTelCode\":\"1\
+    
+ 
+    
+     ",\"teamId\":\"0ff4ce478ac24f069ae715a0d7a937f6\",\"linkType\":\"0\",\"text\":\"20\",\"time\":\"2022-04-19T13:32:29.881Z\",\"toNumber\":\"12262717451\",\"direction\":\"in\"}",
+       "dismiss": false,
+       "display_type": "notification",
+       "expand_image": "",
+       "extra": null,
+       "icon": "",
+       "img": "",
+       "isAction": false,
+       "largeIcon": "",
+       "message_id": "f__-f735qN9qdRId\u0026\u0026uuj0e36165037515312301\u0026\u0026AspBeQAfVPr9XtzrLOcflnjPjjaLGymGIObu1Ls6-ZJ1\u0026\u002611\u0026\u0026",
+       "msg_id": "uuj0e36165037515312301",
+       "play_lights": true,
+       "play_sound": true,
+       "play_vibrate": true,
+       "pulledWho": "",
+       "pulled_package": "",
+       "pulled_service": "",
+       "random_min": 0,
+       "recall": "",
+       "screen_on": false,
+       "sound": "",
+       "task_id": null,
+       "text": "20",
+       "ticker": "(+1)6072087025",
+       "title": "(+1)6072087025",
+       "url": ""
+     }

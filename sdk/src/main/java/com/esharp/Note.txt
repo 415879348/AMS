@@ -1,0 +1,13 @@
+
+
+1.New Module 之后，立即配置主Module implementation project(path: ':sdk')
+2.如果数据接收失败，可能是数据类型定义错误，譬如int接收float
+3.title.setTextColor(attributes.getColor(R.styleable.SPShowTextView_spsdk_show_text_title_colour, ResUtils.getColor(R.color.spsdk_main_color)));
+  后面的defValue不能这样设置，否则看不到预览效果，注释此行代码然后点击rebuild project重新编译就可看到效果
+  title.setTextColor(attributes.getColor(R.styleable.SPShowTextView_spsdk_show_text_title_colour, Color.BLUE));则可以
+4.
+View viewAll = LayoutInflater.from(this).inflate(R.layout.xxx, null, false);
+ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewAll.getLayoutParams();
+params.topMargin =  SizeUtils.dp2px(15);
+viewAll.setLayoutParams(params);
+要先把view设置进容器viewAll.getLayoutParams()才会有值，否则为null

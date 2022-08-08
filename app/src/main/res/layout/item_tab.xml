@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:id="@+id/ll_background"
+    >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/spsdk_dp_20"
+        android:layout_height="@dimen/spsdk_dp_20"
+        android:scaleType="fitXY"
+        android:src="@mipmap/spsdk_home" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spsdk_dp_10"
+        android:textColor="@color/spsdk_main_color"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:text="@string/spsdk_tab_title_home" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="@dimen/spsdk_dp_20"
+        android:layout_height="@dimen/spsdk_dp_20"
+        android:layout_marginStart="@dimen/spsdk_dp_10"
+        android:background="@drawable/spsdk_shape_circle_red"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/spsdk_ts_12"
+        tools:visibility="visible"
+        tools:text="99"
+        />
+
+</LinearLayout>

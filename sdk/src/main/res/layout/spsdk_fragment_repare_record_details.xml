@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spsdk_dp_5"
+    android:orientation="vertical">
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/stv_staff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_staff"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/stv_department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_department"
+        app:spsdk_show_text_detail="项目部"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/stv_amend_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_amend_time"
+        app:spsdk_show_text_detail="2021-08-25 09:15:00"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/stv_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_temperature"
+        app:spsdk_show_text_detail="37.7 ℃ 体温异常"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/stv_commit_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_edit_height"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_detail="2021-08-25 19:00:15"
+        app:spsdk_show_text_title="@string/spsdk_commit_at" />
+
+</LinearLayout>

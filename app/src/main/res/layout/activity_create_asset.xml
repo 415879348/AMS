@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.esharp.sdk.widget.MyNestedScrollView2 android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spsdk_dp_5"
+    android:fadingEdge="none"
+    android:fadingEdgeLength="0dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--基本信息-->
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:text="@string/essential_information"
+            />
+
+        <View
+            style="@style/spsdk_divide_line_horizontal"
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/spsdk_dp_10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+            <com.esharp.sdk.widget.SPCardEditView
+                android:id="@+id/cev_number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_card_edit_hint="@string/asset_number"/>
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mtv_generate"
+                android:layout_width="@dimen/spsdk_dp_60"
+                android:layout_height="@dimen/spsdk_dp_35"
+                android:text="@string/generate"
+                android:textSize="@dimen/spsdk_ts_14"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_5"
+                app:stv_solid="@color/spsdk_color_gray2" />
+        </LinearLayout>
+
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/asset_name"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/asset_type"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/brand"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/model"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_lwh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/l_w_h"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_place_of_production"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/place_of_production"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_date_of_manufacture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/date_of_manufacture"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_warranty_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/warranty_period"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/remark"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spsdk_dp_10"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_end"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_40"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/reset"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_20"
+                app:stv_solid="@color/spsdk_color_gray2" />
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_confirm"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_40"
+                android:layout_marginStart="@dimen/spsdk_dp_20"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/confirm"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_20"
+                app:stv_solid="@color/spsdk_color_blue" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.esharp.sdk.widget.MyNestedScrollView2>
+
+

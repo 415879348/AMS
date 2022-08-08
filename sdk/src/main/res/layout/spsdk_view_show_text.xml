@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+
+    tools:parentTag="android.widget.LinearLayout">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/spsdk_text_main14"
+        android:text="标题"
+        />
+
+    <TextView
+        android:id="@+id/tv_colon"
+        style="@style/spsdk_text_main14"
+        android:text=": "
+        />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        style="@style/spsdk_text_main14"
+        android:text="详情"
+        />
+
+</merge>

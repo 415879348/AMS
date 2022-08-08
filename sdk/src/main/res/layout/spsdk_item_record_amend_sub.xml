@@ -1,0 +1,82 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spsdk_dp_5"
+    android:layout_marginTop="@dimen/spsdk_dp_5"
+    android:layout_marginEnd="@dimen/spsdk_dp_5"
+    android:layout_marginBottom="@dimen/spsdk_dp_5"
+    app:cardBackgroundColor="@color/spsdk_background_white"
+    app:cardCornerRadius="@dimen/spsdk_dp_10"
+    app:cardElevation="@dimen/spsdk_dp_3">
+
+    <RelativeLayout
+        style="@style/spsdk_item_style_record">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_repair_time"
+                style="@style/spsdk_space_height"
+                app:spsdk_show_text_title="@string/spsdk_time"
+                app:spsdk_show_text_detail="2021-08-25 09:15:00"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_temperature"
+                style="@style/spsdk_space_height"
+                app:spsdk_show_text_title="@string/spsdk_temperature"
+                app:spsdk_show_text_detail="2021-08-25 09:15:00"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_commit_time"
+                style="@style/spsdk_space_height"
+                app:spsdk_show_text_title="@string/spsdk_commit_at"
+                app:spsdk_show_text_detail="2021-08-25 19:00:15"
+                />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spsdk_dp_5"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_revoke_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/spsdk_dp_5"
+            >
+            <TextView
+                android:id="@+id/tv_revoke"
+                style="@style/spsdk_text_main16"
+                android:textColor="@color/spsdk_color_blue"
+                android:text="撤销"/>
+
+            <TextView
+                style="@style/spsdk_text_main16"
+                android:paddingHorizontal="@dimen/spsdk_dp_3"
+                android:text="|"/>
+
+            <TextView
+                android:id="@+id/tv_modify"
+                style="@style/spsdk_text_main16"
+                android:textColor="@color/spsdk_color_blue"
+                android:text="修改"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/spsdk_transparent_00"
+    >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/spsdk_dp_20"
+        android:layout_height="@dimen/spsdk_dp_20"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/spsdk_dp_10"
+        android:scaleType="centerInside"
+        android:src="@mipmap/spsdk_home" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/iv_icon"
+        android:textColor="@drawable/spsdk_tab_text_selector"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:text="@string/spsdk_tab_title_home" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="@dimen/spsdk_dp_17"
+        android:layout_height="@dimen/spsdk_dp_17"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        android:layout_toEndOf="@id/iv_icon"
+        android:background="@drawable/spsdk_shape_circle_red"
+        android:gravity="center"
+        android:text="99"
+        android:textColor="@color/spsdk_color_white"
+        android:textSize="@dimen/spsdk_ts_12"
+        android:visibility="gone"
+        tools:visibility="visible"
+
+        />
+
+</RelativeLayout>

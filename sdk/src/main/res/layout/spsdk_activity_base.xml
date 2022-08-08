@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/state_bar_space"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:stv_shaderEnable="true"
+        app:stv_shaderStartColor="@color/spsdk_transparent_00"
+        app:stv_shaderEndColor="@color/spsdk_transparent_00"
+        app:stv_shaderMode="topToBottom"
+        tools:layout_height="30dp" />
+
+    <com.esharp.sdk.widget.SPTitleView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:layout_marginBottom="@dimen/spsdk_dp_5"
+        app:spsdk_title="@string/spsdk_title"/>
+
+</LinearLayout>

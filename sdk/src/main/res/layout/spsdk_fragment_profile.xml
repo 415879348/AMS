@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_icon_user"
+            android:layout_width="@dimen/spsdk_dp_100"
+            android:layout_height="@dimen/spsdk_dp_100"
+            android:src="@mipmap/spsdk_pic_error"/>
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/spsdk_text_main18"
+            android:layout_toRightOf="@+id/iv_icon_user"
+            android:layout_marginTop="@dimen/spsdk_dp_20"
+            android:text="Charlie"/>
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="@dimen/spsdk_dp_20"
+            android:layout_height="@dimen/spsdk_dp_20"
+            android:layout_toRightOf="@+id/tv_user_name"
+            android:layout_alignBottom="@id/tv_user_name"
+            android:layout_marginLeft="@dimen/spsdk_dp_20"
+            android:layout_marginBottom="@dimen/spsdk_dp_5"
+            android:src="@mipmap/spsdk_edit"
+            />
+
+        <TextView
+            android:id="@+id/tv_company_department"
+            android:layout_toRightOf="@+id/iv_icon_user"
+            android:layout_below="@+id/tv_user_name"
+            android:layout_marginTop="@dimen/spsdk_dp_10"
+            style="@style/spsdk_text_main18"
+            android:text="网络有限公司-项目部"/>
+
+    </RelativeLayout>
+
+    <View style="@style/spsdk_divide_line_horizontal"/>
+
+    <com.esharp.sdk.widget.SPShowView
+        android:id="@+id/sp_username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_30"
+        android:layout_margin="@dimen/spsdk_dp_10"
+        app:spsdk_show_icon="@mipmap/spsdk_username"
+        app:spsdk_show_title="@string/spsdk_username"
+        app:spsdk_show_detail="charlie.deng"
+        />
+
+    <com.esharp.sdk.widget.SPShowView
+        android:id="@+id/sp_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_30"
+        android:layout_margin="@dimen/spsdk_dp_10"
+        app:spsdk_show_icon="@mipmap/spsdk_mobile_phone"
+        app:spsdk_show_title="@string/spsdk_phone_number"
+        app:spsdk_show_detail="+ 86 137 9840 0900"
+        />
+
+    <com.esharp.sdk.widget.SPShowView
+        android:id="@+id/sp_change_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_30"
+        android:layout_margin="@dimen/spsdk_dp_10"
+        app:spsdk_show_icon="@mipmap/spsdk_password"
+        app:spsdk_show_title="@string/spsdk_modify_password"
+        />
+
+    <View
+        style="@style/spsdk_space"/>
+
+    <com.esharp.sdk.widget.MyTextView
+        android:id="@+id/mv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_40"
+        android:layout_margin="@dimen/spsdk_dp_10"
+        android:text="@string/spsdk_logout"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:textColor="@color/spsdk_color_white"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:stv_corner="@dimen/spsdk_dp_10"
+        app:stv_solid="@color/spsdk_color_blue" />
+
+</LinearLayout>

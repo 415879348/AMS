@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="spsdk_transparent_00">#00000000</color><!--25透明度-->
+    <color name="spsdk_transparent_10">#14000000</color><!--25透明度-->
+    <color name="spsdk_transparent_25">#44000000</color><!--25透明度-->
+    <color name="spsdk_transparent_55">#55000000</color>
+    <color name="spsdk_transparent_50">#88000000</color><!--25透明度-->
+    <color name="spsdk_transparent_90">#aa000000</color><!--25透明度-->
+    <color name="spsdk_background_white">@color/spsdk_color_white</color>
+    <color name="spsdk_background_dialog">#60000000</color>
+    <color name="spsdk_main_color">#000000</color>
+    <color name="spsdk_second_color">#666666</color>
+    <color name="spsdk_color_white">#ffffff</color>
+    <color name="spsdk_color_black">#000000</color>
+    <color name="spsdk_color_black_1">#aaaaaa</color>
+    <color name="spsdk_color_black_2">#dddddd</color>
+    <color name="spsdk_color_blue">#3A8EFD</color>
+    <color name="spsdk_color_gray">#F2F1E8</color>
+    <color name="spsdk_color_gray2">#BBBBBB</color>
+    <color name="spsdk_color_gray3">#eeeeee</color>
+    <color name="spsdk_color_green">#93B3AD</color>
+    <color name="spsdk_color_green_light">#17CC37</color>
+    <color name="spsdk_color_yellow">#FFCC00</color>
+    <color name="spsdk_color_red">#FF0000</color>
+    <color name="spsdk_color_red_CC3333">#CC3333</color>
+    <color name="spsdk_color_violet">#3366FF</color>
+</resources>

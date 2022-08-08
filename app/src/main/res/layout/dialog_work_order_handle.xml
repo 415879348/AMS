@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spsdk_dp_5"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spsdk_dp_5"
+        >
+
+        <TextView
+            style="@style/spsdk_text_main18"
+            android:text="@string/job_handle"
+            />
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="@dimen/spsdk_dp_20"
+            android:layout_height="@dimen/spsdk_dp_20"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/close"
+            />
+    </RelativeLayout>
+
+    <View
+        style="@style/spsdk_divide_line_horizontal"/>
+
+    <com.esharp.sdk.widget.SPNoteView
+        android:id="@+id/nv_remark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_100"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_note_title="@string/remark"
+        app:spsdk_note_hint="@string/please_enter"
+        app:spsdk_note_warning_sign="hide"
+        />
+
+    <com.esharp.sdk.widget.SPSelectorView
+        android:id="@+id/sv_selector"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_30"
+        android:layout_marginBottom="@dimen/spsdk_dp_100"
+        android:background="@drawable/spsdk_shape_white_gray_radius_5"
+        app:spsdk_selector_content="选择部门"
+        app:spsdk_selector_icon="@mipmap/spsdk_ic_launcher"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_end"
+            android:layout_width="@dimen/spsdk_dp_100"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/end"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            app:stv_corner="@dimen/spsdk_dp_20"
+            app:stv_solid="@color/spsdk_color_red" />
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_assign"
+            android:layout_width="@dimen/spsdk_dp_100"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_marginStart="@dimen/spsdk_dp_20"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/assign"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            app:stv_corner="@dimen/spsdk_dp_20"
+            app:stv_solid="@color/spsdk_color_blue" />
+    </LinearLayout>
+
+</LinearLayout>
+

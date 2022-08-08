@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--    手机号码登入-->
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:background="@color/spsdk_transparent_10"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_tel_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/spsdk_main_color"
+                android:text="+852"/>
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:paddingLeft="@dimen/spsdk_dp_10"
+                android:hint="@string/spsdk_enter_phone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:background="@color/spsdk_transparent_10"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/spsdk_main_color"
+                android:text="@string/spsdk_verification_code"/>
+
+            <EditText
+                android:id="@+id/et_verification_code"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:paddingLeft="@dimen/spsdk_dp_10"
+                android:hint="@string/spsdk_enter_verification_code"/>
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_get_verification_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/spsdk_dp_10"
+                android:paddingRight="@dimen/spsdk_dp_10"
+                android:layout_marginLeft="@dimen/spsdk_dp_10"
+                android:text="@string/spsdk_get_verification_code"
+                android:textSize="@dimen/spsdk_ts_12"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                android:textStyle="bold"
+                app:stv_corner="@dimen/spsdk_dp_10"
+                app:stv_solid="@color/spsdk_color_blue" />
+
+        </LinearLayout>
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_verification_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:text="@string/spsdk_login"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:stv_corner="@dimen/spsdk_dp_10"
+            app:stv_solid="@color/spsdk_color_blue" />
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_change_user_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spsdk_dp_5"
+            android:gravity="center"
+            android:textColor="@color/spsdk_main_color"
+            android:text="@string/spsdk_login_user"/>
+
+    </LinearLayout>
+
+    <!--    用户名密码登入-->
+    <LinearLayout
+        android:id="@+id/ll_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:background="@color/spsdk_transparent_10"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            >
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="@dimen/spsdk_dp_10"
+                android:hint="@string/spsdk_username"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:background="@color/spsdk_transparent_10"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            >
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="@dimen/spsdk_dp_10"
+                android:hint="@string/spsdk_password"/>
+
+        </LinearLayout>
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_user_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_40"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:text="@string/spsdk_login"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:stv_corner="@dimen/spsdk_dp_10"
+            app:stv_solid="@color/spsdk_color_blue" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_change_phone_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spsdk_dp_5"
+                android:gravity="center"
+                android:textColor="@color/spsdk_main_color"
+                android:text="@string/spsdk_login_phone"/>
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spsdk_dp_5"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:textColor="@color/spsdk_main_color"
+                android:text="@string/spsdk_forget_password"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

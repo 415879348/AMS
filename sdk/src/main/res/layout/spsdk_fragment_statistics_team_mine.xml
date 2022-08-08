@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+   <com.esharp.sdk.widget.MyTextView
+       android:id="@+id/mtv_date_selector"
+       style="@style/spsdk_text_main12"
+       android:text="2021.09.01 - 2021.10.01"
+       tools:text="2021.09.01 - 2021.10.01"
+       app:stv_isShowState="true"
+       app:stv_state_drawable="@mipmap/spsdk_ic_arrow_left"
+       app:stv_state_drawable_mode="right"
+       app:stv_state_drawable_width="@dimen/spsdk_dp_20"
+       app:stv_state_drawable_height="@dimen/spsdk_dp_20"
+       app:stv_state_drawable_padding_left="@dimen/spsdk_dp_5"
+       />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

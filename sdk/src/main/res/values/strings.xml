@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="networkOrSystemTimeIssueTryLater">抱歉！网络出现问题。请您检查网络连接和系统时间，并再试一次。谢谢！</string>
+
+    <string name="spsdk_title">标题</string>
+    <string name="spsdk_confirm">确认</string>
+
+    <string name="spsdk_tab_title_home">首页</string>
+    <string name="spsdk_tab_title_statistics">统计</string>
+    <string name="spsdk_tab_title_message">讯息</string>
+    <string name="spsdk_tab_title_profile">我的</string>
+
+    <string name="spsdk_tab_schedule">待办</string>
+    <string name="spsdk_tab_warning">警报</string>
+    <string name="spsdk_tab_attendance">考勤</string>
+    <string name="spsdk_tab_amend">补卡</string>
+    <string name="spsdk_tab_leave">请假</string>
+    <string name="spsdk_tab_overtime">加班</string>
+
+    <string name="spsdk_tab_statistics_title_team">团队统计</string>
+    <string name="spsdk_tab_statistics_title_me">我的统计</string>
+
+    <string name="spsdk_back">返回</string>
+    <string name="spsdk_loading">加载中……</string>
+
+    <string name="spsdk_all">全部</string>
+    <string name="spsdk_view_all">查看\n全部</string>
+
+    <string name="spsdk_leave_type">请假类型</string>
+    <string name="spsdk_leave_duration">请假时长</string>
+    <string name="spsdk_leave_season">请假事由</string>
+    <string name="spsdk_enter_leave_season">请填写请假事由</string>
+    <string name="spsdk_enter_overtime_season">请填写加班原因</string>
+
+    <string name="spsdk_start_time">开始时间</string>
+    <string name="spsdk_select_start_time">请选择开始时间</string>
+    <string name="spsdk_end_time">结束时间</string>
+    <string name="spsdk_select_end_time">请选择结束时间</string>
+    <string name="spsdk_enter_duration">请输入时长</string>
+    <string name="spsdk_overtime_duration">加班时长</string>
+
+
+    <string name="spsdk_commit_at">提交于</string>
+    <string name="spsdk_see_more">查看更多</string>
+
+    <string name="spsdk_amend_record">补卡记录</string>
+    <string name="spsdk_amend_time">补卡时间</string>
+    <string name="spsdk_amend_season">补卡理由</string>
+
+    <string name="spsdk_overtime_season">加班原因</string>
+
+    <string name="spsdk_time">时间</string>
+    <string name="spsdk_passed">已通过</string>
+    <string name="spsdk_approve">审批</string>
+    <string name="spsdk_temperature">体温</string>
+    <string name="spsdk_pending">待我处理中</string>
+    <string name="spsdk_revoke">撤销</string>
+    <string name="spsdk_rejected">已拒绝</string>
+    <string name="spsdk_approving">审批中</string>
+    <string name="spsdk_search">搜索</string>
+    <string name="spsdk_alarm_details">警报详情</string>
+
+    <string name="spsdk_attendance_record">考勤记录</string>
+    <string name="spsdk_repair_record">补卡记录</string>
+    <string name="spsdk_leave_record">请假记录</string>
+    <string name="spsdk_overtime_record">加班记录</string>
+
+    <string name="spsdk_attendance_record_detail">考勤记录详情</string>
+    <string name="spsdk_amend_record_detail">补卡记录详情</string>
+    <string name="spsdk_leave_record_detail">请假记录详情</string>
+    <string name="spsdk_overtime_record_detail">加班记录详情</string>
+
+    <string name="spsdk_apply_leave">请假申请</string>
+    <string name="spsdk_apply_amend">补卡申请</string>
+    <string name="spsdk_apply_overtime">加班申请</string>
+    <string name="spsdk_commit">提交</string>
+    <string name="spsdk_staff">人员</string>
+    <string name="spsdk_department">部门</string>
+
+    <string name="spsdk_original_password">原密码</string>
+    <string name="spsdk_enter_original_password">请输入原密码</string>
+    <string name="spsdk_new_password">新密码</string>
+    <string name="spsdk_enter_new_password">请输入新密码</string>
+    <string name="spsdk_confirm_new_password">确认新密码</string>
+    <string name="spsdk_please_confirm_new_password">请确认新密码</string>
+    <string name="spsdk_tip_password">密码必须是8–16位的英文字母、数字字符组合\n(不能是纯数字)</string>
+
+    <string name="spsdk_enter_phone">请输入手机号码</string>
+    <string name="spsdk_verification_code">验证码</string>
+    <string name="spsdk_enter_verification_code">请输入验证码</string>
+    <string name="spsdk_get_verification_code">获取验证码</string>
+    <string name="spsdk_forget_password">忘记密码</string>
+    <string name="spsdk_login">登入</string>
+    <string name="spsdk_logout">登出</string>
+    <string name="spsdk_login_user">用户名密码登入</string>
+    <string name="spsdk_login_phone">手机号码登入</string>
+    <string name="spsdk_phone_number">手机号码</string>
+    <string name="spsdk_username">用户名</string>
+    <string name="spsdk_password">密码</string>
+    <string name="spsdk_modify_password">更改密码</string>
+
+    <string name="spsdk_select_check_in_time">请选择打卡时间</string>
+    <string name="spsdk_register_temperature">请登记体温</string>
+    <string name="spsdk_fill_amend_season">请填写补卡理由</string>
+    <string name="spsdk_business_leave">事假</string>
+    <string name="spsdk_abnormal_temperature">体温异常</string>
+    <string name="spsdk_detection_time">检测时间</string>
+
+    <string name="spsdk_select_people">已选择：%d 人</string>
+    <string name="spsdk_most_select_people">最多可选择：%d 人</string>
+    <string name="spsdk_confirm_people">确认 (%d/%d)</string>
+
+    <string name="spsdk_placeholder_hours">%s 小时</string>
+
+
+    <string name="spsdk_duration_today">今日</string>
+    <string name="spsdk_duration_yesterday">昨日</string>
+    <string name="spsdk_duration_the_day_before_yesterday">前日</string>
+
+    <string name="spsdk_duration_this_week">本周</string>
+    <string name="spsdk_duration_last_seven_days">最近7日</string>
+    <string name="spsdk_duration_last_fourteen_days">最近14日</string>
+
+    <string name="spsdk_duration_this_month">本月</string>
+    <string name="spsdk_duration_last_month">上月</string>
+    <string name="spsdk_duration_last_three_month">最近三个月</string>
+
+<!--    ==================================-->
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_icon"-->
+<!--        android:layout_width="@dimen/spsdk_dp_40"-->
+<!--        android:layout_height="@dimen/spsdk_dp_40"-->
+<!--        android:scaleType="centerInside"-->
+<!--        android:src="@mipmap/spsdk_user_black" />-->
+
+    <com.esharp.sdk.widget.RadiusImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/spsdk_dp_40"
+        android:layout_height="@dimen/spsdk_dp_40"
+        android:layout_marginLeft="@dimen/spsdk_dp_10"
+        android:layout_marginRight="@dimen/spsdk_dp_10"
+        android:src="@mipmap/spsdk_pic_error"
+        app:spsdk_imageRadius="@dimen/spsdk_dp_5" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/spsdk_text_main12"
+        android:layout_width="@dimen/spsdk_dp_60"
+        android:maxLines="1"
+        android:gravity="center"
+        android:text="标签"
+        android:textColor="@color/spsdk_main_color" />
+
+</LinearLayout>

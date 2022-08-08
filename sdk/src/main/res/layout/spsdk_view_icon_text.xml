@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/spsdk_dp_25"
+        android:layout_height="@dimen/spsdk_dp_25"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/spsdk_waiting"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/spsdk_text_main16"
+        android:layout_marginStart="@dimen/spsdk_dp_5"
+        android:layout_gravity="center_vertical"
+        tools:text="@string/spsdk_passed" />
+
+</merge>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <TextView
+        android:id="@+id/warning_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:textColor="@color/spsdk_color_red"
+        android:textSize="@dimen/spsdk_ts_18"
+        android:text="*"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spsdk_dp_5"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/spsdk_main_color"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:text="@string/spsdk_leave_season"/>
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="left|top"
+        android:background="@drawable/spsdk_shape_white_gray_radius_5"
+        android:paddingStart="@dimen/spsdk_dp_10"
+        android:paddingEnd="@dimen/spsdk_dp_10"
+        android:textColor="@color/spsdk_main_color"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:hint="出去浪"/>
+
+</merge>

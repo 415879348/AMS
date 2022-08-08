@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spsdk_dp_5"
+    android:orientation="vertical">
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/tv_staff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_staff"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/tv_department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_department"
+        app:spsdk_show_text_detail="项目部"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_time"
+        app:spsdk_show_text_detail="2021-08-25 09:15:00"
+        />
+
+    <com.esharp.sdk.widget.SPShowTextView
+        android:id="@+id/tv_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_temperature"
+        app:spsdk_show_text_detail="37.7 ℃ 体温异常"
+        />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_200"
+        android:src="@mipmap/spsdk_ic_launcher"
+        />
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 矩形圆角+左右两边为一个圆弧 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/spsdk_color_white"/>
+    <stroke android:width="@dimen/spsdk_dp_1" android:color="@color/spsdk_color_gray2" />
+    <corners android:radius="@dimen/spsdk_dp_5"/>
+
+</shape>

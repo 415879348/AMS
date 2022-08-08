@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    垫底的背景控件-->
+    <View
+        android:id="@+id/backView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/spsdk_background_dialog" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.5"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:ignore="NestedWeights" />
+
+            <FrameLayout
+                android:id="@+id/contentHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/spsdk_transparent_00"
+                android:clickable="true"
+                android:focusable="true">
+
+                <com.coorchice.library.SuperTextView
+                    android:id="@+id/cornerBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:stv_corner="@dimen/spsdk_dp_5"
+                    app:stv_left_top_corner="true"
+                    app:stv_right_top_corner="true"
+                    app:stv_solid="@color/spsdk_color_white" />
+
+                <LinearLayout
+                    android:id="@+id/contentList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spsdk_dp_5"
+                    android:background="@color/spsdk_transparent_00"
+                    android:orientation="vertical">
+
+                    <com.esharp.sdk.widget.MyNestedScrollView2
+                        android:id="@+id/scrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fadingEdge="none"
+                        android:fadingEdgeLength="0dp"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

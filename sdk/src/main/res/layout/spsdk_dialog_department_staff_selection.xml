@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/spsdk_shape_white_gray_radius_5"
+    android:layout_marginStart="@dimen/spsdk_dp_15"
+    android:layout_marginTop="@dimen/spsdk_dp_10"
+    android:layout_marginEnd="@dimen/spsdk_dp_15"
+    android:layout_marginBottom="@dimen/spsdk_dp_5"
+    android:padding="@dimen/spsdk_dp_5"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_30"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="@dimen/spsdk_dp_20"
+            android:layout_height="@dimen/spsdk_dp_20"
+            android:layout_margin="@dimen/spsdk_dp_5"
+            android:src="@mipmap/spsdk_filter"/>
+
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:layout_height="@dimen/spsdk_dp_20"
+            android:layout_toEndOf="@+id/cancel"
+            android:layout_margin="@dimen/spsdk_dp_5"
+            android:layout_marginStart="0dp"
+            android:gravity="center"
+            android:text="筛选"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_edit_height"
+        android:layout_marginHorizontal="@dimen/spsdk_dp_20"
+        >
+
+        <com.esharp.sdk.widget.SPSelectorView
+            android:id="@+id/ssv_department"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/spsdk_shape_white_gray_radius_5"
+            android:layout_height="match_parent"
+            app:spsdk_selector_content="选择部门"
+            app:spsdk_selector_icon="@mipmap/spsdk_ic_launcher"
+            />
+
+        <com.esharp.sdk.widget.SPSelectorView
+            android:id="@+id/ssv_staff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spsdk_dp_5"
+            android:background="@drawable/spsdk_shape_white_gray_radius_5"
+            android:layout_height="match_parent"
+            app:spsdk_selector_content="选择人员"
+            app:spsdk_selector_icon="@mipmap/spsdk_ic_launcher"
+            />
+
+    </LinearLayout>
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_edit_height"
+        android:layout_marginHorizontal="@dimen/spsdk_dp_20"
+        app:spsdk_input_title="@string/spsdk_amend_time"
+        app:spsdk_input_icon="@mipmap/spsdk_ic_calendar"
+        app:spsdk_input_hint="@string/spsdk_select_check_in_time"
+        app:spsdk_input_show_right_img="show"
+        app:spsdk_input_content_enabled="disable"
+        app:spsdk_input_show_title="hide"
+
+        />
+
+    <CheckBox
+        android:id="@+id/cb_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spsdk_dp_20"
+        android:text="体温异常"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_50"
+        android:layout_marginTop="@dimen/spsdk_dp_40"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_cancel"
+            android:layout_width="@dimen/spsdk_dp_100"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spsdk_dp_7"
+            android:text="取消"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:stv_corner="@dimen/spsdk_dp_10"
+            app:stv_solid="@color/spsdk_color_black_1" />
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_commit"
+            android:layout_width="@dimen/spsdk_dp_100"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spsdk_dp_7"
+            android:text="@string/spsdk_commit"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            android:textStyle="bold"
+            app:stv_corner="@dimen/spsdk_dp_10"
+            app:stv_solid="@color/spsdk_color_blue" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

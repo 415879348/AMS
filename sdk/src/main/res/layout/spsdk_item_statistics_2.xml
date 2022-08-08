@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spsdk_dp_15"
+    android:layout_marginEnd="@dimen/spsdk_dp_15"
+    android:layout_marginTop="@dimen/spsdk_dp_15"
+    android:layout_marginBottom="@dimen/spsdk_dp_15"
+    app:cardBackgroundColor="@color/spsdk_color_white"
+    app:cardCornerRadius="@dimen/spsdk_dp_10"
+    app:cardElevation="@dimen/spsdk_dp_5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_160"
+        android:background="@color/spsdk_transparent_00"
+        android:padding="@dimen/spsdk_dp_5"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/spsdk_dp_30"
+                android:layout_height="@dimen/spsdk_dp_30"
+                android:layout_margin="@dimen/spsdk_dp_5"
+                android:scaleType="centerInside"
+                android:src="@mipmap/spsdk_warning" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/spsdk_main_color"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:text="@string/spsdk_amend_record" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            style="@style/spsdk_divide_line_horizontal"
+            android:layout_below="@+id/ll_title"
+            android:layout_marginTop="@dimen/spsdk_dp_5"/>
+
+
+        <LinearLayout
+            android:layout_width="@dimen/spsdk_dp_160"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/line"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spsdk_dp_10"
+                android:textColor="@color/spsdk_color_blue"
+                android:textSize="@dimen/spsdk_ts_18"
+                android:textStyle="bold"
+                android:text="15" />
+
+            <TextView
+                android:id="@+id/unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spsdk_dp_10"
+                android:textColor="@color/spsdk_second_color"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:text="有效次数" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="@dimen/spsdk_dp_160"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/line"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spsdk_dp_10"
+                android:textColor="@color/spsdk_second_color"
+                android:textSize="@dimen/spsdk_ts_18"
+                android:text="xx小时xx分钟" />
+
+            <TextView
+                android:id="@+id/duration_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spsdk_dp_10"
+                android:textColor="@color/spsdk_second_color"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:text="次数" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+

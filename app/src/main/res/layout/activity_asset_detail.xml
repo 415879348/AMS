@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.esharp.sdk.widget.MyNestedScrollView2 android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spsdk_dp_5"
+    android:fadingEdge="none"
+    android:fadingEdgeLength="0dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <!--基本信息-->
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:text="@string/essential_information"
+            />
+
+        <View
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            style="@style/spsdk_divide_line_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spsdk_dp_10"
+            android:orientation="vertical">
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/asset_number"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/asset_name"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/asset_type"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_brand"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/brand"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_model"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/model"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_size"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/size"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_place_of_production"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/place_of_production"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_date_of_manufacture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/date_of_manufacture"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_warranty_period"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/warranty_period"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_status"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/state"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_asset_remark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/remark"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.esharp.sdk.widget.SPShowTextView
+                    android:id="@+id/stv_asset_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spsdk_dp_25"
+                    app:spsdk_show_text_title="@string/picture"
+                    android:layout_marginVertical="@dimen/spsdk_dp_5"
+                    />
+
+                <com.esharp.sdk.widget.RadiusImageView
+                    android:id="@+id/riv_picture"
+                    android:layout_width="@dimen/spsdk_dp_60"
+                    android:layout_height="@dimen/spsdk_dp_60"
+                    android:layout_marginLeft="@dimen/spsdk_dp_5"
+                    android:layout_marginRight="@dimen/spsdk_dp_5"
+                    android:layout_marginVertical="@dimen/spsdk_dp_5"
+                    android:src="@mipmap/spsdk_pic_error"
+                    app:spsdk_imageRadius="@dimen/spsdk_dp_5" />
+
+            </LinearLayout>
+
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_creation_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/creation_time"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_update_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/update_time"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.esharp.sdk.widget.MyNestedScrollView2>
+
+

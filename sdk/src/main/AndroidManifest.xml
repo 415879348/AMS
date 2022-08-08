@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.esharp.sdk">
+
+    <application>
+        <activity
+            android:name="com.esharp.sdk.activity.apply.ApplyActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.login.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.changePassword.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.alertDetail.AlertDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.approverList.ApproverListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.recordDetails.RecordDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.esharp.sdk.activity.record.RecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.esharp.sdk.activity.approverSelected.ApproverSelectedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.esharp.sdk.activity.copyuserselected.CopyUserSelectedActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+
+</manifest>

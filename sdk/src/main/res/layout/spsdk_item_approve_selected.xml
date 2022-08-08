@@ -1,0 +1,71 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="@dimen/spsdk_dp_5"
+    android:layout_marginTop="@dimen/spsdk_dp_5"
+    android:layout_marginEnd="@dimen/spsdk_dp_5"
+    android:layout_marginBottom="@dimen/spsdk_dp_5"
+    app:cardBackgroundColor="@color/spsdk_background_white"
+    app:cardCornerRadius="@dimen/spsdk_dp_10"
+    app:cardElevation="@dimen/spsdk_dp_3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_70">
+
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_icon"-->
+<!--            android:layout_width="@dimen/spsdk_dp_80"-->
+<!--            android:layout_height="@dimen/spsdk_dp_80"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@mipmap/spsdk_ic_launcher" />-->
+
+        <com.esharp.sdk.widget.RadiusImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/spsdk_dp_60"
+            android:layout_height="@dimen/spsdk_dp_60"
+            android:layout_marginLeft="@dimen/spsdk_dp_5"
+            android:layout_marginRight="@dimen/spsdk_dp_5"
+            android:layout_marginVertical="@dimen/spsdk_dp_5"
+            android:src="@mipmap/spsdk_pic_error"
+            app:spsdk_imageRadius="@dimen/spsdk_dp_5" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/spsdk_text_main16"
+            android:layout_alignTop="@+id/iv_icon"
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            android:layout_toEndOf="@+id/iv_icon"
+            android:text="@string/spsdk_amend_record" />
+
+        <TextView
+            android:id="@+id/tv_department"
+            style="@style/spsdk_text_main16"
+            android:layout_toEndOf="@+id/iv_icon"
+            android:layout_alignBottom="@+id/iv_icon"
+            android:layout_marginBottom="@dimen/spsdk_dp_5"
+            android:text="@string/spsdk_amend_record" />
+
+        <FrameLayout
+            android:id="@+id/fl_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spsdk_dp_10"
+            />
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/spsdk_text_main16"
+            android:layout_alignBottom="@+id/iv_icon"
+            android:layout_marginBottom="@dimen/spsdk_dp_5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/spsdk_dp_10"
+            tools:text="@string/spsdk_amend_record" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

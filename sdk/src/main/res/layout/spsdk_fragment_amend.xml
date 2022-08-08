@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_input_title="@string/spsdk_amend_time"
+        app:spsdk_input_icon="@mipmap/spsdk_ic_calendar"
+        app:spsdk_input_hint="@string/spsdk_select_check_in_time"
+        app:spsdk_input_show_right_img="show"
+        app:spsdk_input_warning_sign="show"
+        app:spsdk_input_content_enabled="disable"
+        />
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_input_title="@string/spsdk_temperature"
+        app:spsdk_input_icon="@mipmap/spsdk_ic_celsius"
+        app:spsdk_input_hint="@string/spsdk_register_temperature"
+        app:spsdk_input_show_right_img="show"
+        app:spsdk_input_warning_sign="show"
+        />
+
+    <com.esharp.sdk.widget.SPNoteView
+        android:id="@+id/nv_reason"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_100"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_note_title="@string/spsdk_amend_season"
+        app:spsdk_note_hint="@string/spsdk_fill_amend_season"
+        app:spsdk_note_warning_sign="show"
+        />
+
+</LinearLayout>

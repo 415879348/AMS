@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_input_title="@string/spsdk_start_time"
+        app:spsdk_input_hint="@string/spsdk_select_start_time"
+        app:spsdk_input_icon="@mipmap/spsdk_ic_calendar"
+        app:spsdk_input_show_right_img="show"
+        app:spsdk_input_warning_sign="show"
+        app:spsdk_input_content_enabled="disable"
+        />
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_end_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_input_title="@string/spsdk_end_time"
+        app:spsdk_input_hint="@string/spsdk_select_end_time"
+        app:spsdk_input_icon="@mipmap/spsdk_ic_calendar"
+        app:spsdk_input_show_right_img="show"
+        app:spsdk_input_warning_sign="show"
+        app:spsdk_input_content_enabled="disable"
+        />
+
+    <com.esharp.sdk.widget.SPEditView
+        android:id="@+id/ev_ot_duration"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_title_height"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_input_title="@string/spsdk_overtime_duration"
+        app:spsdk_input_hint="@string/spsdk_enter_duration"
+        app:spsdk_input_warning_sign="show"
+        />
+
+    <com.esharp.sdk.widget.SPNoteView
+        android:id="@+id/nv_ot_reason"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_100"
+        android:padding="@dimen/spsdk_dp_5"
+        app:spsdk_note_title="@string/spsdk_overtime_season"
+        app:spsdk_note_hint="@string/spsdk_enter_overtime_season"
+        app:spsdk_note_warning_sign="show"
+        />
+
+</LinearLayout>

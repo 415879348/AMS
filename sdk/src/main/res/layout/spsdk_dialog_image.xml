@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/spsdk_shape_white_gray_radius_5"
+    android:layout_marginStart="@dimen/spsdk_dp_15"
+    android:layout_marginTop="@dimen/spsdk_dp_10"
+    android:layout_marginEnd="@dimen/spsdk_dp_15"
+    android:layout_marginBottom="@dimen/spsdk_dp_5">
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="@dimen/spsdk_dp_20"
+        android:layout_height="@dimen/spsdk_dp_20"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/spsdk_dp_7"
+        android:src="@mipmap/spsdk_cancel"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spsdk_dp_100"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <com.esharp.sdk.widget.SPTabView
+            android:id="@+id/amend"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:spsdk_tab_icon="@mipmap/spsdk_amend_record"
+            app:spsdk_tab_title="@string/spsdk_tab_amend"/>
+
+        <com.esharp.sdk.widget.SPTabView
+            android:id="@+id/leave"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:spsdk_tab_icon="@mipmap/spsdk_leave_record"
+            app:spsdk_tab_title="@string/spsdk_tab_leave"/>
+
+        <com.esharp.sdk.widget.SPTabView
+            android:id="@+id/overtime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:spsdk_tab_icon="@mipmap/spsdk_overtime_reecord"
+            app:spsdk_tab_title="@string/spsdk_tab_overtime"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
