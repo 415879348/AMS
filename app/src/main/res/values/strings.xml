@@ -1,3 +1,96 @@
 <resources>
     <string name="app_name">AMS</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="please_enter_account">请输入账号</string>
+    <string name="please_enter_password">请输入密码</string>
+    <string name="user_login">用户登录</string>
+    <string name="login">登陆</string>
+
+    <string name="tab_title_home">首页</string>
+    <string name="tab_title_assets">资产</string>
+    <string name="tab_title_work_order">工单</string>
+    <string name="tab_title_profile">我的</string>
+
+    <string name="backlog">待办</string>
+    <string name="done">已办</string>
+    <string name="create">新建</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="filter">过滤</string>
+
+    <string name="amount">数量</string>
+    <string name="normal">普通</string>
+    <string name="administrator">管理員</string>
+    <string name="phone_number">手机号码</string>
+    <string name="user_name">用户名称</string>
+    <string name="sign_out">退出</string>
+    <string name="handle">处理</string>
+
+    <string name="job_number">工单编号</string>
+    <string name="job_name">工单名称</string>
+    <string name="job_type">工单类型</string>
+    <string name="job_handle">工单处理</string>
+    <string name="job_detail">工单详情</string>
+    <string name="progress">进度</string>
+    <string name="operation">操作</string>
+    <string name="completion_time">完成时间</string>
+    <string name="completed_by">完成人员</string>
+
+    <string name="asset_number">资产编号</string>
+    <string name="asset_name">资产名称</string>
+    <string name="asset_type">资产类型</string>
+    <string name="asset_detail">资产详情</string>
+    <string name="location">位置</string>
+    <string name="state">状态</string>
+    <string name="repair_work_order">維修工單</string>
+    <string name="regular_maintenance">定時保養</string>
+
+    <string name="revocation">撤銷</string>
+    <string name="end">結束</string>
+    <string name="apply">申請</string>
+    <string name="approval">審批</string>
+    <string name="processing">處理</string>
+
+    <string name="regular">正常</string>
+    <string name="in_preparation">準備中</string>
+    <string name="abnormal">異常</string>
+    <string name="initialization_failed">初始化失敗，需要手動操作</string>
+
+
+    <string name="essential_information">基本信息</string>
+    <string name="asset_information">资产信息</string>
+    <string name="execution_information">执行信息</string>
+    <string name="originator">发起人</string>
+    <string name="handler">处理人</string>
+    <string name="time_of_initiation">发起时间</string>
+    <string name="processing_time">处理时间</string>
+    <string name="remark">备注</string>
+    <string name="please_enter">请输入</string>
+    <string name="assign">指派</string>
+    <string name="confirm">确定</string>
+    <string name="brand">品牌</string>
+    <string name="size">尺寸</string>
+    <string name="model">型号</string>
+    <string name="l_w_h">尺寸(长，宽，高mm)</string>
+    <string name="place_of_production">生产地</string>
+    <string name="date_of_manufacture">生产日期</string>
+    <string name="warranty_period">保修期至</string>
+    <string name="reset">重置</string>
+    <string name="generate">生成</string>
+    <string name="picture">图片</string>
+    <string name="creation_time">创建时间</string>
+    <string name="update_time">更新时间</string>
+
+
+
+
 </resources>

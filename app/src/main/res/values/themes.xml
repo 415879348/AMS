@@ -13,4 +13,19 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.ATM.ActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/spsdk_color_white</item>
+        <item name="colorPrimaryVariant">@color/spsdk_background_white</item>
+        <item name="colorOnPrimary">@color/spsdk_main_color</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/spsdk_second_color</item>
+        <item name="colorSecondaryVariant">@color/spsdk_second_color</item>
+        <item name="colorOnSecondary">@color/spsdk_second_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/spsdk_transparent_00</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <!-- Customize your theme here. -->
+    </style>
 </resources>
