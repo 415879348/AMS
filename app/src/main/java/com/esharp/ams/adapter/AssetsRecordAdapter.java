@@ -3,6 +3,8 @@ package com.esharp.ams.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.esharp.ams.R;
@@ -19,9 +21,9 @@ import androidx.annotation.NonNull;
  * @author (作者) someone
  * 创建时间： 2021/8/7
  */
-public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, OnClickCallback<DeviceBean>> {
+public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, AssetsRecordAdapter.Listener> {
 
-    public AssetsRecordAdapter(OnClickCallback<DeviceBean> onItemOperate) {
+    public AssetsRecordAdapter(AssetsRecordAdapter.Listener onItemOperate) {
         super(onItemOperate);
     }
 
@@ -32,16 +34,18 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, OnClickCallback
 
     @NonNull
     @Override
-    public ViewHolder<DeviceBean, OnClickCallback<DeviceBean>> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder<DeviceBean, AssetsRecordAdapter.Listener> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_assets, parent, false));
     }
 
-    static class BaseViewHolder extends ViewHolder<DeviceBean, OnClickCallback<DeviceBean>> {
+    static class BaseViewHolder extends ViewHolder<DeviceBean, AssetsRecordAdapter.Listener> {
 
+        private final CheckBox cb;
         private final TextView tv_asset_number, tv_asset_name, tv_location, tv_state;
 
         public BaseViewHolder(View itemView) {
             super(itemView);
+            cb = itemView.findViewById(R.id.cb);
             tv_asset_number = itemView.findViewById(R.id.tv_asset_number);
             tv_asset_name = itemView.findViewById(R.id.tv_asset_name);
             tv_location = itemView.findViewById(R.id.tv_location);
@@ -49,7 +53,10 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, OnClickCallback
         }
 
         @Override
-        protected void bindData(DeviceBean item, OnClickCallback<DeviceBean> onItemOperate) {
+        protected void bindData(DeviceBean item, AssetsRecordAdapter.Listener onItemOperate) {
+
+            cb.setOnCheckedChangeListener((buttonView, isChecked) -> onItemOperate.setChecked(isChecked));
+
             if (getBindingAdapterPosition() % 2 == 1) {
                 itemView.setBackground(ResUtils.getDrawable(R.color.spsdk_color_gray3));
             } else {
@@ -80,11 +87,10 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, OnClickCallback
 
         }
 
-
     }
 
-//    public interface Listener {
-//        void onItemClick(DeviceBean item);
-//    }
+    public interface Listener extends OnClickCallback<DeviceBean> {
+        void setChecked(Boolean it);
+    }
 
 }

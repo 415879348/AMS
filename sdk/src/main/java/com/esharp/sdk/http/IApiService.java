@@ -120,7 +120,7 @@ public interface IApiService {
     Single<HttpResult<Boolean>> deleteAppDevice(@Body IDListVo ids);
 
     /**
-     * 資產添加用 補充字段查詢列表
+     * 資產添加用 字段查詢列表
      * @param deviceTypeId 補充字段針對資產類型 0:其他 1:雪櫃 2:大華設備 3:IOT網關
      * @return
      */
@@ -168,13 +168,13 @@ public interface IApiService {
     @GET("work/order")
     Single<HttpResult<WorkOrderVo>> createWorkOrder(@Query("current") String current, @Query("size") String size);
 
-    /**
-     * 查詢待處理工單
-     * @param
-     * @return
-     */
-    @GET("work/order/process")
-    Single<HttpResult<WorkOrderVo>> workOrderProcess(@Query("current") int current, @Query("size") int size);
+//    /**
+//     * 查詢待處理工單
+//     * @param
+//     * @return
+//     */
+//    @GET("work/order/process")
+//    Single<HttpResult<WorkOrderVo>> workOrderProcess(@Query("current") int current, @Query("size") int size);
 
     /**
      * 處理工单
@@ -189,7 +189,7 @@ public interface IApiService {
      * @return
      */
     @GET("work/order")
-    Single<HttpResult<WorkOrderVo>> workOrder(@Query("current") int current, @Query("size") int size);
+    Single<HttpResult<WorkOrderVo>> workOrder(@QueryMap Map<String, String> params);
 
     /**
      * 查詢已處理工單
@@ -232,6 +232,13 @@ public interface IApiService {
      */
     @GET("work/order/{id}")
     Single<HttpResult<WorkOrderBean>> workOrderID(@Path("id") String id);
+
+    /**
+     * 资产编号生成
+     * @return
+     */
+    @GET("device/generate/code")
+    Single<HttpResult<String>> generateCode();
 
     /////////////////////////////
 

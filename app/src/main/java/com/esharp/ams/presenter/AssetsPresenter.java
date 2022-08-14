@@ -3,6 +3,7 @@ package com.esharp.ams.presenter;
 import com.esharp.ams.contract.AssetsContract;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
+import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
 import com.esharp.sdk.rxjava.ProgressOperator;
@@ -21,5 +22,14 @@ public class AssetsPresenter extends BasePresenter<AssetsContract.View> implemen
                 .compose(SchedulerUtils.io_main_single())
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::getDataSuc));
+    }
+
+    @Override
+    public void deleteDevice(IDListVo ids) {
+        HttpService.get().deleteAppDevice(ids)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::deleteDeviceSuc));
     }
 }

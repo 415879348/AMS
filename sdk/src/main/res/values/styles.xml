@@ -143,8 +143,6 @@
     <style name="spsdk_divide_line_horizontal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:layout_marginLeft">@dimen/spsdk_dp_10</item>
-        <item name="android:layout_marginRight">@dimen/spsdk_dp_10</item>
         <item name="android:background">@color/spsdk_color_gray2</item>
     </style>
 

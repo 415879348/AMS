@@ -310,4 +310,9 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
         LogUtils.json(it);
     }
 
+    @Override
+    public void workOrder(Object it) {
+        LogUtils.json(it);
+    }
+
 }

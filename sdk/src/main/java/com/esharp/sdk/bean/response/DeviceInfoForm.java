@@ -38,27 +38,27 @@ public class DeviceInfoForm implements Serializable {
      */
 
     private Integer addressId;
-    private Integer brandId;
-    private Integer brandModelId;
+    private String brandId;
+    private String brandModelId;
     private String color;
     private String deviceName;
     private String deviceNumber;
-    private Integer deviceTypeId;
+    private String deviceTypeId;
     private Integer features;
-    private Integer height;
+    private String height;
     private Integer id;
     private Integer lat;
-    private Integer length;
+    private String length;
     private Integer lon;
     private Integer maintain;
     private Integer parentId;
     private Integer personId;
-    private Integer prodDate;
+    private Long prodDate;
     private String production;
     private String remark;
-    private Integer warranty;
+    private Long warranty;
     private Integer weight;
-    private Integer width;
+    private String width;
     private List<?> childIds;
     private List<DeviceFieldValueBean> deviceFieldValueForms;
     private List<Long> documentIds;
@@ -72,19 +72,19 @@ public class DeviceInfoForm implements Serializable {
         this.addressId = addressId;
     }
 
-    public Integer getBrandId() {
+    public String getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(Integer brandId) {
+    public void setBrandId(String brandId) {
         this.brandId = brandId;
     }
 
-    public Integer getBrandModelId() {
+    public String getBrandModelId() {
         return brandModelId;
     }
 
-    public void setBrandModelId(Integer brandModelId) {
+    public void setBrandModelId(String brandModelId) {
         this.brandModelId = brandModelId;
     }
 
@@ -112,11 +112,11 @@ public class DeviceInfoForm implements Serializable {
         this.deviceNumber = deviceNumber;
     }
 
-    public Integer getDeviceTypeId() {
+    public String getDeviceTypeId() {
         return deviceTypeId;
     }
 
-    public void setDeviceTypeId(Integer deviceTypeId) {
+    public void setDeviceTypeId(String deviceTypeId) {
         this.deviceTypeId = deviceTypeId;
     }
 
@@ -128,11 +128,11 @@ public class DeviceInfoForm implements Serializable {
         this.features = features;
     }
 
-    public Integer getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -152,11 +152,11 @@ public class DeviceInfoForm implements Serializable {
         this.lat = lat;
     }
 
-    public Integer getLength() {
+    public String getLength() {
         return length;
     }
 
-    public void setLength(Integer length) {
+    public void setLength(String length) {
         this.length = length;
     }
 
@@ -192,11 +192,11 @@ public class DeviceInfoForm implements Serializable {
         this.personId = personId;
     }
 
-    public Integer getProdDate() {
+    public Long getProdDate() {
         return prodDate;
     }
 
-    public void setProdDate(Integer prodDate) {
+    public void setProdDate(Long prodDate) {
         this.prodDate = prodDate;
     }
 
@@ -216,11 +216,11 @@ public class DeviceInfoForm implements Serializable {
         this.remark = remark;
     }
 
-    public Integer getWarranty() {
+    public Long getWarranty() {
         return warranty;
     }
 
-    public void setWarranty(Integer warranty) {
+    public void setWarranty(Long warranty) {
         this.warranty = warranty;
     }
 
@@ -232,11 +232,11 @@ public class DeviceInfoForm implements Serializable {
         this.weight = weight;
     }
 
-    public Integer getWidth() {
+    public String getWidth() {
         return width;
     }
 
-    public void setWidth(Integer width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 

@@ -4,7 +4,7 @@ import com.esharp.sdk.dialog.ListPopWindow;
 
 import java.io.Serializable;
 
-public class UserVo  extends ListPopWindow.Item implements Serializable {
+public class UserVo extends ListPopWindow.Item implements Serializable {
 
     /**
      * id : 主鍵

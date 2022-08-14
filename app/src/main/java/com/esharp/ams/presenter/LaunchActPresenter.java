@@ -10,6 +10,9 @@ import com.esharp.sdk.rxjava.HttpResultOperator;
 import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> implements LaunchActContract.Presenter {
 
     public LaunchActPresenter(LaunchActContract.IHost mView) {
@@ -18,7 +21,7 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 
     @Override
     public void method() {
-        HttpService.get().login(new LoginVo("super", "123456"))
+        HttpService.get().login(new LoginVo("test", "test@123"))
                 .map(new HttpFunction<>())
                 .compose(SchedulerUtils.io_main_single())
                 .subscribe(new BaseObserver<>(mView, mView::onLoginSuccess));
@@ -32,11 +35,11 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 //                .lift(new ProgressOperator<>(mView, -1))
 //                .subscribe(new BaseObserver<>(mView, mView::getUserAll));
 
-        HttpService.get().auth()
-                .lift(new HttpResultOperator<>())
-                .compose(SchedulerUtils.io_main_single())
-                .lift(new ProgressOperator<>(mView, -1))
-                .subscribe(new BaseObserver<>(mView, mView::getAuth));
+//        HttpService.get().auth()
+//                .lift(new HttpResultOperator<>())
+//                .compose(SchedulerUtils.io_main_single())
+//                .lift(new ProgressOperator<>(mView, -1))
+//                .subscribe(new BaseObserver<>(mView, mView::getAuth));
 
 //        HttpService.get().appDict("0")
 //                .map(new HttpFunction<>())
@@ -106,6 +109,21 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 //                .map(new HttpFunction<>())
 //                .compose(SchedulerUtils.io_main_single())
 //                .subscribe(new BaseObserver<>(mView, mView::updateAppDevice));
+
+//        http://192.168.10.27:9999/ams/app/work/order?current=1&size=20&deviceId=&startTime=&endTime=&step=&processStep=
+        Map<String, String> map = new HashMap<>();
+        map.put("current", "1");
+        map.put("size", "20");
+        map.put("processStep", "1"); // 0待办， 1已办
+//        map.put("deviceId", "20");
+//        map.put("startTime", "20");
+//        map.put("endTime", "20");
+
+        HttpService.get().workOrder(map)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::workOrder));
 
         //            HttpService.get().workOrderID("70")
 //            .map(new HttpFunction<>())

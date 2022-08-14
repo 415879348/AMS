@@ -1,8 +1,10 @@
 package com.esharp.sdk.bean.response;
 
+import com.esharp.sdk.dialog.ListPopWindow;
+
 import java.io.Serializable;
 
-public class DictionaryBean implements Serializable {
+public class DictionaryBean extends ListPopWindow.Item implements Serializable {
 
     /**
      * id : 主键
@@ -15,7 +17,7 @@ public class DictionaryBean implements Serializable {
      * companyName : 公司名
      * parentDictName : 上级字典名
      */
-    private String id;
+    private String id = "";
     private String companyId;
     private String dictName;
     private String dictType;
@@ -24,4 +26,86 @@ public class DictionaryBean implements Serializable {
     private String parentId;
     private String companyName;
     private String parentDictName;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getDictName() {
+        return dictName;
+    }
+
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
+    }
+
+    public String getDictType() {
+        return dictType;
+    }
+
+    public void setDictType(String dictType) {
+        this.dictType = dictType;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getParentDictName() {
+        return parentDictName;
+    }
+
+    public void setParentDictName(String parentDictName) {
+        this.parentDictName = parentDictName;
+    }
+
+    @Override
+    public void setChecked(String checkedCode) {
+        this.checked = this.id.equals(checkedCode);
+    }
+
+    @Override
+    public String text() {
+        return dictName;
+    }
 }

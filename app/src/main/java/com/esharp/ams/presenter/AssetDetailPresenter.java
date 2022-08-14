@@ -15,7 +15,7 @@ public class AssetDetailPresenter extends BasePresenter<AssetDetailContract.View
     }
 
     @Override
-    public void getData(long deviceId) {
+    public void getData(String deviceId) {
         HttpService.get().queryAppDevice(deviceId+"")
                 .lift(new HttpResultOperator<>())
                 .compose(SchedulerUtils.io_main_single())

@@ -48,6 +48,7 @@ public class DeviceBean implements Serializable {
      */
 
     private Integer active;
+    private boolean isChecked;
     private String address;
     private Integer addressId;
     private String brand;
@@ -65,25 +66,25 @@ public class DeviceBean implements Serializable {
     private Integer deviceTypeId;
     private String errorMessage;
     private Integer features;
-    private int height;
+    private String height;
     private String hostCode;
-    private Integer id;
+    private String id;
     private Integer lat;
-    private int length;
+    private String length;
     private Integer lon;
     private Integer maintain;
     private Integer parentId;
     private String parentName;
     private Integer personId;
     private String production;
-    private String productionDate;
+    private Long productionDate;
     private String remark;
     private Integer status;
     private Integer updateId;
     private Long updateTime;
-    private String warrantyDate;
+    private Long warrantyDate;
     private Integer weight;
-    private int width;
+    private String width;
     private List<DeviceBean> children;
     private List<UrlsBean> urls;
 
@@ -296,11 +297,11 @@ public class DeviceBean implements Serializable {
         this.features = features;
     }
 
-    public int getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -312,11 +313,11 @@ public class DeviceBean implements Serializable {
         this.hostCode = hostCode;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -328,11 +329,11 @@ public class DeviceBean implements Serializable {
         this.lat = lat;
     }
 
-    public int getLength() {
+    public String getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(String length) {
         this.length = length;
     }
 
@@ -384,11 +385,11 @@ public class DeviceBean implements Serializable {
         this.production = production;
     }
 
-    public String getProductionDate() {
+    public Long getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(String productionDate) {
+    public void setProductionDate(Long productionDate) {
         this.productionDate = productionDate;
     }
 
@@ -424,11 +425,11 @@ public class DeviceBean implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public String getWarrantyDate() {
+    public Long getWarrantyDate() {
         return warrantyDate;
     }
 
-    public void setWarrantyDate(String warrantyDate) {
+    public void setWarrantyDate(Long warrantyDate) {
         this.warrantyDate = warrantyDate;
     }
 
@@ -440,11 +441,11 @@ public class DeviceBean implements Serializable {
         this.weight = weight;
     }
 
-    public int getWidth() {
+    public String getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 
@@ -462,5 +463,13 @@ public class DeviceBean implements Serializable {
 
     public void setUrls(List<UrlsBean> urls) {
         this.urls = urls;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }

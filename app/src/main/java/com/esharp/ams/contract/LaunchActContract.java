@@ -40,6 +40,7 @@ public interface LaunchActContract {
         void logout(boolean it);
         void device(DeviceVo it);
         void document(Object it);
+        void workOrder(Object it);
     }
 
     interface View extends IHost {

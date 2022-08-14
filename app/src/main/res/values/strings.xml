@@ -49,6 +49,7 @@
     <string name="asset_name">资产名称</string>
     <string name="asset_type">资产类型</string>
     <string name="asset_detail">资产详情</string>
+    <string name="asset_create">新建资产</string>
     <string name="location">位置</string>
     <string name="state">状态</string>
     <string name="repair_work_order">維修工單</string>

@@ -110,7 +110,7 @@ public class ListPopWindow<T extends ListPopWindow.Item> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            padding =  AdaptScreenUtils.pt2Px( 5);
+            padding =  AdaptScreenUtils.pt2Px( 3);
             mTextView = itemView.findViewById(R.id.text_item);
         }
 

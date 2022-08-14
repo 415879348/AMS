@@ -5,15 +5,26 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <TextView
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="@dimen/spsdk_dp_30"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="@string/asset_number"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
+        android:layout_weight="1.5"
+        android:layout_height="@dimen/spsdk_dp_30">
+
+        <CheckBox
+            android:layout_width="@dimen/spsdk_dp_25"
+            android:layout_height="@dimen/spsdk_dp_25"
+            android:layout_marginEnd="@dimen/spsdk_dp_5"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_dp_30"
+            android:gravity="center"
+            android:text="@string/asset_number"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
 
     <TextView
         android:layout_width="0dp"
@@ -39,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/spsdk_dp_30"
         android:gravity="center"
-        android:layout_weight="1"
+        android:layout_weight="0.7"
         android:text="@string/state"
         android:textColor="@color/black"
         android:textStyle="bold"

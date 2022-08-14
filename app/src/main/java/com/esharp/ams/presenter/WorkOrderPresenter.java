@@ -16,10 +16,10 @@ public class WorkOrderPresenter extends BasePresenter<WorkOrderContract.View> im
 
     @Override
     public void getData(int current, int size) {
-        HttpService.get().workOrder(current, size)
-                .lift(new HttpResultOperator<>())
-                .compose(SchedulerUtils.io_main_single())
-                .lift(new ProgressOperator<>(mView, -1))
-                .subscribe(new BaseObserver<>(mView, mView::getDataSuc));
+//        HttpService.get().workOrder(current, size)
+//                .lift(new HttpResultOperator<>())
+//                .compose(SchedulerUtils.io_main_single())
+//                .lift(new ProgressOperator<>(mView, -1))
+//                .subscribe(new BaseObserver<>(mView, mView::getDataSuc));
     }
 }

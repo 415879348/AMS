@@ -3,6 +3,7 @@ package com.esharp.ams.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.widget.TextView;
 
@@ -81,15 +82,15 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_brand.setDetail(it.getBrand());
         stv_asset_model.setDetail(it.getBrandModel());
 
-        if (it.getLength() != 0 &&
-                it.getWidth() != 0 &&
-                it.getLength() != 0) {
-            stv_asset_size.setDetail(it.getLength() + it.getWidth() + it.getLength());
+        if (! TextUtils.isEmpty(it.getLength()) &&
+                ! TextUtils.isEmpty(it.getWidth()) &&
+                ! TextUtils.isEmpty(it.getHeight())) {
+            stv_asset_size.setDetail(it.getLength() + it.getWidth() + it.getHeight());
         }
 
         stv_place_of_production.setDetail(it.getProduction());
-        stv_date_of_manufacture.setDetail(it.getProductionDate());
-        stv_warranty_period.setDetail(it.getWarrantyDate());
+        stv_date_of_manufacture.setDetail(DateTimeUtils.millis2Date(it.getProductionDate()));
+        stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
 
 //        裝置狀態 0:正常 1:準備中 2:異常 3:初始化失敗，需要手動操作
         switch (it.getStatus()) {
@@ -122,6 +123,5 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         }
 
     }
-
 
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2 android:id="@+id/scrollView"
+<com.esharp.sdk.widget.MyNestedScrollView2
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/spsdk_dp_5"
@@ -52,30 +53,35 @@
                 app:stv_solid="@color/spsdk_color_gray2" />
         </LinearLayout>
 
-
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:spsdk_card_edit_hint="@string/asset_name"/>
 
-        <com.esharp.sdk.widget.SPCardEditView
-            android:id="@+id/cev_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/asset_type"/>
+        <com.esharp.sdk.widget.SPSelectorCardView
+           android:id="@+id/scv_type"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:spsdk_selector_hint="@string/asset_type"
+           app:spsdk_selector_icon="@mipmap/arrow_down"
+           />
 
-        <com.esharp.sdk.widget.SPCardEditView
-            android:id="@+id/cev_brand"
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/brand"/>
+            app:spsdk_selector_hint="@string/brand"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
 
-        <com.esharp.sdk.widget.SPCardEditView
-            android:id="@+id/cev_model"
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/model"/>
+            app:spsdk_selector_hint="@string/model"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_lwh"
@@ -89,17 +95,21 @@
             android:layout_height="wrap_content"
             app:spsdk_card_edit_hint="@string/place_of_production"/>
 
-        <com.esharp.sdk.widget.SPCardEditView
-            android:id="@+id/cev_date_of_manufacture"
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_date_of_manufacture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/date_of_manufacture"/>
+            app:spsdk_selector_hint="@string/date_of_manufacture"
+            app:spsdk_selector_icon="@mipmap/calendar"
+            />
 
-        <com.esharp.sdk.widget.SPCardEditView
-            android:id="@+id/cev_warranty_period"
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_warranty_period"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/warranty_period"/>
+            app:spsdk_selector_hint="@string/warranty_period"
+            app:spsdk_selector_icon="@mipmap/calendar"
+            />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_remark"

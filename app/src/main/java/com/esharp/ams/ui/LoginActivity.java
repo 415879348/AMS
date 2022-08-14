@@ -25,7 +25,7 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
 
         findViewById(R.id.mtv_login).setOnClickListener(v ->
 //                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
-                mPresenter.login(new LoginVo("super", "123456"))
+                mPresenter.login(new LoginVo("test", "test@123"))
         );
     }
 

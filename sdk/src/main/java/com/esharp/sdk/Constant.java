@@ -55,6 +55,10 @@ public interface Constant {
     SPLocal SC = new SPLocal("sc", "中文简体", Locale.SIMPLIFIED_CHINESE);
     SPLocal[] language = new SPLocal[]{EN, TC, SC};
 
+
+    final String CURRENT = "current";
+    final String SIZE = "size";
+
 }
 
 
