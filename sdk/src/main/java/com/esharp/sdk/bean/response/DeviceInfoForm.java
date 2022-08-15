@@ -46,7 +46,7 @@ public class DeviceInfoForm implements Serializable {
     private String deviceTypeId;
     private Integer features;
     private String height;
-    private Integer id;
+    private String id;
     private Integer lat;
     private String length;
     private Integer lon;
@@ -136,11 +136,11 @@ public class DeviceInfoForm implements Serializable {
         this.height = height;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

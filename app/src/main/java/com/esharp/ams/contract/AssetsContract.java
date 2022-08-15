@@ -9,13 +9,15 @@ import retrofit2.http.Body;
 
 public interface AssetsContract {
     interface View extends IBaseView {
-        void getDataSuc(DeviceVo it);
+        void refreshData(DeviceVo it);
+        void appendData(DeviceVo it);
         void deleteDeviceSuc(boolean it);
     }
 
     interface Presenter extends IBasePresenter {
-        void getData(int current, int size);
+        void getData(int current);
 
-        void  deleteDevice(IDListVo ids);
+        void deleteDevice(IDListVo ids);
+
     }
 }

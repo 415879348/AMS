@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.esharp.sdk.R;
 import com.esharp.sdk.base.BaseAdapter;
 import com.esharp.sdk.base.ICallback;
@@ -56,6 +57,7 @@ public class ListPopWindow<T extends ListPopWindow.Item> {
     public ListPopWindow(View anchor, Context context, List<T> data, ICallback<T> callback) {
         RecyclerView view = (RecyclerView) View.inflate(context, R.layout.spsdk_pop_list, null);
         view.setBackgroundResource(R.drawable.spsdk_shape_grey_popbg);
+        LogUtils.i(anchor.getWidth());
         mPopupWindow = new PopupWindow(view, anchor.getWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setOutsideTouchable(true);
         mPopupWindow.setFocusable(true);

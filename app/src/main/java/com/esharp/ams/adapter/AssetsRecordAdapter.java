@@ -55,7 +55,10 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, AssetsRecordAda
         @Override
         protected void bindData(DeviceBean item, AssetsRecordAdapter.Listener onItemOperate) {
 
-            cb.setOnCheckedChangeListener((buttonView, isChecked) -> onItemOperate.setChecked(isChecked));
+            cb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                item.setCheck(isChecked);
+                onItemOperate.setChecked(isChecked);
+            });
 
             if (getBindingAdapterPosition() % 2 == 1) {
                 itemView.setBackground(ResUtils.getDrawable(R.color.spsdk_color_gray3));

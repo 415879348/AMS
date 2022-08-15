@@ -60,7 +60,8 @@ public class DoneRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCallbac
 
             tv_job_name.setText(it.getTitle());
 
-            if (it.getType() == 0) {
+            //工单类型 1：维修工单 2：定期保养
+            if (it.getType() == 1) {
                 tv_job_type.setText(ResUtils.getString(com.esharp.ams.R.string.repair_work_order));
             } else {
                 tv_job_type.setText(ResUtils.getString(com.esharp.ams.R.string.regular_maintenance));
@@ -68,7 +69,7 @@ public class DoneRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCallbac
 
             tv_completion_time.setText(DateTimeUtils.millis2Date(it.getOverTime()));
 
-            tv_completion_by.setText(it.getHandlerId()+"");
+            tv_completion_by.setText(it.getHandlerName());
 
             itemView.setOnClickListener(v -> onItemOperate.onClick(it));
         }

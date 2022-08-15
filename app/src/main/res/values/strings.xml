@@ -35,21 +35,30 @@
     <string name="sign_out">退出</string>
     <string name="handle">处理</string>
 
+    <string name="job_number_name">工单编号&#047;名称</string>
     <string name="job_number">工单编号</string>
     <string name="job_name">工单名称</string>
     <string name="job_type">工单类型</string>
     <string name="job_handle">工单处理</string>
     <string name="job_detail">工单详情</string>
+    <string name="job_create">新建工单</string>
+    <string name="job_fault">故障工单</string>
+    <string name="job_maintain">保养工单</string>
     <string name="progress">进度</string>
     <string name="operation">操作</string>
     <string name="completion_time">完成时间</string>
     <string name="completed_by">完成人员</string>
 
+    <string name="asset_number_name">资产编号/名称</string>
     <string name="asset_number">资产编号</string>
     <string name="asset_name">资产名称</string>
     <string name="asset_type">资产类型</string>
     <string name="asset_detail">资产详情</string>
+    <string name="asset_location">资产位置</string>
     <string name="asset_create">新建资产</string>
+    <string name="asset_edit">编辑资产</string>
+    <string name="asset_information">资产信息</string>
+    <string name="asset_select">选择资产</string>
     <string name="location">位置</string>
     <string name="state">状态</string>
     <string name="repair_work_order">維修工單</string>
@@ -68,7 +77,7 @@
 
 
     <string name="essential_information">基本信息</string>
-    <string name="asset_information">资产信息</string>
+
     <string name="execution_information">执行信息</string>
     <string name="originator">发起人</string>
     <string name="handler">处理人</string>
@@ -90,6 +99,8 @@
     <string name="picture">图片</string>
     <string name="creation_time">创建时间</string>
     <string name="update_time">更新时间</string>
+    <string name="from">从</string>
+    <string name="to">至</string>
 
 
 

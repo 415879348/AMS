@@ -16,6 +16,7 @@ public class WorkOrderBean implements Serializable {
      * deviceId : 0
      * deviceName :
      * handlerId : 0
+     * handlerName : "qang", //处理人名称
      * id : 0
      * level : 0
      * lowerOrder : 0
@@ -39,8 +40,8 @@ public class WorkOrderBean implements Serializable {
     private String createTime;
     private Integer deviceId;
     private String deviceName;
-    private String orderNumber;
     private Integer handlerId;
+    private String handlerName;
     private Long id;
     private Integer level;
     private Integer lowerOrder;
@@ -51,6 +52,7 @@ public class WorkOrderBean implements Serializable {
     private Integer step;
     private Integer superOrder;
     private String title;
+
     private Integer type;
 
     public String getAddress() {
@@ -141,6 +143,14 @@ public class WorkOrderBean implements Serializable {
         this.handlerId = handlerId;
     }
 
+    public String getHandlerName() {
+        return handlerName;
+    }
+
+    public void setHandlerName(String handlerName) {
+        this.handlerName = handlerName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -227,13 +237,5 @@ public class WorkOrderBean implements Serializable {
 
     public void setType(Integer type) {
         this.type = type;
-    }
-
-    public String getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
     }
 }

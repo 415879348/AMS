@@ -57,7 +57,7 @@ public class WorkOrderRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCa
                 itemView.setBackground(ResUtils.getDrawable(R.color.white));
             }
 
-            tv_job_number.setText(it.getTitle());
+            tv_job_number.setText(it.getOrderNo());
             tv_job_name.setText(it.getTitle());
             if (it.getType() == 0) {
                 tv_job_type.setText(ResUtils.getString(R.string.repair_work_order));

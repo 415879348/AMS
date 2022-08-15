@@ -1,6 +1,7 @@
 package com.esharp.sdk.http;
 
 import com.esharp.sdk.bean.request.AmendApplyVo;
+import com.esharp.sdk.bean.request.CreateWorkOrderVo;
 import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.request.LeaveVo;
@@ -109,7 +110,7 @@ public interface IApiService {
      * @return
      */
     @GET("device")
-    Single<HttpResult<DeviceVo>> device(@Query("current") String current, @Query("size") String size);
+    Single<HttpResult<DeviceVo>> device(@Query("current") int current, @Query("size") int size);
 
     /**
      * 資產刪除
@@ -165,8 +166,9 @@ public interface IApiService {
      * @param
      * @return
      */
-    @GET("work/order")
-    Single<HttpResult<WorkOrderVo>> createWorkOrder(@Query("current") String current, @Query("size") String size);
+    @POST("work/order")
+    Single<HttpResult<Boolean>> createWorkOrder(@Body CreateWorkOrderVo it);
+
 
 //    /**
 //     * 查詢待處理工單
@@ -186,18 +188,12 @@ public interface IApiService {
 
     /**
      * 查詢工單
+     * 待处理工单传递参数processStep=0
+     * 已处理工单传递参数step=0
      * @return
      */
     @GET("work/order")
-    Single<HttpResult<WorkOrderVo>> workOrder(@QueryMap Map<String, String> params);
-
-    /**
-     * 查詢已處理工單
-     * @param step 0 已辦理
-     * @return
-     */
-    @GET("work/order")
-    Single<HttpResult<WorkOrderVo>> workOrderProcess(@Query("current") int current, @Query("size") int size, @Query("step") int step);
+    Single<HttpResult<WorkOrderVo>> workOrderProcess(@QueryMap Map<String, String> params);
 
     /**
      * 查詢待處理工單數

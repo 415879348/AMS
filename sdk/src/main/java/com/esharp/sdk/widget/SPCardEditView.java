@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.esharp.sdk.R;
+import com.esharp.sdk.utils.ResUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,12 @@ public class SPCardEditView extends LinearLayout {
 
     public String getContent() {
         return et_edit.getText().toString();
+    }
+
+    public SPCardEditView setEnable(boolean it) {
+        setEnabled(it);
+        et_edit.setEnabled(it);
+        return this;
     }
 
 }

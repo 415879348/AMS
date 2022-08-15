@@ -36,7 +36,7 @@ public class DoneFragment extends BaseMvpFragment<DoneContract.Presenter, HomeCo
             WorkOrderDetailActivity.startActivity(mContext, vo);
         }));
 
-        mPresenter.getData(1, 20, 0);
+        mPresenter.getData(1, 20);
     }
 
     @Override

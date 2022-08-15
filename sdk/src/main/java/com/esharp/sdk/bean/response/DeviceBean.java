@@ -1,9 +1,11 @@
 package com.esharp.sdk.bean.response;
 
+import com.esharp.sdk.dialog.ListPopWindow;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class DeviceBean implements Serializable {
+public class DeviceBean extends ListPopWindow.Item implements Serializable {
 
     /**
      * active : 0
@@ -48,13 +50,13 @@ public class DeviceBean implements Serializable {
      */
 
     private Integer active;
-    private boolean isChecked;
+    private boolean isCheck;
     private String address;
     private Integer addressId;
     private String brand;
-    private Integer brandId;
+    private String brandId;
     private String brandModel;
-    private Integer brandModelId;
+    private String brandModelId;
     private String color;
     private String companyId;
     private String companyName;
@@ -63,7 +65,7 @@ public class DeviceBean implements Serializable {
     private String deviceName;
     private String deviceNumber;
     private String deviceType;
-    private Integer deviceTypeId;
+    private String deviceTypeId;
     private String errorMessage;
     private Integer features;
     private String height;
@@ -79,6 +81,7 @@ public class DeviceBean implements Serializable {
     private String production;
     private Long productionDate;
     private String remark;
+    private String location;
     private Integer status;
     private Integer updateId;
     private Long updateTime;
@@ -87,6 +90,16 @@ public class DeviceBean implements Serializable {
     private String width;
     private List<DeviceBean> children;
     private List<UrlsBean> urls;
+
+    @Override
+    public void setChecked(String checkedCode) {
+        this.checked = this.id.equals(checkedCode);
+    }
+
+    @Override
+    public String text() {
+        return deviceName;
+    }
 
     public static class UrlsBean implements Serializable {
         /**
@@ -185,11 +198,11 @@ public class DeviceBean implements Serializable {
         this.brand = brand;
     }
 
-    public Integer getBrandId() {
+    public String getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(Integer brandId) {
+    public void setBrandId(String brandId) {
         this.brandId = brandId;
     }
 
@@ -201,11 +214,11 @@ public class DeviceBean implements Serializable {
         this.brandModel = brandModel;
     }
 
-    public Integer getBrandModelId() {
+    public String getBrandModelId() {
         return brandModelId;
     }
 
-    public void setBrandModelId(Integer brandModelId) {
+    public void setBrandModelId(String brandModelId) {
         this.brandModelId = brandModelId;
     }
 
@@ -273,11 +286,11 @@ public class DeviceBean implements Serializable {
         this.deviceType = deviceType;
     }
 
-    public Integer getDeviceTypeId() {
+    public String getDeviceTypeId() {
         return deviceTypeId;
     }
 
-    public void setDeviceTypeId(Integer deviceTypeId) {
+    public void setDeviceTypeId(String deviceTypeId) {
         this.deviceTypeId = deviceTypeId;
     }
 
@@ -465,11 +478,19 @@ public class DeviceBean implements Serializable {
         this.urls = urls;
     }
 
-    public boolean isChecked() {
-        return isChecked;
+    public boolean isCheck() {
+        return isCheck;
     }
 
-    public void setChecked(boolean checked) {
-        isChecked = checked;
+    public void setCheck(boolean checked) {
+        isCheck = checked;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

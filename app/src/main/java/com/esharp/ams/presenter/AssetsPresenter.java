@@ -1,6 +1,7 @@
 package com.esharp.ams.presenter;
 
 import com.esharp.ams.contract.AssetsContract;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.bean.request.IDListVo;
@@ -16,12 +17,12 @@ public class AssetsPresenter extends BasePresenter<AssetsContract.View> implemen
     }
 
     @Override
-    public void getData(int current, int size) {
-        HttpService.get().device(current+"", size+"")
+    public void getData(int current) {
+        HttpService.get().device(current, Constant.SIZE)
                 .lift(new HttpResultOperator<>())
                 .compose(SchedulerUtils.io_main_single())
                 .lift(new ProgressOperator<>(mView, -1))
-                .subscribe(new BaseObserver<>(mView, mView::getDataSuc));
+                .subscribe(new BaseObserver<>(mView, current == 1 ? mView::refreshData : mView::appendData));
     }
 
     @Override
@@ -32,4 +33,6 @@ public class AssetsPresenter extends BasePresenter<AssetsContract.View> implemen
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::deleteDeviceSuc));
     }
+
+
 }

@@ -89,8 +89,15 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         }
 
         stv_place_of_production.setDetail(it.getProduction());
-        stv_date_of_manufacture.setDetail(DateTimeUtils.millis2Date(it.getProductionDate()));
-        stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
+
+        if (it.getProductionDate() != null) {
+            stv_date_of_manufacture.setDetail(DateTimeUtils.millis2Date(it.getProductionDate()));
+        }
+        if (it.getWarrantyDate() != null) {
+            stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
+        }
+
+
 
 //        裝置狀態 0:正常 1:準備中 2:異常 3:初始化失敗，需要手動操作
         switch (it.getStatus()) {

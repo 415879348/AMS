@@ -27,13 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@+id/right_image"
-                android:paddingStart="@dimen/spsdk_dp_10"
-                android:paddingEnd="0dp"
                 android:gravity="left|center_vertical"
-                android:textColor="@color/spsdk_main_color"
-                android:textSize="@dimen/spsdk_ts_14"
                 android:hint="@string/app_name"
-                />
+                android:paddingEnd="0dp"
+                android:paddingStart="@dimen/spsdk_dp_10"
+                android:textColor="@color/spsdk_main_color"
+                android:textSize="@dimen/spsdk_ts_14" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/right_image"

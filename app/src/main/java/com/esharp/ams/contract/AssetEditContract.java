@@ -12,13 +12,21 @@ public interface AssetEditContract {
 
     interface View extends IBaseView {
         void getDataSuc(DeviceBean it);
-        void dictAllSuc(List<DictionaryBean> it);
-        void updateAppDeviceSuc(boolean it);
+        void updateDeviceSuc(boolean it);
+        void assetTypeSuc(List<DictionaryBean> it);
+        void assetBrandSuc(List<DictionaryBean> it);
+        void assetModelSuc(List<DictionaryBean> it);
     }
 
     interface Presenter extends IBasePresenter {
         void getData(String deviceId);
-//        void dictAll(int dictType);
-        void updateAppDevice(DeviceInfoForm it);
+
+        void updateDevice(DeviceInfoForm it);
+
+        void assetType();
+
+        void assetBrand();
+
+        void assetModel(String brandID);
     }
 }

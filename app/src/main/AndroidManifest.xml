@@ -37,6 +37,12 @@
         <activity
             android:name=".ui.AssetDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AssetEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.WorkOrderCreateActivity"
+            android:screenOrientation="portrait" />
 <!--        <activity-->
 <!--            android:name=".ui.LoginActivity"-->
 <!--            android:screenOrientation="portrait" />-->

@@ -14,7 +14,7 @@ public class HandlerVo implements Serializable {
 
     private Long id;
     private String content;
-    private Long processId;
+    private String processId;
     private Integer isOver;
 
 
@@ -34,11 +34,11 @@ public class HandlerVo implements Serializable {
         this.content = content;
     }
 
-    public Long getProcessId() {
+    public String getProcessId() {
         return processId;
     }
 
-    public void setProcessId(Long processId) {
+    public void setProcessId(String processId) {
         this.processId = processId;
     }
 

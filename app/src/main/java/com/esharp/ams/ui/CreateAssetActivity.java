@@ -1,5 +1,6 @@
 package com.esharp.ams.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import com.esharp.ams.contract.WorkOrderDetailContract;
 import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.presenter.CreateAssetPresenter;
 import com.esharp.ams.presenter.WorkOrderDetailPresenter;
+import com.esharp.ams.ui.fragment.AssetsFragment;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseActivity;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.DeviceBean;
@@ -37,6 +40,7 @@ import com.esharp.sdk.widget.SPTitleView;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.cardview.widget.CardView;
 
 public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Presenter> implements CreateAssetContract.View {
@@ -46,11 +50,8 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         return Pair.create(R.layout.activity_create_asset, new CreateAssetPresenter(this));
     }
 
-    public static void startActivity(Context context) {
-        Intent intent = new Intent(context, CreateAssetActivity.class);
-        Bundle bundle = new Bundle();
-        intent.putExtras(bundle);
-        context.startActivity(intent);
+    public static void startActivity(Context context, ActivityResultLauncher<Intent> mLauncher) {
+        mLauncher.launch(new Intent(context, CreateAssetActivity.class));
     }
 
     SPSelectorCardView scv_type, scv_brand, scv_model, scv_date_of_manufacture, scv_warranty_period;
@@ -217,6 +218,10 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
     @Override
     public void addAppDeviceSuc(boolean it) {
         LogUtils.json(it);
+        if (it) {
+            setResult(Activity.RESULT_OK, new Intent().putExtra(Constant.REFRESH_DATA, "success"));
+            finish();
+        }
     }
 
     @Override

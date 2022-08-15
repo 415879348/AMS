@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.esharp.sdk.widget.MyNestedScrollView2
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spsdk_dp_5"
+    android:fadingEdge="none"
+    android:fadingEdgeLength="0dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--基本信息-->
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:text="@string/essential_information"
+            />
+
+        <View
+            style="@style/spsdk_divide_line_horizontal"
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            />
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/job_name"/>
+
+        <com.esharp.sdk.widget.SPSelectorCardView
+           android:id="@+id/scv_type"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:spsdk_selector_hint="@string/job_type"
+           app:spsdk_selector_icon="@mipmap/arrow_down"
+           />
+
+        <!--资产信息-->
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:text="@string/asset_information"
+            />
+
+        <View
+            style="@style/spsdk_divide_line_horizontal"
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            />
+
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_asset_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_selector_hint="@string/asset_select"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/location"/>
+
+        <!--执行信息-->
+        <TextView
+            style="@style/spsdk_text_main16"
+            android:text="@string/execution_information"
+            />
+
+        <View
+            style="@style/spsdk_divide_line_horizontal"
+            android:layout_marginTop="@dimen/spsdk_dp_5"
+            />
+
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_handler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_selector_hint="@string/handler"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/remark"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spsdk_dp_10"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_end"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_40"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/reset"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_20"
+                app:stv_solid="@color/spsdk_color_gray2" />
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_confirm"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_40"
+                android:layout_marginStart="@dimen/spsdk_dp_20"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/confirm"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_20"
+                app:stv_solid="@color/spsdk_color_blue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.esharp.sdk.widget.MyNestedScrollView2>
+
+

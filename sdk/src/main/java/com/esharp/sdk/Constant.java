@@ -56,8 +56,10 @@ public interface Constant {
     SPLocal[] language = new SPLocal[]{EN, TC, SC};
 
 
-    final String CURRENT = "current";
-    final String SIZE = "size";
+    String KEY_CURRENT = "current";
+    String KEY_SIZE = "size";
+    int SIZE = 20;
+    String REFRESH_DATA = "REFRESH_DATA";
 
 }
 

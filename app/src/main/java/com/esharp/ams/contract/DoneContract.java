@@ -10,6 +10,6 @@ public interface DoneContract {
     }
 
     interface Presenter extends IBasePresenter {
-        void getData(int current, int size, int step);
+        void getData(int current, int size);
     }
 }

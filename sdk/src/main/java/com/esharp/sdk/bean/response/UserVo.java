@@ -21,7 +21,7 @@ public class UserVo extends ListPopWindow.Item implements Serializable {
      * updateId : 修改人
      * updateTime : 修改時間
      */
-    private Long id;
+    private String id;
     private String companyId;
     private String username;
     private String userNo;
@@ -35,11 +35,11 @@ public class UserVo extends ListPopWindow.Item implements Serializable {
     private String updateId;
     private String updateTime;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -141,7 +141,7 @@ public class UserVo extends ListPopWindow.Item implements Serializable {
 
     @Override
     public void setChecked(String checkedCode) {
-
+        this.checked = this.id.equals(checkedCode);
     }
 
     @Override
