@@ -29,4 +29,16 @@ public class WorkOrderPresenter extends BasePresenter<WorkOrderContract.View> im
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, current == 1 ? mView::refreshData : mView::appendData));
     }
+
+
+    @Override
+    public void getData(int current, Map<String, String> map) {
+        map.put(Constant.KEY_CURRENT, current+"");
+        map.put(Constant.KEY_SIZE, Constant.SIZE+"");
+        HttpService.get().workOrderProcess(map)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .doFinally(mView::refreshFinish)
+                .subscribe(new BaseObserver<>(mView, current == 1 ? mView::refreshData : mView::appendData));
+    }
 }

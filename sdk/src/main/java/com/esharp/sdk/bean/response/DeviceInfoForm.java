@@ -25,6 +25,7 @@ public class DeviceInfoForm implements Serializable {
      * id : 0
      * lat : 0
      * length : 0
+     * location : ""
      * lon : 0
      * maintain : 0
      * parentId : 0
@@ -49,6 +50,7 @@ public class DeviceInfoForm implements Serializable {
     private String id;
     private Integer lat;
     private String length;
+    private String location;
     private Integer lon;
     private Integer maintain;
     private Integer parentId;
@@ -262,5 +264,13 @@ public class DeviceInfoForm implements Serializable {
 
     public void setDocumentIds(List<Long> documentIds) {
         this.documentIds = documentIds;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

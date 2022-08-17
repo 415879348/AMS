@@ -10,7 +10,8 @@ import com.esharp.ams.R;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.contract.ProfileContract;
 import com.esharp.ams.presenter.ProfilePresenter;
-import com.esharp.sdk.activity.login.LoginActivity;
+
+import com.esharp.ams.ui.LoginActivity;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.widget.MyTextView;

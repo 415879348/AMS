@@ -50,7 +50,6 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
             cancel();
         });
 
-
         HttpService.get()
                 .userAll()
                 .map(new HttpFunction<>())

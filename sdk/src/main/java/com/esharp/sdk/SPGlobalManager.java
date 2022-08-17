@@ -60,6 +60,8 @@ public class SPGlobalManager {
 //        context.startActivity(new Intent(context, MainActivity.class));
     }
 
+
+
     public static TokenVo getToken() {
         if (mToken == null) {
             mToken = new Gson().fromJson(sPreferences.getString(Constant.Authorization, null), TokenVo.class);

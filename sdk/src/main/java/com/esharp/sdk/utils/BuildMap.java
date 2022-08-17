@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 功能描述：Map链式添加工具类
  *
- * @author (作者) fengchuanfang
+ * @author (作者) someone
  * 创建时间： 2018/5/30 0030
  */
 public class BuildMap<K, V> {

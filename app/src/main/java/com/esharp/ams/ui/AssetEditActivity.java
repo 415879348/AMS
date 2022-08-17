@@ -49,7 +49,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
     SPSelectorCardView scv_type, scv_brand, scv_model, scv_date_of_manufacture, scv_warranty_period;
 
-    SPCardEditView cev_number, cev_name, cev_lwh, cev_place_of_production, cev_remark;
+    SPCardEditView cev_number, cev_name, cev_location, cev_lwh, cev_place_of_production, cev_remark;
 
     MyTextView mv_end, mv_confirm;
 
@@ -67,6 +67,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         scv_type = findViewById(R.id.scv_type);
         scv_brand = findViewById(R.id.scv_brand);
         scv_model = findViewById(R.id.scv_model);
+        cev_location = findViewById(R.id.cev_location);
         cev_lwh = findViewById(R.id.cev_lwh);
         cev_place_of_production = findViewById(R.id.cev_place_of_production);
 
@@ -77,8 +78,6 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
         mv_end = findViewById(R.id.mv_end);
         mv_confirm = findViewById(R.id.mv_confirm);
-
-
 
         scv_type.setOnItemClick(v -> {
             DictionaryBean vo = (DictionaryBean) v.getTag();
@@ -177,6 +176,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             it.setDeviceTypeId(deviceTypeId);
             it.setBrandId(brandId);
             it.setBrandModelId(brandModelId);
+            it.setRemark(remark);
             it.setProduction(place_of_production);
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
             it.setWarranty(DateTimeUtils.parseToLong(warranty_period));
@@ -208,6 +208,8 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
         cev_number.setContent(it.getDeviceNumber());
         cev_name.setContent(it.getDeviceName());
+        cev_remark.setContent(it.getRemark());
+        cev_location.setContent(it.getLocation());
 
         cev_lwh.setContent(it.getLength() + "," + it.getWidth() + "," +  it.getLength());
         cev_place_of_production.setContent(it.getProduction());

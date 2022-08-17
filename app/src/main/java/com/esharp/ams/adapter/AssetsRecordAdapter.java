@@ -68,7 +68,7 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, AssetsRecordAda
 
             tv_asset_number.setText(item.getDeviceNumber());
             tv_asset_name.setText(item.getDeviceName());
-            tv_location.setText(item.getAddress());
+            tv_location.setText(item.getLocation());
 
             //     0:正常 1:準備中 2:異常 3:初始化失敗，需要手動操作
             switch (item.getStatus()) {

@@ -3,7 +3,7 @@ package com.esharp.sdk.bean.response;
 /**
  * 功能描述：接口返回数据统一处理bean类
  *
- * @author (作者) fengchuanfang
+ * @author (作者) someone
  * 创建时间： 2021/7/12
  */
 public class HttpResult<T> {

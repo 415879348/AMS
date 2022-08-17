@@ -16,7 +16,7 @@ import retrofit2.Response;
 /**
  * 功能描述：
  *
- * @author (作者) fengchuanfang
+ * @author (作者) someone
  * 创建时间： 2021/11/23
  */
 public class HttpResultOperator<T> implements SingleOperator<T, HttpResult<T>> {

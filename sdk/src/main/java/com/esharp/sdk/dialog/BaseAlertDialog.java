@@ -22,7 +22,7 @@ public abstract class BaseAlertDialog extends Dialog {
 
     public BaseAlertDialog(@NonNull Context context, @LayoutRes int layout) {
         super(context, R.style.spsdk_alert_dialog);
-        this.setContentView(LayoutInflater.from(context).inflate(layout, null), new ViewGroup.LayoutParams(ScreenUtils.getScreenWidth() - SizeUtils.dp2px(60), ViewGroup.LayoutParams.WRAP_CONTENT));
+        this.setContentView(LayoutInflater.from(context).inflate(layout, null), new ViewGroup.LayoutParams(ScreenUtils.getScreenWidth() - SizeUtils.dp2px(30), ViewGroup.LayoutParams.WRAP_CONTENT));
         this.setCanceledOnTouchOutside(false);
     }
 

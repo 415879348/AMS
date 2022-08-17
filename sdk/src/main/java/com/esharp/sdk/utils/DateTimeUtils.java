@@ -12,13 +12,15 @@ import java.util.TimeZone;
 /**
  * 功能描述：
  *
- * @author (作者) fengchuanfang
+ * @author (作者) someone
  * 创建时间： 2021/7/20
  */
 public final class DateTimeUtils {
 
     public static final String yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
+    public static final String yyyy_MM_dd = "yyyy-MM-dd";
     public static final String yyyyMMddHHmm = "yyyyMMddHHmm";
+    public static final String yyyyMMdd = "yyyyMMdd";
     public static String formatHHmmss(String input) {
         return format(input, "yyyyMMddHHmmss", "dd/MM/yyyy HH:mm:ss");
     }

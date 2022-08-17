@@ -1,5 +1,7 @@
 package com.esharp.ams.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Pair;
 import android.widget.EditText;
 
@@ -13,7 +15,20 @@ import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.bean.response.TokenVo;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
+
 public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> implements LoginActContract.View {
+
+    @Override
+    protected boolean isShowTitle() {
+        return false;
+    }
+
+
+    public static void startActivity(Context context) {
+        context.startActivity(new Intent(context, LoginActivity.class));
+    }
 
     private EditText et_account;
     private EditText et_password;
@@ -25,7 +40,7 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
 
         findViewById(R.id.mtv_login).setOnClickListener(v ->
 //                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
-                mPresenter.login(new LoginVo("test", "test@123"))
+                        mPresenter.login(new LoginVo("test", "test@123"))
         );
     }
 
@@ -36,6 +51,7 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
                 .setConfig(new SPConfig())
                 .start();
         MainActivity.startActivity(LoginActivity.this);
+        finish();
     }
 
     @Override
@@ -43,13 +59,4 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
         return Pair.create(R.layout.activity_login, new LoginActPresenter(this));
     }
 
-    @Override
-    public BaseActivity getHost() {
-        return null;
-    }
-
-    @Override
-    protected boolean isShowTitle() {
-        return false;
-    }
 }

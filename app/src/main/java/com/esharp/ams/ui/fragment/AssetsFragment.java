@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.DrmInitData;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -15,11 +17,11 @@ import com.esharp.ams.contract.AssetsContract;
 import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.dialog.FilterAssetDialog;
-import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.presenter.AssetsPresenter;
 import com.esharp.ams.ui.AssetDetailActivity;
 import com.esharp.ams.ui.AssetEditActivity;
 import com.esharp.ams.ui.CreateAssetActivity;
+import com.esharp.ams.ui.MainActivity;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.request.IDListVo;
@@ -32,7 +34,9 @@ import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -57,6 +61,8 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
 
     int current = 1;
 
+    Map<String, String> map = new HashMap<>();
+
     private final ActivityResultLauncher<Intent> mLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
         Intent intent;
         if (result.getResultCode() == Activity.RESULT_OK && (intent = result.getData()) != null && (intent.getStringExtra(Constant.REFRESH_DATA)) != null) {
@@ -71,7 +77,7 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         stv_data_count = view.findViewById(R.id.stv_data_count);
         itv_edit = view.findViewById(R.id.itv_edit);
         itv_delete = view.findViewById(R.id.itv_delete);
-        itv_delete = view.findViewById(R.id.itv_filter);
+        itv_filter = view.findViewById(R.id.itv_filter);
 
         itv_edit.setEnable(false);
         itv_delete.setEnable(false);
@@ -85,7 +91,7 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         itv_edit.setOnClickListener(v -> {
             List<DeviceBean> list = mAssetsRecordAdapter.getData();
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).isChecked()) {
+                if (list.get(i).isCheck()) {
                     AssetEditActivity.startActivity(mContext, list.get(i), mLauncher);
                 }
             }
@@ -95,7 +101,7 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
             List<DeviceBean> list = mAssetsRecordAdapter.getData();
             ArrayList<String> ids = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).isChecked()) {
+                if (list.get(i).isCheck()) {
                     ids.add(list.get(i).getId());
                 }
             }
@@ -107,29 +113,27 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         });
 
         itv_filter.setOnClickListener(v -> {
-//            FilterAssetDialog dialog = new FilterAssetDialog(this);
-//            dialog.setOnClickListener(
-//                    vo -> {
-//                        if (mWorkOrderBean != null && nodeVo != null) {
-//                            vo.setId(nodeVo.getId());
-//                            mPresenter.workOrderProcess(vo);
-//                        }
-//                    },
-//                    vo -> {
-//                        if (mWorkOrderBean != null && nodeVo != null) {
-//                            vo.setId(nodeVo.getId());
-//                            mPresenter.workOrderProcess(vo);
-//                        }
-//                    }
-//            );
-//            dialog.show();
+            FilterAssetDialog dialog = new FilterAssetDialog((MainActivity)mContext);
+            dialog.setOnClickListener(
+                vo -> {
+                    map = vo;
+                    initData();
+                }
+            );
+            WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+            params.x = 10;
+            params.y = 100;
+            dialog.getWindow().setAttributes(params);
+            dialog.getWindow().setGravity(Gravity.TOP);
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            dialog.show();
         });
 
         refreshLayout.setOnRefreshListener(direction -> {
             if (direction == SwipyRefreshLayoutDirection.TOP) {
                 initData();
             } else {
-                mPresenter.getData(current++);
+                mPresenter.getData(++current, map);
             }
         });
 
@@ -144,7 +148,7 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
                 List<DeviceBean> list = mAssetsRecordAdapter.getData();
                 List<DeviceBean> tempList = new ArrayList<>();
                 for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).isChecked()) {
+                    if (list.get(i).isCheck()) {
                         tempList.add(list.get(i));
                     }
                 }
@@ -158,7 +162,6 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
                     itv_edit.setEnable(false);
                     itv_delete.setEnable(true);
                 }
-
             }
         }));
 
@@ -167,7 +170,9 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
 
     private void initData() {
         mAssetsRecordAdapter.clearItems();
-        mPresenter.getData(1);
+        current = 1;
+        LogUtils.json(map);
+        mPresenter.getData(current, map);
     }
 
     @Override
@@ -191,6 +196,11 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         if (it) {
             initData();
         }
+    }
+
+    @Override
+    public void refreshFinish() {
+        if (refreshLayout != null) refreshLayout.setRefreshing(false);
     }
 
 }

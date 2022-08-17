@@ -35,7 +35,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
     }
 
     SPShowTextView stv_asset_number, stv_asset_name, stv_asset_type,
-            stv_asset_brand, stv_asset_model, stv_asset_size,
+            stv_asset_brand, stv_asset_model, stv_asset_location, stv_asset_size,
             stv_place_of_production, stv_date_of_manufacture, stv_warranty_period,
             stv_asset_status, stv_asset_remark, stv_asset_picture,
             stv_creation_time, stv_update_time;
@@ -52,6 +52,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_type = findViewById(R.id.stv_asset_type);
         stv_asset_brand = findViewById(R.id.stv_asset_brand);
         stv_asset_model = findViewById(R.id.stv_asset_model);
+        stv_asset_location = findViewById(R.id.stv_asset_location);
         stv_asset_size = findViewById(R.id.stv_asset_size);
         stv_place_of_production = findViewById(R.id.stv_place_of_production);
         stv_date_of_manufacture = findViewById(R.id.stv_date_of_manufacture);
@@ -81,11 +82,12 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_type.setDetail(it.getDeviceType());
         stv_asset_brand.setDetail(it.getBrand());
         stv_asset_model.setDetail(it.getBrandModel());
+        stv_asset_location.setDetail(it.getLocation());
 
         if (! TextUtils.isEmpty(it.getLength()) &&
                 ! TextUtils.isEmpty(it.getWidth()) &&
                 ! TextUtils.isEmpty(it.getHeight())) {
-            stv_asset_size.setDetail(it.getLength() + it.getWidth() + it.getHeight());
+            stv_asset_size.setDetail(it.getLength() + "," + it.getWidth() + "," + it.getHeight());
         }
 
         stv_place_of_production.setDetail(it.getProduction());

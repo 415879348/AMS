@@ -3,28 +3,16 @@ package com.esharp.ams.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Pair;
-import android.view.LayoutInflater;
-import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.CreateAssetContract;
-import com.esharp.ams.contract.WorkOrderDetailContract;
-import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.presenter.CreateAssetPresenter;
-import com.esharp.ams.presenter.WorkOrderDetailPresenter;
-import com.esharp.ams.ui.fragment.AssetsFragment;
 import com.esharp.sdk.Constant;
-import com.esharp.sdk.base.BaseActivity;
 import com.esharp.sdk.base.BaseMvpActivity;
-import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
-import com.esharp.sdk.bean.response.NodeVo;
-import com.esharp.sdk.bean.response.UserVo;
-import com.esharp.sdk.bean.response.WorkOrderBean;
 import com.esharp.sdk.bean.response.WorkOrderVo;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.utils.DateTimeUtils;
@@ -33,15 +21,11 @@ import com.esharp.sdk.widget.DateTimeSelector;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPCardEditView;
 import com.esharp.sdk.widget.SPSelectorCardView;
-import com.esharp.sdk.widget.SPSelectorView;
-import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.SPTitleView;
 
-import java.util.Arrays;
 import java.util.List;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.cardview.widget.CardView;
 
 public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Presenter> implements CreateAssetContract.View {
 
@@ -56,7 +40,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     SPSelectorCardView scv_type, scv_brand, scv_model, scv_date_of_manufacture, scv_warranty_period;
 
-    SPCardEditView cev_number, cev_name, cev_lwh,
+    SPCardEditView cev_number, cev_name, cev_lwh, cev_location,
             cev_place_of_production, cev_remark;
 
     MyTextView mtv_generate, mv_end, mv_confirm;
@@ -73,6 +57,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         scv_type = findViewById(R.id.scv_type);
         scv_brand = findViewById(R.id.scv_brand);
         scv_model = findViewById(R.id.scv_model);
+        cev_location = findViewById(R.id.cev_location);
         cev_lwh = findViewById(R.id.cev_lwh);
         cev_place_of_production = findViewById(R.id.cev_place_of_production);
 
@@ -149,6 +134,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             scv_model.setTag(null);
             assetModelPop = null;
 
+            cev_location.setContent("");
             cev_lwh.setContent("");
             cev_place_of_production.setContent("");
 
@@ -171,6 +157,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             DictionaryBean modelVo = (DictionaryBean) scv_model.getTag();
             String brandModelId = modelVo.getId();
 
+            String location = cev_location.getContent();
             String lwh = cev_lwh.getContent();
             String place_of_production = cev_place_of_production.getContent();
             String date_of_manufacture = scv_date_of_manufacture.getContent();
@@ -180,9 +167,11 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             DeviceInfoForm it = new DeviceInfoForm();
             it.setDeviceNumber(number);
             it.setDeviceName(name);
+            it.setRemark(remark);
             it.setDeviceTypeId(deviceTypeId);
             it.setBrandId(brandId);
             it.setBrandModelId(brandModelId);
+            it.setLocation(location);
             it.setProduction(place_of_production);
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
             it.setWarranty(DateTimeUtils.parseToLong(warranty_period));

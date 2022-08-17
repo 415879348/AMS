@@ -64,6 +64,7 @@
                 android:id="@+id/et_password"
                 style="@style/spsdk_view_empty"
                 android:hint="@string/please_enter_password"
+                android:inputType="textPassword"
                 android:paddingStart="@dimen/spsdk_dp_10" />
 
         </LinearLayout>

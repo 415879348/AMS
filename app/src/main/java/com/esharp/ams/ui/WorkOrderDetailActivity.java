@@ -18,7 +18,9 @@ import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
+import com.esharp.sdk.bean.response.WorkOrderTypeVo;
 import com.esharp.sdk.utils.DateTimeUtils;
+import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPSelectorView;
 import com.esharp.sdk.widget.SPShowTextView;
@@ -123,7 +125,15 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         stv_job_name.setDetail(it.getTitle());
 
         stv_job_type = findViewById(R.id.stv_job_type);
-        stv_job_type.setDetail(it.getType()+"");
+
+        switch (it.getType()) {
+            case 1:
+                stv_job_type.setDetail(ResUtils.getString(R.string.job_fault));
+                break;
+            case 2:
+                stv_job_type.setDetail(ResUtils.getString(R.string.job_maintain));
+                break;
+        }
 
         stv_asset_name = findViewById(R.id.stv_asset_name);
         stv_asset_name.setDetail(it.getDeviceName());
@@ -135,7 +145,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         stv_originator.setDetail(it.getApplyName());
 
         stv_time_of_initiation = findViewById(R.id.stv_time_of_initiation);
-        stv_time_of_initiation.setDetail(it.getApplyTime());
+        stv_time_of_initiation.setDetail(DateTimeUtils.millis2Date(it.getApplyTime()));
 
         stv_remark = findViewById(R.id.stv_remark);
         stv_remark.setDetail(it.getRemark());

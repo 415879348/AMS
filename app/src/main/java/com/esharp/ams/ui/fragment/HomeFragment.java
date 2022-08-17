@@ -45,6 +45,8 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(count);
 
+        mTabLayout.removeAllTabs();
+        LogUtils.i(count);
         for (int i = 0; i < count; i++) {
             mTabLayout.addTab(returnTab(mTabLayout, i));
         }

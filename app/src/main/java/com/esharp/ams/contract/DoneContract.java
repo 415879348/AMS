@@ -6,10 +6,16 @@ import com.esharp.sdk.bean.response.WorkOrderVo;
 
 public interface DoneContract {
     interface View extends IBaseView {
-        void getDataSuc(WorkOrderVo it);
+        void refreshData(WorkOrderVo it);
+
+        void appendData(WorkOrderVo it);
+
+        void refreshFinish();
     }
 
     interface Presenter extends IBasePresenter {
         void getData(int current, int size);
+
+        void getData(int current);
     }
 }

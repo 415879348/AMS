@@ -122,4 +122,10 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
     public void onItemClick() {
 //        new Handler().postDelayed(() -> Objects.requireNonNull(mTabLayout.getTabAt(2)).select(),1000);
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+
+    }
 }

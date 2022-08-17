@@ -13,6 +13,8 @@ import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.WorkOrderVo;
 import com.esharp.sdk.widget.MyTextView;
+import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
+import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,24 +27,55 @@ public class BacklogFragment extends BaseMvpFragment<BacklogContract.Presenter, 
 
     private RecyclerView mRecyclerView;
 
-    private MyTextView mtv_date_selector;
-
     private BacklogRecordAdapter mBacklogRecordAdapter;
+
+    private SwipyRefreshLayout refreshLayout;
+
+    int current = 1;
 
     @Override
     protected void init(View view) {
+        refreshLayout = view.findViewById(R.id.refreshLayout);
         mRecyclerView = view.findViewById(R.id.recyclerView);
+
+        refreshLayout.setOnRefreshListener(direction -> {
+            if (direction == SwipyRefreshLayoutDirection.TOP) {
+                initData();
+            } else {
+                mPresenter.getData(++current);
+            }
+        });
         mRecyclerView.setAdapter(mBacklogRecordAdapter = new BacklogRecordAdapter(item -> {
             WorkOrderDetailActivity.startActivity(getActivity(), item, WorkOrderDetailActivity.HANDLE);
             mHostView.onItemClick();
         }));
-        mPresenter.getData(1, 20);
+        initData();
+    }
+
+    private void initData() {
+        mBacklogRecordAdapter.clearItems();
+        current = 1;
+        LogUtils.json(current);
+        mPresenter.getData(current);
     }
 
     @Override
-    public void getDataSuc(WorkOrderVo it) {
+    public void refreshData(WorkOrderVo it) {
         LogUtils.json(it);
+        current = it.getCurrent();
+        mBacklogRecordAdapter.refreshAllItems(it.getRecords());
+    }
+
+    @Override
+    public void appendData(WorkOrderVo it) {
+        LogUtils.json(it);
+        current = it.getCurrent();
         mBacklogRecordAdapter.insertLastItems(it.getRecords());
+    }
+
+    @Override
+    public void refreshFinish() {
+        if (refreshLayout != null) refreshLayout.setRefreshing(false);
     }
 
 }

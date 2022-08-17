@@ -13,7 +13,7 @@ import com.esharp.sdk.R;
 /**
  * 功能描述：
  *
- * @author (作者) fengchuanfang
+ * @author (作者) someone
  * 创建时间： 2021/8/6
  */
 public class SPReadAgreeView extends FrameLayout {

@@ -33,7 +33,7 @@ public class WorkOrderBean implements Serializable {
     private String address;
     private Long applyId;
     private String applyName;
-    private String applyTime;
+    private Long applyTime;
     private String companyId;
     private String companyName;
     private String content;
@@ -79,11 +79,11 @@ public class WorkOrderBean implements Serializable {
         this.applyName = applyName;
     }
 
-    public String getApplyTime() {
+    public Long getApplyTime() {
         return applyTime;
     }
 
-    public void setApplyTime(String applyTime) {
+    public void setApplyTime(Long applyTime) {
         this.applyTime = applyTime;
     }
 

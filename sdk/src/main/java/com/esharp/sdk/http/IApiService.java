@@ -113,6 +113,13 @@ public interface IApiService {
     Single<HttpResult<DeviceVo>> device(@Query("current") int current, @Query("size") int size);
 
     /**
+     * 资产分页查询
+     * @return
+     */
+    @GET("device")
+    Single<HttpResult<DeviceVo>> device(@QueryMap Map<String, String> params);
+
+    /**
      * 資產刪除
      * @param ids 批量刪除主鍵，中間用逗號隔開，例1,2,3
      * @return

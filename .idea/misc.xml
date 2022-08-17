@@ -32,22 +32,22 @@
         <entry key="app/src/main/res/layout-w936dp/item_assets_title.xml" value="0.335" />
         <entry key="app/src/main/res/layout-w936dp/item_done.xml" value="0.335" />
         <entry key="app/src/main/res/layout-w936dp/item_done_title.xml" value="0.156640625" />
-        <entry key="app/src/main/res/layout/activity_asset_detail.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_asset_edit.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_asset_detail.xml" value="0.21428571428571427" />
+        <entry key="app/src/main/res/layout/activity_asset_edit.xml" value="0.20396600566572237" />
         <entry key="app/src/main/res/layout/activity_create_asset.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_launch.xml" value="0.23489583333333333" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20869565217391303" />
         <entry key="app/src/main/res/layout/activity_login2.xml" value="0.19895833333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_work_order.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/activity_work_order_create.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_work_order_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_filter.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/dialog_filter_assets.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/dialog_filter_assets.xml" value="0.5" />
         <entry key="app/src/main/res/layout/dialog_filter_work_order.xml" value="0.5" />
         <entry key="app/src/main/res/layout/dialog_work_order_handle.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_assets.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_backlog.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_backlog.xml" value="0.20224719101123595" />
         <entry key="app/src/main/res/layout/fragment_done.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.375" />

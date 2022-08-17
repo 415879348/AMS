@@ -58,6 +58,9 @@ public interface Constant {
 
     String KEY_CURRENT = "current";
     String KEY_SIZE = "size";
+
+
+
     int SIZE = 20;
     String REFRESH_DATA = "REFRESH_DATA";
 

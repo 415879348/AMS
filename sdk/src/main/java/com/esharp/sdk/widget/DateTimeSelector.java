@@ -31,7 +31,8 @@ public class DateTimeSelector {
             LogUtils.i(year1 +"年"+ month1 +"月"+dayOfMonth+"日");
             String yyyyMMdd = year1 + getFullDate(month1+1, dayOfMonth);
             LogUtils.i(yyyyMMdd);
-            showTimePickerDialog(context, yyyyMMdd);
+            mListener.onDateTimeSelected(DateTimeUtils.format(yyyyMMdd, DateTimeUtils.yyyyMMdd, DateTimeUtils.yyyy_MM_dd));
+//            showTimePickerDialog(context, yyyyMMdd);
         }, year, month, day).show();   //  弹出日历对话框时，默认显示 年，月，日
 
     }
