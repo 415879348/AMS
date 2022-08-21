@@ -74,7 +74,7 @@ public class WorkOrderCreateActivity extends BaseMvpActivity<WorkOrderCreateCont
         cev_location = findViewById(R.id.cev_location);
         scv_handler = findViewById(R.id.scv_handler);
         cev_remark = findViewById(R.id.cev_remark);
-        mv_end = findViewById(R.id.mv_end);
+        mv_end = findViewById(R.id.mv_reset);
         mv_confirm = findViewById(R.id.mv_confirm);
 
         LogUtils.json(typeList);

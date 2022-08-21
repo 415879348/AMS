@@ -44,7 +44,7 @@ public class DateTimeSelector {
             LogUtils.i(hourOfDay +"时"+ minute +"分");
             LogUtils.i(yyyyMMdd + getFullDate(hourOfDay, minute));
             if (mListener != null) {
-                mListener.onDateTimeSelected(DateTimeUtils.format(yyyyMMdd + getFullDate(hourOfDay, minute), DateTimeUtils.yyyyMMddHHmm, DateTimeUtils.yyyy_MM_dd_HH_mm_ss));
+                mListener.onDateTimeSelected(DateTimeUtils.format(yyyyMMdd + getFullDate(hourOfDay, minute), DateTimeUtils.yyyyMMdd, DateTimeUtils.yyyy_MM_dd));
             }
         }, 0, 0, true).show();
     }

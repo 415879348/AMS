@@ -31,6 +31,7 @@ public class WorkOrderBean implements Serializable {
      */
 
     private String address;
+    private String location;
     private Long applyId;
     private String applyName;
     private Long applyTime;
@@ -237,5 +238,13 @@ public class WorkOrderBean implements Serializable {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

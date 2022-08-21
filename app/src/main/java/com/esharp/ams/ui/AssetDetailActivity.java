@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.AssetDetailContract;
@@ -38,9 +41,11 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
             stv_asset_brand, stv_asset_model, stv_asset_location, stv_asset_size,
             stv_place_of_production, stv_date_of_manufacture, stv_warranty_period,
             stv_asset_status, stv_asset_remark, stv_asset_picture,
-            stv_creation_time, stv_update_time;
+            stv_creation_time, stv_update_time, stv_weight, stv_color;
 
-    RadiusImageView riv_picture;
+    LinearLayout ll_img;
+
+    View v_color;
 
     @Override
     protected void init() {
@@ -54,6 +59,9 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_model = findViewById(R.id.stv_asset_model);
         stv_asset_location = findViewById(R.id.stv_asset_location);
         stv_asset_size = findViewById(R.id.stv_asset_size);
+        stv_weight = findViewById(R.id.stv_weight);
+        v_color = findViewById(R.id.v_color);
+        stv_color = findViewById(R.id.stv_color);
         stv_place_of_production = findViewById(R.id.stv_place_of_production);
         stv_date_of_manufacture = findViewById(R.id.stv_date_of_manufacture);
         stv_warranty_period = findViewById(R.id.stv_warranty_period);
@@ -62,7 +70,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_picture = findViewById(R.id.stv_asset_picture);
         stv_creation_time = findViewById(R.id.stv_creation_time);
         stv_update_time = findViewById(R.id.stv_update_time);
-        riv_picture = findViewById(R.id.riv_picture);
+        ll_img = findViewById(R.id.ll_img);
 
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
@@ -89,6 +97,14 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
                 ! TextUtils.isEmpty(it.getHeight())) {
             stv_asset_size.setDetail(it.getLength() + "," + it.getWidth() + "," + it.getHeight());
         }
+        if (it.getWeight() != null) {
+            stv_weight.setDetail(it.getWeight());
+        }
+
+        if (! TextUtils.isEmpty(it.getColor())) {
+            stv_color.setDetail(it.getColor());
+            v_color.setBackgroundColor(ColorUtils.string2Int(it.getColor()));
+        }
 
         stv_place_of_production.setDetail(it.getProduction());
 
@@ -98,8 +114,6 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         if (it.getWarrantyDate() != null) {
             stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
         }
-
-
 
 //        裝置狀態 0:正常 1:準備中 2:異常 3:初始化失敗，需要手動操作
         switch (it.getStatus()) {
@@ -120,7 +134,16 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_asset_remark.setDetail(it.getRemark());
 
         if (it.getUrls().size() > 0) {
-            GlideUtils.showImage(riv_picture, it.getUrls().get(0).getUrl());
+
+            for (int i = 0; i < it.getUrls().size(); i++) {
+
+                RadiusImageView riv = new RadiusImageView(AssetDetailActivity.this);
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(200,200);
+                riv.setLayoutParams(param);
+                ll_img.addView(riv);
+                GlideUtils.showImage(riv, it.getUrls().get(i).getUrl());
+            }
+
         }
 
         if (it.getCreateTime() != null) {

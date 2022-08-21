@@ -89,6 +89,35 @@
                 />
 
             <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_weight"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/weight"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.esharp.sdk.widget.SPShowTextView
+                    android:id="@+id/stv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/spsdk_dp_25"
+                    app:spsdk_show_text_title="@string/color"
+                    android:layout_marginVertical="@dimen/spsdk_dp_5"
+                    />
+
+                <View
+                    android:id="@+id/v_color"
+                    android:layout_width="@dimen/spsdk_dp_100"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/spsdk_dp_20"
+                    />
+
+            </LinearLayout>
+
+            <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_place_of_production"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -129,6 +158,7 @@
                 />
 
             <LinearLayout
+                android:id="@+id/ll_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -136,20 +166,20 @@
                 <com.esharp.sdk.widget.SPShowTextView
                     android:id="@+id/stv_asset_picture"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/spsdk_dp_25"
+                    android:layout_height="@dimen/spsdk_dp_60"
                     app:spsdk_show_text_title="@string/picture"
                     android:layout_marginVertical="@dimen/spsdk_dp_5"
                     />
 
-                <com.esharp.sdk.widget.RadiusImageView
-                    android:id="@+id/riv_picture"
-                    android:layout_width="@dimen/spsdk_dp_60"
-                    android:layout_height="@dimen/spsdk_dp_60"
-                    android:layout_marginLeft="@dimen/spsdk_dp_5"
-                    android:layout_marginRight="@dimen/spsdk_dp_5"
-                    android:layout_marginVertical="@dimen/spsdk_dp_5"
-                    android:src="@mipmap/spsdk_pic_error"
-                    app:spsdk_imageRadius="@dimen/spsdk_dp_5" />
+<!--                <com.esharp.sdk.widget.RadiusImageView-->
+<!--                    android:id="@+id/riv_picture"-->
+<!--                    android:layout_width="@dimen/spsdk_dp_60"-->
+<!--                    android:layout_height="@dimen/spsdk_dp_60"-->
+<!--                    android:layout_marginLeft="@dimen/spsdk_dp_5"-->
+<!--                    android:layout_marginRight="@dimen/spsdk_dp_5"-->
+<!--                    android:layout_marginVertical="@dimen/spsdk_dp_5"-->
+<!--                    android:src="@mipmap/spsdk_pic_error"-->
+<!--                    app:spsdk_imageRadius="@dimen/spsdk_dp_5" />-->
 
             </LinearLayout>
 

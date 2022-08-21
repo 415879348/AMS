@@ -2,6 +2,7 @@
 <resources>
     <string name="networkOrSystemTimeIssueTryLater">抱歉！网络出现问题。请您检查网络连接和系统时间，并再试一次。谢谢！</string>
 
+    <string name="spsdk_camera_storage_permission">请打开相机授权SD卡的读/写功能</string>
     <string name="spsdk_title">标题</string>
     <string name="spsdk_confirm">确认</string>
 
@@ -86,6 +87,7 @@
     <string name="spsdk_tip_password">密码必须是8–16位的英文字母、数字字符组合\n(不能是纯数字)</string>
 
     <string name="spsdk_enter_phone">请输入手机号码</string>
+    <string name="spsdk_enter_please">请输入</string>
     <string name="spsdk_verification_code">验证码</string>
     <string name="spsdk_enter_verification_code">请输入验证码</string>
     <string name="spsdk_get_verification_code">获取验证码</string>

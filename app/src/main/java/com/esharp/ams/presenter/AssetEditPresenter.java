@@ -1,8 +1,10 @@
 package com.esharp.ams.presenter;
 
 import com.esharp.ams.contract.AssetEditContract;
+import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
+import com.esharp.sdk.bean.FileVo;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
@@ -11,6 +13,8 @@ import com.esharp.sdk.rxjava.SchedulerUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.reactivex.rxjava3.core.Single;
 
 public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> implements AssetEditContract.Presenter {
     public AssetEditPresenter(AssetEditContract.View mView) {
@@ -44,6 +48,15 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
                 .compose(SchedulerUtils.io_main_single())
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::updateDeviceSuc));
+    }
+
+    @Override
+    public void deviceAll() {
+        HttpService.get().appDeviceAll()
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::deviceAllSuc));
     }
 
 
@@ -82,6 +95,26 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
                 .compose(SchedulerUtils.io_main_single())
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::assetModelSuc));
+    }
+
+    @Override
+    public void uploadPhoto(int request, FileVo photo) {
+        Single<String> single = HttpService.get().document(photo)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1));
+
+        switch (request) {
+            case CreateAssetActivity.REQUEST_1:
+                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus1));
+                break;
+            case CreateAssetActivity.REQUEST_2:
+                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus2));
+                break;
+            case CreateAssetActivity.REQUEST_3:
+                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus3));
+                break;
+        }
     }
 
 

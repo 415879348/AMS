@@ -98,7 +98,7 @@
             android:orientation="horizontal">
 
             <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_end"
+                android:id="@+id/mv_reset"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
                 android:layout_gravity="center_horizontal"

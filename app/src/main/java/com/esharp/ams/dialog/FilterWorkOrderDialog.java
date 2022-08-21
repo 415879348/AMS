@@ -204,27 +204,35 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
 
             String fromDate = scv_date_from.getContent();
             String toDate = scv_date_to.getContent();
-            startTime = DateTimeUtils.parseToLong(fromDate)+"";
-            endTime = DateTimeUtils.parseToLong(toDate)+"";
-
-            if (!TextUtils.isEmpty(titleOrNumber)
-                    && !TextUtils.isEmpty(handlerId)
-                    && !TextUtils.isEmpty(type)
-                    && !TextUtils.isEmpty(step)
-                    && !TextUtils.isEmpty(startTime)
-                    && !TextUtils.isEmpty(endTime)){
-                Map<String, String> map = new HashMap<>();
-                map.put("titleOrNumber", titleOrNumber);
-                map.put("handlerId", handlerId);
-                map.put("type", type);
-                map.put("step", step);
-                map.put("startTime", startTime);
-                map.put("endTime", endTime);
-
-                LogUtils.json(map);
-                it.onClick(map);
-                cancel();
+            if (! TextUtils.isEmpty(fromDate)) {
+                startTime = DateTimeUtils.parseToLong(fromDate)+"";
             }
+
+            if (! TextUtils.isEmpty(toDate)) {
+                endTime = DateTimeUtils.parseToLong(toDate)+"";
+            }
+
+            Map<String, String> map = new HashMap<>();
+
+
+            map.put("titleOrNumber", titleOrNumber);
+            map.put("handlerId", handlerId);
+            map.put("type", type);
+            map.put("step", step);
+            map.put("startTime", startTime);
+            map.put("endTime", endTime);
+
+//            if (!TextUtils.isEmpty(titleOrNumber)
+//                    && !TextUtils.isEmpty(handlerId)
+//                    && !TextUtils.isEmpty(type)
+//                    && !TextUtils.isEmpty(step)
+//                    && !TextUtils.isEmpty(startTime)
+//                    && !TextUtils.isEmpty(endTime)) {
+//            }
+
+            LogUtils.json(map);
+            it.onClick(map);
+            cancel();
         });
         return this;
     }

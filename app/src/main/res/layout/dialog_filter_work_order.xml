@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.esharp.sdk.widget.MyNestedScrollView2
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/spsdk_shape_white_gray_radius_5"
+    android:orientation="vertical"
+    android:padding="@dimen/spsdk_dp_5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <com.esharp.sdk.widget.SPCardEditView
+                android:id="@+id/cev_job_number_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_card_edit_hint="@string/job_number_name"
+                />
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="@dimen/spsdk_dp_30"
+                android:layout_height="@dimen/spsdk_dp_30"
+                android:src="@mipmap/search" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="@dimen/spsdk_dp_30"
+            android:orientation="horizontal"
+            >
+            <com.esharp.sdk.widget.SPSelectorCardView
+                android:id="@+id/scv_handler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:spsdk_selector_hint="@string/handler"
+                app:spsdk_selector_icon="@mipmap/arrow_down"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="@dimen/spsdk_dp_30"
+            android:orientation="horizontal"
+            >
+            <com.esharp.sdk.widget.SPSelectorCardView
+                android:id="@+id/scv_type"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_selector_hint="@string/job_type"
+                app:spsdk_selector_icon="@mipmap/arrow_down"
+                />
+
+            <com.esharp.sdk.widget.SPSelectorCardView
+                android:id="@+id/scv_progress"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_selector_hint="@string/progress"
+                app:spsdk_selector_icon="@mipmap/arrow_down"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/spsdk_dp_30"
+            >
+            <com.esharp.sdk.widget.SPSelectorCardView
+                android:id="@+id/scv_date_from"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_selector_hint="@string/from"
+                app:spsdk_selector_icon="@mipmap/calendar"
+                />
+
+            <com.esharp.sdk.widget.SPSelectorCardView
+                android:id="@+id/scv_date_to"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:spsdk_selector_hint="@string/to"
+                app:spsdk_selector_icon="@mipmap/calendar"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/spsdk_dp_35"
+            android:layout_height="@dimen/spsdk_dp_35"
+            android:layout_marginTop="@dimen/spsdk_dp_100"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/spsdk_dp_5"
+            android:src="@mipmap/arrow_down" />
+
+    </LinearLayout>
+
+</com.esharp.sdk.widget.MyNestedScrollView2>
+
+

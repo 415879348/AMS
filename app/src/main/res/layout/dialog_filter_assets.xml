@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_left"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/spsdk_shape_white_gray_radius_5"
+    android:orientation="vertical"
+    android:padding="@dimen/spsdk_dp_5"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_number_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/asset_number_name"/>
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/spsdk_dp_30"
+            android:layout_height="@dimen/spsdk_dp_30"
+            android:src="@mipmap/search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/spsdk_dp_30"
+        android:orientation="horizontal"
+        >
+        <com.esharp.sdk.widget.SPSelectorCardView
+            android:id="@+id/scv_type"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:spsdk_selector_hint="@string/asset_type"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_location"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:spsdk_card_edit_hint="@string/asset_location"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="@dimen/spsdk_dp_35"
+        android:layout_height="@dimen/spsdk_dp_35"
+        android:layout_marginTop="@dimen/spsdk_dp_100"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/spsdk_dp_5"
+        android:src="@mipmap/arrow_down" />
+
+</LinearLayout>
+
+

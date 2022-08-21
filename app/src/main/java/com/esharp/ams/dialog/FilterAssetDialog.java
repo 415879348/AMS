@@ -96,19 +96,20 @@ public class FilterAssetDialog extends BaseAlertDialog {
             }
             location = cev_location.getContent();
 
-            if (!TextUtils.isEmpty(titleOrNumber)
-                 && !TextUtils.isEmpty(deviceTypeId)
-                 && !TextUtils.isEmpty(location)) {
+            Map<String, String> map = new HashMap<>();
 
-                Map<String, String> map = new HashMap<>();
-                map.put("titleOrNumber", titleOrNumber);
-                map.put("deviceTypeId", deviceTypeId);
-                map.put("location", location);
+            map.put("titleOrNumber", titleOrNumber);
+            map.put("deviceTypeId", deviceTypeId);
+            map.put("location", location);
 
-                it.onClick(map);
-                cancel();
-            }
-
+//            if (TextUtils.isEmpty(titleOrNumber)
+//                 && TextUtils.isEmpty(deviceTypeId)
+//                 && TextUtils.isEmpty(location)) {
+//
+//            }
+            LogUtils.json(map);
+            it.onClick(map);
+            cancel();
         });
         return this;
     }

@@ -39,7 +39,7 @@ public class GlideUtils {
         }
         TokenVo token = SPGlobalManager.getToken();
         LogUtils.i(IHttpURL.getImageUrl(subUrl));
-        LogUtils.i(token == null ? "hrss-token" : token.getToken(), token == null ? "hrss-" : token.getToken() + token.getToken());
+//        LogUtils.i(token == null ? "hrss-token" : token.getToken(), token == null ? "hrss-" : token.getToken() + token.getToken());
 
         Glide.with(imageView.getContext()).load(
                 new GlideUrl(IHttpURL.getImageUrl(subUrl), new LazyHeaders.Builder()

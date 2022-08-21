@@ -1,31 +1,60 @@
 package com.esharp.ams.ui;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Pair;
+import android.widget.ImageView;
 
+import com.blankj.utilcode.constant.PermissionConstants;
+import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.PermissionUtils;
+import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.bumptech.glide.Glide;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.CreateAssetContract;
 import com.esharp.ams.presenter.CreateAssetPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
+import com.esharp.sdk.base.BaseObserver;
+import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
-import com.esharp.sdk.bean.response.WorkOrderVo;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.utils.DateTimeUtils;
+import com.esharp.sdk.utils.FileUtils;
+import com.esharp.sdk.utils.PicImageEngine;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.DateTimeSelector;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPCardEditView;
 import com.esharp.sdk.widget.SPSelectorCardView;
 import com.esharp.sdk.widget.SPTitleView;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.activity.result.ActivityResultLauncher;
+import top.defaults.colorpicker.ColorPickerPopup;
 
 public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Presenter> implements CreateAssetContract.View {
 
@@ -38,18 +67,28 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         mLauncher.launch(new Intent(context, CreateAssetActivity.class));
     }
 
-    SPSelectorCardView scv_type, scv_brand, scv_model, scv_date_of_manufacture, scv_warranty_period;
+    SPSelectorCardView scv_type, scv_brand, scv_model, scv_up_assets, scv_date_of_manufacture, scv_warranty_period;
 
-    SPCardEditView cev_number, cev_name, cev_lwh, cev_location,
-            cev_place_of_production, cev_remark;
+    SPCardEditView cev_number, cev_name, cev_l, cev_w, cev_h, cev_weight, cev_location, cev_place_of_production, cev_remark, cev_color;
 
-    MyTextView mtv_generate, mv_end, mv_confirm;
+    MyTextView mtv_generate, mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3;
+
+    ImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
+
+    String photoID1 = "";
+    String photoID2 = "";
+    String photoID3 = "";
 
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
+    private ListPopWindow<DeviceBean> assetPop;
+
+    public static final int REQUEST_1 = 101;
+    public static final int REQUEST_2 = 102;
+    public static final int REQUEST_3 = 103;
 
     @Override
     protected void init() {
-        ((SPTitleView)findViewById(com.esharp.sdk.R.id.title_view)).setTitle(ResUtils.getString(R.string.asset_create));
+        ((SPTitleView) findViewById(com.esharp.sdk.R.id.title_view)).setTitle(ResUtils.getString(R.string.asset_create));
 
         mtv_generate = findViewById(R.id.mtv_generate);
         cev_number = findViewById(R.id.cev_number);
@@ -57,19 +96,53 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         scv_type = findViewById(R.id.scv_type);
         scv_brand = findViewById(R.id.scv_brand);
         scv_model = findViewById(R.id.scv_model);
+        scv_up_assets = findViewById(R.id.scv_up_assets);
         cev_location = findViewById(R.id.cev_location);
-        cev_lwh = findViewById(R.id.cev_lwh);
+        cev_weight = findViewById(R.id.cev_weight);
+        cev_l = findViewById(R.id.cev_l);
+        cev_w = findViewById(R.id.cev_w);
+        cev_h = findViewById(R.id.cev_h);
         cev_place_of_production = findViewById(R.id.cev_place_of_production);
 
         scv_date_of_manufacture = findViewById(R.id.scv_date_of_manufacture);
         scv_warranty_period = findViewById(R.id.scv_warranty_period);
         cev_remark = findViewById(R.id.cev_remark);
 
-        mv_end = findViewById(R.id.mv_end);
+        cev_color = findViewById(R.id.cev_color);
+        iv_color = findViewById(R.id.iv_color);
+        mv_reset = findViewById(R.id.mv_reset);
         mv_confirm = findViewById(R.id.mv_confirm);
+        mv_upload1 = findViewById(R.id.mv_upload1);
+        iv_picture1 = findViewById(R.id.iv_picture1);
+        mv_upload2 = findViewById(R.id.mv_upload2);
+        iv_picture2 = findViewById(R.id.iv_picture2);
+        mv_upload3 = findViewById(R.id.mv_upload3);
+        iv_picture3 = findViewById(R.id.iv_picture3);
 
         mtv_generate.setOnClickListener(v -> {
             mPresenter.generateCode();
+        });
+
+        iv_color.setTag(ColorUtils.int2RgbString(ResUtils.getColor(R.color.spsdk_color_blue)));
+        iv_color.setOnClickListener(v -> {
+            new ColorPickerPopup.Builder(this)
+                .initialColor(ColorUtils.string2Int((String) v.getTag())) // Set initial color
+                .enableBrightness(false) // Enable brightness slider or not
+                .enableAlpha(false) // Enable alpha slider or not
+                .okTitle(ResUtils.getString(R.string.choose))
+                .cancelTitle(ResUtils.getString(R.string.cancel))
+                .showIndicator(true)
+                .showValue(false)
+                .build()
+                .show(v, new ColorPickerPopup.ColorPickerObserver() {
+                    @Override
+                    public void onColorPicked(int color) {
+                        LogUtils.i(ColorUtils.int2RgbString(color));
+                        v.setBackgroundColor(color);
+                        v.setTag(ColorUtils.int2RgbString(color));
+                        cev_color.setContent(ColorUtils.int2RgbString(color));
+                    }
+                });
         });
 
         scv_type.setOnItemClick(v -> {
@@ -103,6 +176,19 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             }
         });
 
+        scv_up_assets.setOnItemClick(v -> {
+            if (assetPop == null) {
+                return;
+            }
+
+            DeviceBean vo = (DeviceBean) v.getTag();
+            if (vo == null) {
+                assetPop.show(scv_up_assets, "");
+            } else {
+                assetPop.show(scv_up_assets, vo.getId());
+            }
+        });
+
         scv_date_of_manufacture.setOnItemClick(v -> {
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
@@ -117,7 +203,35 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             });
         });
 
-        mv_end.setOnClickListener(v -> {
+        mv_upload1.setOnClickListener(v -> {
+            LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
+            LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
+
+            // 手动禁止权限下次会主动弹出权限窗口，代码禁止权限下次不会主动弹出权限窗口
+            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                selectPicture(iv_picture1, REQUEST_1);
+            } else {
+                isGranted(iv_picture1, REQUEST_1);
+            }
+        });
+
+        mv_upload2.setOnClickListener(v -> {
+            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                selectPicture(iv_picture2, REQUEST_2);
+            } else {
+                isGranted(iv_picture2, REQUEST_2);
+            }
+        });
+
+        mv_upload3.setOnClickListener(v -> {
+            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                selectPicture(iv_picture3, REQUEST_3);
+            } else {
+                isGranted(iv_picture3, REQUEST_3);
+            }
+        });
+
+        mv_reset.setOnClickListener(v -> {
             cev_number.setContent("");
             cev_name.setContent("");
 
@@ -134,8 +248,17 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             scv_model.setTag(null);
             assetModelPop = null;
 
+            scv_up_assets.setContent("");
+            scv_up_assets.setHint(ResUtils.getString(R.string.up_assets));
+            scv_up_assets.setTag(null);
+            assetPop = null;
+
             cev_location.setContent("");
-            cev_lwh.setContent("");
+            cev_l.setContent("");
+            cev_w.setContent("");
+            cev_h.setContent("");
+            cev_weight.setContent("");
+            cev_color.setContent("");
             cev_place_of_production.setContent("");
 
             scv_date_of_manufacture.setContent("");
@@ -146,19 +269,58 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
         mv_confirm.setOnClickListener(v -> {
             String number = cev_number.getContent();
+            if (TextUtils.isEmpty(number)) {
+                showToast(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.asset_number));
+                return;
+            }
+
             String name = cev_name.getContent();
+            if (TextUtils.isEmpty(name)) {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.asset_name));
+                return;
+            }
 
             DictionaryBean typeVo = (DictionaryBean) scv_type.getTag();
-            String deviceTypeId = typeVo.getId();
+            String deviceTypeId = "";
+            if (typeVo != null) {
+                deviceTypeId = typeVo.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.asset_type));
+                return;
+            }
 
             DictionaryBean brandVo = (DictionaryBean) scv_brand.getTag();
-            String brandId = brandVo.getId();
+            String brandId = "";
+            if (brandVo != null) {
+                brandId = brandVo.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.brand));
+                return;
+            }
 
             DictionaryBean modelVo = (DictionaryBean) scv_model.getTag();
-            String brandModelId = modelVo.getId();
+            String brandModelId = "";
+            if (modelVo != null) {
+                brandModelId = modelVo.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.model));
+                return;
+            }
+
+            DeviceBean upAssetVo = (DeviceBean) scv_up_assets.getTag();
+            String upAssetId = "";
+            if (upAssetVo != null) {
+                upAssetId = upAssetVo.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.up_assets));
+                return;
+            }
 
             String location = cev_location.getContent();
-            String lwh = cev_lwh.getContent();
+            String size_l = cev_l.getContent();
+            String size_w = cev_w.getContent();
+            String size_h = cev_h.getContent();
+            String weight = cev_weight.getContent();
             String place_of_production = cev_place_of_production.getContent();
             String date_of_manufacture = scv_date_of_manufacture.getContent();
             String warranty_period = scv_warranty_period.getContent();
@@ -171,17 +333,33 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             it.setDeviceTypeId(deviceTypeId);
             it.setBrandId(brandId);
             it.setBrandModelId(brandModelId);
+            it.setParentId(upAssetId);
             it.setLocation(location);
             it.setProduction(place_of_production);
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
             it.setWarranty(DateTimeUtils.parseToLong(warranty_period));
+            it.setWeight(weight);
 
-            String[] list = lwh.split(",");
+            if (! TextUtils.isEmpty(cev_color.getContent())){
+                it.setColor(cev_color.getContent());
+            }
 
-            if (list.length == 3) {
-                it.setLength(list[0]);
-                it.setWidth(list[1]);
-                it.setHeight(list[2]);
+            List<String> documentIds = new ArrayList<>();
+            documentIds.add(photoID1);
+            documentIds.add(photoID2);
+            documentIds.add(photoID3);
+            it.setDocumentIds(documentIds);
+
+            if (! TextUtils.isEmpty(size_l)){
+                it.setLength(size_l);
+            }
+
+            if (! TextUtils.isEmpty(size_w)){
+                it.setLength(size_w);
+            }
+
+            if (! TextUtils.isEmpty(size_h)){
+                it.setLength(size_h);
             }
 
             LogUtils.json(it);
@@ -191,17 +369,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
         mPresenter.assetType();
         mPresenter.assetBrand();
-    }
-
-
-    @Override
-    public void getDataSuc(WorkOrderVo it) {
-
-    }
-
-    @Override
-    public void addAppDevice(boolean it) {
-
+        mPresenter.deviceAll();
     }
 
     @Override
@@ -248,7 +416,19 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 scv_model.setContent(vo.getDictName());
             });
             scv_model.setTag(it.get(0));
-            scv_model.setHint(it.get(0).getDictName());
+            scv_model.setContent(it.get(0).getDictName());
+        }
+    }
+
+    @Override
+    public void deviceAllSuc(List<DeviceBean> it) {
+        LogUtils.json(it);
+        if (it.size() > 0) {
+            assetPop = new ListPopWindow<>(scv_up_assets,this, it, vo -> {
+                LogUtils.json(vo);
+                scv_up_assets.setTag(vo);
+                scv_up_assets.setContent(vo.getDeviceName());
+            });
         }
     }
 
@@ -258,5 +438,136 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         cev_number.setContent(it);
     }
 
+    @Override
+    public void uploadPhotoSus1(String it) {
+        photoID1 = it;
+    }
+
+    @Override
+    public void uploadPhotoSus2(String it) {
+        photoID2 = it;
+    }
+
+    @Override
+    public void uploadPhotoSus3(String it) {
+        photoID3 = it;
+    }
+
+    private void isGranted(ImageView iv, int request) {
+        if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)
+                && !PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            permission(request, iv, PermissionConstants.CAMERA, PermissionConstants.STORAGE);
+        } else if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)) {
+            permission(request, iv, PermissionConstants.CAMERA);
+        } else if (!PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            permission(request, iv, PermissionConstants.STORAGE);
+        }
+    }
+
+    private void permission(int request, ImageView iv, @PermissionConstants.Permission final String... permissions) {
+        PermissionUtils.permission(permissions)
+                .callback(new PermissionUtils.FullCallback() {
+
+                    @Override
+                    public void onGranted(List<String> permissionsGranted) {
+                        LogUtils.json(permissionsGranted);
+                        selectPicture(iv, request);
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
+                        LogUtils.json(permissionsDenied);
+                        showToast(R.string.spsdk_camera_storage_permission);
+                    }
+                }).request();
+    }
+
+    private void selectPicture(ImageView iv, int request) {
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofImage())
+                .imageEngine(new PicImageEngine())
+                .maxSelectNum(1)
+                .imageSpanCount(4)
+                .selectionMode(PictureConfig.MULTIPLE)
+                .isPreviewImage(true)
+                .isCamera(true)
+                .isCompress(true)
+                .isEnableCrop(true)
+                .withAspectRatio(1, 1)
+                .isGif(true)
+                .freeStyleCropEnabled(false)
+                .showCropFrame(true)
+                .showCropGrid(true)
+                .rotateEnabled(false)
+                .scaleEnabled(true)
+                .cropImageWideHigh(SizeUtils.dp2px( 60), SizeUtils.dp2px( 60))
+                .forResult(new OnResultCallbackListener<LocalMedia>() {
+
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        if (result == null || result.isEmpty() || result.get(0) == null) return;
+                        String photoPath = FileUtils.getPhotoPathFromLocal(result.get(0));
+                        LogUtils.i(result.get(0));
+                        LogUtils.i(photoPath);
+
+                        Uri sourceUri = Uri.fromFile(new File(photoPath));
+
+                        Glide.with(CreateAssetActivity.this).load(new File(photoPath)).into(iv);
+
+                        ContentResolver resolver = getContentResolver();
+
+                        Bitmap mBitmap;
+
+                        //1.将相册返回的uri转为Bitmap
+                        try {
+                            mBitmap = MediaStore.Images.Media.getBitmap(resolver, sourceUri);
+
+                            //2.压缩图片,第二个入参表示图片压缩率，如果是100就表示不压缩
+                            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+
+                            //3.将压缩后的图片进行base64编码
+                            byte[] bytes = bos.toByteArray();
+                            String imgBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+                            LogUtils.i(imgBase64);
+
+                            FileVo vo = new FileVo();
+
+                            switch (request) {
+                                case  REQUEST_1:
+                                    if (!TextUtils.isEmpty(photoID1)) {
+                                        vo.setId(photoID1);
+                                    }
+                                    break;
+                                case  REQUEST_2:
+                                    if (!TextUtils.isEmpty(photoID2)) {
+                                        vo.setId(photoID2);
+                                    }
+                                    break;
+                                case  REQUEST_3:
+                                    if (!TextUtils.isEmpty(photoID3)) {
+                                        vo.setId(photoID3);
+                                    }
+                                    break;
+                            }
+
+                            vo.setType(0);
+                            vo.setExtension("jpeg");
+                            vo.setBase64(imgBase64);
+                            mPresenter.uploadPhoto(request, vo);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            showToast(R.string.picture_cancel);
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        showToast(ResUtils.getString(R.string.picture_cancel));
+                    }
+
+                });
+    }
 
 }

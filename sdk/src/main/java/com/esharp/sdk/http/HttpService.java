@@ -60,7 +60,7 @@ public final class HttpService {
 
                     return chain.proceed(chain.request()
                             .newBuilder()
-                            .addHeader("Authorization", token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
+                            .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
 //                            .addHeader(Constant.Language, SPGlobalManager.getLanguage().getCode())//en/tc/sc
                             .build());
                 })

@@ -90,6 +90,7 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
     private String width;
     private List<DeviceBean> children;
     private List<UrlsBean> urls;
+    private List<String> documentIds;
 
     @Override
     public void setChecked(String checkedCode) {
@@ -112,7 +113,7 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
          */
         private String createTime;
         private String extension;
-        private Integer id;
+        private String id;
         private Integer joinId;
         private Integer type;
         private String url;
@@ -133,11 +134,11 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
             this.extension = extension;
         }
 
-        public Integer getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -492,5 +493,13 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<String> getDocumentIds() {
+        return documentIds;
+    }
+
+    public void setDocumentIds(List<String> documentIds) {
+        this.documentIds = documentIds;
     }
 }

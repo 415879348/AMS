@@ -44,7 +44,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
         iv_cancel = findViewById(R.id.iv_cancel);
         nv_remark = findViewById(R.id.nv_remark);
         sv_selector = findViewById(R.id.sv_selector);
-        mv_end = findViewById(R.id.mv_end);
+        mv_end = findViewById(R.id.mv_reset);
         mv_assign = findViewById(R.id.mv_assign);
         iv_cancel.setOnClickListener(v -> {
             cancel();

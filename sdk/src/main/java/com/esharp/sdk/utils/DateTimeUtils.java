@@ -17,9 +17,9 @@ import java.util.TimeZone;
  */
 public final class DateTimeUtils {
 
-    public static final String yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
+//    public static final String yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
     public static final String yyyy_MM_dd = "yyyy-MM-dd";
-    public static final String yyyyMMddHHmm = "yyyyMMddHHmm";
+//    public static final String yyyyMMddHHmm = "yyyyMMddHHmm";
     public static final String yyyyMMdd = "yyyyMMdd";
     public static String formatHHmmss(String input) {
         return format(input, "yyyyMMddHHmmss", "dd/MM/yyyy HH:mm:ss");
@@ -56,7 +56,7 @@ public final class DateTimeUtils {
     public static long parseToLong(String input) {
         Date date = null;
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat(yyyy_MM_dd_HH_mm_ss, Locale.ROOT);
+            SimpleDateFormat dateFormat = new SimpleDateFormat(yyyy_MM_dd, Locale.ROOT);
             dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
             date = dateFormat.parse(input);
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public final class DateTimeUtils {
     }
 
     public static String millis2Date(long millis) {
-        return TimeUtils.millis2String(millis, yyyy_MM_dd_HH_mm_ss);
+        return TimeUtils.millis2String(millis, yyyy_MM_dd);
     }
 
 

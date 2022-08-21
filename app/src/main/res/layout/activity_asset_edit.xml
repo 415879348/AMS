@@ -26,32 +26,11 @@
             android:layout_marginTop="@dimen/spsdk_dp_5"
             />
 
-        <LinearLayout
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/spsdk_dp_10"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            >
-
-            <com.esharp.sdk.widget.SPCardEditView
-                android:id="@+id/cev_number"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                app:spsdk_card_edit_hint="@string/asset_number"/>
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mtv_generate"
-                android:layout_width="@dimen/spsdk_dp_60"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:text="@string/generate"
-                android:textSize="@dimen/spsdk_ts_14"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_gray2" />
-        </LinearLayout>
+            app:spsdk_card_edit_hint="@string/asset_number"/>
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_name"
@@ -60,12 +39,12 @@
             app:spsdk_card_edit_hint="@string/asset_name"/>
 
         <com.esharp.sdk.widget.SPSelectorCardView
-           android:id="@+id/scv_type"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           app:spsdk_selector_hint="@string/asset_type"
-           app:spsdk_selector_icon="@mipmap/arrow_down"
-           />
+            android:id="@+id/scv_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spsdk_selector_hint="@string/asset_type"
+            app:spsdk_selector_icon="@mipmap/arrow_down"
+            />
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_brand"
@@ -96,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:spsdk_card_edit_hint="@string/location"/>
+
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_l"
@@ -179,28 +159,28 @@
             android:layout_marginTop="@dimen/spsdk_dp_10"
             android:orientation="horizontal">
 
-           <com.esharp.sdk.widget.MyTextView
-               android:id="@+id/mv_upload1"
-               android:layout_width="wrap_content"
-               android:layout_height="@dimen/spsdk_dp_35"
-               android:layout_marginStart="@dimen/spsdk_dp_10"
-               android:paddingHorizontal="@dimen/spsdk_dp_5"
-               android:layout_gravity="center_horizontal"
-               android:text="@string/upload_picture"
-               android:textSize="@dimen/spsdk_ts_16"
-               android:textColor="@color/spsdk_color_white"
-               android:gravity="center"
-               app:stv_corner="@dimen/spsdk_dp_5"
-               app:stv_solid="@color/spsdk_color_blue" />
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_upload1"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_35"
+                android:layout_marginStart="@dimen/spsdk_dp_10"
+                android:paddingHorizontal="@dimen/spsdk_dp_5"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/upload_picture"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_5"
+                app:stv_solid="@color/spsdk_color_blue" />
 
-           <ImageView
-               android:id="@+id/iv_picture1"
-               android:layout_width="@dimen/spsdk_dp_100"
-               android:layout_height="@dimen/spsdk_dp_100"
-               android:layout_margin="@dimen/spsdk_dp_5"
-               android:src="@mipmap/spsdk_pic_error"
-               />
-       </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_picture1"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_100"
+                android:layout_margin="@dimen/spsdk_dp_5"
+                android:src="@mipmap/spsdk_pic_error"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

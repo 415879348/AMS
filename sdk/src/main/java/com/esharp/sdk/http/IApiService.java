@@ -1,5 +1,6 @@
 package com.esharp.sdk.http;
 
+import com.esharp.sdk.bean.FileVo;
 import com.esharp.sdk.bean.request.AmendApplyVo;
 import com.esharp.sdk.bean.request.CreateWorkOrderVo;
 import com.esharp.sdk.bean.request.FieldVo;
@@ -19,7 +20,6 @@ import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.DictionaryVo;
-import com.esharp.sdk.bean.response.DocumentVo;
 import com.esharp.sdk.bean.response.HandlerVo;
 import com.esharp.sdk.bean.response.HttpResult;
 import com.esharp.sdk.bean.response.LeaveTypeVo;
@@ -243,17 +243,15 @@ public interface IApiService {
     @GET("device/generate/code")
     Single<HttpResult<String>> generateCode();
 
-    /////////////////////////////
-
-    /**未测
+    /**
      * 添加文件
      * @param
      * @return
      */
     @POST("document")
-    Single<HttpResult<Object>> document(@Body DocumentVo it);
+    Single<HttpResult<String>> document(@Body FileVo it);
 
-
+    /////////////////////////////
 
 
 

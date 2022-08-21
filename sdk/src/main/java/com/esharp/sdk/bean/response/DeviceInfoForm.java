@@ -53,17 +53,17 @@ public class DeviceInfoForm implements Serializable {
     private String location;
     private Integer lon;
     private Integer maintain;
-    private Integer parentId;
+    private String parentId;
     private Integer personId;
     private Long prodDate;
     private String production;
     private String remark;
     private Long warranty;
-    private Integer weight;
+    private String weight;
     private String width;
     private List<?> childIds;
     private List<DeviceFieldValueBean> deviceFieldValueForms;
-    private List<Long> documentIds;
+    private List<String> documentIds;
 
 
     public Integer getAddressId() {
@@ -178,11 +178,11 @@ public class DeviceInfoForm implements Serializable {
         this.maintain = maintain;
     }
 
-    public Integer getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
@@ -226,11 +226,11 @@ public class DeviceInfoForm implements Serializable {
         this.warranty = warranty;
     }
 
-    public Integer getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
@@ -258,11 +258,11 @@ public class DeviceInfoForm implements Serializable {
         this.deviceFieldValueForms = deviceFieldValueForms;
     }
 
-    public List<Long> getDocumentIds() {
+    public List<String> getDocumentIds() {
         return documentIds;
     }
 
-    public void setDocumentIds(List<Long> documentIds) {
+    public void setDocumentIds(List<String> documentIds) {
         this.documentIds = documentIds;
     }
 
