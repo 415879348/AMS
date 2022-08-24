@@ -183,6 +183,5 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     @Override
     public void userAllSuc(List<UserVo> it) {
         LogUtils.json(it);
-
     }
 }

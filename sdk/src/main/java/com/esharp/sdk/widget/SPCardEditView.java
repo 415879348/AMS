@@ -2,6 +2,8 @@ package com.esharp.sdk.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -9,6 +11,9 @@ import android.widget.LinearLayout;
 
 import com.esharp.sdk.R;
 import com.esharp.sdk.utils.ResUtils;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +47,18 @@ public class SPCardEditView extends LinearLayout {
         if (attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_content) != null) {
             et_edit.setText(attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_content));
         }
+
+        InputFilter filter = (source, start, end, dest, dstart, dend) -> {
+            String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+            Pattern pattern = Pattern.compile(speChat);
+            Matcher matcher = pattern.matcher(source.toString());
+            if (matcher.find()) {
+                return "";
+            } else {
+                return null;
+            }
+        };
+        et_edit.setFilters(new InputFilter[]{filter});
     }
 
     public SPCardEditView setHint(String it) {

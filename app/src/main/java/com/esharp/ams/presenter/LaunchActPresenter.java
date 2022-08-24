@@ -111,19 +111,16 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 //                .subscribe(new BaseObserver<>(mView, mView::updateAppDevice));
 
 //        http://192.168.10.27:9999/ams/app/work/order?current=1&size=20&deviceId=&startTime=&endTime=&step=&processStep=
-        Map<String, String> map = new HashMap<>();
-        map.put("current", "1");
-        map.put("size", "20");
-        map.put("processStep", "1"); // 0待办， 1已办
-//        map.put("deviceId", "20");
-//        map.put("startTime", "20");
-//        map.put("endTime", "20");
-
-        HttpService.get().workOrderProcess(map)
-                .lift(new HttpResultOperator<>())
-                .compose(SchedulerUtils.io_main_single())
-                .lift(new ProgressOperator<>(mView, -1))
-                .subscribe(new BaseObserver<>(mView, mView::workOrder));
+//        Map<String, String> map = new HashMap<>();
+//        map.put("current", "1");
+//        map.put("size", "20");
+//        map.put("processStep", "1"); // 0待办， 1已办
+//
+//        HttpService.get().workOrderProcess(map)
+//                .lift(new HttpResultOperator<>())
+//                .compose(SchedulerUtils.io_main_single())
+//                .lift(new ProgressOperator<>(mView, -1))
+//                .subscribe(new BaseObserver<>(mView, mView::workOrder));
 
         //            HttpService.get().workOrderID("70")
 //            .map(new HttpFunction<>())
@@ -197,6 +194,17 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 //                .map(new HttpFunction<>())
 //                .compose(SchedulerUtils.io_main_single())
 //                .subscribe(new BaseObserver<>(mView, mView::document));
+
+
+        Map<String, String> map = new HashMap<>();
+        map.put("current", "1");
+        map.put("size", "20");
+        map.put("status", "0"); // 状态 0：未处理 1：已处理
+        HttpService.get().deviceAlertLog(map)
+                .map(new HttpFunction<>())
+                .compose(SchedulerUtils.io_main_single())
+                .subscribe(new BaseObserver<>(mView, mView::end));
+
 
     }
 }

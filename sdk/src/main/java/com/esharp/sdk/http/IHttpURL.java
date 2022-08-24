@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.LogUtils;
  */
 public interface IHttpURL {
     String TEST_BASE_URL = "http://182.92.123.13:8067/ams/app/";
-    String TEST_IMAGE_URL = "http://182.92.123.13:8067/ams/app/";
+    String TEST_IMAGE_URL = "http://182.92.123.13:8067/ams/";
     String TEST_LOGIN_URL = "http://182.92.123.13:8061/server/auth/";
 
     String BASE_URL = TEST_BASE_URL;

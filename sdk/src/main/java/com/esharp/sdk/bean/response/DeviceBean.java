@@ -75,7 +75,7 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
     private String length;
     private Integer lon;
     private Integer maintain;
-    private Integer parentId;
+    private String parentId;
     private String parentName;
     private Integer personId;
     private String production;
@@ -86,7 +86,7 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
     private Integer updateId;
     private Long updateTime;
     private Long warrantyDate;
-    private Integer weight;
+    private String weight;
     private String width;
     private List<DeviceBean> children;
     private List<UrlsBean> urls;
@@ -367,11 +367,11 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
         this.maintain = maintain;
     }
 
-    public Integer getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(Integer parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
@@ -447,11 +447,11 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
         this.warrantyDate = warrantyDate;
     }
 
-    public Integer getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 

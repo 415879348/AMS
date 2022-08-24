@@ -2,6 +2,7 @@ package com.esharp.ams.factory;
 
 import android.util.SparseArray;
 
+import com.esharp.ams.ui.fragment.AlertFragment;
 import com.esharp.ams.ui.fragment.BacklogFragment;
 import com.esharp.ams.ui.fragment.DoneFragment;
 import com.esharp.sdk.base.BaseFragment;
@@ -22,6 +23,9 @@ public class HomeFragmentFactory {
                     break;
                 case 1:
                     fragment = new DoneFragment();
+                    break;
+                case 2:
+                    fragment = new AlertFragment();
                     break;
             }
 

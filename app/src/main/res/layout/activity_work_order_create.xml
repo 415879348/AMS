@@ -34,8 +34,7 @@
 
         <com.esharp.sdk.widget.SPSelectorCardView
            android:id="@+id/scv_type"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
            app:spsdk_selector_hint="@string/job_type"
            app:spsdk_selector_icon="@mipmap/arrow_down"
            />
@@ -53,8 +52,7 @@
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_asset_select"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/asset_select"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
@@ -78,8 +76,7 @@
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_handler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/handler"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />

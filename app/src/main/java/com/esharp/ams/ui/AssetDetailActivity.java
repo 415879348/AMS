@@ -41,7 +41,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
             stv_asset_brand, stv_asset_model, stv_asset_location, stv_asset_size,
             stv_place_of_production, stv_date_of_manufacture, stv_warranty_period,
             stv_asset_status, stv_asset_remark, stv_asset_picture,
-            stv_creation_time, stv_update_time, stv_weight, stv_color;
+            stv_creation_time, stv_update_time, stv_weight, stv_color, stv_up_assets;
 
     LinearLayout ll_img;
 
@@ -65,6 +65,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         stv_place_of_production = findViewById(R.id.stv_place_of_production);
         stv_date_of_manufacture = findViewById(R.id.stv_date_of_manufacture);
         stv_warranty_period = findViewById(R.id.stv_warranty_period);
+        stv_up_assets = findViewById(R.id.stv_up_assets);
         stv_asset_status = findViewById(R.id.stv_asset_status);
         stv_asset_remark = findViewById(R.id.stv_asset_remark);
         stv_asset_picture = findViewById(R.id.stv_asset_picture);
@@ -95,7 +96,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
         if (! TextUtils.isEmpty(it.getLength()) &&
                 ! TextUtils.isEmpty(it.getWidth()) &&
                 ! TextUtils.isEmpty(it.getHeight())) {
-            stv_asset_size.setDetail(it.getLength() + "," + it.getWidth() + "," + it.getHeight());
+            stv_asset_size.setDetail(it.getLength() + ", " + it.getWidth() + ", " + it.getHeight());
         }
         if (it.getWeight() != null) {
             stv_weight.setDetail(it.getWeight());
@@ -108,12 +109,14 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
 
         stv_place_of_production.setDetail(it.getProduction());
 
-        if (it.getProductionDate() != null) {
+        if (it.getProductionDate() != 0) {
             stv_date_of_manufacture.setDetail(DateTimeUtils.millis2Date(it.getProductionDate()));
         }
-        if (it.getWarrantyDate() != null) {
+        if (it.getWarrantyDate() != 0) {
             stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
         }
+
+        stv_up_assets.setDetail(it.getParentName());
 
 //        裝置狀態 0:正常 1:準備中 2:異常 3:初始化失敗，需要手動操作
         switch (it.getStatus()) {
@@ -139,6 +142,7 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
 
                 RadiusImageView riv = new RadiusImageView(AssetDetailActivity.this);
                 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(200,200);
+                param.leftMargin = 50;
                 riv.setLayoutParams(param);
                 ll_img.addView(riv);
                 GlideUtils.showImage(riv, it.getUrls().get(i).getUrl());

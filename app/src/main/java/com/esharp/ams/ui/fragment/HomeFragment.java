@@ -98,6 +98,12 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
                 indicator.setBackground(null);
             }
             break;
+            case 2: {
+                title.setText(ResUtils.getString(R.string.alert));
+                iv_icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_alert));
+                indicator.setTextColor(ResUtils.getColor(R.color.white));
+            }
+            break;
         }
         tab.setCustomView(tabView);
         return tab;

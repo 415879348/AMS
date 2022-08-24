@@ -13,6 +13,7 @@ import com.esharp.sdk.bean.response.AlertDetailVo;
 import com.esharp.sdk.bean.response.AlertVo;
 import com.esharp.sdk.bean.response.ApplyRecordVo;
 import com.esharp.sdk.bean.response.ApplyVo;
+import com.esharp.sdk.bean.response.AssetAlertVo;
 import com.esharp.sdk.bean.response.AttendanceDetailsVo;
 import com.esharp.sdk.bean.response.DepartmentVo;
 import com.esharp.sdk.bean.response.DeviceBean;
@@ -250,6 +251,14 @@ public interface IApiService {
      */
     @POST("document")
     Single<HttpResult<String>> document(@Body FileVo it);
+
+    /**
+     * 资产警报记录
+     * @param
+     * @return
+     */
+    @GET("device/alert/log")
+    Single<HttpResult<AssetAlertVo>> deviceAlertLog(@QueryMap Map<String, String> params);
 
     /////////////////////////////
 

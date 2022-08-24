@@ -40,32 +40,28 @@
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/asset_type"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_brand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/brand"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_model"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/model"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_up_assets"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/up_assets"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
@@ -126,7 +122,7 @@
                 android:id="@+id/iv_color"
                 android:layout_width="@dimen/spsdk_dp_35"
                 android:layout_height="@dimen/spsdk_dp_35"
-                android:src="@mipmap/search"
+                android:src="@mipmap/color"
                 app:spsdk_imageRadius="@dimen/spsdk_dp_5"
                 />
         </LinearLayout>
@@ -173,11 +169,11 @@
                 app:stv_corner="@dimen/spsdk_dp_5"
                 app:stv_solid="@color/spsdk_color_blue" />
 
-            <ImageView
+            <com.esharp.sdk.widget.RadiusImageView
                 android:id="@+id/iv_picture1"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_100"
-                android:layout_margin="@dimen/spsdk_dp_5"
+                android:layout_marginStart="@dimen/spsdk_dp_5"
                 android:src="@mipmap/spsdk_pic_error"
                 />
         </LinearLayout>
@@ -202,11 +198,11 @@
                 app:stv_corner="@dimen/spsdk_dp_5"
                 app:stv_solid="@color/spsdk_color_blue" />
 
-            <ImageView
+            <com.esharp.sdk.widget.RadiusImageView
                 android:id="@+id/iv_picture2"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_100"
-                android:layout_margin="@dimen/spsdk_dp_5"
+                android:layout_marginStart="@dimen/spsdk_dp_5"
                 android:src="@mipmap/spsdk_pic_error"
                 />
         </LinearLayout>
@@ -231,11 +227,11 @@
                 app:stv_corner="@dimen/spsdk_dp_5"
                 app:stv_solid="@color/spsdk_color_blue" />
 
-            <ImageView
+            <com.esharp.sdk.widget.RadiusImageView
                 android:id="@+id/iv_picture3"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_100"
-                android:layout_margin="@dimen/spsdk_dp_5"
+                android:layout_marginStart="@dimen/spsdk_dp_5"
                 android:src="@mipmap/spsdk_pic_error"
                 />
         </LinearLayout>

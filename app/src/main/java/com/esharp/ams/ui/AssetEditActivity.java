@@ -38,6 +38,7 @@ import com.esharp.sdk.utils.PicImageEngine;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.DateTimeSelector;
 import com.esharp.sdk.widget.MyTextView;
+import com.esharp.sdk.widget.RadiusImageView;
 import com.esharp.sdk.widget.SPCardEditView;
 import com.esharp.sdk.widget.SPSelectorCardView;
 import com.esharp.sdk.widget.SPTitleView;
@@ -82,7 +83,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
     private ListPopWindow<DeviceBean> assetPop;
 
-    ImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
+    RadiusImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
 
     String photoID1 = "";
     String photoID2 = "";
@@ -197,14 +198,14 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_date_of_manufacture.setContent(datetime);
-            });
+            }, DateTimeUtils.parseToLong(scv_warranty_period.getContent()), null);
         });
 
         scv_warranty_period.setOnItemClick(v -> {
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_warranty_period.setContent(datetime);
-            });
+            }, null, DateTimeUtils.parseToLong(scv_date_of_manufacture.getContent()));
         });
 
         mv_upload1.setOnClickListener(v -> {
@@ -324,6 +325,12 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             String size_w = cev_w.getContent();
             String size_h = cev_h.getContent();
             String weight = cev_weight.getContent();
+
+            String color = "";
+            if (! TextUtils.isEmpty(cev_color.getContent())) {
+                color = cev_color.getContent();
+            }
+
             String place_of_production = cev_place_of_production.getContent();
             String date_of_manufacture = scv_date_of_manufacture.getContent();
             String warranty_period = scv_warranty_period.getContent();
@@ -338,6 +345,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             it.setBrandModelId(brandModelId);
             it.setParentId(upAssetId);
             it.setRemark(remark);
+            it.setColor(color);
             it.setLocation(location);
             it.setProduction(place_of_production);
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
@@ -345,7 +353,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             it.setWeight(weight);
 
             if (! TextUtils.isEmpty(cev_color.getContent())){
-                it.setColor((String) cev_color.getTag());
+                it.setColor((String) cev_color.getContent());
             }
 
             List<String> documentIds = new ArrayList<>();
@@ -359,11 +367,11 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             }
 
             if (! TextUtils.isEmpty(size_w)){
-                it.setLength(size_w);
+                it.setWidth(size_w);
             }
 
             if (! TextUtils.isEmpty(size_h)){
-                it.setLength(size_h);
+                it.setHeight(size_h);
             }
 
             LogUtils.json(it);
@@ -407,15 +415,17 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         }
 
         if (it.getHeight() != null) {
-            cev_h.setContent(it.getLength() + "," + it.getWidth() + "," +  it.getHeight());
+            cev_h.setContent(it.getHeight());
         }
+
+        cev_weight.setContent(it.getWeight());
 
         cev_place_of_production.setContent(it.getProduction());
 
-        if (it.getProductionDate() != null) {
+        if (it.getProductionDate() != null && it.getProductionDate() > 0) {
             scv_date_of_manufacture.setContent(DateTimeUtils.millis2Date(it.getProductionDate()));
         }
-        if (it.getWarrantyDate() != null) {
+        if (it.getWarrantyDate() != null && it.getWarrantyDate() > 0) {
             scv_warranty_period.setContent(DateTimeUtils.millis2Date(it.getWarrantyDate()));
         }
 
@@ -440,7 +450,6 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
     }
 
-
     @Override
     public void deviceAllSuc(List<DeviceBean> it) {
         LogUtils.json(it);
@@ -450,6 +459,15 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                 scv_up_assets.setTag(vo);
                 scv_up_assets.setContent(vo.getDeviceName());
             });
+
+            for (int i = 0; i < it.size(); i++) {
+                DeviceBean vo = it.get(i);
+                if (vo.getId().equals(deviceBean.getParentId())) {
+                    scv_up_assets.setTag(vo);
+                    scv_up_assets.setContent(vo.getDeviceName());
+
+                }
+            }
         }
     }
 
@@ -461,7 +479,6 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             finish();
         }
     }
-
 
     @Override
     public void assetTypeSuc(List<DictionaryBean> it) {
@@ -530,6 +547,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         }
     }
 
+    @Override
     public void uploadPhotoSus1(String it) {
         photoID1 = it;
     }

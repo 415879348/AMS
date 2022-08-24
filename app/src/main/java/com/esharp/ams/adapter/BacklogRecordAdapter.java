@@ -61,6 +61,7 @@ public class BacklogRecordAdapter extends BaseAdapter<WorkOrderBean, BacklogReco
             } else {
                 tv_job_type.setText(ResUtils.getString(R.string.regular_maintenance));
             }
+
 //            -1:撤銷 0:結束 1:申請 2:審批 3:處理
             switch (it.getStep()) {
                 case -1 :
@@ -79,7 +80,8 @@ public class BacklogRecordAdapter extends BaseAdapter<WorkOrderBean, BacklogReco
                     tv_progress.setText(ResUtils.getString(R.string.processing));
                     break;
             }
-            itemView.setOnClickListener(v -> onItemOperate.onItemClick(it));
+
+            mtv_handle.setOnClickListener(v -> onItemOperate.onItemClick(it));
         }
     }
 

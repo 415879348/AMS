@@ -2,6 +2,7 @@ package com.esharp.ams.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -120,7 +121,7 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
 
     @Override
     public void onItemClick() {
-//        new Handler().postDelayed(() -> Objects.requireNonNull(mTabLayout.getTabAt(2)).select(),1000);
+        new Handler().postDelayed(() -> Objects.requireNonNull(mTabLayout.getTabAt(2)).select(),1000);
     }
 
     @Override

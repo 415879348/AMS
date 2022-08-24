@@ -11,6 +11,7 @@ import com.esharp.sdk.SPSdkUtil;
 import com.esharp.sdk.base.BaseActivity;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.response.AssetAlertVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.bean.response.DictionaryBean;
@@ -312,6 +313,11 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
 
     @Override
     public void workOrder(Object it) {
+        LogUtils.json(it);
+    }
+
+    @Override
+    public void end(AssetAlertVo it) {
         LogUtils.json(it);
     }
 

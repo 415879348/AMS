@@ -193,20 +193,19 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_date_of_manufacture.setContent(datetime);
-            });
+            }, DateTimeUtils.parseToLong(scv_warranty_period.getContent()), null);
         });
 
         scv_warranty_period.setOnItemClick(v -> {
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_warranty_period.setContent(datetime);
-            });
+            }, null, DateTimeUtils.parseToLong(scv_date_of_manufacture.getContent()));
         });
 
         mv_upload1.setOnClickListener(v -> {
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
-
             // 手动禁止权限下次会主动弹出权限窗口，代码禁止权限下次不会主动弹出权限窗口
             if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 selectPicture(iv_picture1, REQUEST_1);

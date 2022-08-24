@@ -142,6 +142,14 @@
                 />
 
             <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_up_assets"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/up_assets"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
+                />
+
+            <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_status"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"

@@ -3,6 +3,7 @@ package com.esharp.ams.contract;
 import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IHostView;
 import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.response.AssetAlertVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.bean.response.DictionaryBean;
@@ -41,6 +42,7 @@ public interface LaunchActContract {
         void device(DeviceVo it);
         void document(Object it);
         void workOrder(Object it);
+        void end(AssetAlertVo it);
     }
 
     interface View extends IHost {

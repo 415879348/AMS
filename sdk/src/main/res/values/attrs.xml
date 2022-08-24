@@ -36,8 +36,8 @@
         <attr name="spsdk_selector_hint" format="string|reference" />
         <attr name="spsdk_selector_content" format="string|reference" />
         <attr name="spsdk_selector_icon" format="reference" />
-<!--        <attr name="spsdk_selector_icon_width" format="dimension" />-->
-<!--        <enum name="spsdk_selector_icon_height" format="dimension" />-->
+        <attr name="spsdk_selector_icon_width" format="dimension" />
+        <attr name="spsdk_selector_icon_height" format="dimension" />
 
     </declare-styleable>
 

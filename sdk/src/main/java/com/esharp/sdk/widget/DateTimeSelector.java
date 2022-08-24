@@ -14,6 +14,8 @@ public class DateTimeSelector {
 
     public DateTimeListener mListener = null;
 
+    DatePickerDialog datePickerDialog = null;
+
     public interface DateTimeListener {
         void onDateTimeSelected(String datetime);
     }
@@ -26,15 +28,44 @@ public class DateTimeSelector {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);  //  得到当前日
 
         //  日期选择对话框
-        new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK, (view1, year1, month1, dayOfMonth) -> {
+        datePickerDialog = new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK, (view1, year1, month1, dayOfMonth) -> {
             //  这个方法是得到选择后的 年，月，日，分别对应着三个参数 — year、month、dayOfMonth
             LogUtils.i(year1 +"年"+ month1 +"月"+dayOfMonth+"日");
             String yyyyMMdd = year1 + getFullDate(month1+1, dayOfMonth);
             LogUtils.i(yyyyMMdd);
             mListener.onDateTimeSelected(DateTimeUtils.format(yyyyMMdd, DateTimeUtils.yyyyMMdd, DateTimeUtils.yyyy_MM_dd));
 //            showTimePickerDialog(context, yyyyMMdd);
-        }, year, month, day).show();   //  弹出日历对话框时，默认显示 年，月，日
+        }, year, month, day);
+        //  弹出日历对话框时，默认显示 年，月，日
+        datePickerDialog.show();
+    }
 
+    public DateTimeSelector(Context context, DateTimeListener listener, Long maxDate, Long minDate) {
+        mListener = listener;
+        Calendar calendar = Calendar.getInstance();     //  获取当前时间    —   年、月、日
+        int year = calendar.get(Calendar.YEAR);         //  得到当前年
+        int month = calendar.get(Calendar.MONTH);       //  得到当前月
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);  //  得到当前日
+
+        //  日期选择对话框
+        datePickerDialog = new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK, (view1, year1, month1, dayOfMonth) -> {
+            //  这个方法是得到选择后的 年，月，日，分别对应着三个参数 — year、month、dayOfMonth
+            LogUtils.i(year1 +"年"+ month1 +"月"+dayOfMonth+"日");
+            String yyyyMMdd = year1 + getFullDate(month1+1, dayOfMonth);
+            LogUtils.i(yyyyMMdd);
+            mListener.onDateTimeSelected(DateTimeUtils.format(yyyyMMdd, DateTimeUtils.yyyyMMdd, DateTimeUtils.yyyy_MM_dd));
+        }, year, month, day);
+
+        if (maxDate != null && maxDate != 0) {
+            datePickerDialog.getDatePicker().setMaxDate(maxDate);
+        }
+
+        if (minDate != null && minDate != 0) {
+            datePickerDialog.getDatePicker().setMinDate(minDate);
+        }
+
+        //  弹出日历对话框时，默认显示 年，月，日
+        datePickerDialog.show();
     }
 
     private void showTimePickerDialog(Context context, String yyyyMMdd) {

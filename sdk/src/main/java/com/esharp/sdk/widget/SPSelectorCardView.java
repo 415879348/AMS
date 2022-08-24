@@ -55,10 +55,19 @@ public class SPSelectorCardView extends RelativeLayout {
             content.setHint(attributes.getText(R.styleable.SPSelectorView_spsdk_selector_hint));
         }
 
-//        if (attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_width, 0) != 0) {
-//            RelativeLayout.LayoutParams layoutParams = (LayoutParams) right_image.getLayoutParams();
-//             layoutParams.width = attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_width, 0);
-//        }
+
+        RelativeLayout.LayoutParams layoutParams = (LayoutParams) right_image.getLayoutParams();
+
+        right_image.setLayoutParams(layoutParams);
+        if (attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_width, 0) != 0) {
+            layoutParams.width = (int) attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_width, 0);
+        }
+
+        if (attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_height, 0) != 0) {
+            layoutParams.height = (int) attributes.getDimension(R.styleable.SPSelectorView_spsdk_selector_icon_height, 0);
+        }
+
+        right_image.setLayoutParams(layoutParams);
 
         if (type == 0) {
             right_image.setVisibility(View.VISIBLE);
