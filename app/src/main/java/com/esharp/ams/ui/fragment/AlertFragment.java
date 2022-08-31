@@ -2,24 +2,20 @@ package com.esharp.ams.ui.fragment;
 
 import android.util.Pair;
 import android.view.View;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.AlertRecordAdapter;
-import com.esharp.ams.adapter.DoneRecordAdapter;
 import com.esharp.ams.contract.AlertContract;
-import com.esharp.ams.contract.DoneContract;
 import com.esharp.ams.contract.HomeContract;
+import com.esharp.ams.eventbus.EventAlert;
 import com.esharp.ams.presenter.AlertPresenter;
-import com.esharp.ams.presenter.DonePresenter;
-import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.base.BaseMvpFragment;
-import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.bean.response.AssetAlertVo;
-import com.esharp.sdk.bean.response.WorkOrderVo;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
-
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, HomeContract.IHost> implements AlertContract.View {
@@ -27,6 +23,12 @@ public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, Home
     @Override
     protected Pair<Integer, AlertContract.Presenter> layoutAndPresenter() {
         return Pair.create(R.layout.fragment_alert, new AlertPresenter(this));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
     private SwipyRefreshLayout refreshLayout;
@@ -39,6 +41,8 @@ public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, Home
 
     @Override
     protected void init(View view) {
+        EventBus.getDefault().register(this);
+
         refreshLayout = view.findViewById(R.id.refreshLayout);
         mRecyclerView = view.findViewById(R.id.recyclerView);
 
@@ -51,7 +55,9 @@ public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, Home
         });
 
         mRecyclerView.setAdapter(mAlertRecordAdapter = new AlertRecordAdapter(vo -> {
-
+            if (vo.getStatus() == 0) {
+                mPresenter.deviceAlertLogProcess(vo.getId());
+            }
         }));
 
         initData();
@@ -81,4 +87,15 @@ public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, Home
     public void refreshFinish() {
         if (refreshLayout != null) refreshLayout.setRefreshing(false);
     }
+
+    @Override
+    public void deviceAlertLogProcessSuc(boolean it) {
+        initData();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventAlert it) {
+        initData();
+    }
+
 }

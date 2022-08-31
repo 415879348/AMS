@@ -1,6 +1,7 @@
 package com.esharp.sdk.rxjava;
 
 import com.esharp.sdk.Constant;
+import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.bean.response.HttpResult;
 import com.esharp.sdk.http.HttpError;
 import com.esharp.sdk.http.HttpException;

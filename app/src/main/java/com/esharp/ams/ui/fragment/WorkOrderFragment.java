@@ -14,6 +14,7 @@ import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.WorkOrderContract;
 import com.esharp.ams.dialog.FilterWorkOrderDialog;
 import com.esharp.ams.dialog.WorkOrderHandleDialog;
+import com.esharp.ams.eventbus.EventBacklog;
 import com.esharp.ams.presenter.WorkOrderPresenter;
 import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.ams.ui.MainActivity;
@@ -27,6 +28,8 @@ import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +63,7 @@ public class WorkOrderFragment extends BaseMvpFragment<WorkOrderContract.Present
         Intent intent;
         if (result.getResultCode() == Activity.RESULT_OK && (intent = result.getData()) != null && (intent.getStringExtra(Constant.REFRESH_DATA)) != null) {
             initData();
+            EventBus.getDefault().post(new EventBacklog());
         }
     });
 

@@ -3,6 +3,7 @@ package com.esharp.sdk.bean.response;
 import com.esharp.sdk.dialog.ListPopWindow;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class UserVo extends ListPopWindow.Item implements Serializable {
 
@@ -34,6 +35,7 @@ public class UserVo extends ListPopWindow.Item implements Serializable {
     private String createTime;
     private String updateId;
     private String updateTime;
+    private List<String> companyIds;
 
     public String getId() {
         return id;
@@ -137,6 +139,14 @@ public class UserVo extends ListPopWindow.Item implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public List<String> getCompanyIds() {
+        return companyIds;
+    }
+
+    public void setCompanyIds(List<String> companyIds) {
+        this.companyIds = companyIds;
     }
 
     @Override

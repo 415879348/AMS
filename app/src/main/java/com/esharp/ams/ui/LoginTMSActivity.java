@@ -5,20 +5,22 @@ import android.content.Intent;
 import android.util.Pair;
 import android.widget.EditText;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.LoginActContract;
 import com.esharp.ams.presenter.LoginActPresenter;
 import com.esharp.sdk.SPConfig;
+import com.esharp.sdk.SPGlobalManager;
+import com.esharp.sdk.SPLocal;
 import com.esharp.sdk.SPSdkUtil;
-import com.esharp.sdk.base.BaseActivity;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.request.LoginVo;
-import com.esharp.sdk.bean.response.TokenVo;
+import com.esharp.sdk.bean.response.Token;
+import com.esharp.sdk.utils.LocalUtils;
 
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.content.ContextCompat;
 
-public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> implements LoginActContract.View {
+public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter> implements LoginActContract.View {
 
     @Override
     protected boolean isShowTitle() {
@@ -27,7 +29,7 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
 
 
     public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, LoginActivity.class));
+        context.startActivity(new Intent(context, LoginTMSActivity.class));
     }
 
     private EditText et_account;
@@ -40,17 +42,24 @@ public class LoginActivity extends BaseMvpActivity<LoginActContract.Presenter> i
 
         findViewById(R.id.mtv_login).setOnClickListener(v ->
 //                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
-                        mPresenter.login(new LoginVo("test", "test@123"))
+                mPresenter.login(new LoginVo("test", "123456"))
         );
     }
 
     @Override
     public void onLoginSuc(String it) {
-        SPSdkUtil.getInstance(this)
-                .setToken(new TokenVo(it))
-                .setConfig(new SPConfig())
-                .start();
-        MainActivity.startActivity(LoginActivity.this);
+
+        SPGlobalManager.refreshToken(new Token(it));
+        LogUtils.json(SPGlobalManager.getToken());
+
+        SPLocal spLocal = LocalUtils.getSystemLocal(LoginTMSActivity.this);
+        SPConfig sPConfig = SPConfig.newBuild()
+                .setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                .setLangCode(spLocal.getCode())
+                .build();
+
+        SPSdkUtil.getInstance(this).setConfig(sPConfig).start();
+        MainActivity.startActivity(LoginTMSActivity.this);
         finish();
     }
 

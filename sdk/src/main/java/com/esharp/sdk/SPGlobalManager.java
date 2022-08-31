@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
-import com.esharp.sdk.bean.response.TokenVo;
+import com.blankj.utilcode.util.LogUtils;
+import com.esharp.sdk.bean.response.Token;
+import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.utils.LocalUtils;
 import com.google.gson.Gson;
-
 import java.util.LinkedList;
 import java.util.List;
-
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
@@ -28,7 +28,7 @@ public class SPGlobalManager {
     private static Context sContext;
     private static SharedPreferences sPreferences;
     private final static List<Activity> activityStack = new LinkedList<>();
-    private static TokenVo mToken;
+    private static Token mToken;
     private static Integer sNightMode;
     private static SPLocal slocal;
     private static Integer tint;
@@ -40,33 +40,42 @@ public class SPGlobalManager {
         sPreferences = context.getSharedPreferences(Constant.SHARED_PREF_NAME, Context.MODE_PRIVATE);
     }
 
-    static void start(Context context, TokenVo token, SPConfig SPConfig) {
-        mToken = token;
-        sNightMode = SPConfig.getNightMode();
-        tint = SPConfig.getTint();
-        title = SPConfig.getTitle();
-        bottomRes = SPConfig.getBottomRes();
+    static void start(Context context, SPParams params, SPConfig spConfig) {
+        sNightMode = spConfig.getNightMode();
+        tint = spConfig.getPrimaryColor();
+        title = spConfig.getTitle();
+        bottomRes = spConfig.getBottomRes();
         sPreferences
                 .edit()
-                .putString(Constant.Authorization, new Gson().toJson(token))
                 .putInt(Constant.KEY_MODE_NIGHT, sNightMode)
                 .putString(Constant.KEY_TITLE, title)
                 .putInt(Constant.KEY_TINT, tint)
                 .putInt(Constant.KEY_BOTTOM_RES, bottomRes)
                 .apply();
-        if (SPConfig.getLangCode() != null) {
-            setLanguage(LocalUtils.getLocal(sContext, SPConfig.getLangCode()));
+        if (spConfig.getLangCode() != null) {
+            setLanguage(LocalUtils.getLocal(sContext, spConfig.getLangCode()));
         }
 //        context.startActivity(new Intent(context, MainActivity.class));
     }
 
-
-
-    public static TokenVo getToken() {
+    public static Token getToken() {
         if (mToken == null) {
-            mToken = new Gson().fromJson(sPreferences.getString(Constant.Authorization, null), TokenVo.class);
+            mToken = new Gson().fromJson(sPreferences.getString(Constant.Authorization, null), Token.class);
         }
         return mToken;
+    }
+
+    public static void refreshToken(Token token) {
+        mToken = token;
+        sPreferences
+                .edit()
+                .putString(Constant.Authorization, new Gson().toJson(token))
+                .apply();
+    }
+
+    public static void removeToken() {
+        sPreferences.edit().remove(Constant.Authorization).apply();
+        mToken = null;
     }
 
     public static void setNightMode(@AppCompatDelegate.NightMode int nightMode) {
@@ -94,6 +103,17 @@ public class SPGlobalManager {
     public static void setLanguage(SPLocal local) {
         SPGlobalManager.slocal = local;
         sPreferences.edit().putString(Constant.KEY_LANGUAGE, local.getCode()).apply();
+    }
+
+    public static UserVo getUserVo() {
+        return new Gson().fromJson(sPreferences.getString(Constant.KEY_USER, null), UserVo.class);
+    }
+
+    public static void setUserVo(UserVo it) {
+        sPreferences
+                .edit()
+                .putString(Constant.KEY_USER, new Gson().toJson(it))
+                .apply();
     }
 
     public static String getTitle() {
@@ -157,14 +177,10 @@ public class SPGlobalManager {
         mToken = null;
         Activity last = getLastActivity();
         for (Activity activity : activityStack) {
+            LogUtils.json(activity);
             activity.finish();
         }
         if (last != null)
             last.startActivity(new Intent(last, cls));
-    }
-
-    public static void logout() {
-        sPreferences.edit().remove(Constant.Authorization).apply();
-        mToken = null;
     }
 }

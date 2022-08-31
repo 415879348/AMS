@@ -4,7 +4,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.esharp.sdk.BuildConfig;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
-import com.esharp.sdk.bean.response.TokenVo;
+import com.esharp.sdk.bean.response.Token;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -55,13 +55,12 @@ public final class HttpService {
         return new OkHttpClient().newBuilder()
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER)
                 .addInterceptor(chain -> {
-                    TokenVo token = SPGlobalManager.getToken();
+                    Token token = SPGlobalManager.getToken();
 //                    LogUtils.json(token);
-
                     return chain.proceed(chain.request()
                             .newBuilder()
                             .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
-//                            .addHeader(Constant.Language, SPGlobalManager.getLanguage().getCode())//en/tc/sc
+                            .addHeader(Constant.Language, SPGlobalManager.getLanguage().getCode())//en/tc/sc
                             .build());
                 })
 //                .addInterceptor(new HttpLogInterceptor())

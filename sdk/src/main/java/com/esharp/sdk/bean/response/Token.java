@@ -1,9 +1,9 @@
 package com.esharp.sdk.bean.response;
 
-public class TokenVo {
+public class Token {
     private String token;
 
-    public TokenVo(String token) {
+    public Token(String token) {
         this.token = token;
     }
 

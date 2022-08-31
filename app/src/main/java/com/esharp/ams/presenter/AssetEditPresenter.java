@@ -23,17 +23,6 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
 
     @Override
     public void getData(String deviceId) {
-
-//        HttpService.get()
-//                .setDefaultCard(cardId)
-//                .lift(new HttpResultOperator<>())
-//                .flatMap(is -> HttpService.get().getPaymentCards())
-//                .lift(new HttpResultOperator<>())
-//                .compose(SchedulerUtils.io_main_single())
-//                .lift(new ProgressOperator<>(mView))
-//                .subscribe(new BaseObserver<>(mView, mView::showPaymentCards));
-
-
         HttpService.get().queryAppDevice(deviceId)
                 .lift(new HttpResultOperator<>())
                 .compose(SchedulerUtils.io_main_single())
@@ -116,6 +105,16 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
                 break;
         }
     }
+
+    @Override
+    public void deviceFieldValue(Map<String, String> params) {
+        HttpService.get().deviceFieldValue(params)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::deviceFieldSuc));
+    }
+
 
 
 }

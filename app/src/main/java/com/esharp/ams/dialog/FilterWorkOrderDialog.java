@@ -140,14 +140,14 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_date_from.setContent(datetime);
-            });
+            }, DateTimeUtils.parseToLong(scv_date_to.getContent()), null);
         });
 
         scv_date_to.setOnItemClick(v -> {
             new DateTimeSelector(v.getContext(), datetime -> {
                 LogUtils.json(datetime);
                 scv_date_to.setContent(datetime);
-            });
+            }, null, DateTimeUtils.parseToLong(scv_date_from.getContent()));
         });
 
         HttpService.get().userAll()
@@ -214,21 +214,12 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
 
             Map<String, String> map = new HashMap<>();
 
-
             map.put("titleOrNumber", titleOrNumber);
             map.put("handlerId", handlerId);
             map.put("type", type);
             map.put("step", step);
             map.put("startTime", startTime);
             map.put("endTime", endTime);
-
-//            if (!TextUtils.isEmpty(titleOrNumber)
-//                    && !TextUtils.isEmpty(handlerId)
-//                    && !TextUtils.isEmpty(type)
-//                    && !TextUtils.isEmpty(step)
-//                    && !TextUtils.isEmpty(startTime)
-//                    && !TextUtils.isEmpty(endTime)) {
-//            }
 
             LogUtils.json(map);
             it.onClick(map);

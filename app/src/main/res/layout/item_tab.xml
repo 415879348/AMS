@@ -32,7 +32,7 @@
         android:background="@drawable/spsdk_shape_circle_red"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="@dimen/spsdk_ts_12"
+        android:textSize="@dimen/spsdk_ts_10"
         tools:visibility="visible"
         tools:text="99"
         />

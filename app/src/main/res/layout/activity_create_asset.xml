@@ -97,19 +97,25 @@
             android:id="@+id/cev_l"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/size_l"/>
+            app:spsdk_card_edit_hint="@string/size_l"
+            app:spsdk_card_edit_content_type="number"
+            />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_w"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/size_w"/>
+            app:spsdk_card_edit_hint="@string/size_w"
+            app:spsdk_card_edit_content_type="number"
+            />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_h"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/size_h"/>
+            app:spsdk_card_edit_hint="@string/size_h"
+            app:spsdk_card_edit_content_type="number"
+            />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_place_of_production"
@@ -121,7 +127,9 @@
             android:id="@+id/cev_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/weight"/>
+            app:spsdk_card_edit_hint="@string/weight"
+            app:spsdk_card_edit_content_type="number"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,7 +175,23 @@
             android:id="@+id/cev_remark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/remark"/>
+            app:spsdk_card_edit_hint="@string/remark"
+            app:spsdk_card_edit_content_type="text"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_upload"
+            android:textColor="@color/spsdk_color_red"
+            android:layout_marginStart="@dimen/spsdk_dp_10"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -196,6 +220,20 @@
                android:layout_marginStart="@dimen/spsdk_dp_5"
                android:src="@mipmap/spsdk_pic_error"
                />
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_delete1"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_35"
+                android:layout_marginStart="@dimen/spsdk_dp_10"
+                android:paddingHorizontal="@dimen/spsdk_dp_5"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/delete_picture"
+                android:textSize="@dimen/spsdk_ts_14"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_5"
+                app:stv_solid="@color/spsdk_color_blue" />
        </LinearLayout>
 
         <LinearLayout
@@ -225,6 +263,20 @@
                 android:layout_marginStart="@dimen/spsdk_dp_5"
                 android:src="@mipmap/spsdk_pic_error"
                 />
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_delete2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_35"
+                android:layout_marginStart="@dimen/spsdk_dp_10"
+                android:paddingHorizontal="@dimen/spsdk_dp_5"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/delete_picture"
+                android:textSize="@dimen/spsdk_ts_14"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_5"
+                app:stv_solid="@color/spsdk_color_blue" />
         </LinearLayout>
 
         <LinearLayout
@@ -254,6 +306,20 @@
                 android:layout_marginStart="@dimen/spsdk_dp_5"
                 android:src="@mipmap/spsdk_pic_error"
                 />
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_delete3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_35"
+                android:layout_marginStart="@dimen/spsdk_dp_10"
+                android:paddingHorizontal="@dimen/spsdk_dp_5"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/delete_picture"
+                android:textSize="@dimen/spsdk_ts_14"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_5"
+                app:stv_solid="@color/spsdk_color_blue" />
         </LinearLayout>
 
         <LinearLayout

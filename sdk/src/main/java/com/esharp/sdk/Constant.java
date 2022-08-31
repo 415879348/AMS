@@ -16,14 +16,13 @@ public interface Constant {
     String KEY_TITLE = "key_title";
     String KEY_TINT = "key_tint";
     String KEY_BOTTOM_RES = "key_bottom_res";
+    String KEY_USER= "key_user";
 
     String Authorization = "Authorization";
     String TOKEN_HEAD_BEARER = "Bearer ";
     String Language = "lang";
     String TAG = "tag";
     String DATA = "data";
-
-    String RESPONSE_CODE_SUCCESS = "000000";
 
     int DEFAULT_PAGE_SIZE = 10;
 
@@ -50,16 +49,17 @@ public interface Constant {
         String clientSecret = "123456";
     }
 
+
     SPLocal EN = new SPLocal("en", "English", Locale.ENGLISH);
     SPLocal TC = new SPLocal("tc", "中文繁體", new Locale("zh", "HK"));
     SPLocal SC = new SPLocal("sc", "中文简体", Locale.SIMPLIFIED_CHINESE);
     SPLocal[] language = new SPLocal[]{EN, TC, SC};
 
+    String RESPONSE_CODE_SUCCESS = "000000";
+    String RESPONSE_AUTHENTICATION_FAILED = "070003";
 
     String KEY_CURRENT = "current";
     String KEY_SIZE = "size";
-
-
 
     int SIZE = 20;
     String REFRESH_DATA = "REFRESH_DATA";

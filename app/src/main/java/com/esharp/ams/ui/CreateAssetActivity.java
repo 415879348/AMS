@@ -6,31 +6,33 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.SizeUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.CreateAssetContract;
 import com.esharp.ams.presenter.CreateAssetPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
-import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.response.DeviceBean;
+import com.esharp.sdk.bean.response.DeviceFieldValueBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
+import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.FileUtils;
@@ -71,9 +73,11 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     SPCardEditView cev_number, cev_name, cev_l, cev_w, cev_h, cev_weight, cev_location, cev_place_of_production, cev_remark, cev_color;
 
-    MyTextView mtv_generate, mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3;
+    MyTextView mtv_generate, mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3, mv_delete1, mv_delete2, mv_delete3;
 
     ImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
+
+    LinearLayout ll_field;
 
     String photoID1 = "";
     String photoID2 = "";
@@ -81,6 +85,8 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
     private ListPopWindow<DeviceBean> assetPop;
+
+    private List<DeviceFieldValueBean> deviceFieldValueForms = new ArrayList<>();
 
     public static final int REQUEST_1 = 101;
     public static final int REQUEST_2 = 102;
@@ -107,16 +113,21 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         scv_date_of_manufacture = findViewById(R.id.scv_date_of_manufacture);
         scv_warranty_period = findViewById(R.id.scv_warranty_period);
         cev_remark = findViewById(R.id.cev_remark);
+        ll_field = findViewById(R.id.ll_field);
 
         cev_color = findViewById(R.id.cev_color);
         iv_color = findViewById(R.id.iv_color);
         mv_reset = findViewById(R.id.mv_reset);
         mv_confirm = findViewById(R.id.mv_confirm);
+
         mv_upload1 = findViewById(R.id.mv_upload1);
+        mv_delete1 = findViewById(R.id.mv_delete1);
         iv_picture1 = findViewById(R.id.iv_picture1);
         mv_upload2 = findViewById(R.id.mv_upload2);
+        mv_delete2 = findViewById(R.id.mv_delete2);
         iv_picture2 = findViewById(R.id.iv_picture2);
         mv_upload3 = findViewById(R.id.mv_upload3);
+        mv_delete3= findViewById(R.id.mv_delete3);
         iv_picture3 = findViewById(R.id.iv_picture3);
 
         mtv_generate.setOnClickListener(v -> {
@@ -178,9 +189,9 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
         scv_up_assets.setOnItemClick(v -> {
             if (assetPop == null) {
+                mPresenter.deviceAll();
                 return;
             }
-
             DeviceBean vo = (DeviceBean) v.getTag();
             if (vo == null) {
                 assetPop.show(scv_up_assets, "");
@@ -201,6 +212,36 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 LogUtils.json(datetime);
                 scv_warranty_period.setContent(datetime);
             }, null, DateTimeUtils.parseToLong(scv_date_of_manufacture.getContent()));
+        });
+
+         mv_delete1.setOnClickListener(v -> {
+            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID1 = "";
+                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
+                        dialog.dismiss();
+                    }, true).create().show();
+        });
+
+        mv_delete2.setOnClickListener(v -> {
+            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID2 = "";
+                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
+                        dialog.dismiss();
+                    }, true).create().show();
+        });
+
+        mv_delete3.setOnClickListener(v -> {
+            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID3 = "";
+                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
+                        dialog.dismiss();
+                    }, true).create().show();
         });
 
         mv_upload1.setOnClickListener(v -> {
@@ -252,12 +293,23 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             scv_up_assets.setTag(null);
             assetPop = null;
 
+            photoID1 = "";
+            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
+            photoID2 = "";
+            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
+            photoID3 = "";
+            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
+
             cev_location.setContent("");
             cev_l.setContent("");
             cev_w.setContent("");
             cev_h.setContent("");
             cev_weight.setContent("");
+
             cev_color.setContent("");
+            iv_color.setBackgroundColor(ResUtils.getColor(R.color.spsdk_transparent_00));
+            iv_color.setTag(ColorUtils.int2RgbString(ResUtils.getColor(R.color.spsdk_color_blue)));
+
             cev_place_of_production.setContent("");
 
             scv_date_of_manufacture.setContent("");
@@ -325,6 +377,12 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             String warranty_period = scv_warranty_period.getContent();
             String remark = cev_remark.getContent();
 
+            for (int i = 0; i < deviceFieldValueForms.size(); i++) {
+                DeviceFieldValueBean vo = deviceFieldValueForms.get(i);
+                SPCardEditView view = (SPCardEditView) ll_field.getChildAt(i);
+                vo.setValue(view.getContent());
+            }
+
             DeviceInfoForm it = new DeviceInfoForm();
             it.setDeviceNumber(number);
             it.setDeviceName(name);
@@ -338,15 +396,22 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
             it.setWarranty(DateTimeUtils.parseToLong(warranty_period));
             it.setWeight(weight);
+            it.setDeviceFieldValueForms(deviceFieldValueForms);
 
             if (! TextUtils.isEmpty(cev_color.getContent())){
                 it.setColor(cev_color.getContent());
             }
 
             List<String> documentIds = new ArrayList<>();
-            documentIds.add(photoID1);
-            documentIds.add(photoID2);
-            documentIds.add(photoID3);
+            if (!TextUtils.isEmpty(photoID1)) {
+                documentIds.add(photoID1);
+            }
+            if (!TextUtils.isEmpty(photoID2)) {
+                documentIds.add(photoID2);
+            }
+            if (!TextUtils.isEmpty(photoID3)) {
+                documentIds.add(photoID3);
+            }
             it.setDocumentIds(documentIds);
 
             if (! TextUtils.isEmpty(size_l)){
@@ -388,6 +453,8 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 LogUtils.json(vo);
                 scv_type.setTag(vo);
                 scv_type.setContent(vo.getDictName());
+
+                mPresenter.deviceField(vo.getFeatures());
             });
         }
     }
@@ -428,6 +495,23 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 scv_up_assets.setTag(vo);
                 scv_up_assets.setContent(vo.getDeviceName());
             });
+        }
+    }
+
+    @Override
+    public void deviceFieldSuc(List<FieldVo> it) {
+        LogUtils.json(it);
+        ll_field.removeAllViews();
+        deviceFieldValueForms.clear();
+        for (int i = 0; i < it.size(); i++) {
+            FieldVo vo = it.get(i);
+            DeviceFieldValueBean fieldValueBean = new DeviceFieldValueBean();
+            fieldValueBean.setCode(vo.getCode());
+            fieldValueBean.setFieldId(vo.getId());
+            SPCardEditView v = new SPCardEditView(CreateAssetActivity.this);
+            v.setHint(vo.getFieldName());
+            deviceFieldValueForms.add(fieldValueBean);
+            ll_field.addView(v, new LinearLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         }
     }
 
@@ -532,23 +616,23 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
                             FileVo vo = new FileVo();
 
-                            switch (request) {
-                                case  REQUEST_1:
-                                    if (!TextUtils.isEmpty(photoID1)) {
-                                        vo.setId(photoID1);
-                                    }
-                                    break;
-                                case  REQUEST_2:
-                                    if (!TextUtils.isEmpty(photoID2)) {
-                                        vo.setId(photoID2);
-                                    }
-                                    break;
-                                case  REQUEST_3:
-                                    if (!TextUtils.isEmpty(photoID3)) {
-                                        vo.setId(photoID3);
-                                    }
-                                    break;
-                            }
+//                            switch (request) {
+//                                case  REQUEST_1:
+//                                    if (!TextUtils.isEmpty(photoID1)) {
+//                                        vo.setId(photoID1);
+//                                    }
+//                                    break;
+//                                case  REQUEST_2:
+//                                    if (!TextUtils.isEmpty(photoID2)) {
+//                                        vo.setId(photoID2);
+//                                    }
+//                                    break;
+//                                case  REQUEST_3:
+//                                    if (!TextUtils.isEmpty(photoID3)) {
+//                                        vo.setId(photoID3);
+//                                    }
+//                                    break;
+//                            }
 
                             vo.setType(0);
                             vo.setExtension("jpeg");

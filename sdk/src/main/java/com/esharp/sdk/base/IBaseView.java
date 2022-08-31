@@ -1,5 +1,7 @@
 package com.esharp.sdk.base;
 
+import com.esharp.sdk.http.HttpException;
+
 import org.jetbrains.annotations.Nullable;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ public interface IBaseView {
     void showProgress(@Nullable String msg);
 
     void dismissProgress();
+
+    void onAuthenticationFailed(HttpException e);
 
     void showToast(@Nullable String msg);
 

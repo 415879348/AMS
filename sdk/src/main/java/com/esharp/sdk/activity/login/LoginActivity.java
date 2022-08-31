@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.sdk.R;
 import com.esharp.sdk.base.BaseMvpActivity;
-import com.esharp.sdk.bean.response.TokenVo;
+import com.esharp.sdk.bean.response.Token;
 import com.esharp.sdk.widget.MyTextView;
 
 public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> implements LoginContract.View {
@@ -70,7 +70,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     }
 
     @Override
-    public void onLoginSuccess(TokenVo it) {
+    public void onLoginSuccess(Token it) {
         LogUtils.json(it);
 //        SPSdkUtil.getInstance(this)
 //                .setToken(it)

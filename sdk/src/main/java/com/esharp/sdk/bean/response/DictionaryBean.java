@@ -21,6 +21,7 @@ public class DictionaryBean extends ListPopWindow.Item implements Serializable {
     private String companyId;
     private String dictName;
     private String dictType;
+    private String features;
     private String active;
     private String sort;
     private String parentId;
@@ -97,6 +98,14 @@ public class DictionaryBean extends ListPopWindow.Item implements Serializable {
 
     public void setParentDictName(String parentDictName) {
         this.parentDictName = parentDictName;
+    }
+
+    public String getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(String features) {
+        this.features = features;
     }
 
     @Override

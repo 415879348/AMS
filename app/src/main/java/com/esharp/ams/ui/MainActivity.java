@@ -2,6 +2,7 @@ package com.esharp.ams.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -13,16 +14,27 @@ import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.MainFragmentPagerAdapter;
 import com.esharp.ams.contract.MainActContract;
+import com.esharp.ams.eventbus.EventAlert;
+import com.esharp.ams.eventbus.EventBacklog;
+import com.esharp.ams.factory.FragmentFactory;
 import com.esharp.ams.presenter.MainActPresenter;
+import com.esharp.ams.ui.fragment.HomeFragment;
+import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseActivity;
 import com.esharp.sdk.base.BaseMvpActivity;
+import com.esharp.sdk.bean.response.AssetAlertBean;
+import com.esharp.sdk.http.HttpException;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> implements MainActContract.IHost {
 
@@ -43,6 +55,25 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
 
     public static void startActivity(BaseActivity activity) {
         activity.startActivity(new Intent(activity, MainActivity.class));
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Bundle bundle = intent.getExtras();
+        if(bundle != null) {
+            AssetAlertBean assetAlertBean = (AssetAlertBean) bundle.getSerializable("AssetAlertBean");
+            LogUtils.json(assetAlertBean);
+            Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
+            ((HomeFragment)mPagerAdapter.getItem(0)).selectPage(2);
+            EventBus.getDefault().post(new EventAlert());
+        }
+        setIntent(intent);
+    }
+
+    @Override
+    public void onAuthenticationFailed(HttpException e) {
+        SPGlobalManager.logout(LoginTMSActivity.class);
     }
 
     NoScrollViewPager mViewPager;
@@ -118,15 +149,14 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
         return tab;
     }
 
-
     @Override
     public void onItemClick() {
         new Handler().postDelayed(() -> Objects.requireNonNull(mTabLayout.getTabAt(2)).select(),1000);
     }
 
     @Override
-    public void finish() {
-        super.finish();
-
+    protected void onDestroy() {
+        super.onDestroy();
+        FragmentFactory.mFragments.clear();
     }
 }

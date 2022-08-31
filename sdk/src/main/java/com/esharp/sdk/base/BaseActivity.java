@@ -16,6 +16,7 @@ import com.esharp.sdk.R;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.dialog.IBaseProgress;
 import com.esharp.sdk.dialog.ProgressDialog;
+import com.esharp.sdk.http.HttpException;
 import com.esharp.sdk.utils.ActivityUtil;
 import com.esharp.sdk.utils.LocalUtils;
 
@@ -120,6 +121,11 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public void dismissProgress() {
         if (baseProgress == null) return;
         this.runOnUiThread(() -> baseProgress.dismiss());
+    }
+
+    @Override
+    public void onAuthenticationFailed(HttpException e) {
+        this.runOnUiThread(() -> ToastUtils.showShort(e.getMessage()));
     }
 
     public void showToast(@Nullable final String msg) {

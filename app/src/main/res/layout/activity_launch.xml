@@ -3,38 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:orientation="vertical">-->
+<!--        <Space-->
+<!--            android:layout_width="1px"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="219" />-->
 
+<!--        <ImageView-->
+<!--            android:id="@+id/logo"-->
+<!--            android:layout_width="@dimen/spsdk_dp_100"-->
+<!--            android:layout_height="@dimen/spsdk_dp_100"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@mipmap/logo_wephone_app" />-->
 
-        <Space
-            android:layout_width="1px"
-            android:layout_height="0dp"
-            android:layout_weight="219" />
+<!--        <Space-->
+<!--            android:layout_width="1px"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="473" />-->
+<!--    </LinearLayout>-->
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="@dimen/spsdk_dp_100"
-            android:layout_height="@dimen/spsdk_dp_100"
-            android:scaleType="fitXY"
-            android:src="@mipmap/logo_wephone_app" />
-
-        <Space
-            android:layout_width="1px"
-            android:layout_height="0dp"
-            android:layout_weight="473" />
-    </LinearLayout>
-
-    <ImageView
+    <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/spsdk_dp_100"
-        android:scaleType="centerInside"/>
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/spsdk_ts_36"
+        android:text="AED"
+        />
 
 </RelativeLayout>

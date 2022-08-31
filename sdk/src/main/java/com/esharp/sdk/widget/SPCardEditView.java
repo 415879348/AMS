@@ -3,6 +3,7 @@ package com.esharp.sdk.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -48,17 +49,26 @@ public class SPCardEditView extends LinearLayout {
             et_edit.setText(attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_content));
         }
 
-        InputFilter filter = (source, start, end, dest, dstart, dend) -> {
-            String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
-            Pattern pattern = Pattern.compile(speChat);
-            Matcher matcher = pattern.matcher(source.toString());
-            if (matcher.find()) {
-                return "";
-            } else {
-                return null;
-            }
-        };
-        et_edit.setFilters(new InputFilter[]{filter});
+        int inputType = attributes.getInt(R.styleable.SPCardEditView_spsdk_card_edit_content_type, 0);
+
+        if (inputType != 0) {
+            et_edit.setInputType(inputType);
+        } else {
+            InputFilter filter = (source, start, end, dest, dstart, dend) -> {
+//              String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                String speChat = "[`~!@$%^&*()+=|{}':;',\\[\\]<>/?~！@￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if (matcher.find()) {
+                    return "";
+                } else {
+                    return null;
+                }
+            };
+            et_edit.setFilters(new InputFilter[]{filter});
+        }
+
+
     }
 
     public SPCardEditView setHint(String it) {

@@ -16,7 +16,7 @@ import com.bumptech.glide.signature.ObjectKey;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.R;
 import com.esharp.sdk.SPGlobalManager;
-import com.esharp.sdk.bean.response.TokenVo;
+import com.esharp.sdk.bean.response.Token;
 
 import java.io.File;
 
@@ -37,7 +37,7 @@ public class GlideUtils {
         if (TextUtils.isEmpty(subUrl)) {
             return;
         }
-        TokenVo token = SPGlobalManager.getToken();
+        Token token = SPGlobalManager.getToken();
         LogUtils.i(IHttpURL.getImageUrl(subUrl));
 //        LogUtils.i(token == null ? "hrss-token" : token.getToken(), token == null ? "hrss-" : token.getToken() + token.getToken());
 
@@ -57,7 +57,7 @@ public class GlideUtils {
     }
 
     public static void showQrCode(ImageView imageView, String url) {
-        TokenVo token = SPGlobalManager.getToken();
+        Token token = SPGlobalManager.getToken();
         Glide.with(imageView.getContext()).load(
                 new GlideUrl(url, new LazyHeaders.Builder()
                         .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
@@ -69,7 +69,7 @@ public class GlideUtils {
     }
 
     public static void downLoadImage(Context context, String url, SingleEmitter<File> emitter) {
-        TokenVo token = SPGlobalManager.getToken();
+        Token token = SPGlobalManager.getToken();
         Glide.with(context)
                 .asFile()
                 .load(new GlideUrl(url, new LazyHeaders.Builder()

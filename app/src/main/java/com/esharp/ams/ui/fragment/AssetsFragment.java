@@ -1,13 +1,13 @@
 package com.esharp.ams.ui.fragment;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.DrmInitData;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.ams.R;
@@ -27,11 +27,16 @@ import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
+import com.esharp.sdk.dialog.CustomDialogBuilder;
+import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,6 +76,11 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
     });
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     protected void init(View view) {
         refreshLayout = view.findViewById(R.id.refreshLayout);
         itv_create = view.findViewById(R.id.itv_create);
@@ -98,18 +108,23 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         });
 
         itv_delete.setOnClickListener(v -> {
-            List<DeviceBean> list = mAssetsRecordAdapter.getData();
-            ArrayList<String> ids = new ArrayList<>();
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).isCheck()) {
-                    ids.add(list.get(i).getId());
-                }
-            }
-            if (ids.size() > 0) {
-                IDListVo vo = new IDListVo();
-                vo.setIds(ids);
-                mPresenter.deleteDevice(vo);
-            }
+            new CustomDialogBuilder(mContext).setTitle(ResUtils.getString(R.string.is_delete_asset))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        List<DeviceBean> list = mAssetsRecordAdapter.getData();
+                        ArrayList<String> ids = new ArrayList<>();
+                        for (int i = 0; i < list.size(); i++) {
+                            if (list.get(i).isCheck()) {
+                                ids.add(list.get(i).getId());
+                            }
+                        }
+                        if (ids.size() > 0) {
+                            IDListVo vo = new IDListVo();
+                            vo.setIds(ids);
+                            mPresenter.deleteDevice(vo);
+                        }
+                        dialog.dismiss();
+                    }, true).create().show();
         });
 
         itv_filter.setOnClickListener(v -> {

@@ -4,6 +4,7 @@ import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IBaseView;
 import com.esharp.sdk.base.IHostView;
 import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
@@ -31,6 +32,8 @@ public interface CreateAssetContract {
         void uploadPhotoSus3(String it);
 
         void deviceAllSuc(List<DeviceBean> it);
+
+        void deviceFieldSuc(List<FieldVo> it);
     }
 
     interface Presenter extends IBasePresenter {
@@ -47,5 +50,7 @@ public interface CreateAssetContract {
         void uploadPhoto(int request, FileVo photo);
 
         void deviceAll();
+
+        void deviceField(String deviceTypeId);
     }
 }

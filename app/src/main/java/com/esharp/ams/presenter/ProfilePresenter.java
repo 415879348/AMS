@@ -24,6 +24,15 @@ public class ProfilePresenter extends BasePresenter<ProfileContract.View> implem
     }
 
     @Override
+    public void jpTest() {
+        HttpService.get().jpTest()
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::jpTest));
+    }
+
+    @Override
     public void logout() {
         HttpService.get().logout()
                 .lift(new HttpResultOperator<>())

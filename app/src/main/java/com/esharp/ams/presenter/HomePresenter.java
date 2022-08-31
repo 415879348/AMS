@@ -33,4 +33,12 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                 .compose(SchedulerUtils.io_main_single())
                 .subscribe(new BaseObserver<>(mView, mView::workOrderCountOver));
     }
+
+    @Override
+    public void deviceAlertLogCount(int status) {
+        HttpService.get().deviceAlertLogCount(status)
+                .map(new HttpFunction<>())
+                .compose(SchedulerUtils.io_main_single())
+                .subscribe(new BaseObserver<>(mView, mView::deviceAlertLogCountSuc));
+    }
 }

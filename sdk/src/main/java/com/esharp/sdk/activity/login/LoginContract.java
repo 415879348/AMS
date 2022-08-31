@@ -2,11 +2,11 @@ package com.esharp.sdk.activity.login;
 
 import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IBaseView;
-import com.esharp.sdk.bean.response.TokenVo;
+import com.esharp.sdk.bean.response.Token;
 
 public class LoginContract {
     interface View extends IBaseView {
-        void onLoginSuccess(TokenVo it);
+        void onLoginSuccess(Token it);
     }
 
     interface Presenter extends IBasePresenter {

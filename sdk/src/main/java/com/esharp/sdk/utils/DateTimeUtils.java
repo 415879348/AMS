@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import androidx.annotation.NonNull;
+
 /**
  * 功能描述：
  *
@@ -17,7 +19,7 @@ import java.util.TimeZone;
  */
 public final class DateTimeUtils {
 
-//    public static final String yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
+    public static final String yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
     public static final String yyyy_MM_dd = "yyyy-MM-dd";
 //    public static final String yyyyMMddHHmm = "yyyyMMddHHmm";
     public static final String yyyyMMdd = "yyyyMMdd";
@@ -81,6 +83,10 @@ public final class DateTimeUtils {
 
     public static String millis2Date(long millis) {
         return TimeUtils.millis2String(millis, yyyy_MM_dd);
+    }
+
+    public static String millis2Date(long millis, @NonNull final String pattern) {
+        return TimeUtils.millis2String(millis, pattern);
     }
 
 

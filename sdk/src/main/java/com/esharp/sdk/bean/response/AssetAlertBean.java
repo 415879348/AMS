@@ -1,6 +1,8 @@
 package com.esharp.sdk.bean.response;
 
-public class AssetAlertBean {
+import java.io.Serializable;
+
+public class AssetAlertBean implements Serializable {
         private String id;
         private String companyId;
         private String deviceName;

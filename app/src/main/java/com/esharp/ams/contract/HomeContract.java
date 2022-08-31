@@ -12,12 +12,14 @@ public interface HomeContract {
     interface View extends IBaseView {
         void workOrderCountProcess(Integer it);
         void workOrderCountOver(Integer it);
+        void deviceAlertLogCountSuc(Integer it);
     }
 
     interface Presenter extends IBasePresenter {
         void method();
         void workOrderCountProcess();
         void workOrderCountOver();
+        void deviceAlertLogCount(int status);
     }
 
 }

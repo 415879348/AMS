@@ -1,10 +1,14 @@
 package com.esharp.ams;
 
 import android.app.Application;
+import android.os.Build;
 
+import com.esharp.ams.notify.NotificationChannels;
 import com.esharp.sdk.SPSdkUtil;
 import com.esharp.sdk.utils.LocalUtils;
 import com.esharp.sdk.utils.ResUtils;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * 功能描述：
@@ -14,7 +18,7 @@ import com.esharp.sdk.utils.ResUtils;
  */
 public class App extends Application {
 
-    App mApp = null;
+    public static App mApp = null;
 
     @Override
     public void onCreate() {
@@ -23,9 +27,17 @@ public class App extends Application {
 //        UMConfigure.init(this, "611735131fee2e303c226b5f", null, UMConfigure.DEVICE_TYPE_PHONE, "");
 //        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
 //        LogUtils.getConfig().setLogSwitch(!BuildConfig.DEBUG);
+//        SPProfileMenus.setIProfileMenus(new ProfileMenus());
+
         SPSdkUtil.init(this);
         ResUtils.init(this);
         LocalUtils.initLocal(this);
-//        SPProfileMenus.setIProfileMenus(new ProfileMenus());
+
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannels.getInstance().createAllNotificationChannels(this);
+        }
     }
 }

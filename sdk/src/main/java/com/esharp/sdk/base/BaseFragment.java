@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.esharp.sdk.http.HttpException;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,6 +77,11 @@ public abstract class BaseFragment<H extends IHostView> extends AppCompatDialogF
     @Override
     public void dismissProgress() {
         mHostView.dismissProgress();
+    }
+
+    @Override
+    public void onAuthenticationFailed(HttpException e) {
+        mHostView.onAuthenticationFailed(e);
     }
 
     @Override

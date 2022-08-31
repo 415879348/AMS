@@ -23,5 +23,6 @@
     <color name="spsdk_color_yellow">#FFCC00</color>
     <color name="spsdk_color_red">#FF0000</color>
     <color name="spsdk_color_red_CC3333">#CC3333</color>
+    <color name="spsdk_color_red_FF6666">#55FF6666</color>
     <color name="spsdk_color_violet">#3366FF</color>
 </resources>

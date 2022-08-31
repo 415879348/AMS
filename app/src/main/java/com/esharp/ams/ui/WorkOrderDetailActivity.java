@@ -1,5 +1,6 @@
 package com.esharp.ams.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.esharp.ams.R;
 import com.esharp.ams.contract.WorkOrderDetailContract;
 import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.presenter.WorkOrderDetailPresenter;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UserVo;
@@ -27,6 +29,7 @@ import com.esharp.sdk.widget.SPShowTextView;
 
 import java.util.List;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.cardview.widget.CardView;
 
 public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailContract.Presenter> implements WorkOrderDetailContract.View {
@@ -37,16 +40,20 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     }
 
     public static void startActivity(Context context, WorkOrderBean it) {
-        startActivity(context, it, NORMAL);
+        startActivity(context, it, NORMAL, null);
     }
 
-    public static void startActivity(Context context, WorkOrderBean it, int mode) {
+    public static void startActivity(Context context, WorkOrderBean it, int mode, ActivityResultLauncher<Intent> mLauncher) {
         Intent intent = new Intent(context, WorkOrderDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("WorkOrderBean", it);
         bundle.putSerializable("Mode", mode);
         intent.putExtras(bundle);
-        context.startActivity(intent);
+        if (mLauncher != null) {
+            mLauncher.launch(intent);
+        } else {
+            context.startActivity(intent);
+        }
     }
 
     public static final int NORMAL = 0;
@@ -176,6 +183,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     @Override
     public void workOrderProcessSuc(Boolean it) {
         if (it) {
+            setResult(Activity.RESULT_OK, new Intent().putExtra(Constant.REFRESH_DATA, "success"));
             finish();
         }
     }

@@ -91,6 +91,16 @@ public class CreateAssetPresenter extends BasePresenter<CreateAssetContract.View
                 .subscribe(new BaseObserver<>(mView, mView::deviceAllSuc));
     }
 
+
+    @Override
+    public void deviceField(String deviceTypeId) {
+        HttpService.get().deviceField(deviceTypeId)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::deviceFieldSuc));
+    }
+
     @Override
     public void uploadPhoto(int request, FileVo photo) {
         Single<String> single =  HttpService.get().document(photo)

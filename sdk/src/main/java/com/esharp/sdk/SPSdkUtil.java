@@ -2,8 +2,6 @@ package com.esharp.sdk;
 
 import android.content.Context;
 
-import com.esharp.sdk.bean.response.TokenVo;
-
 /**
  * 功能描述：
  *
@@ -12,8 +10,8 @@ import com.esharp.sdk.bean.response.TokenVo;
  */
 public class SPSdkUtil {
     private Context context;
-    private TokenVo token;
     private SPConfig mSPConfig;
+    private SPParams mSPParams;
 
     public static void init(Context context) {
         SPGlobalManager.init(context);
@@ -29,24 +27,21 @@ public class SPSdkUtil {
         return spSdkUtil;
     }
 
-    public SPSdkUtil setToken(TokenVo token) {
-        this.token = token;
+    public SPSdkUtil setParams(SPParams spParams) {
+        this.mSPParams = spParams;
         return this;
     }
 
-    public SPSdkUtil setConfig(SPConfig SPConfig) {
-        this.mSPConfig = SPConfig;
+    public SPSdkUtil setConfig(SPConfig spConfig) {
+        this.mSPConfig = spConfig;
         return this;
     }
 
     public void start() {
-        if (token == null) {
-            throw new RuntimeException("token must not null");
-        }
         if (mSPConfig == null) {
             mSPConfig = new SPConfig();
         }
-        SPGlobalManager.start(context, token, mSPConfig);
+        SPGlobalManager.start(context, mSPParams, mSPConfig);
     }
 
 }

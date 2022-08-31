@@ -2,9 +2,7 @@ package com.esharp.ams.contract;
 
 import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IBaseView;
-import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.bean.response.AssetAlertVo;
-import com.esharp.sdk.bean.response.WorkOrderVo;
 
 public interface AlertContract {
     interface View extends IBaseView {
@@ -13,11 +11,13 @@ public interface AlertContract {
         void appendData(AssetAlertVo it);
 
         void refreshFinish();
+
+        void deviceAlertLogProcessSuc(boolean it);
     }
 
     interface Presenter extends IBasePresenter {
-
-
         void getData(int current);
+
+        void deviceAlertLogProcess(String id);
     }
 }

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 /**
  * 功能描述：
  *
- * @author (作者) someone
+ * @author (作者) fengchuanfang
  * 创建时间： 2021/9/11
  */
 public class SPConfig {
@@ -18,15 +18,11 @@ public class SPConfig {
     //语言
     private String langCode;
     //标题栏和按钮着色
-    private @ColorInt
-    int tint = Color.parseColor("#93B3AD");
+    private @ColorInt int primaryColor = Color.parseColor("#93B3AD");
     //页面顶部标题
     private String title;
     //底部图片
-    private @DrawableRes
-    int bottomRes;
-
-
+    private @DrawableRes int bottomRes;
 
     int getNightMode() {
         return nightMode;
@@ -36,8 +32,8 @@ public class SPConfig {
         return langCode;
     }
 
-    int getTint() {
-        return tint;
+    int getPrimaryColor() {
+        return primaryColor;
     }
 
     String getTitle() {
@@ -48,28 +44,43 @@ public class SPConfig {
         return bottomRes;
     }
 
-    public SPConfig setNightMode(int nightMode) {
-        this.nightMode = nightMode;
-        return this;
+    public static Build newBuild(){
+        return new Build();
     }
 
-    public SPConfig setLangCode(String langCode) {
-        this.langCode = langCode;
-        return this;
-    }
+    public static class Build{
+        private final SPConfig mSPConfig;
+        public Build(){
+            mSPConfig = new SPConfig();
+        }
 
-    public SPConfig setTint(int tint) {
-        this.tint = tint;
-        return this;
-    }
+        public Build setNightMode(@AppCompatDelegate.NightMode int nightMode) {
+            mSPConfig.nightMode = nightMode;
+            return this;
+        }
 
-    public SPConfig setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+        public Build setLangCode(String langCode) {
+            mSPConfig.langCode = langCode;
+            return this;
+        }
 
-    public SPConfig setBottomRes(int bottomRes) {
-        this.bottomRes = bottomRes;
-        return this;
+        public Build setPrimaryColor(@ColorInt int primaryColor) {
+            //mSPConfig.primaryColor = primaryColor;
+            return this;
+        }
+
+        public Build setTitle(String title) {
+            mSPConfig.title = title;
+            return this;
+        }
+
+        public Build setBottomRes(@DrawableRes int bottomRes) {
+            //mSPConfig.bottomRes = bottomRes;
+            return this;
+        }
+
+        public SPConfig build(){
+            return mSPConfig;
+        }
     }
 }

@@ -72,9 +72,10 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
             }
         });
 
-
         mPresenter.workOrderCountProcess();
         mPresenter.workOrderCountOver();
+//        状态 0：未处理 1：已处理
+        mPresenter.deviceAlertLogCount(0);
     }
 
     private TabLayout.Tab returnTab(TabLayout tabLayout, int position) {
@@ -82,26 +83,28 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
         View tabView = LayoutInflater.from(mContext).inflate(R.layout.item_tab, tabLayout, false);
         ImageView iv_icon = tabView.findViewById(R.id.iv_icon);
         TextView title = tabView.findViewById(R.id.tv_title);
-        TextView indicator = tabView.findViewById(R.id.count);
+        TextView tv_count = tabView.findViewById(R.id.count);
 
         switch (position) {
             case 0: {
                 title.setText(ResUtils.getString(R.string.backlog));
                 iv_icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_backlog));
-                indicator.setTextColor(ResUtils.getColor(R.color.white));
+                tv_count.setTextColor(ResUtils.getColor(R.color.white));
+                tv_count.setVisibility(View.INVISIBLE);
             }
             break;
             case 1: {
                 title.setText(ResUtils.getString(R.string.done));
                 iv_icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_done));
-                indicator.setTextColor(ResUtils.getColor(R.color.spsdk_main_color));
-                indicator.setBackground(null);
+                tv_count.setTextColor(ResUtils.getColor(R.color.spsdk_main_color));
+                tv_count.setBackground(null);
             }
             break;
             case 2: {
                 title.setText(ResUtils.getString(R.string.alert));
                 iv_icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_alert));
-                indicator.setTextColor(ResUtils.getColor(R.color.white));
+                tv_count.setTextColor(ResUtils.getColor(R.color.white));
+                tv_count.setVisibility(View.INVISIBLE);
             }
             break;
         }
@@ -112,14 +115,37 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
     @Override
     public void workOrderCountProcess(Integer it) {
         LogUtils.i(it);
-        TextView count = mTabLayout.getTabAt(0).view.findViewById(R.id.count);
-        count.setText(it+"");
+        TextView tv_count = mTabLayout.getTabAt(0).view.findViewById(R.id.count);
+        setBadge(tv_count, it);
     }
 
     @Override
     public void workOrderCountOver(Integer it) {
         LogUtils.i(it);
-        TextView count = mTabLayout.getTabAt(1).view.findViewById(R.id.count);
-        count.setText(it+"");
+        TextView tv_count = mTabLayout.getTabAt(1).view.findViewById(R.id.count);
+        setBadge(tv_count, it);
+    }
+
+    @Override
+    public void deviceAlertLogCountSuc(Integer it) {
+        LogUtils.i(it);
+        TextView tv_count = mTabLayout.getTabAt(2).view.findViewById(R.id.count);
+        setBadge(tv_count, it);
+    }
+
+    private void setBadge(TextView tv_count, int count) {
+        if (count == 0) {
+            tv_count.setVisibility(View.INVISIBLE);
+        } else if (count < 100){
+            tv_count.setVisibility(View.VISIBLE);
+            tv_count.setText(count+"");
+        } else {
+            tv_count.setVisibility(View.VISIBLE);
+            tv_count.setText("99+");
+        }
+    }
+
+    public void selectPage(int index) {
+        Objects.requireNonNull(mTabLayout.getTabAt(index)).select();
     }
 }

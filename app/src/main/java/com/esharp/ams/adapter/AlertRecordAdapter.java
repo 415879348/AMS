@@ -67,7 +67,12 @@ public class AlertRecordAdapter extends BaseAdapter<AssetAlertBean, OnClickCallb
                 tv_type.setText(ResUtils.getString(R.string.record_maintain));
             }
 
-            tv_occurrence_time.setText(DateTimeUtils.millis2Date(it.getCreateTime()));
+            //记录状态 0：未处理 1：已处理
+            if (it.getStatus() == 0) {
+                itemView.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_red));
+            }
+
+            tv_occurrence_time.setText(DateTimeUtils.millis2Date(it.getCreateTime(), DateTimeUtils.yyyy_MM_dd_HH_mm_ss));
 
             tv_related_assets.setText(it.getDeviceName());
 

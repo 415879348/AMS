@@ -13,6 +13,7 @@ import com.esharp.sdk.bean.response.AlertDetailVo;
 import com.esharp.sdk.bean.response.AlertVo;
 import com.esharp.sdk.bean.response.ApplyRecordVo;
 import com.esharp.sdk.bean.response.ApplyVo;
+import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.bean.response.AssetAlertVo;
 import com.esharp.sdk.bean.response.AttendanceDetailsVo;
 import com.esharp.sdk.bean.response.DepartmentVo;
@@ -134,7 +135,16 @@ public interface IApiService {
      * @return
      */
     @GET("device/field")
-    Single<HttpResult<List<FieldVo>>> deviceField(@Query("deviceTypeId") int deviceTypeId);
+    Single<HttpResult<List<FieldVo>>> deviceField(@Query("deviceTypeId") String deviceTypeId);
+
+    /**
+     * 資產修改用 字段查詢列表
+     * @param deviceId 资产主键
+     * @param deviceTypeId 資產類型 0:其他 1:雪櫃 2:大華設備 3:IOT網關
+     * @return
+     */
+    @GET("device/field/value")
+    Single<HttpResult<List<FieldVo>>> deviceFieldValue(@QueryMap Map<String, String> params);
 
     /**
      * 資產修改用 補充字段值查詢列表
@@ -176,15 +186,6 @@ public interface IApiService {
      */
     @POST("work/order")
     Single<HttpResult<Boolean>> createWorkOrder(@Body CreateWorkOrderVo it);
-
-
-//    /**
-//     * 查詢待處理工單
-//     * @param
-//     * @return
-//     */
-//    @GET("work/order/process")
-//    Single<HttpResult<WorkOrderVo>> workOrderProcess(@Query("current") int current, @Query("size") int size);
 
     /**
      * 處理工单
@@ -228,7 +229,6 @@ public interface IApiService {
     @GET("work/order/node/{orderId}")
     Single<HttpResult<List<NodeVo>>> workOrderNode(@Path("orderId") String orderId);
 
-
     /**
      * 主鍵查詢 所有工單列表(包括首頁和工單頁面)詳情頁面用到
      * @param id 工單主鍵
@@ -259,6 +259,25 @@ public interface IApiService {
      */
     @GET("device/alert/log")
     Single<HttpResult<AssetAlertVo>> deviceAlertLog(@QueryMap Map<String, String> params);
+
+    /**
+     * 资产警报记录总数
+     * @param status 0：未处理 1：已处理
+     * @return
+     */
+    @GET("device/alert/log/count")
+    Single<HttpResult<Integer>> deviceAlertLogCount(@Query("status") Integer status);
+
+    /**
+     * 處理工单
+     * @param
+     * @return
+     */
+    @POST("device/alert/log/process/{id}")
+    Single<HttpResult<Boolean>> deviceAlertLogProcess(@Path("id") String id);
+
+    @GET("http://182.92.123.13:8067/ams/jp/test")
+    Single<HttpResult<AssetAlertBean>> jpTest();
 
     /////////////////////////////
 

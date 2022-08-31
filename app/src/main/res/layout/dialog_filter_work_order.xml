@@ -44,8 +44,7 @@
             >
             <com.esharp.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_handler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/spsdk_selector_card"
                 app:spsdk_selector_hint="@string/handler"
                 app:spsdk_selector_icon="@mipmap/arrow_down"
                 />
@@ -64,6 +63,8 @@
                 android:layout_height="wrap_content"
                 app:spsdk_selector_hint="@string/job_type"
                 app:spsdk_selector_icon="@mipmap/arrow_down"
+                app:spsdk_selector_icon_width="@dimen/spsdk_dp_25"
+                app:spsdk_selector_icon_height="@dimen/spsdk_dp_25"
                 />
 
             <com.esharp.sdk.widget.SPSelectorCardView
@@ -73,6 +74,8 @@
                 android:layout_height="wrap_content"
                 app:spsdk_selector_hint="@string/progress"
                 app:spsdk_selector_icon="@mipmap/arrow_down"
+                app:spsdk_selector_icon_width="@dimen/spsdk_dp_25"
+                app:spsdk_selector_icon_height="@dimen/spsdk_dp_25"
                 />
         </LinearLayout>
 
@@ -107,7 +110,8 @@
             android:layout_height="@dimen/spsdk_dp_35"
             android:layout_marginTop="@dimen/spsdk_dp_100"
             android:layout_gravity="center_horizontal"
-            android:padding="@dimen/spsdk_dp_5"
+            android:paddingHorizontal="@dimen/spsdk_dp_10"
+            android:paddingTop="@dimen/spsdk_dp_10"
             android:src="@mipmap/arrow_down" />
 
     </LinearLayout>

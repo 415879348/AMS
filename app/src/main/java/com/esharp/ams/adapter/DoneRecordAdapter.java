@@ -67,7 +67,9 @@ public class DoneRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCallbac
                 tv_job_type.setText(ResUtils.getString(com.esharp.ams.R.string.regular_maintenance));
             }
 
-            tv_completion_time.setText(DateTimeUtils.millis2Date(it.getOverTime()));
+            if (it.getOverTime() != null) {
+                tv_completion_time.setText(DateTimeUtils.millis2Date(it.getOverTime()));
+            }
 
             tv_completion_by.setText(it.getHandlerName());
 

@@ -6,14 +6,15 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.ColorUtils;
@@ -21,17 +22,24 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.AssetEditContract;
 import com.esharp.ams.presenter.AssetEditPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.response.DeviceBean;
+import com.esharp.sdk.bean.response.DeviceFieldValueBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
+import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.http.GlideUtils;
+import com.esharp.sdk.http.IHttpURL;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.FileUtils;
 import com.esharp.sdk.utils.PicImageEngine;
@@ -52,10 +60,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.activity.result.ActivityResultLauncher;
 import top.defaults.colorpicker.ColorPickerPopup;
+
+import static androidx.test.InstrumentationRegistry.getContext;
 
 public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Presenter> implements AssetEditContract.View {
 
@@ -76,11 +88,12 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
     SPCardEditView cev_number, cev_name, cev_location, cev_l, cev_w, cev_h, cev_weight, cev_place_of_production, cev_remark, cev_color;
 
-    MyTextView mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3;
+    MyTextView mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3, mv_delete1, mv_delete2, mv_delete3;
 
     DeviceBean deviceBean;
 
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
+
     private ListPopWindow<DeviceBean> assetPop;
 
     RadiusImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
@@ -92,6 +105,10 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
     public static final int REQUEST_1 = 101;
     public static final int REQUEST_2 = 102;
     public static final int REQUEST_3 = 103;
+
+    LinearLayout ll_field;
+
+    private List<DeviceFieldValueBean> deviceFieldValueForms = new ArrayList<>();
 
     @Override
     protected void init() {
@@ -115,17 +132,20 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         scv_warranty_period = findViewById(R.id.scv_warranty_period);
 
         cev_remark = findViewById(R.id.cev_remark);
-
+        ll_field = findViewById(R.id.ll_field);
         cev_color = findViewById(R.id.cev_color);
         iv_color = findViewById(R.id.iv_color);
         mv_reset = findViewById(R.id.mv_reset);
         mv_confirm = findViewById(R.id.mv_confirm);
 
         mv_upload1 = findViewById(R.id.mv_upload1);
+        mv_delete1 = findViewById(R.id.mv_delete1);
         iv_picture1 = findViewById(R.id.iv_picture1);
         mv_upload2 = findViewById(R.id.mv_upload2);
+        mv_delete2 = findViewById(R.id.mv_delete2);
         iv_picture2 = findViewById(R.id.iv_picture2);
         mv_upload3 = findViewById(R.id.mv_upload3);
+        mv_delete3= findViewById(R.id.mv_delete3);
         iv_picture3 = findViewById(R.id.iv_picture3);
 
         iv_color.setTag(ColorUtils.int2RgbString(ResUtils.getColor(R.color.spsdk_color_blue)));
@@ -135,7 +155,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                     .enableBrightness(false) // Enable brightness slider or not
                     .enableAlpha(false) // Enable alpha slider or not
                     .okTitle(ResUtils.getString(R.string.choose))
-                    .cancelTitle(ResUtils.getString(R.string.cancel))
+                    .cancelTitle(ResUtils.getString(R.string.spsdk_cancel))
                     .showIndicator(true)
                     .showValue(false)
                     .build()
@@ -208,6 +228,36 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             }, null, DateTimeUtils.parseToLong(scv_date_of_manufacture.getContent()));
         });
 
+        mv_delete1.setOnClickListener(v -> {
+            new CustomDialogBuilder(AssetEditActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID1 = "";
+                        Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
+                        dialog.dismiss();
+                    }, true).create().show();
+        });
+
+        mv_delete2.setOnClickListener(v -> {
+            new CustomDialogBuilder(AssetEditActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID2 = "";
+                        Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
+                        dialog.dismiss();
+                    }, true).create().show();
+        });
+
+        mv_delete3.setOnClickListener(v -> {
+            new CustomDialogBuilder(AssetEditActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                    .setNegativeButton(null)
+                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                        photoID3 = "";
+                        Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
+                        dialog.dismiss();
+                    }, true).create().show();
+        });
+
         mv_upload1.setOnClickListener(v -> {
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
@@ -237,7 +287,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         });
 
         mv_reset.setOnClickListener(v -> {
-            cev_number.setContent("");
+
             cev_name.setContent("");
 
             scv_type.setContent("");
@@ -258,11 +308,23 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             scv_up_assets.setTag(null);
             assetPop = null;
 
+            photoID1 = "";
+            Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
+            photoID2 = "";
+            Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
+            photoID3 = "";
+            Glide.with(AssetEditActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
+
             cev_location.setContent("");
             cev_l.setContent("");
             cev_w.setContent("");
             cev_h.setContent("");
             cev_weight.setContent("");
+
+            cev_color.setContent("");
+            iv_color.setBackgroundColor(ResUtils.getColor(R.color.spsdk_transparent_00));
+            iv_color.setTag(ColorUtils.int2RgbString(ResUtils.getColor(R.color.spsdk_color_blue)));
+
             cev_place_of_production.setContent("");
 
             scv_date_of_manufacture.setContent("");
@@ -336,6 +398,12 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             String warranty_period = scv_warranty_period.getContent();
             String remark = cev_remark.getContent();
 
+            for (int i = 0; i < deviceFieldValueForms.size(); i++) {
+                DeviceFieldValueBean vo = deviceFieldValueForms.get(i);
+                SPCardEditView view = (SPCardEditView) ll_field.getChildAt(i);
+                vo.setValue(view.getContent());
+            }
+
             DeviceInfoForm it = new DeviceInfoForm();
             it.setId(deviceBean.getId());
             it.setDeviceNumber(number);
@@ -351,15 +419,22 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             it.setProdDate(DateTimeUtils.parseToLong(date_of_manufacture));
             it.setWarranty(DateTimeUtils.parseToLong(warranty_period));
             it.setWeight(weight);
+            it.setDeviceFieldValueForms(deviceFieldValueForms);
 
             if (! TextUtils.isEmpty(cev_color.getContent())){
                 it.setColor((String) cev_color.getContent());
             }
 
             List<String> documentIds = new ArrayList<>();
-            documentIds.add(photoID1);
-            documentIds.add(photoID2);
-            documentIds.add(photoID3);
+            if (!TextUtils.isEmpty(photoID1)) {
+                documentIds.add(photoID1);
+            }
+            if (!TextUtils.isEmpty(photoID2)) {
+                documentIds.add(photoID2);
+            }
+            if (!TextUtils.isEmpty(photoID3)) {
+                documentIds.add(photoID3);
+            }
             it.setDocumentIds(documentIds);
 
             if (! TextUtils.isEmpty(size_l)){
@@ -418,6 +493,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             cev_h.setContent(it.getHeight());
         }
 
+        LogUtils.i(cev_l.getContent(), cev_w.getContent(), cev_h.getContent());
         cev_weight.setContent(it.getWeight());
 
         cev_place_of_production.setContent(it.getProduction());
@@ -472,6 +548,34 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
     }
 
     @Override
+    public void deviceFieldSuc(List<FieldVo> it) {
+        LogUtils.json(it);
+        if (it == null || it.size() == 0) {
+            return;
+        }
+        ll_field.removeAllViews();
+        deviceFieldValueForms.clear();
+        for (int i = 0; i < it.size(); i++) {
+            FieldVo vo = it.get(i);
+            DeviceFieldValueBean fieldValueBean = new DeviceFieldValueBean();
+            fieldValueBean.setCode(vo.getCode());
+            fieldValueBean.setFieldId(vo.getId());
+            SPCardEditView v = new SPCardEditView(this);
+
+            if (vo.getDeviceFieldValue() != null) {
+                if (TextUtils.isEmpty(vo.getDeviceFieldValue().getValue())) {
+                    v.setHint(vo.getFieldName());
+                } else {
+                    v.setContent(vo.getDeviceFieldValue().getValue());
+                }
+            }
+
+            deviceFieldValueForms.add(fieldValueBean);
+            ll_field.addView(v, new LinearLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+        }
+    }
+
+    @Override
     public void updateDeviceSuc(boolean it) {
         LogUtils.json(it);
         if (it) {
@@ -495,6 +599,11 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                 if (vo.getId().equals(deviceBean.getDeviceTypeId())) {
                     scv_type.setTag(vo);
                     scv_type.setContent(vo.getDictName());
+
+                    Map<String, String> map = new HashMap<>();
+                    map.put("deviceId", deviceBean.getId());
+                    map.put("deviceTypeId", vo.getFeatures());
+                    mPresenter.deviceFieldValue(map);
                 }
             }
         }
@@ -550,6 +659,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
     @Override
     public void uploadPhotoSus1(String it) {
         photoID1 = it;
+        LogUtils.i(photoID1);
     }
 
     @Override
@@ -616,7 +726,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                     public void onResult(List<LocalMedia> result) {
                         if (result == null || result.isEmpty() || result.get(0) == null) return;
                         String photoPath = FileUtils.getPhotoPathFromLocal(result.get(0));
-                        LogUtils.i(result.get(0));
+
                         LogUtils.i(photoPath);
 
                         Uri sourceUri = Uri.fromFile(new File(photoPath));
@@ -638,26 +748,28 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                             //3.将压缩后的图片进行base64编码
                             byte[] bytes = bos.toByteArray();
                             String imgBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
-                            LogUtils.i(imgBase64);
+                            bos.reset();
+//                            LogUtils.i(imgBase64);
                             FileVo vo = new FileVo();
 
-                            switch (request) {
-                                case  REQUEST_1:
-                                    if (!TextUtils.isEmpty(photoID1)) {
-                                        vo.setId(photoID1);
-                                    }
-                                    break;
-                                case  REQUEST_2:
-                                    if (!TextUtils.isEmpty(photoID2)) {
-                                        vo.setId(photoID2);
-                                    }
-                                    break;
-                                case  REQUEST_3:
-                                    if (!TextUtils.isEmpty(photoID3)) {
-                                        vo.setId(photoID3);
-                                    }
-                                    break;
-                            }
+//                            switch (request) {
+//                                case  REQUEST_1:
+//                                    LogUtils.i(photoID1);
+//                                    if (!TextUtils.isEmpty(photoID1)) {
+//                                        vo.setId(photoID1);
+//                                    }
+//                                    break;
+//                                case  REQUEST_2:
+//                                    if (!TextUtils.isEmpty(photoID2)) {
+//                                        vo.setId(photoID2);
+//                                    }
+//                                    break;
+//                                case  REQUEST_3:
+//                                    if (!TextUtils.isEmpty(photoID3)) {
+//                                        vo.setId(photoID3);
+//                                    }
+//                                    break;
+//                            }
 
                             vo.setType(0);
                             vo.setExtension("jpeg");

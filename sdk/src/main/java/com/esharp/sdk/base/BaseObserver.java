@@ -1,5 +1,6 @@
 package com.esharp.sdk.base;
 
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.http.HttpException;
 
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -61,7 +62,11 @@ public class BaseObserver<T> implements Observer<T>, MaybeObserver<T>, SingleObs
         if (error != null) error.exec(e);
         if (e instanceof HttpException) {
             if (mView != null) {
-                mView.showToast(e.getMessage());
+                if (Constant.RESPONSE_AUTHENTICATION_FAILED.equals(((HttpException) e).getCode())) {
+                    mView.onAuthenticationFailed((HttpException) e);
+                } else {
+                    mView.showToast(e.getMessage());
+                }
             }
         }
         if (mView != null) {

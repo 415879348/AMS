@@ -14,7 +14,7 @@ import com.esharp.sdk.base.BaseFragment;
  */
 public class FragmentFactory {
 
-    private static SparseArray<BaseFragment> mFragments = new SparseArray<>();
+    public static SparseArray<BaseFragment> mFragments = new SparseArray<>();
 
     public static BaseFragment createFragment(int position){
 
