@@ -1,0 +1,130 @@
+<resources>
+    <string name="app_name">AMS</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="please_enter_account">請輸入賬號</string>
+    <string name="please_enter_password">請輸入密碼</string>
+    <string name="user_login">用戶登錄</string>
+    <string name="login">登錄</string>
+
+    <string name="tab_title_home">首頁</string>
+    <string name="tab_title_assets">資產</string>
+    <string name="tab_title_work_order">工單</string>
+    <string name="tab_title_profile">我的</string>
+
+    <string name="backlog">待辦</string>
+    <string name="done">已辦</string>
+    <string name="create">新建</string>
+    <string name="edit">編輯</string>
+    <string name="delete">刪除</string>
+    <string name="filter">過濾</string>
+
+    <string name="amount">數量</string>
+    <string name="normal">普通</string>
+    <string name="administrator">管理員</string>
+    <string name="phone_number">手機號碼</string>
+    <string name="user_name">用戶名稱</string>
+    <string name="sign_out">退出</string>
+    <string name="handle">處理</string>
+
+    <string name="job_number_name">工單編號&#047;名稱</string>
+    <string name="job_number">工單編號</string>
+    <string name="job_name">工單名稱</string>
+    <string name="job_type">工單類型</string>
+    <string name="job_handle">工單類型</string>
+    <string name="job_detail">工單詳情</string>
+    <string name="job_create">新建工單</string>
+    
+    <string name="job_fault">故障工單</string>
+    <string name="job_maintain">保養工單</string>
+    <string name="progress">進度</string>
+    <string name="operation">操作</string>
+    <string name="completion_time">完成時間</string>
+    <string name="completed_by">完成人員</string>
+
+    <string name="asset_number_name">資產編號/名稱</string>
+    <string name="asset_number">資產編號</string>
+    <string name="asset_color">顏色(#000000)</string>
+    <string name="asset_name">資產名稱</string>
+    <string name="asset_type">資產類型</string>
+    <string name="asset_detail">資產詳情</string>
+    <string name="asset_location">資產位置</string>
+    <string name="asset_create">新建資產</string>
+    <string name="asset_edit">編輯資產</string>
+    <string name="asset_information">資產資訊</string>
+    <string name="asset_select">選擇資產</string>
+    <string name="location">位置</string>
+    <string name="state">狀態</string>
+    <string name="repair_work_order">維修工單</string>
+    <string name="regular_maintenance">定時保養</string>
+
+    <string name="record_exception">異常記錄</string>
+    <string name="record_maintain">保養記錄</string>
+    <string name="over_temperature_alarm">超溫警報</string>
+    <string name="low_power">電量過低</string>
+    <string name="work_order_timeout">工單超時</string>
+
+    <string name="revocation">撤銷</string>
+    <string name="end">結束</string>
+    <string name="apply">申請</string>
+    <string name="approval">審批</string>
+    <string name="processing">處理</string>
+
+    <string name="regular">正常</string>
+    <string name="in_preparation">準備中</string>
+    <string name="abnormal">異常</string>
+    <string name="initialization_failed">初始化失敗，需要手動操作</string>
+
+    <string name="essential_information">基本資訊</string>
+
+    <string name="execution_information">執行資訊</string>
+    <string name="originator">發起人</string>
+    <string name="handler">處理人</string>
+    <string name="time_of_initiation">發起時間</string>
+    <string name="processing_time">處理時間</string>
+    <string name="remark">備註</string>
+    <string name="please_enter">請輸入</string>
+    <string name="assign">指派</string>
+    <string name="confirm">確定</string>
+    <string name="brand">品牌</string>
+    <string name="size">尺寸</string>
+    <string name="model">型號</string>
+    <string name="size_l">尺寸(長mm)</string>
+    <string name="size_w">尺寸(寬mm)</string>
+    <string name="size_h">尺寸(高mm)</string>
+    <string name="weight">重量</string>
+    <string name="up_assets">上級資產</string>
+    <string name="down_assets">下級資產</string>
+    <string name="place_of_production">生產地</string>
+    <string name="date_of_manufacture">生產日期</string>
+    <string name="warranty_period">保修期至</string>
+    <string name="reset">重置</string>
+    <string name="generate">生成</string>
+    <string name="upload_picture">上傳圖片</string>
+    <string name="delete_picture">刪除圖片</string>
+    <string name="picture">圖片</string>
+    <string name="creation_time">創建時間</string>
+    <string name="update_time">更新時間</string>
+    <string name="color">顏色</string>
+    <string name="from">從</string>
+    <string name="choose">選擇</string>
+    <string name="cancel">取消</string>
+    <string name="to">至</string>
+    <string name="alert">警報</string>
+    <string name="alert_describe">警報描述</string>
+    <string name="alert_type">警報類型</string>
+    <string name="occurrence_time">發生時間</string>
+    <string name="related_assets">關聯資產</string>
+    <string name="tip_upload">*上傳圖片格式只能為jpeg且大小不能超過1024KB，最多允許上傳3張圖片！</string>
+    <string name="is_delete_asset">確定刪除資產嗎?</string>
+    <string name="is_delete_photo">確定刪除圖片嗎?</string>
+
+</resources>
