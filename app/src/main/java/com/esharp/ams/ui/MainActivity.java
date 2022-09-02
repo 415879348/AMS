@@ -9,13 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.MainFragmentPagerAdapter;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.eventbus.EventAlert;
-import com.esharp.ams.eventbus.EventBacklog;
 import com.esharp.ams.factory.FragmentFactory;
 import com.esharp.ams.presenter.MainActPresenter;
 import com.esharp.ams.ui.fragment.HomeFragment;
@@ -27,14 +25,9 @@ import com.esharp.sdk.http.HttpException;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.Objects;
-
-import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
-import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> implements MainActContract.IHost {
 

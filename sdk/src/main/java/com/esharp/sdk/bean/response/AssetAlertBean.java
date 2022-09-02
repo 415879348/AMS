@@ -8,6 +8,10 @@ public class AssetAlertBean implements Serializable {
         private String deviceName;
         private String deviceNumber;
         private String deviceId;
+
+        /**
+         * 1是异常记录 2是定时保养记录
+         */
         private Integer type;
         private Integer errorType;
         private String joinId;

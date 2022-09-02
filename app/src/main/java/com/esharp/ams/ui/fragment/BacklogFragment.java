@@ -11,7 +11,6 @@ import com.esharp.ams.adapter.BacklogRecordAdapter;
 import com.esharp.ams.contract.BacklogContract;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.eventbus.EventBacklog;
-import com.esharp.ams.eventbus.EventHandleWork;
 import com.esharp.ams.presenter.BacklogPresenter;
 import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.Constant;

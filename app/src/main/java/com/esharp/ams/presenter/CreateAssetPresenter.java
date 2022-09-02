@@ -1,6 +1,5 @@
 package com.esharp.ams.presenter;
 
-import com.esharp.ams.contract.BacklogContract;
 import com.esharp.ams.contract.CreateAssetContract;
 import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.sdk.base.BaseObserver;
@@ -11,15 +10,9 @@ import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
 import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
-
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
 import io.reactivex.rxjava3.core.Single;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 public class CreateAssetPresenter extends BasePresenter<CreateAssetContract.View> implements CreateAssetContract.Presenter {
 

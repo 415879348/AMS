@@ -7,8 +7,6 @@ import com.esharp.sdk.bean.response.DeviceVo;
 
 import java.util.Map;
 
-import retrofit2.http.Body;
-
 public interface AssetsContract {
     interface View extends IBaseView {
         void refreshData(DeviceVo it);

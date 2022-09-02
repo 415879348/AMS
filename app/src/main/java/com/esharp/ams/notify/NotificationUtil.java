@@ -1,16 +1,13 @@
 package com.esharp.ams.notify;
 
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import androidx.core.app.NotificationCompat;
-import com.coorchice.library.utils.LogUtils;
 import com.esharp.ams.App;
 import com.esharp.ams.R;
-import com.esharp.sdk.utils.ResUtils;
+import androidx.core.app.NotificationCompat;
 
 /**
  *@author Albener

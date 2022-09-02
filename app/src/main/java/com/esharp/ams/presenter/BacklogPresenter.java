@@ -6,9 +6,7 @@ import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
-import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 

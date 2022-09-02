@@ -13,27 +13,21 @@ import com.esharp.ams.adapter.WorkOrderRecordAdapter;
 import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.WorkOrderContract;
 import com.esharp.ams.dialog.FilterWorkOrderDialog;
-import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.eventbus.EventBacklog;
 import com.esharp.ams.presenter.WorkOrderPresenter;
-import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.ams.ui.MainActivity;
 import com.esharp.ams.ui.WorkOrderCreateActivity;
 import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.WorkOrderVo;
-import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.recyclerview.widget.RecyclerView;

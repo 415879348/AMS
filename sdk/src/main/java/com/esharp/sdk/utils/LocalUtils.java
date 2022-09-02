@@ -5,12 +5,9 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.LocaleList;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.SPLocal;
-
 import java.util.Locale;
 
 /**
@@ -22,18 +19,29 @@ import java.util.Locale;
 public class LocalUtils {
 
     public static void initLocal(Context context) {
-        Locale locale = SPGlobalManager.getLanguage().getLocale();
-        if (!locale.equals(getCurrentLocale(context))) {
-            Locale.setDefault(locale);
-            Configuration configuration = context.getResources().getConfiguration();
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
-                configuration.setLocales(new LocaleList(locale));
-            } else {
-                configuration.setLocale(locale);
-            }
-            DisplayMetrics _displaymetrics = context.getResources().getDisplayMetrics();
-            context.getResources().updateConfiguration(configuration, _displaymetrics);
+//        Locale locale = SPGlobalManager.getLanguage().getLocale();
+//        if (!locale.equals(getCurrentLocale(context))) {
+//            Locale.setDefault(locale);
+//            Locale locale = getCurrentLocale(context);
+//            Configuration configuration = context.getResources().getConfiguration();
+//            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+//                configuration.setLocales(new LocaleList(locale));
+//            } else {
+//                configuration.setLocale(locale);
+//            }
+//            DisplayMetrics _displaymetrics = context.getResources().getDisplayMetrics();
+//            context.getResources().updateConfiguration(configuration, _displaymetrics);
+//        }
+
+        SPGlobalManager.setLanguage(LocalUtils.getSystemLocal(context));
+        Locale locale = getCurrentLocale(context);
+        Configuration configuration = context.getResources().getConfiguration();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            configuration.setLocales(new LocaleList(locale));
+        } else {
+            configuration.setLocale(locale);
         }
+        context.getResources().updateConfiguration(configuration, context.getResources().getDisplayMetrics());
     }
 
     //获取当前语言
@@ -52,11 +60,20 @@ public class LocalUtils {
         Locale sysLocale = getCurrentLocale(context);
         String language = sysLocale.getLanguage();
         if ("zh".equalsIgnoreCase(language)) {
-            String country = sysLocale.getCountry();
-            if (TextUtils.isEmpty(country) || country.equalsIgnoreCase("cn")) {
-                return Constant.SC;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { //7.0有多语言设置获取顶部的语言
+                String toLanguageTag = sysLocale.toLanguageTag();
+                if (toLanguageTag.contains("Hans")) {
+                    return Constant.SC;
+                } else {
+                    return Constant.TC;
+                }
             } else {
-                return Constant.TC;
+                String country = sysLocale.getCountry();
+                if (TextUtils.isEmpty(country) || country.equalsIgnoreCase("cn")) {
+                    return Constant.SC;
+                } else {
+                    return Constant.TC;
+                }
             }
         } else {
             return Constant.EN;

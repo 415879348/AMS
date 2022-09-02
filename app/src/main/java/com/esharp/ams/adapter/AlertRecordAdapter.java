@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.esharp.ams.R;
 import com.esharp.sdk.base.BaseAdapter;
 import com.esharp.sdk.bean.response.AssetAlertBean;
-import com.esharp.sdk.bean.response.WorkOrderBean;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.OnClickCallback;

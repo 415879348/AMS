@@ -127,17 +127,43 @@ public class WorkOrderCreateActivity extends BaseMvpActivity<WorkOrderCreateCont
 
         mv_confirm.setOnClickListener(v -> {
             String name = cev_name.getContent();
+            if (TextUtils.isEmpty(name)) {
+                showToast(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.job_name));
+                return;
+            }
 
             WorkOrderTypeVo typeVo = (WorkOrderTypeVo) scv_type.getTag();
-            String typeId = typeVo.getTypeId();
+            String typeId = "";
+            if (typeVo != null) {
+                typeId = typeVo.getTypeId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.job_type));
+                return;
+            }
 
             DeviceBean deviceBean = (DeviceBean) scv_asset_select.getTag();
-            String deviceId = deviceBean.getId();
+            String deviceId = "";
+            if (deviceBean != null) {
+                deviceId = deviceBean.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.asset_select));
+                return;
+            }
 
             UserVo handlerVo = (UserVo) scv_handler.getTag();
-            String handlerId = handlerVo.getId();
+            String handlerId = "";
+            if (handlerVo != null) {
+                handlerId = handlerVo.getId();
+            } else {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.handler));
+                return;
+            }
 
             String remark = cev_remark.getContent();
+            if (TextUtils.isEmpty(remark)) {
+                showToast(ResUtils.getString(R.string.please_enter) + ResUtils.getString(R.string.remark));
+                return;
+            }
 
             CreateWorkOrderVo it = new CreateWorkOrderVo();
             it.setTitle(name);

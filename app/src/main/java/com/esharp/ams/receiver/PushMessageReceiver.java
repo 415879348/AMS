@@ -2,16 +2,11 @@ package com.esharp.ams.receiver;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.notify.NotificationSender;
-import com.esharp.ams.ui.MainActivity;
-import com.esharp.sdk.Constant;
 import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.google.gson.Gson;
-
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
 import cn.jpush.android.api.JPushInterface;
@@ -104,19 +99,22 @@ public class PushMessageReceiver extends JPushMessageReceiver {
 
     @Override
     public void onCheckTagOperatorResult(Context context, JPushMessage jPushMessage) {
-        TagAliasOperatorHelper.getInstance().onCheckTagOperatorResult(context,jPushMessage);
+        Log.e(TAG, "[onCheckTagOperatorResult] " + jPushMessage);
+//        TagAliasOperatorHelper.getInstance().onCheckTagOperatorResult(context,jPushMessage);
         super.onCheckTagOperatorResult(context, jPushMessage);
     }
 
     @Override
     public void onAliasOperatorResult(Context context, JPushMessage jPushMessage) {
-        TagAliasOperatorHelper.getInstance().onAliasOperatorResult(context,jPushMessage);
+        Log.e(TAG, "[onAliasOperatorResult] " + jPushMessage);
+//        TagAliasOperatorHelper.getInstance().onAliasOperatorResult(context,jPushMessage);
         super.onAliasOperatorResult(context, jPushMessage);
     }
 
     @Override
     public void onMobileNumberOperatorResult(Context context, JPushMessage jPushMessage) {
-        TagAliasOperatorHelper.getInstance().onMobileNumberOperatorResult(context,jPushMessage);
+        Log.e(TAG, "[onMobileNumberOperatorResult] " + jPushMessage);
+//        TagAliasOperatorHelper.getInstance().onMobileNumberOperatorResult(context,jPushMessage);
         super.onMobileNumberOperatorResult(context, jPushMessage);
     }
 

@@ -2,12 +2,10 @@ package com.esharp.ams;
 
 import android.app.Application;
 import android.os.Build;
-
 import com.esharp.ams.notify.NotificationChannels;
 import com.esharp.sdk.SPSdkUtil;
 import com.esharp.sdk.utils.LocalUtils;
 import com.esharp.sdk.utils.ResUtils;
-
 import cn.jpush.android.api.JPushInterface;
 
 /**
@@ -30,8 +28,8 @@ public class App extends Application {
 //        SPProfileMenus.setIProfileMenus(new ProfileMenus());
 
         SPSdkUtil.init(this);
-        ResUtils.init(this);
         LocalUtils.initLocal(this);
+        ResUtils.init(this);
 
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
@@ -40,4 +38,5 @@ public class App extends Application {
             NotificationChannels.getInstance().createAllNotificationChannels(this);
         }
     }
+
 }

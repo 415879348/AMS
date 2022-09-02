@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.ui.MainActivity;
-import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.StepVo;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderTypeVo;

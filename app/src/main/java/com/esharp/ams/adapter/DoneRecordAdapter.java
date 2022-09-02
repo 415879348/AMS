@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.esharp.ams.R;
 import com.esharp.sdk.base.BaseAdapter;
-import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.WorkOrderBean;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.ResUtils;
@@ -69,6 +68,8 @@ public class DoneRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCallbac
 
             if (it.getOverTime() != null) {
                 tv_completion_time.setText(DateTimeUtils.millis2Date(it.getOverTime()));
+            } else {
+                tv_completion_time.setText("");
             }
 
             tv_completion_by.setText(it.getHandlerName());

@@ -5,7 +5,6 @@ import com.esharp.sdk.BuildConfig;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.bean.response.Token;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -56,11 +55,25 @@ public final class HttpService {
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER)
                 .addInterceptor(chain -> {
                     Token token = SPGlobalManager.getToken();
-//                    LogUtils.json(token);
+                    LogUtils.json(SPGlobalManager.getLanguage().getCode());
+//                    language 0英文 1繁体 2简体
+                    String languageCode = "";
+                    switch (SPGlobalManager.getLanguage().getCode()) {
+                        case "en":
+                            languageCode = "0";
+                            break;
+                        case "tc":
+                            languageCode = "1";
+                            break;
+                        case "sc":
+                            languageCode = "2";
+                            break;
+                    }
+
                     return chain.proceed(chain.request()
                             .newBuilder()
                             .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
-                            .addHeader(Constant.Language, SPGlobalManager.getLanguage().getCode())//en/tc/sc
+                            .addHeader(Constant.Language, languageCode)//en/tc/sc
                             .build());
                 })
 //                .addInterceptor(new HttpLogInterceptor())

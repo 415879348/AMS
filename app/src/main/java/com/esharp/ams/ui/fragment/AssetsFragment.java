@@ -1,20 +1,15 @@
 package com.esharp.ams.ui.fragment;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.DrmInitData;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.AssetsRecordAdapter;
-import com.esharp.ams.adapter.WorkOrderRecordAdapter;
 import com.esharp.ams.contract.AssetsContract;
-import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.dialog.FilterAssetDialog;
 import com.esharp.ams.presenter.AssetsPresenter;
@@ -29,20 +24,14 @@ import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.utils.ResUtils;
-import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.recyclerview.widget.RecyclerView;

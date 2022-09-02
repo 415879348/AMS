@@ -6,8 +6,6 @@ import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.http.HttpFunction;
 import com.esharp.sdk.http.HttpService;
-import com.esharp.sdk.rxjava.HttpResultOperator;
-import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
 
 import java.util.HashMap;

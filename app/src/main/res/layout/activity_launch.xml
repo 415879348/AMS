@@ -31,7 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="@dimen/spsdk_ts_36"
+        android:textSize="@dimen/spsdk_ts_lpn"
+        android:textStyle="bold"
         android:text="AED"
         />
 

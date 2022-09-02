@@ -67,6 +67,9 @@
 
     <string name="record_exception">异常记录</string>
     <string name="record_maintain">保养记录</string>
+    <string name="over_temperature_alarm">超温警报</string>
+    <string name="low_power">电量过低</string>
+    <string name="work_order_timeout">工单超时</string>
 
     <string name="revocation">撤銷</string>
     <string name="end">結束</string>

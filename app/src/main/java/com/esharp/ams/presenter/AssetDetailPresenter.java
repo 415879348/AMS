@@ -1,7 +1,6 @@
 package com.esharp.ams.presenter;
 
 import com.esharp.ams.contract.AssetDetailContract;
-import com.esharp.ams.contract.AssetsContract;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.http.HttpService;

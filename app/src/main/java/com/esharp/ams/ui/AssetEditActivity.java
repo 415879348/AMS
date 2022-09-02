@@ -22,8 +22,6 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.LazyHeaders;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.AssetEditContract;
 import com.esharp.ams.presenter.AssetEditPresenter;
@@ -31,7 +29,6 @@ import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
-import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceFieldValueBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
@@ -39,7 +36,6 @@ import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.http.GlideUtils;
-import com.esharp.sdk.http.IHttpURL;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.FileUtils;
 import com.esharp.sdk.utils.PicImageEngine;
@@ -55,7 +51,6 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -63,11 +58,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import androidx.activity.result.ActivityResultLauncher;
 import top.defaults.colorpicker.ColorPickerPopup;
-
-import static androidx.test.InstrumentationRegistry.getContext;
 
 public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Presenter> implements AssetEditContract.View {
 

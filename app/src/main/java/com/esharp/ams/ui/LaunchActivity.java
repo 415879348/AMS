@@ -51,7 +51,7 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
 //        mPresenter.method();
 
         Token token = SPGlobalManager.getToken();
-        LogUtils.json(SPGlobalManager.getToken());
+        LogUtils.json(token);
         if (token != null) {
             MainActivity.startActivity(this);
         } else {

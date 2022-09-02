@@ -12,7 +12,6 @@ import com.esharp.ams.presenter.DonePresenter;
 import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.WorkOrderVo;
-import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
 

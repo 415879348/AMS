@@ -18,6 +18,8 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
 
+        resConfigs "en", "zh-rCN", "zh-rHK"
+
         manifestPlaceholders = [
 //                appKey: 18442cddf5573039e8d8695e
 //                masterSecret: a97a3208c0071258f0160a11

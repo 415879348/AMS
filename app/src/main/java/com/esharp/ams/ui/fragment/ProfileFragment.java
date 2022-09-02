@@ -1,6 +1,5 @@
 package com.esharp.ams.ui.fragment;
 
-import android.content.Intent;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +10,6 @@ import com.esharp.ams.R;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.contract.ProfileContract;
 import com.esharp.ams.presenter.ProfilePresenter;
-
 import com.esharp.ams.ui.LoginTMSActivity;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseMvpFragment;

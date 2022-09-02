@@ -1,26 +1,17 @@
 package com.esharp.ams.dialog;
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.ToggleButton;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.ui.MainActivity;
-import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.bean.response.DictionaryBean;
-import com.esharp.sdk.bean.response.HandlerVo;
-import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.dialog.BaseAlertDialog;
 import com.esharp.sdk.dialog.ListPopWindow;
-import com.esharp.sdk.http.HttpFunction;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
 import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
-import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.OnClickCallback;
 import com.esharp.sdk.widget.SPCardEditView;
 import com.esharp.sdk.widget.SPSelectorCardView;
@@ -102,11 +93,6 @@ public class FilterAssetDialog extends BaseAlertDialog {
             map.put("deviceTypeId", deviceTypeId);
             map.put("location", location);
 
-//            if (TextUtils.isEmpty(titleOrNumber)
-//                 && TextUtils.isEmpty(deviceTypeId)
-//                 && TextUtils.isEmpty(location)) {
-//
-//            }
             LogUtils.json(map);
             it.onClick(map);
             cancel();
