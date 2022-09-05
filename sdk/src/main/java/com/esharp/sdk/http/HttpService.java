@@ -69,7 +69,7 @@ public final class HttpService {
                             languageCode = "2";
                             break;
                     }
-
+                    LogUtils.json(languageCode);
                     return chain.proceed(chain.request()
                             .newBuilder()
                             .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())

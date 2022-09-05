@@ -29,7 +29,7 @@
 
     <string name="amount">数量</string>
     <string name="normal">普通</string>
-    <string name="administrator">管理員</string>
+    <string name="administrator">管理员</string>
     <string name="phone_number">手机号码</string>
     <string name="user_name">用户名称</string>
     <string name="sign_out">退出</string>
@@ -62,8 +62,8 @@
     <string name="asset_select">选择资产</string>
     <string name="location">位置</string>
     <string name="state">状态</string>
-    <string name="repair_work_order">維修工單</string>
-    <string name="regular_maintenance">定時保養</string>
+    <string name="repair_work_order">维修工单</string>
+    <string name="regular_maintenance">定时保养</string>
 
     <string name="record_exception">异常记录</string>
     <string name="record_maintain">保养记录</string>
@@ -71,16 +71,16 @@
     <string name="low_power">电量过低</string>
     <string name="work_order_timeout">工单超时</string>
 
-    <string name="revocation">撤銷</string>
-    <string name="end">結束</string>
-    <string name="apply">申請</string>
-    <string name="approval">審批</string>
-    <string name="processing">處理</string>
+    <string name="revocation">撤销</string>
+    <string name="end">结束</string>
+    <string name="apply">申请</string>
+    <string name="approval">审批</string>
+    <string name="processing">处理</string>
 
     <string name="regular">正常</string>
-    <string name="in_preparation">準備中</string>
-    <string name="abnormal">異常</string>
-    <string name="initialization_failed">初始化失敗，需要手動操作</string>
+    <string name="in_preparation">准备中</string>
+    <string name="abnormal">异常</string>
+    <string name="initialization_failed">初始化失败，需要手动操作</string>
 
     <string name="essential_information">基本信息</string>
 

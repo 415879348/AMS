@@ -63,15 +63,6 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
     @Override
     public void onLoginSuccess(String it) {
         LogUtils.json(it);
-
-        SPLocal spLocal = LocalUtils.getSystemLocal(this);
-        SPConfig sPConfig = SPConfig.newBuild()
-                .setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                .setLangCode(spLocal.getCode())
-                .build();
-
-        SPSdkUtil.getInstance(this).setConfig(sPConfig).start();
-
         mPresenter.method2();
     }
 

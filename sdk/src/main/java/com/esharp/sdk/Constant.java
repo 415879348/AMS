@@ -20,7 +20,7 @@ public interface Constant {
 
     String Authorization = "Authorization";
     String TOKEN_HEAD_BEARER = "Bearer ";
-    String Language = "lang";
+    String Language = "language";
     String TAG = "tag";
     String DATA = "data";
 
