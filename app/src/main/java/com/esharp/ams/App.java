@@ -2,7 +2,10 @@ package com.esharp.ams;
 
 import android.app.Application;
 import android.os.Build;
+
+import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.notify.NotificationChannels;
+import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.SPSdkUtil;
 import com.esharp.sdk.utils.LocalUtils;
 import com.esharp.sdk.utils.ResUtils;
@@ -24,10 +27,15 @@ public class App extends Application {
         mApp = this;
 //        UMConfigure.init(this, "611735131fee2e303c226b5f", null, UMConfigure.DEVICE_TYPE_PHONE, "");
 //        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
-//        LogUtils.getConfig().setLogSwitch(!BuildConfig.DEBUG);
 //        SPProfileMenus.setIProfileMenus(new ProfileMenus());
 
-        SPSdkUtil.init(this);
+//        LogUtils.getConfig().setLogSwitch(!BuildConfig.DEBUG);
+        SPSdkUtil.init(this); // 初始化参数设置
+
+        if (SPGlobalManager.getLanguage() == null) {
+            SPGlobalManager.setLanguage(LocalUtils.getSystemLocal(this));
+        }
+
         LocalUtils.initLocal(this);
         ResUtils.init(this);
 

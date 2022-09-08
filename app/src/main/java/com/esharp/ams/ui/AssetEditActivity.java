@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
@@ -27,7 +28,7 @@ import com.esharp.ams.contract.AssetEditContract;
 import com.esharp.ams.presenter.AssetEditPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
-import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceFieldValueBean;
@@ -560,6 +561,24 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                 } else {
                     v.setContent(vo.getDeviceFieldValue().getValue());
                 }
+            }
+
+//            类型 0：整数 1：小数 2：字符串 3：日期 4：单选 5：下拉
+            switch (vo.getType()) {
+                case 0:
+                case 1:
+                    v.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    break;
+                case 2:
+                    // 默认就是字符串
+                    break;
+                case 3:
+                    v.setInputType(InputType.TYPE_CLASS_DATETIME);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
             }
 
             deviceFieldValueForms.add(fieldValueBean);

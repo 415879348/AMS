@@ -8,6 +8,7 @@ import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.DictionaryVo;
+import com.esharp.sdk.bean.response.LanguageVo;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
@@ -43,6 +44,8 @@ public interface LaunchActContract {
         void document(Object it);
         void workOrder(Object it);
         void end(AssetAlertVo it);
+        void common(Object it);
+        void language(List<LanguageVo> it);
     }
 
     interface View extends IHost {
@@ -52,6 +55,7 @@ public interface LaunchActContract {
     interface Presenter extends IBasePresenter {
         void method();
         void method2();
+        void language();
     }
 
 }

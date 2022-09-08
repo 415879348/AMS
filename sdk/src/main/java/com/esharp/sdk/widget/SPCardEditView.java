@@ -2,14 +2,18 @@ package com.esharp.sdk.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.sdk.R;
 import com.esharp.sdk.utils.ResUtils;
 
@@ -49,14 +53,23 @@ public class SPCardEditView extends LinearLayout {
             et_edit.setText(attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_content));
         }
 
-        int inputType = attributes.getInt(R.styleable.SPCardEditView_spsdk_card_edit_content_type, 0);
+        String maxLengthTip = "";
+        if (attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_max_length_tip) != null) {
+            maxLengthTip = (String) attributes.getText(R.styleable.SPCardEditView_spsdk_card_edit_max_length_tip);
+        }
 
+        int maxLength = attributes.getInt(R.styleable.SPCardEditView_spsdk_card_edit_max_length, -1);
+
+        int inputType = attributes.getInt(R.styleable.SPCardEditView_spsdk_card_edit_content_type, 0);
         if (inputType != 0) {
             et_edit.setInputType(inputType);
+            if (maxLength != -1) {
+                et_edit.setFilters(new InputFilter[] {new MyLengthFilter(maxLength, maxLengthTip)});
+            }
         } else {
             InputFilter filter = (source, start, end, dest, dstart, dend) -> {
 //              String speChat = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
-                String speChat = "[`~!@$%^&*()+=|{}':;',\\[\\]<>/?~！@￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+                String speChat = "[`~!@ $%^&*()+=|{}':;',\\[\\] <>/?~！@ ￥%……&*（）——+|{}【】‘；：”“’。，、？]";
                 Pattern pattern = Pattern.compile(speChat);
                 Matcher matcher = pattern.matcher(source.toString());
                 if (matcher.find()) {
@@ -65,14 +78,46 @@ public class SPCardEditView extends LinearLayout {
                     return null;
                 }
             };
-            et_edit.setFilters(new InputFilter[]{filter});
+            if (maxLength != -1) {
+                et_edit.setFilters(new InputFilter[] {new MyLengthFilter(maxLength, maxLengthTip), filter});
+            }
         }
 
+    }
+
+    private static class MyLengthFilter implements InputFilter {
+        int MAX_EN;
+        String tip;
+        public MyLengthFilter(int mAX_EN, String tip) {
+            super();
+            MAX_EN = mAX_EN;
+            this.tip = tip;
+        }
+
+        @Override
+        public CharSequence filter(CharSequence source, int start, int end,
+                                   Spanned dest, int dstart, int dend) {
+            LogUtils.i(source, start, end, dest, dstart, dend);
+
+            int destCount = dest.toString().length();
+            int sourceCount = source.toString().length();
+            if (destCount + sourceCount > MAX_EN) {
+                ToastUtils.showShort(String.format(tip, MAX_EN));
+                return "";
+            } else {
+                return source;
+            }
+        }
 
     }
 
     public SPCardEditView setHint(String it) {
         et_edit.setHint(it);
+        return this;
+    }
+
+    public SPCardEditView setInputType(int type) {
+        et_edit.setInputType(type);
         return this;
     }
 

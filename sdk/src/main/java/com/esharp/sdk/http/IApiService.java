@@ -1,6 +1,6 @@
 package com.esharp.sdk.http;
 
-import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.AmendApplyVo;
 import com.esharp.sdk.bean.request.CreateWorkOrderVo;
 import com.esharp.sdk.bean.request.FieldVo;
@@ -24,6 +24,7 @@ import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.DictionaryVo;
 import com.esharp.sdk.bean.response.HandlerVo;
 import com.esharp.sdk.bean.response.HttpResult;
+import com.esharp.sdk.bean.response.LanguageVo;
 import com.esharp.sdk.bean.response.LeaveTypeVo;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.RecordDetailVo;
@@ -139,8 +140,6 @@ public interface IApiService {
 
     /**
      * 資產修改用 字段查詢列表
-     * @param deviceId 资产主键
-     * @param deviceTypeId 資產類型 0:其他 1:雪櫃 2:大華設備 3:IOT網關
      * @return
      */
     @GET("device/field/value")
@@ -278,6 +277,9 @@ public interface IApiService {
 
     @GET("http://182.92.123.13:8067/ams/jp/test")
     Single<HttpResult<AssetAlertBean>> jpTest();
+
+    @GET("language")
+    Single<HttpResult<List<LanguageVo>>> language();
 
     /////////////////////////////
 

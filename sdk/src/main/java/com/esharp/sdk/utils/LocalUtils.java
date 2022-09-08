@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.LocaleList;
 import android.text.TextUtils;
+
+import com.blankj.utilcode.util.LogUtils;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.SPLocal;
@@ -33,8 +35,8 @@ public class LocalUtils {
 //            context.getResources().updateConfiguration(configuration, _displaymetrics);
 //        }
 
-        SPGlobalManager.setLanguage(LocalUtils.getSystemLocal(context));
-        Locale locale = getCurrentLocale(context);
+        Locale locale = SPGlobalManager.getLanguage().getLocale();
+        LogUtils.json(locale);
         Configuration configuration = context.getResources().getConfiguration();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
             configuration.setLocales(new LocaleList(locale));

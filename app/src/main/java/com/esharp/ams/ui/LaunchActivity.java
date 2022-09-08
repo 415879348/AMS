@@ -1,11 +1,14 @@
 package com.esharp.ams.ui;
 
+import android.os.Handler;
 import android.util.Pair;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.esharp.ams.App;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.LaunchActContract;
 import com.esharp.ams.presenter.LaunchActPresenter;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPConfig;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.SPLocal;
@@ -18,6 +21,7 @@ import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.DictionaryVo;
+import com.esharp.sdk.bean.response.LanguageVo;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.Token;
 import com.esharp.sdk.bean.response.UserVo;
@@ -50,19 +54,23 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
     protected void init() {
 //        mPresenter.method();
 
-        Token token = SPGlobalManager.getToken();
-        LogUtils.json(token);
-        if (token != null) {
-            MainActivity.startActivity(this);
-        } else {
-            LoginTMSActivity.startActivity(this);
-        }
-        finish();
+        mPresenter.language();
+
+//        Token token = SPGlobalManager.getToken();
+//        LogUtils.json(token);
+//        if (token != null) {
+//            MainActivity.startActivity(this);
+//        } else {
+//            LoginTMSActivity.startActivity(this);
+//        }
+//        finish();
     }
 
     @Override
     public void onLoginSuccess(String it) {
         LogUtils.json(it);
+        SPGlobalManager.refreshToken(new Token(it));
+        LogUtils.json(SPGlobalManager.getToken());
         mPresenter.method2();
     }
 
@@ -179,6 +187,46 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
     @Override
     public void end(AssetAlertVo it) {
         LogUtils.json(it);
+    }
+
+    @Override
+    public void common(Object it) {
+        LogUtils.json(it);
+
+    }
+
+    Handler handler = new Handler();
+    @Override
+    public void language(List<LanguageVo> it) {
+        LogUtils.json(it);
+//        zh_HK,zh_CN,en_US
+
+        SPLocal systemLocal = SPGlobalManager.getLanguage();
+        LogUtils.json(systemLocal);
+        LogUtils.json(systemLocal.getLocale().toString());
+
+        for (int i = 0; i < it.size(); i++) {
+            if (it.get(i).equals(systemLocal.getLocale().toString())) {
+                SPGlobalManager.setLanguage(systemLocal);
+//                更新application里的context就会全部页面起效果
+                LocalUtils.initLocal(App.mApp);
+                break;
+            } else {
+                SPGlobalManager.setLanguage(Constant.TC);
+
+                LocalUtils.initLocal(App.mApp);
+            }
+        }
+
+        Token token = SPGlobalManager.getToken();
+        LogUtils.json(token);
+        if (token != null) {
+            MainActivity.startActivity(LaunchActivity.this);
+        } else {
+            LoginTMSActivity.startActivity(LaunchActivity.this);
+        }
+        finish();
+
     }
 
 }

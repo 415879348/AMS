@@ -1,4 +1,4 @@
-package com.esharp.sdk.bean;
+package com.esharp.sdk.bean.request;
 
 import java.io.Serializable;
 

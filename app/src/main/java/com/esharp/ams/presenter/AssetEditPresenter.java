@@ -4,7 +4,7 @@ import com.esharp.ams.contract.AssetEditContract;
 import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
-import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;

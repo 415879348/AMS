@@ -49,7 +49,7 @@ public final class HttpService {
     private OkHttpClient getHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
-        LogUtils.i(BuildConfig.DEBUG);
+//        LogUtils.i(BuildConfig.DEBUG);
 
         return new OkHttpClient().newBuilder()
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER)

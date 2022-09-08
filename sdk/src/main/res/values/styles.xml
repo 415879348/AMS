@@ -87,6 +87,12 @@
         <item name="spsdk_selector_icon_height">@dimen/spsdk_dp_25</item>
     </style>
 
+    <style name="spsdk_edit_view_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="spsdk_card_edit_max_length">50</item>
+        <item name="spsdk_card_edit_max_length_tip">@string/the_maximum_character_length_is</item>
+    </style>
 
     <style name="Dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>

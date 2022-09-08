@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="networkOrSystemTimeIssueTryLater">抱歉！网络出现问题。请您检查网络连接和系统时间，并再试一次。谢谢！</string>
-    <string name="the_maximum_character_length_is">字符长度最大为%d</string>
+    <string name="the_maximum_character_length_is">字符長度最大為%d</string>
     <string name="ensureemailok">好的</string>
     <string name="spsdk_cancel">取消</string>
 

@@ -19,7 +19,7 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 
     @Override
     public void method() {
-        HttpService.get().login(new LoginVo("test", "test@123"))
+        HttpService.get().login(new LoginVo("test", "123456"))
                 .map(new HttpFunction<>())
                 .compose(SchedulerUtils.io_main_single())
                 .subscribe(new BaseObserver<>(mView, mView::onLoginSuccess));
@@ -194,15 +194,23 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
 //                .subscribe(new BaseObserver<>(mView, mView::document));
 
 
-        Map<String, String> map = new HashMap<>();
-        map.put("current", "1");
-        map.put("size", "20");
-        map.put("status", "0"); // 状态 0：未处理 1：已处理
-        HttpService.get().deviceAlertLog(map)
+//        Map<String, String> map = new HashMap<>();
+//        map.put("current", "1");
+//        map.put("size", "20");
+//        map.put("status", "0"); // 状态 0：未处理 1：已处理
+//        HttpService.get().deviceAlertLog(map)
+//                .map(new HttpFunction<>())
+//                .compose(SchedulerUtils.io_main_single())
+//                .subscribe(new BaseObserver<>(mView, mView::end));
+
+
+    }
+
+    @Override
+    public void language() {
+        HttpService.get().language()
                 .map(new HttpFunction<>())
                 .compose(SchedulerUtils.io_main_single())
-                .subscribe(new BaseObserver<>(mView, mView::end));
-
-
+                .subscribe(new BaseObserver<>(mView, mView::language));
     }
 }

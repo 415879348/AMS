@@ -190,7 +190,7 @@ public class WorkOrderCreateActivity extends BaseMvpActivity<WorkOrderCreateCont
                 if (! TextUtils.isEmpty(vo.getLocation())) {
                     cev_location.setContent(vo.getLocation());
                 } else {
-                    cev_location.setContent("无");
+                    cev_location.setContent("");
                 }
 
             });

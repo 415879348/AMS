@@ -2,7 +2,7 @@ package com.esharp.ams.contract;
 
 import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IBaseView;
-import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;

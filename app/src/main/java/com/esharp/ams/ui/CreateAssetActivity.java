@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
@@ -26,7 +27,7 @@ import com.esharp.ams.contract.CreateAssetContract;
 import com.esharp.ams.presenter.CreateAssetPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
-import com.esharp.sdk.bean.FileVo;
+import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceFieldValueBean;
@@ -510,6 +511,26 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             fieldValueBean.setFieldId(vo.getId());
             SPCardEditView v = new SPCardEditView(CreateAssetActivity.this);
             v.setHint(vo.getFieldName());
+
+            //            类型 0：整数 1：小数 2：字符串 3：日期 4：单选 5：下拉
+            switch (vo.getType()) {
+                case 0:
+                    v.setInputType(InputType.TYPE_CLASS_NUMBER);
+                case 1:
+                    v.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                    break;
+                case 2:
+                    // 默认就是字符串
+                    break;
+                case 3:
+                    v.setInputType(InputType.TYPE_CLASS_DATETIME);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+
             deviceFieldValueForms.add(fieldValueBean);
             ll_field.addView(v, new LinearLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
         }

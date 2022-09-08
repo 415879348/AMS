@@ -51,10 +51,10 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         SPGlobalManager.refreshToken(new Token(it));
         LogUtils.json(SPGlobalManager.getToken());
 
-        SPLocal spLocal = LocalUtils.getSystemLocal(LoginTMSActivity.this);
+//        SPLocal spLocal = LocalUtils.getSystemLocal(LoginTMSActivity.this);
         SPConfig sPConfig = SPConfig.newBuild()
                 .setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                .setLangCode(spLocal.getCode())
+//                .setLangCode(SPGlobalManager.getLanguage().getCode())
                 .build();
 
         SPSdkUtil.getInstance(this).setConfig(sPConfig).start();

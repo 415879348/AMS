@@ -28,15 +28,15 @@
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/asset_number"/>
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:spsdk_card_edit_hint="@string/asset_name"/>
+            style="@style/spsdk_edit_view_card"
+            app:spsdk_card_edit_hint="@string/asset_name"
+
+            />
 
         <com.esharp.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_type"
@@ -68,45 +68,39 @@
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/location"/>
 
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_l"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_l"
             app:spsdk_card_edit_content_type="number"
             />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_w"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_w"
             app:spsdk_card_edit_content_type="number"
             />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_h"
             app:spsdk_card_edit_content_type="number"
             />
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_place_of_production"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/place_of_production"/>
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/weight"
             app:spsdk_card_edit_content_type="number"
             />
@@ -121,6 +115,7 @@
 
             <com.esharp.sdk.widget.SPCardEditView
                 android:id="@+id/cev_color"
+                style="@style/spsdk_edit_view_card"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -153,10 +148,10 @@
 
         <com.esharp.sdk.widget.SPCardEditView
             android:id="@+id/cev_remark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/remark"
             app:spsdk_card_edit_content_type="text"
+            app:spsdk_card_edit_max_length="200"
             />
 
         <LinearLayout
