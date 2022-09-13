@@ -1,5 +1,6 @@
 package com.esharp.ams.ui.fragment;
 
+import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,6 +57,8 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
         mv_logout = view.findViewById(R.id.mv_logout);
         mv_logout.setOnClickListener(v -> mPresenter.logout());
 
+        setUserInfo(SPGlobalManager.getUserVo());
+
         mPresenter.auth();
     }
 
@@ -63,18 +66,25 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
     public void authSus(UserVo it) {
         LogUtils.json(it);
         SPGlobalManager.setUserVo(it);
+        setUserInfo(it);
 
 //        Set<String> accountSet = new HashSet<>();
 //        accountSet.add("alias_all");
 //        LogUtils.json(accountSet);
 //        调用 JPush 接口来设置别名。
 //        JPushInterface.setTags(mContext, 0, accountSet);
-        JPushInterface.setAlias(mContext, 0, "alias_all");
-        tv_user_name.setText(it.getUsername());
-        sv_phone.setDetail(it.getPhone());
-        sv_username.setDetail(it.getUsername());
 
-        mPresenter.jpTest();
+        new Handler().postDelayed(() -> JPushInterface.setAlias(mContext, 0, "alias_all"), 7000);
+
+//        mPresenter.jpTest();
+    }
+
+    private void setUserInfo(UserVo it) {
+        if (it != null) {
+            tv_user_name.setText(it.getUsername());
+            sv_phone.setDetail(it.getPhone());
+            sv_username.setDetail(it.getUsername());
+        }
     }
 
     @Override

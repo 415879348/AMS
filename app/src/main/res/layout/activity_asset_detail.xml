@@ -43,7 +43,7 @@
             <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_name"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spsdk_dp_25"
+                android:layout_height="wrap_content"
                 app:spsdk_show_text_title="@string/asset_name"
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
@@ -75,7 +75,7 @@
             <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_location"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spsdk_dp_25"
+                android:layout_height="wrap_content"
                 app:spsdk_show_text_title="@string/location"
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
@@ -120,7 +120,7 @@
             <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_place_of_production"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spsdk_dp_25"
+                android:layout_height="wrap_content"
                 app:spsdk_show_text_title="@string/place_of_production"
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
@@ -160,7 +160,7 @@
             <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_remark"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spsdk_dp_25"
+                android:layout_height="wrap_content"
                 app:spsdk_show_text_title="@string/remark"
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
@@ -169,6 +169,7 @@
                 android:id="@+id/ll_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/spsdk_dp_5"
                 android:orientation="horizontal">
 
                 <com.esharp.sdk.widget.SPShowTextView
@@ -179,18 +180,7 @@
                     android:layout_marginVertical="@dimen/spsdk_dp_5"
                     />
 
-<!--                <com.esharp.sdk.widget.RadiusImageView-->
-<!--                    android:id="@+id/riv_picture"-->
-<!--                    android:layout_width="@dimen/spsdk_dp_60"-->
-<!--                    android:layout_height="@dimen/spsdk_dp_60"-->
-<!--                    android:layout_marginLeft="@dimen/spsdk_dp_5"-->
-<!--                    android:layout_marginRight="@dimen/spsdk_dp_5"-->
-<!--                    android:layout_marginVertical="@dimen/spsdk_dp_5"-->
-<!--                    android:src="@mipmap/spsdk_pic_error"-->
-<!--                    app:spsdk_imageRadius="@dimen/spsdk_dp_5" />-->
-
             </LinearLayout>
-
 
             <com.esharp.sdk.widget.SPShowTextView
                 android:id="@+id/stv_creation_time"
