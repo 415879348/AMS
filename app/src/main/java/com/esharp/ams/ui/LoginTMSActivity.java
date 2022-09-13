@@ -40,8 +40,8 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         et_password = findViewById(R.id.et_password);
 
         findViewById(R.id.mtv_login).setOnClickListener(v ->
-                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
-//                mPresenter.login(new LoginVo("test", "123456"))
+//                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
+                mPresenter.login(new LoginVo("test", "123456"))
         );
     }
 

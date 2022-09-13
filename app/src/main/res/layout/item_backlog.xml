@@ -10,6 +10,8 @@
         android:id="@+id/tv_job_name"
         style="@style/spsdk_text_standard"
         android:text="@string/job_name"
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 
     <TextView

@@ -4,6 +4,7 @@ import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.AmendApplyVo;
 import com.esharp.sdk.bean.request.CreateWorkOrderVo;
 import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.request.Files;
 import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.request.LeaveVo;
 import com.esharp.sdk.bean.request.LoginVo;
@@ -250,6 +251,14 @@ public interface IApiService {
      */
     @POST("document")
     Single<HttpResult<String>> document(@Body FileVo it);
+
+    /**
+     * 添加文件
+     * @param
+     * @return
+     */
+    @POST("document/more")
+    Single<HttpResult<List<String>>> documentMore(@Body Files it);
 
     /**
      * 资产警报记录

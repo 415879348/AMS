@@ -40,6 +40,8 @@
         android:layout_weight="1"
         android:text="@string/asset_name"
         android:textColor="@color/black"
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 
     <TextView
@@ -50,6 +52,8 @@
         android:layout_weight="1"
         android:text="@string/location"
         android:textColor="@color/black"
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 
     <TextView

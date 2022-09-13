@@ -195,20 +195,20 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
 
     }
 
-    Handler handler = new Handler();
     @Override
     public void language(List<LanguageVo> it) {
         LogUtils.json(it);
-//        zh_HK,zh_CN,en_US
+
 
         SPLocal systemLocal = SPGlobalManager.getLanguage();
         LogUtils.json(systemLocal);
+//        zh_HK,zh_CN,en_US
         LogUtils.json(systemLocal.getLocale().toString());
 
         for (int i = 0; i < it.size(); i++) {
             if (it.get(i).equals(systemLocal.getLocale().toString())) {
                 SPGlobalManager.setLanguage(systemLocal);
-//                更新application里的context就会全部页面起效果
+//              更新application里的context就会全部页面起效果
                 LocalUtils.initLocal(App.mApp);
                 break;
             } else {

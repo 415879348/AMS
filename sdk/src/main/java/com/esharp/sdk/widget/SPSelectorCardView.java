@@ -40,10 +40,6 @@ public class SPSelectorCardView extends RelativeLayout {
         content = findViewById(R.id.content);
         right_image = findViewById(R.id.right_image);
 
-//        int tintColor = SPGlobalManager.getTint();
-//        input_title.setTextColor(tintColor);
-//        input_content.setTextColor(tintColor);
-
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.SPSelectorView, defStyleAttr, 0);
         int type = attributes.getInt(R.styleable.SPSelectorView_spsdk_selector_type, 0);
 
@@ -54,7 +50,6 @@ public class SPSelectorCardView extends RelativeLayout {
         if (attributes.getText(R.styleable.SPSelectorView_spsdk_selector_hint) != null) {
             content.setHint(attributes.getText(R.styleable.SPSelectorView_spsdk_selector_hint));
         }
-
 
         RelativeLayout.LayoutParams layoutParams = (LayoutParams) right_image.getLayoutParams();
 

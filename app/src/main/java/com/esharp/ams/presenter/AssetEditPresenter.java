@@ -1,10 +1,13 @@
 package com.esharp.ams.presenter;
 
+import android.util.Pair;
+
 import com.esharp.ams.contract.AssetEditContract;
 import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.bean.request.FileVo;
+import com.esharp.sdk.bean.request.Files;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.HttpResultOperator;
@@ -12,6 +15,7 @@ import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.rxjava3.core.Single;
@@ -87,23 +91,13 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
     }
 
     @Override
-    public void uploadPhoto(int request, FileVo photo) {
-        Single<String> single = HttpService.get().document(photo)
+    public void uploadPhoto(List<String> photos, Files files) {
+        HttpService.get().documentMore(files)
                 .lift(new HttpResultOperator<>())
+                .map(strings -> Pair.create(photos, strings))
                 .compose(SchedulerUtils.io_main_single())
-                .lift(new ProgressOperator<>(mView, -1));
-
-        switch (request) {
-            case CreateAssetActivity.REQUEST_1:
-                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus1));
-                break;
-            case CreateAssetActivity.REQUEST_2:
-                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus2));
-                break;
-            case CreateAssetActivity.REQUEST_3:
-                single.subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus3));
-                break;
-        }
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(new BaseObserver<>(mView, mView::uploadPhotoSus));
     }
 
     @Override
@@ -114,7 +108,5 @@ public class AssetEditPresenter extends BasePresenter<AssetEditContract.View> im
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::deviceFieldSuc));
     }
-
-
 
 }

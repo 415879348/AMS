@@ -126,5 +126,6 @@
     <string name="tip_upload">*上傳圖片格式只能為jpeg且大小不能超過1024KB，最多允許上傳3張圖片！</string>
     <string name="is_delete_asset">確定刪除資產嗎?</string>
     <string name="is_delete_photo">確定刪除圖片嗎?</string>
+    <string name="photo_max">最多只能上傳三張圖片</string>
 
 </resources>

@@ -10,9 +10,16 @@ public class AssetAlertBean implements Serializable {
         private String deviceId;
 
         /**
-         * 1是异常记录 2是定时保养记录
+         * 1是异常信息，=2时是定时检查
          */
         private Integer type;
+
+        /**
+         * 异常类型
+         * 1.超温警报
+         * 2.电量过低
+         * 3.工单超时
+         */
         private Integer errorType;
         private String joinId;
         private Long createTime;
@@ -20,6 +27,8 @@ public class AssetAlertBean implements Serializable {
         private String handlerId;
         private Long handlerTime;
         private String remark;
+        private Long date;
+        private String message;
 
         public String getId() {
                 return id;
@@ -123,5 +132,21 @@ public class AssetAlertBean implements Serializable {
 
         public void setRemark(String remark) {
                 this.remark = remark;
+        }
+
+        public Long getDate() {
+                return date;
+        }
+
+        public void setDate(Long date) {
+                this.date = date;
+        }
+
+        public String getMessage() {
+                return message;
+        }
+
+        public void setMessage(String message) {
+                this.message = message;
         }
 }

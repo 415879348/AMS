@@ -182,142 +182,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tip_upload"
-            android:textColor="@color/spsdk_color_red"
-            android:layout_marginStart="@dimen/spsdk_dp_10"
-            />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/tip_upload"-->
+<!--            android:textColor="@color/spsdk_color_red"-->
+<!--            android:layout_marginStart="@dimen/spsdk_dp_10"-->
+<!--            />-->
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/spsdk_dp_35"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:paddingHorizontal="@dimen/spsdk_dp_5"
+            android:text="@string/upload_picture"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            app:stv_corner="@dimen/spsdk_dp_5"
+            app:stv_solid="@color/spsdk_color_blue" />
 
         <LinearLayout
+            android:id="@+id/ll_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spsdk_dp_10"
-            android:orientation="horizontal">
-
-           <com.esharp.sdk.widget.MyTextView
-               android:id="@+id/mv_upload1"
-               android:layout_width="wrap_content"
-               android:layout_height="@dimen/spsdk_dp_35"
-               android:layout_marginStart="@dimen/spsdk_dp_10"
-               android:paddingHorizontal="@dimen/spsdk_dp_5"
-               android:layout_gravity="center_horizontal"
-               android:text="@string/upload_picture"
-               android:textSize="@dimen/spsdk_ts_16"
-               android:textColor="@color/spsdk_color_white"
-               android:gravity="center"
-               app:stv_corner="@dimen/spsdk_dp_5"
-               app:stv_solid="@color/spsdk_color_blue" />
-
-            <com.esharp.sdk.widget.RadiusImageView
-               android:id="@+id/iv_picture1"
-               android:layout_width="@dimen/spsdk_dp_100"
-               android:layout_height="@dimen/spsdk_dp_100"
-               android:layout_marginStart="@dimen/spsdk_dp_5"
-               android:src="@mipmap/spsdk_pic_error"
-               />
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_delete1"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:layout_marginStart="@dimen/spsdk_dp_10"
-                android:paddingHorizontal="@dimen/spsdk_dp_5"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/delete_picture"
-                android:textSize="@dimen/spsdk_ts_14"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_blue" />
-       </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spsdk_dp_10"
-            android:orientation="horizontal">
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_upload2"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:layout_marginStart="@dimen/spsdk_dp_10"
-                android:paddingHorizontal="@dimen/spsdk_dp_5"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/upload_picture"
-                android:textSize="@dimen/spsdk_ts_16"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_blue" />
-
-            <com.esharp.sdk.widget.RadiusImageView
-                android:id="@+id/iv_picture2"
-                android:layout_width="@dimen/spsdk_dp_100"
-                android:layout_height="@dimen/spsdk_dp_100"
-                android:layout_marginStart="@dimen/spsdk_dp_5"
-                android:src="@mipmap/spsdk_pic_error"
-                />
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_delete2"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:layout_marginStart="@dimen/spsdk_dp_10"
-                android:paddingHorizontal="@dimen/spsdk_dp_5"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/delete_picture"
-                android:textSize="@dimen/spsdk_ts_14"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_blue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spsdk_dp_10"
-            android:orientation="horizontal">
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_upload3"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:layout_marginStart="@dimen/spsdk_dp_10"
-                android:paddingHorizontal="@dimen/spsdk_dp_5"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/upload_picture"
-                android:textSize="@dimen/spsdk_ts_16"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_blue" />
-
-            <com.esharp.sdk.widget.RadiusImageView
-                android:id="@+id/iv_picture3"
-                android:layout_width="@dimen/spsdk_dp_100"
-                android:layout_height="@dimen/spsdk_dp_100"
-                android:layout_marginStart="@dimen/spsdk_dp_5"
-                android:src="@mipmap/spsdk_pic_error"
-                />
-
-            <com.esharp.sdk.widget.MyTextView
-                android:id="@+id/mv_delete3"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spsdk_dp_35"
-                android:layout_marginStart="@dimen/spsdk_dp_10"
-                android:paddingHorizontal="@dimen/spsdk_dp_5"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/delete_picture"
-                android:textSize="@dimen/spsdk_ts_14"
-                android:textColor="@color/spsdk_color_white"
-                android:gravity="center"
-                app:stv_corner="@dimen/spsdk_dp_5"
-                app:stv_solid="@color/spsdk_color_blue" />
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -55,20 +55,9 @@ public final class HttpService {
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.STRICT_HOSTNAME_VERIFIER)
                 .addInterceptor(chain -> {
                     Token token = SPGlobalManager.getToken();
-                    LogUtils.json(SPGlobalManager.getLanguage().getCode());
-//                    language 0英文 1繁体 2简体
-                    String languageCode = "";
-                    switch (SPGlobalManager.getLanguage().getCode()) {
-                        case "en":
-                            languageCode = "0";
-                            break;
-                        case "tc":
-                            languageCode = "1";
-                            break;
-                        case "sc":
-                            languageCode = "2";
-                            break;
-                    }
+
+                    //        zh_HK,zh_CN,en_US
+                    String languageCode = SPGlobalManager.getLanguage().getLocale().toString();
                     LogUtils.json(languageCode);
                     return chain.proceed(chain.request()
                             .newBuilder()

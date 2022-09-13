@@ -1,9 +1,11 @@
 package com.esharp.ams.dialog;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.bean.response.HandlerVo;
@@ -73,8 +75,13 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
 
     public BaseAlertDialog setOnClickListener(OnClickCallback<HandlerVo> it, OnClickCallback<HandlerVo> it2) {
         mv_end.setOnClickListener(v-> {
+            String remark = nv_remark.getContent();
+            if (TextUtils.isEmpty(remark)) {
+                ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+                return;
+            }
             HandlerVo vo = new HandlerVo();
-            vo.setContent(nv_remark.getContent());
+            vo.setContent(remark);
             vo.setIsOver(0);
             it.onClick(vo);
         });
@@ -90,10 +97,14 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                 });
 
             } else {
+                String remark = nv_remark.getContent();
+                if (TextUtils.isEmpty(remark)) {
+                    ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+                    return;
+                }
                 UserVo bean = (UserVo) sv_selector.getTag();
-
                 HandlerVo vo = new HandlerVo();
-                vo.setContent(nv_remark.getContent());
+                vo.setContent(remark);
                 vo.setIsOver(1);
                 vo.setProcessId(bean.getId());
                 it2.onClick(vo);

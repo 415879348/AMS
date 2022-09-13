@@ -64,12 +64,12 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
         LogUtils.json(it);
         SPGlobalManager.setUserVo(it);
 
-        Set<String> accountSet = new HashSet<>();
-        accountSet.add(it.getUserNo());
-        LogUtils.json(accountSet);
-        // 调用 JPush 接口来设置别名。
+//        Set<String> accountSet = new HashSet<>();
+//        accountSet.add("alias_all");
+//        LogUtils.json(accountSet);
+//        调用 JPush 接口来设置别名。
 //        JPushInterface.setTags(mContext, 0, accountSet);
-        JPushInterface.setAlias(mContext, 0, it.getUserNo());
+        JPushInterface.setAlias(mContext, 0, "alias_all");
         tv_user_name.setText(it.getUsername());
         sv_phone.setDetail(it.getPhone());
         sv_username.setDetail(it.getUsername());

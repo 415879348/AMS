@@ -1,9 +1,12 @@
 package com.esharp.ams.contract;
 
+import android.util.Pair;
+
 import com.esharp.sdk.base.IBasePresenter;
 import com.esharp.sdk.base.IBaseView;
 import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.request.Files;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
@@ -23,11 +26,7 @@ public interface CreateAssetContract {
 
         void generateCodeSuc(String it);
 
-        void uploadPhotoSus1(String it);
-
-        void uploadPhotoSus2(String it);
-
-        void uploadPhotoSus3(String it);
+        void uploadPhotoSus(Pair<List<String>, List<String>> pair);
 
         void deviceAllSuc(List<DeviceBean> it);
 
@@ -45,7 +44,7 @@ public interface CreateAssetContract {
 
         void assetModel(String brandID);
 
-        void uploadPhoto(int request, FileVo photo);
+        void uploadPhoto(List<String> photos, Files it);
 
         void deviceAll();
 

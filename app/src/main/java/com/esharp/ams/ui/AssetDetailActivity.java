@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.AssetDetailContract;
 import com.esharp.ams.presenter.AssetDetailPresenter;
@@ -141,9 +142,11 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
             for (int i = 0; i < it.getUrls().size(); i++) {
 
                 RadiusImageView riv = new RadiusImageView(AssetDetailActivity.this);
-                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(200,200);
-                param.leftMargin = 50;
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(SizeUtils.dp2px(80),SizeUtils.dp2px(80));
+                param.leftMargin = 20;
+                riv.setPadding(SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5));
                 riv.setLayoutParams(param);
+                riv.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_grey));
                 ll_img.addView(riv);
                 GlideUtils.showImage(riv, it.getUrls().get(i).getUrl());
             }

@@ -52,7 +52,7 @@ public class NotificationUtil {
         }
         builder.setAutoCancel(true);
         builder.setWhen(System.currentTimeMillis());
-        builder.setSmallIcon(R.mipmap.home_clicked);
+        builder.setSmallIcon(R.mipmap.app_icon);
         return builder;
     }
 

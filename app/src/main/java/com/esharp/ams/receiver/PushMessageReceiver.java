@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.notify.NotificationSender;
+import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.bean.response.AssetAlertBean;
+import com.esharp.sdk.bean.response.UserVo;
 import com.google.gson.Gson;
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
@@ -23,7 +25,15 @@ public class PushMessageReceiver extends JPushMessageReceiver {
         AssetAlertBean assetAlertBean = new Gson().fromJson(customMessage.message, AssetAlertBean.class);
         LogUtils.json(assetAlertBean);
 
-        NotificationSender.notify(assetAlertBean);
+//        type=1时弹出
+//        type=2和handlerId等于登录人id时弹
+//        type=2和handlerId不等于登录人id时不做任何处理
+        UserVo user = SPGlobalManager.getUserVo();
+        if(assetAlertBean.getType() == 2
+                && !assetAlertBean.getHandlerId().equals(user.getId())) {
+            return;
+        }
+        NotificationSender.notify(context, assetAlertBean);
     }
 
     @Override
@@ -93,28 +103,28 @@ public class PushMessageReceiver extends JPushMessageReceiver {
 
     @Override
     public void onTagOperatorResult(Context context, JPushMessage jPushMessage) {
-//        TagAliasOperatorHelper.getInstance().onTagOperatorResult(context,jPushMessage);
+        TagAliasOperatorHelper.getInstance().onTagOperatorResult(context,jPushMessage);
         super.onTagOperatorResult(context, jPushMessage);
     }
 
     @Override
     public void onCheckTagOperatorResult(Context context, JPushMessage jPushMessage) {
         Log.e(TAG, "[onCheckTagOperatorResult] " + jPushMessage);
-//        TagAliasOperatorHelper.getInstance().onCheckTagOperatorResult(context,jPushMessage);
+        TagAliasOperatorHelper.getInstance().onCheckTagOperatorResult(context,jPushMessage);
         super.onCheckTagOperatorResult(context, jPushMessage);
     }
 
     @Override
     public void onAliasOperatorResult(Context context, JPushMessage jPushMessage) {
         Log.e(TAG, "[onAliasOperatorResult] " + jPushMessage);
-//        TagAliasOperatorHelper.getInstance().onAliasOperatorResult(context,jPushMessage);
+        TagAliasOperatorHelper.getInstance().onAliasOperatorResult(context,jPushMessage);
         super.onAliasOperatorResult(context, jPushMessage);
     }
 
     @Override
     public void onMobileNumberOperatorResult(Context context, JPushMessage jPushMessage) {
         Log.e(TAG, "[onMobileNumberOperatorResult] " + jPushMessage);
-//        TagAliasOperatorHelper.getInstance().onMobileNumberOperatorResult(context,jPushMessage);
+        TagAliasOperatorHelper.getInstance().onMobileNumberOperatorResult(context,jPushMessage);
         super.onMobileNumberOperatorResult(context, jPushMessage);
     }
 

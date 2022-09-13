@@ -15,7 +15,6 @@ import android.util.Pair;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.ColorUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -29,6 +28,7 @@ import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.request.FileVo;
 import com.esharp.sdk.bean.request.FieldVo;
+import com.esharp.sdk.bean.request.Files;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceFieldValueBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
@@ -40,6 +40,7 @@ import com.esharp.sdk.utils.FileUtils;
 import com.esharp.sdk.utils.PicImageEngine;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.DateTimeSelector;
+import com.esharp.sdk.widget.DeleteImageView;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPCardEditView;
 import com.esharp.sdk.widget.SPSelectorCardView;
@@ -49,13 +50,14 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
 import androidx.activity.result.ActivityResultLauncher;
 import top.defaults.colorpicker.ColorPickerPopup;
 
@@ -74,24 +76,18 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     SPCardEditView cev_number, cev_name, cev_l, cev_w, cev_h, cev_weight, cev_location, cev_place_of_production, cev_remark, cev_color;
 
-    MyTextView mtv_generate, mv_reset, mv_confirm, mv_upload1, mv_upload2, mv_upload3, mv_delete1, mv_delete2, mv_delete3;
+    MyTextView mtv_generate, mv_reset, mv_confirm, mv_upload;
 
-    ImageView iv_picture1, iv_picture2, iv_picture3, iv_color;
+    ImageView iv_color;
 
-    LinearLayout ll_field;
+    LinearLayout ll_field, ll_images;
 
-    String photoID1 = "";
-    String photoID2 = "";
-    String photoID3 = "";
+    Map<String, String> photoMap = new HashMap<>();
 
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
     private ListPopWindow<DeviceBean> assetPop;
 
     private List<DeviceFieldValueBean> deviceFieldValueForms = new ArrayList<>();
-
-    public static final int REQUEST_1 = 101;
-    public static final int REQUEST_2 = 102;
-    public static final int REQUEST_3 = 103;
 
     @Override
     protected void init() {
@@ -117,19 +113,13 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         ll_field = findViewById(R.id.ll_field);
 
         cev_color = findViewById(R.id.cev_color);
+        cev_color.setEnable(false);
         iv_color = findViewById(R.id.iv_color);
         mv_reset = findViewById(R.id.mv_reset);
         mv_confirm = findViewById(R.id.mv_confirm);
 
-        mv_upload1 = findViewById(R.id.mv_upload1);
-        mv_delete1 = findViewById(R.id.mv_delete1);
-        iv_picture1 = findViewById(R.id.iv_picture1);
-        mv_upload2 = findViewById(R.id.mv_upload2);
-        mv_delete2 = findViewById(R.id.mv_delete2);
-        iv_picture2 = findViewById(R.id.iv_picture2);
-        mv_upload3 = findViewById(R.id.mv_upload3);
-        mv_delete3= findViewById(R.id.mv_delete3);
-        iv_picture3 = findViewById(R.id.iv_picture3);
+        mv_upload = findViewById(R.id.mv_upload);
+        ll_images = findViewById(R.id.ll_images);
 
         mtv_generate.setOnClickListener(v -> {
             mPresenter.generateCode();
@@ -159,6 +149,11 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
         scv_type.setOnItemClick(v -> {
             DictionaryBean vo = (DictionaryBean) v.getTag();
+
+            if (assetTypePop == null) {
+                mPresenter.assetType();
+                return;
+            }
             if (vo == null) {
                 assetTypePop.show(scv_type, "");
             } else {
@@ -215,60 +210,14 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             }, null, DateTimeUtils.parseToLong(scv_date_of_manufacture.getContent()));
         });
 
-         mv_delete1.setOnClickListener(v -> {
-            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
-                    .setNegativeButton(null)
-                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                        photoID1 = "";
-                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
-                        dialog.dismiss();
-                    }, true).create().show();
-        });
-
-        mv_delete2.setOnClickListener(v -> {
-            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
-                    .setNegativeButton(null)
-                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                        photoID2 = "";
-                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
-                        dialog.dismiss();
-                    }, true).create().show();
-        });
-
-        mv_delete3.setOnClickListener(v -> {
-            new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
-                    .setNegativeButton(null)
-                    .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                        photoID3 = "";
-                        Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
-                        dialog.dismiss();
-                    }, true).create().show();
-        });
-
-        mv_upload1.setOnClickListener(v -> {
+        mv_upload.setOnClickListener(v -> {
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
             LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
             // 手动禁止权限下次会主动弹出权限窗口，代码禁止权限下次不会主动弹出权限窗口
             if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                selectPicture(iv_picture1, REQUEST_1);
+                selectPicture();
             } else {
-                isGranted(iv_picture1, REQUEST_1);
-            }
-        });
-
-        mv_upload2.setOnClickListener(v -> {
-            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                selectPicture(iv_picture2, REQUEST_2);
-            } else {
-                isGranted(iv_picture2, REQUEST_2);
-            }
-        });
-
-        mv_upload3.setOnClickListener(v -> {
-            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                selectPicture(iv_picture3, REQUEST_3);
-            } else {
-                isGranted(iv_picture3, REQUEST_3);
+                isGranted();
             }
         });
 
@@ -294,12 +243,8 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             scv_up_assets.setTag(null);
             assetPop = null;
 
-            photoID1 = "";
-            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture1);
-            photoID2 = "";
-            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture2);
-            photoID3 = "";
-            Glide.with(CreateAssetActivity.this).load(R.mipmap.spsdk_pic_error).into(iv_picture3);
+            photoMap.clear();
+            ll_images.removeAllViews();
 
             cev_location.setContent("");
             cev_l.setContent("");
@@ -399,31 +344,27 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
             it.setWeight(weight);
             it.setDeviceFieldValueForms(deviceFieldValueForms);
 
-            if (! TextUtils.isEmpty(cev_color.getContent())){
+            if (! TextUtils.isEmpty(cev_color.getContent())) {
                 it.setColor(cev_color.getContent());
             }
 
             List<String> documentIds = new ArrayList<>();
-            if (!TextUtils.isEmpty(photoID1)) {
-                documentIds.add(photoID1);
-            }
-            if (!TextUtils.isEmpty(photoID2)) {
-                documentIds.add(photoID2);
-            }
-            if (!TextUtils.isEmpty(photoID3)) {
-                documentIds.add(photoID3);
+            Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, String > entry = iterator.next();
+                documentIds.add(entry.getValue());
             }
             it.setDocumentIds(documentIds);
 
-            if (! TextUtils.isEmpty(size_l)){
+            if (! TextUtils.isEmpty(size_l)) {
                 it.setLength(size_l);
             }
 
-            if (! TextUtils.isEmpty(size_w)){
+            if (! TextUtils.isEmpty(size_w)) {
                 it.setLength(size_w);
             }
 
-            if (! TextUtils.isEmpty(size_h)){
+            if (! TextUtils.isEmpty(size_h)) {
                 it.setLength(size_h);
             }
 
@@ -543,39 +484,34 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
     }
 
     @Override
-    public void uploadPhotoSus1(String it) {
-        photoID1 = it;
-    }
-
-    @Override
-    public void uploadPhotoSus2(String it) {
-        photoID2 = it;
-    }
-
-    @Override
-    public void uploadPhotoSus3(String it) {
-        photoID3 = it;
-    }
-
-    private void isGranted(ImageView iv, int request) {
-        if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)
-                && !PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            permission(request, iv, PermissionConstants.CAMERA, PermissionConstants.STORAGE);
-        } else if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)) {
-            permission(request, iv, PermissionConstants.CAMERA);
-        } else if (!PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            permission(request, iv, PermissionConstants.STORAGE);
+    public void uploadPhotoSus(Pair<List<String>, List<String>> it) {
+        LogUtils.i(it);
+        List<String> localPath = it.first;
+        List<String> urlPath = it.second;
+        for (int i = 0; i < localPath.size(); i++) {
+            photoMap.put(localPath.get(i), urlPath.get(i));
         }
     }
 
-    private void permission(int request, ImageView iv, @PermissionConstants.Permission final String... permissions) {
+    private void isGranted() {
+        if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)
+                && !PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            permission(PermissionConstants.CAMERA, PermissionConstants.STORAGE);
+        } else if (!PermissionUtils.isGranted(Manifest.permission.CAMERA)) {
+            permission(PermissionConstants.CAMERA);
+        } else if (!PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            permission(PermissionConstants.STORAGE);
+        }
+    }
+
+    private void permission(@PermissionConstants.Permission final String... permissions) {
         PermissionUtils.permission(permissions)
                 .callback(new PermissionUtils.FullCallback() {
 
                     @Override
                     public void onGranted(List<String> permissionsGranted) {
                         LogUtils.json(permissionsGranted);
-                        selectPicture(iv, request);
+                        selectPicture();
                     }
 
                     @Override
@@ -586,11 +522,14 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 }).request();
     }
 
-    private void selectPicture(ImageView iv, int request) {
+    private void selectPicture() {
+        if (ll_images.getChildCount() == 3) {
+            showToast(R.string.photo_max);
+        }
         PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
-                .maxSelectNum(1)
+                .maxSelectNum(3 - ll_images.getChildCount())
                 .imageSpanCount(4)
                 .selectionMode(PictureConfig.MULTIPLE)
                 .isPreviewImage(true)
@@ -610,59 +549,63 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                     @Override
                     public void onResult(List<LocalMedia> result) {
                         if (result == null || result.isEmpty() || result.get(0) == null) return;
-                        String photoPath = FileUtils.getPhotoPathFromLocal(result.get(0));
-                        LogUtils.i(result.get(0));
-                        LogUtils.i(photoPath);
 
-                        Uri sourceUri = Uri.fromFile(new File(photoPath));
+                        List<String> photoPaths = new ArrayList<>();
+                        Files files = new Files();
+                        for (int i = 0; i < result.size(); i++) {
+                            LogUtils.i(result.get(i));
+                            String photoPath = FileUtils.getPhotoPathFromLocal(result.get(i));
+                            LogUtils.i(photoPath);
+                            photoPaths.add(photoPath);
 
-                        Glide.with(CreateAssetActivity.this).load(new File(photoPath)).into(iv);
+                            Uri sourceUri = Uri.fromFile(new File(photoPath));
 
-                        ContentResolver resolver = getContentResolver();
+                            DeleteImageView deleteImageView = new DeleteImageView(CreateAssetActivity.this);
+                            deleteImageView.setDeleteTag(photoPath);
+                            deleteImageView.setDeleteClick(v -> {
+                                new CustomDialogBuilder(CreateAssetActivity.this).setTitle(ResUtils.getString(R.string.is_delete_photo))
+                                .setNegativeButton(null)
+                                .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                                    if (photoMap.containsKey(photoPath)) {
+                                        photoMap.remove(photoPath);
+                                        ll_images.removeView(deleteImageView);
+                                    }
+                                    dialog.dismiss();
+                                }, true).create().show();
+                            });
 
-                        Bitmap mBitmap;
+                            Glide.with(CreateAssetActivity.this).load(new File(photoPath)).into(deleteImageView.getImageView());
+                            ll_images.addView(deleteImageView);
 
-                        //1.将相册返回的uri转为Bitmap
-                        try {
-                            mBitmap = MediaStore.Images.Media.getBitmap(resolver, sourceUri);
+                            ContentResolver resolver = getContentResolver();
 
-                            //2.压缩图片,第二个入参表示图片压缩率，如果是100就表示不压缩
-                            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                            Bitmap mBitmap;
 
-                            //3.将压缩后的图片进行base64编码
-                            byte[] bytes = bos.toByteArray();
-                            String imgBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
-                            LogUtils.i(imgBase64);
+                            //1.将相册返回的uri转为Bitmap
+                            try {
+                                mBitmap = MediaStore.Images.Media.getBitmap(resolver, sourceUri);
 
-                            FileVo vo = new FileVo();
+                                //2.压缩图片,第二个入参表示图片压缩率，如果是100就表示不压缩
+                                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                                mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
 
-//                            switch (request) {
-//                                case  REQUEST_1:
-//                                    if (!TextUtils.isEmpty(photoID1)) {
-//                                        vo.setId(photoID1);
-//                                    }
-//                                    break;
-//                                case  REQUEST_2:
-//                                    if (!TextUtils.isEmpty(photoID2)) {
-//                                        vo.setId(photoID2);
-//                                    }
-//                                    break;
-//                                case  REQUEST_3:
-//                                    if (!TextUtils.isEmpty(photoID3)) {
-//                                        vo.setId(photoID3);
-//                                    }
-//                                    break;
-//                            }
+                                //3.将压缩后的图片进行base64编码
+                                byte[] bytes = bos.toByteArray();
+                                String imgBase64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+                                LogUtils.i(imgBase64);
 
-                            vo.setType(0);
-                            vo.setExtension("jpeg");
-                            vo.setBase64(imgBase64);
-                            mPresenter.uploadPhoto(request, vo);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            showToast(R.string.picture_cancel);
+                                FileVo vo = new FileVo();
+                                vo.setType(0);
+                                vo.setExtension("jpeg");
+                                vo.setBase64(imgBase64);
+                                files.getDocumentForms().add(vo);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                showToast(R.string.picture_cancel);
+                            }
+                        }
+                        if (files.getDocumentForms().size() > 0) {
+                            mPresenter.uploadPhoto(photoPaths, files);
                         }
                     }
 
