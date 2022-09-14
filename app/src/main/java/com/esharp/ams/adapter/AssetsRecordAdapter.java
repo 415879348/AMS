@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.esharp.ams.R;
 import com.esharp.sdk.base.BaseAdapter;
 import com.esharp.sdk.bean.response.DeviceBean;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.OnClickCallback;
 
@@ -85,8 +86,12 @@ public class AssetsRecordAdapter extends BaseAdapter<DeviceBean, AssetsRecordAda
                     break;
             }
 
-            itemView.setOnClickListener(v -> onItemOperate.onClick(item));
-
+            itemView.setOnClickListener(v -> {
+                if (ClickUtil.isFastDoubleClick()) {
+                    return;
+                }
+                onItemOperate.onClick(item);
+            });
         }
 
     }

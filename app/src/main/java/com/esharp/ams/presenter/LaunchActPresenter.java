@@ -6,10 +6,9 @@ import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.http.HttpFunction;
 import com.esharp.sdk.http.HttpService;
+import com.esharp.sdk.rxjava.HttpResultOperator;
+import com.esharp.sdk.rxjava.ProgressOperator;
 import com.esharp.sdk.rxjava.SchedulerUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> implements LaunchActContract.Presenter {
 
@@ -209,8 +208,9 @@ public class LaunchActPresenter extends BasePresenter<LaunchActContract.IHost> i
     @Override
     public void language() {
         HttpService.get().language()
-                .map(new HttpFunction<>())
+                .lift(new HttpResultOperator<>())
                 .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(new BaseObserver<>(mView, mView::language));
     }
 }

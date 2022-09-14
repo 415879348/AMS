@@ -2,6 +2,7 @@ package com.esharp.ams.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.widget.EditText;
 
@@ -16,7 +17,9 @@ import com.esharp.sdk.SPSdkUtil;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.bean.response.Token;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.LocalUtils;
+import com.esharp.sdk.utils.ResUtils;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -38,11 +41,23 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
     protected void init() {
         et_account = findViewById(R.id.et_account);
         et_password = findViewById(R.id.et_password);
-
-        findViewById(R.id.mtv_login).setOnClickListener(v ->
-//                mPresenter.login(new LoginVo(et_account.getText().toString(), et_password.getText().toString()))
-                mPresenter.login(new LoginVo("test", "123456"))
-        );
+        findViewById(R.id.mtv_login).setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
+            String account = et_account.getText().toString();
+            if (TextUtils.isEmpty(account)) {
+                showToast(ResUtils.getString(R.string.please_enter_account));
+                return;
+            }
+            String password = et_password.getText().toString();
+            if (TextUtils.isEmpty(password)) {
+                showToast(ResUtils.getString(R.string.please_enter_password));
+                return;
+            }
+            mPresenter.login(new LoginVo(account, password));
+//                mPresenter.login(new LoginVo("test", "123456"))
+        });
     }
 
     @Override

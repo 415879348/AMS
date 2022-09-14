@@ -19,6 +19,7 @@ import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.MyTextView;
@@ -82,6 +83,9 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
 
         mv_handle = findViewById(R.id.mv_handle);
         mv_handle.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             WorkOrderHandleDialog dialog = new WorkOrderHandleDialog(this);
             dialog.setOnClickListener(
                     vo -> {

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.esharp.ams.R;
 import com.esharp.sdk.base.BaseAdapter;
 import com.esharp.sdk.bean.response.WorkOrderBean;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.ResUtils;
 
 import androidx.annotation.NonNull;
@@ -81,7 +82,12 @@ public class BacklogRecordAdapter extends BaseAdapter<WorkOrderBean, BacklogReco
                     break;
             }
 
-            mtv_handle.setOnClickListener(v -> onItemOperate.onItemClick(it));
+            mtv_handle.setOnClickListener(v -> {
+                if (ClickUtil.isFastDoubleClick()) {
+                    return;
+                }
+                onItemOperate.onItemClick(it);
+            });
         }
     }
 

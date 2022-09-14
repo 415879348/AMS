@@ -31,6 +31,7 @@ import com.esharp.sdk.bean.response.CopyUserListBean;
 import com.esharp.sdk.bean.response.RecordDetailVo;
 import com.esharp.sdk.bean.response.StaffVo;
 import com.esharp.sdk.http.GlideUtils;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.DataConvert;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.SPTitleView;
@@ -187,6 +188,9 @@ public class ApplyActivity extends BaseMvpActivity<ApplyContract.Presenter> impl
 
         // 选择审批人
         iv_select_staff1.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             Bundle bundle = new Bundle();
             bundle.putSerializable(Constant.TAG, ApproverListActivity.ApproverListTag.REVIEWER);
             bundle.putSerializable(Constant.DATA, DataConvert.approvalUserBeanToStaffVo(approvalUserList));
@@ -195,6 +199,9 @@ public class ApplyActivity extends BaseMvpActivity<ApplyContract.Presenter> impl
         });
         // 选择抄送人
         iv_select_staff2.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             Bundle bundle = new Bundle();
             bundle.putSerializable(Constant.TAG, ApproverListActivity.ApproverListTag.COPY_USER);
             bundle.putSerializable(Constant.DATA, copyUserList);

@@ -37,6 +37,7 @@ import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.http.GlideUtils;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.FileUtils;
 import com.esharp.sdk.utils.PicImageEngine;
@@ -132,6 +133,9 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
         iv_color.setTag(ColorUtils.int2RgbString(ResUtils.getColor(R.color.spsdk_color_blue)));
         iv_color.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             new ColorPickerPopup.Builder(this)
                     .initialColor(ColorUtils.string2Int((String) v.getTag())) // Set initial color
                     .enableBrightness(false) // Enable brightness slider or not
@@ -211,13 +215,15 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         });
 
         mv_upload.setOnClickListener(v -> {
-            LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
-            LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
-            // 手动禁止权限下次会主动弹出权限窗口，代码禁止权限下次不会主动弹出权限窗口
-            if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                selectPicture();
-            } else {
-                isGranted();
+            if (!ClickUtil.isFastDoubleClick()) {
+                LogUtils.i(PermissionUtils.isGranted(Manifest.permission.CAMERA));
+                LogUtils.i(PermissionUtils.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE));
+                // 手动禁止权限下次会主动弹出权限窗口，代码禁止权限下次不会主动弹出权限窗口
+                if (PermissionUtils.isGranted(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    selectPicture();
+                } else {
+                    isGranted();
+                }
             }
         });
 
@@ -264,6 +270,11 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         });
 
         mv_confirm.setOnClickListener(v -> {
+
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
+
             String number = cev_number.getContent();
             if (TextUtils.isEmpty(number)) {
                 showToast(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.asset_number));

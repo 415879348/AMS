@@ -17,6 +17,7 @@ import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderTypeVo;
 import com.esharp.sdk.dialog.ListPopWindow;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPCardEditView;
@@ -72,6 +73,7 @@ public class WorkOrderCreateActivity extends BaseMvpActivity<WorkOrderCreateCont
         scv_type = findViewById(R.id.scv_type);
         scv_asset_select = findViewById(R.id.scv_asset_select);
         cev_location = findViewById(R.id.cev_location);
+        cev_location.setEnable(false);
         scv_handler = findViewById(R.id.scv_handler);
         cev_remark = findViewById(R.id.cev_remark);
         mv_end = findViewById(R.id.mv_reset);
@@ -126,6 +128,9 @@ public class WorkOrderCreateActivity extends BaseMvpActivity<WorkOrderCreateCont
         });
 
         mv_confirm.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             String name = cev_name.getContent();
             if (TextUtils.isEmpty(name)) {
                 showToast(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.job_name));

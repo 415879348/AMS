@@ -6,6 +6,7 @@ import com.esharp.sdk.bean.request.CreateWorkOrderVo;
 import com.esharp.sdk.bean.request.FieldVo;
 import com.esharp.sdk.bean.request.Files;
 import com.esharp.sdk.bean.request.IDListVo;
+import com.esharp.sdk.bean.request.JPRegisterVo;
 import com.esharp.sdk.bean.request.LeaveVo;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.bean.request.OverTimeApplyVo;
@@ -283,6 +284,14 @@ public interface IApiService {
      */
     @POST("device/alert/log/process/{id}")
     Single<HttpResult<Boolean>> deviceAlertLogProcess(@Path("id") String id);
+
+    /**
+     * 接收极光推送RegisterID
+     * @param
+     * @return
+     */
+    @POST("jp/registerId")
+    Single<HttpResult<Boolean>> jpRegisterId(@Body JPRegisterVo it);
 
     @GET("http://182.92.123.13:8067/ams/jp/test")
     Single<HttpResult<AssetAlertBean>> jpTest();

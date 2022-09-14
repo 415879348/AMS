@@ -4,10 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.ams.notify.NotificationSender;
 import com.esharp.sdk.SPGlobalManager;
+import com.esharp.sdk.base.BaseObserver;
+import com.esharp.sdk.bean.request.JPRegisterVo;
 import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.bean.response.UserVo;
+import com.esharp.sdk.dialog.ListPopWindow;
+import com.esharp.sdk.http.HttpFunction;
+import com.esharp.sdk.http.HttpService;
+import com.esharp.sdk.rxjava.SchedulerUtils;
 import com.google.gson.Gson;
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
@@ -87,6 +94,16 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     @Override
     public void onRegister(Context context, String registrationId) {
         Log.e(TAG, "[onRegister] " + registrationId);
+
+        JPRegisterVo vo = new JPRegisterVo();
+        vo.setRegisterId(registrationId);
+        HttpService.get().jpRegisterId(vo)
+                .map(new HttpFunction<>())
+                .compose(SchedulerUtils.io_main_single())
+                .subscribe(it -> {
+                    ToastUtils.showShort("JP success");
+                });
+
         Intent intent = new Intent("com.jiguang.demo.register");
         context.sendBroadcast(intent);
     }

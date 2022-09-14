@@ -5,7 +5,6 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.MainActContract;
@@ -16,11 +15,9 @@ import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.bean.response.UserVo;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.SPShowView;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -55,7 +52,12 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
         sv_username = view.findViewById(R.id.sv_username);
         sv_phone = view.findViewById(R.id.sv_phone);
         mv_logout = view.findViewById(R.id.mv_logout);
-        mv_logout.setOnClickListener(v -> mPresenter.logout());
+        mv_logout.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
+            mPresenter.logout();
+        });
 
         setUserInfo(SPGlobalManager.getUserVo());
 
@@ -75,7 +77,6 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
 //        JPushInterface.setTags(mContext, 0, accountSet);
 
         new Handler().postDelayed(() -> JPushInterface.setAlias(mContext, 0, "alias_all"), 7000);
-
 //        mPresenter.jpTest();
     }
 

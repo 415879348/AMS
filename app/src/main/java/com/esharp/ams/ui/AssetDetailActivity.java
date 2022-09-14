@@ -110,10 +110,10 @@ public class AssetDetailActivity extends BaseMvpActivity<AssetDetailContract.Pre
 
         stv_place_of_production.setDetail(it.getProduction());
 
-        if (it.getProductionDate() != 0) {
+        if (it.getProductionDate() != null && it.getProductionDate() != 0) {
             stv_date_of_manufacture.setDetail(DateTimeUtils.millis2Date(it.getProductionDate()));
         }
-        if (it.getWarrantyDate() != 0) {
+        if (it.getWarrantyDate() != null && it.getWarrantyDate() != 0) {
             stv_warranty_period.setDetail(DateTimeUtils.millis2Date(it.getWarrantyDate()));
         }
 

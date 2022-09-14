@@ -5,17 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.HomeFragmentPagerAdapter;
 import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.MainActContract;
+import com.esharp.ams.eventbus.EventBacklog;
 import com.esharp.ams.presenter.HomePresenter;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Objects;
 
@@ -35,7 +38,15 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
     protected void init(View view) {
+        EventBus.getDefault().register(this);
+
         mViewPager = view.findViewById(R.id.viewPager);
         mViewPager.setNoScroll(true);
         mTabLayout = view.findViewById(R.id.tabLayout);
@@ -147,5 +158,10 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
 
     public void selectPage(int index) {
         Objects.requireNonNull(mTabLayout.getTabAt(index)).select();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventBacklog it) {
+        mPresenter.workOrderCountProcess();
     }
 }

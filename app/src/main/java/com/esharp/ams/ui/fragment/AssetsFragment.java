@@ -23,6 +23,7 @@ import com.esharp.sdk.bean.request.IDListVo;
 import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceVo;
 import com.esharp.sdk.dialog.CustomDialogBuilder;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
@@ -84,10 +85,16 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         mRecyclerView = view.findViewById(R.id.recyclerView);
 
         itv_create.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             CreateAssetActivity.startActivity(mContext, mLauncher);
         });
 
         itv_edit.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             List<DeviceBean> list = mAssetsRecordAdapter.getData();
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).isCheck()) {
@@ -97,6 +104,9 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         });
 
         itv_delete.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             new CustomDialogBuilder(mContext).setTitle(ResUtils.getString(R.string.is_delete_asset))
                     .setNegativeButton(null)
                     .setPositiveButton(R.string.confirm, (dialog, which) -> {
@@ -117,6 +127,9 @@ public class AssetsFragment extends BaseMvpFragment<AssetsContract.Presenter, Ma
         });
 
         itv_filter.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             FilterAssetDialog dialog = new FilterAssetDialog((MainActivity)mContext);
             dialog.setOnClickListener(
                 vo -> {

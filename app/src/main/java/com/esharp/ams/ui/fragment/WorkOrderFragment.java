@@ -21,6 +21,7 @@ import com.esharp.ams.ui.WorkOrderDetailActivity;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.WorkOrderVo;
+import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
@@ -70,10 +71,16 @@ public class WorkOrderFragment extends BaseMvpFragment<WorkOrderContract.Present
         mRecyclerView = view.findViewById(R.id.recyclerView);
 
         itv_create.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             WorkOrderCreateActivity.startActivity(mContext, mLauncher);
         });
 
         itv_filter.setOnClickListener(v -> {
+            if (ClickUtil.isFastDoubleClick()) {
+                return;
+            }
             FilterWorkOrderDialog dialog = new FilterWorkOrderDialog((MainActivity)mContext);
             dialog.setOnClickListener(
                     vo -> {
