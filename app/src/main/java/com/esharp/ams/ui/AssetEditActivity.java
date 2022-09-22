@@ -250,6 +250,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             assetPop = null;
 
             photoMap.clear();
+            ll_images.removeAllViews();
 
             cev_location.setContent("");
             cev_l.setContent("");

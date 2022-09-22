@@ -28,6 +28,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.greenrobot.eventbus.EventBus;
 import java.util.Objects;
 import androidx.viewpager.widget.ViewPager;
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> implements MainActContract.IHost {
 
@@ -108,6 +109,13 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
         Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogUtils.i(JPushInterface.getRegistrationID(this));
+        mPresenter.jpRegisterId(this);
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private TabLayout.Tab returnTab(TabLayout tabLayout, int position) {
         TabLayout.Tab tab = tabLayout.newTab();
@@ -145,6 +153,11 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
     @Override
     public void onItemClick() {
         new Handler().postDelayed(() -> Objects.requireNonNull(mTabLayout.getTabAt(2)).select(),1000);
+    }
+
+    @Override
+    public void jpRegisterIdSuc(Object it) {
+        LogUtils.json(it);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.esharp.sdk.http;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.esharp.sdk.BuildConfig;
 
 /**
  * 功能描述：
@@ -13,9 +14,15 @@ public interface IHttpURL {
     String TEST_IMAGE_URL = "http://182.92.123.13:8067/ams/";
     String TEST_LOGIN_URL = "http://182.92.123.13:8061/server/auth/";
 
-    String BASE_URL = TEST_BASE_URL;
-    String IMAGE_URL = TEST_IMAGE_URL;
+    String RELEASE_BASE_URL = "https://api.kahetech.com/ams/app/";
+    String RELEASE_IMAGE_URL = "https://api.kahetech.com/ams/";
     String LOGIN_URL = TEST_LOGIN_URL;
+
+//    String BASE_URL = TEST_BASE_URL;
+//    String IMAGE_URL = TEST_IMAGE_URL;
+    String BASE_URL = RELEASE_BASE_URL;
+    String IMAGE_URL = RELEASE_IMAGE_URL;
+
 
     static String getImageUrl(String subUrl) {
         LogUtils.i(IMAGE_URL + subUrl);

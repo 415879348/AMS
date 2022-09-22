@@ -291,7 +291,7 @@ public interface IApiService {
      * @return
      */
     @POST("jp/registerId")
-    Single<HttpResult<Boolean>> jpRegisterId(@Body JPRegisterVo it);
+    Single<HttpResult<Object>> jpRegisterId(@Body JPRegisterVo it);
 
     @GET("http://182.92.123.13:8067/ams/jp/test")
     Single<HttpResult<AssetAlertBean>> jpTest();

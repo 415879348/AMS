@@ -76,7 +76,7 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
 //        调用 JPush 接口来设置别名。
 //        JPushInterface.setTags(mContext, 0, accountSet);
 
-        new Handler().postDelayed(() -> JPushInterface.setAlias(mContext, 0, "alias_all"), 7000);
+//        new Handler().postDelayed(() -> JPushInterface.setAlias(mContext, 0, "alias_all"), 7000);
 //        mPresenter.jpTest();
     }
 

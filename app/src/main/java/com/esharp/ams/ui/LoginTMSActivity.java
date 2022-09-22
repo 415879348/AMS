@@ -56,7 +56,8 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
                 return;
             }
             mPresenter.login(new LoginVo(account, password));
-//                mPresenter.login(new LoginVo("test", "123456"))
+
+//                mPresenter.login(new LoginVo("test", "123456"));
         });
     }
 
@@ -66,10 +67,8 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         SPGlobalManager.refreshToken(new Token(it));
         LogUtils.json(SPGlobalManager.getToken());
 
-//        SPLocal spLocal = LocalUtils.getSystemLocal(LoginTMSActivity.this);
         SPConfig sPConfig = SPConfig.newBuild()
                 .setNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                .setLangCode(SPGlobalManager.getLanguage().getCode())
                 .build();
 
         SPSdkUtil.getInstance(this).setConfig(sPConfig).start();

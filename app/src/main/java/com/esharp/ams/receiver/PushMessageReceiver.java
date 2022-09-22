@@ -2,6 +2,7 @@ package com.esharp.ams.receiver;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -23,6 +24,18 @@ import cn.jpush.android.api.JPushMessage;
 import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.service.JPushMessageReceiver;
 
+/**
+ *
+ code     失败信息               注册失败
+ 1000     错误信息               自定义消息展示错误
+ 2003     not stop/stopped      isPushStopped 异步回调
+ 2004     connected/not connect getConnectionState 异步回调
+ 2005     对应 rid               getRegistrationID 异步回调
+ 2006     set success           onResume 设置回调
+ 2007     set success           onStop 设置回调
+ 2008     success               应用冷启动后，SDK 首次初始化成功的回调(只回调一次)
+ 10000    无                    厂商 token 注册回调，通过 extra 可获取对应 platform 和 token 信息
+ */
 public class PushMessageReceiver extends JPushMessageReceiver {
     private static final String TAG = "PushMessageReceiver";
 
@@ -95,17 +108,20 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     public void onRegister(Context context, String registrationId) {
         Log.e(TAG, "[onRegister] " + registrationId);
 
-        JPRegisterVo vo = new JPRegisterVo();
-        vo.setRegisterId(registrationId);
-        HttpService.get().jpRegisterId(vo)
-                .map(new HttpFunction<>())
-                .compose(SchedulerUtils.io_main_single())
-                .subscribe(it -> {
-                    ToastUtils.showShort("JP success");
-                });
 
-        Intent intent = new Intent("com.jiguang.demo.register");
-        context.sendBroadcast(intent);
+//        if (TextUtils.isEmpty(SPGlobalManager.getToken().getToken())) {
+//            JPRegisterVo vo = new JPRegisterVo();
+//            vo.setRegisterId(registrationId);
+//            HttpService.get().jpRegisterId(vo)
+//                    .map(new HttpFunction<>())
+//                    .compose(SchedulerUtils.io_main_single())
+//                    .subscribe(it -> {
+//                        ToastUtils.showShort("JP success");
+//                    });
+//            Intent intent = new Intent("com.jiguang.demo.register");
+//            context.sendBroadcast(intent);
+//        }
+
     }
 
     @Override
@@ -116,6 +132,11 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     @Override
     public void onCommandResult(Context context, CmdMessage cmdMessage) {
         Log.e(TAG, "[onCommandResult] " + cmdMessage);
+        Log.e(TAG, "[onCommandResult] token" + SPGlobalManager.getToken().getToken());
+//        if (TextUtils.isEmpty(SPGlobalManager.getToken().getToken())) {
+//            Intent intent = new Intent("com.jiguang.demo.register");
+//            context.sendBroadcast(intent);
+//        }
     }
 
     @Override
