@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_40"
         app:tabBackground="@drawable/selector_background"
+        app:tabPaddingStart="0dp"
+        app:tabPaddingEnd="0dp"
         />
 
 

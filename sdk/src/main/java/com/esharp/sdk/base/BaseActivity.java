@@ -1,6 +1,7 @@
 package com.esharp.sdk.base;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.esharp.sdk.dialog.IBaseProgress;
 import com.esharp.sdk.dialog.ProgressDialog;
 import com.esharp.sdk.http.HttpException;
 import com.esharp.sdk.utils.ActivityUtil;
+import com.esharp.sdk.utils.FontUtil;
 import com.esharp.sdk.utils.LocalUtils;
 
 import androidx.annotation.LayoutRes;
@@ -38,7 +40,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private IBaseProgress baseProgress;
     private CompositeDisposable disposable;
-    public boolean isShowingStatusBar = false;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,9 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         overridePendingTransition(R.anim.spsdk_anim_right_in, R.anim.spsdk_anim_left_out);
         LocalUtils.initLocal(this);
         SPGlobalManager.addActivity(this);
-
         AppCompatDelegate.setDefaultNightMode(SPGlobalManager.getNightMode());
-
+        FontUtil.initFontScale(this);
         if (isShowTitle()) {
             ViewGroup contentParent = findViewById(android.R.id.content);
             View contentView = LayoutInflater.from(this)
@@ -208,5 +209,20 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected KeyBoardTouch shouldAlwaysHideKeyboard() {
         return KeyBoardTouch.ALWAYS;
     }
+
+//    @Override
+//    public Resources getResources() {
+//
+//        Resources resources = super.getResources();
+//
+//        Configuration configuration = new Configuration();
+//
+//        configuration.setToDefaults();
+//
+//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+//
+//        return resources;
+//
+//    }
 
 }

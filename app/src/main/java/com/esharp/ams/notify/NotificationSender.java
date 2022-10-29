@@ -16,6 +16,7 @@ import com.esharp.sdk.bean.response.AssetAlertBean;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.ResUtils;
 import androidx.core.app.NotificationCompat;
+import cn.jpush.android.api.NotificationMessage;
 
 public class NotificationSender {
 
@@ -73,5 +74,23 @@ public class NotificationSender {
         int notificationID = (int) ((Math.random() * 100000000));
         builder.setContentIntent(pendingIntent);
         NotificationUtil.getNotificationManager().notify(notificationID, builder.build());
+    }
+
+    public static void notify(Context context, NotificationMessage message) {
+        NotificationCompat.Builder builder = NotificationUtil.createBaseNotification(NotificationChannels.getInstance().NOTICE_ALERT);
+
+        builder.setContentTitle(message.notificationTitle);
+        builder.setContentText(message.notificationContent);
+
+        Intent intent = new Intent(context, MainActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("TARGET", "AlertFragment");
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, (int) ((Math.random() * 100000000)),
+                intent, Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        NotificationUtil.getNotificationManager().notify((int) ((Math.random() * 100000000)), builder.build());
     }
 }

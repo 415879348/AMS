@@ -1,12 +1,15 @@
 package com.esharp.sdk.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.esharp.sdk.http.HttpException;
+import com.esharp.sdk.utils.FontUtil;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -38,6 +41,7 @@ public abstract class BaseFragment<H extends IHostView> extends AppCompatDialogF
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        FontUtil.initFontScale(getActivity());
         if (rootView != null) {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null) parent.removeView(rootView);
@@ -47,6 +51,7 @@ public abstract class BaseFragment<H extends IHostView> extends AppCompatDialogF
         init(rootView);
         return rootView;
     }
+
 
     protected abstract @LayoutRes
     int layout();

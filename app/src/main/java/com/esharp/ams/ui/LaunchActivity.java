@@ -27,6 +27,7 @@ import com.esharp.sdk.bean.response.Token;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
 import com.esharp.sdk.bean.response.WorkOrderVo;
+import com.esharp.sdk.utils.FontUtil;
 import com.esharp.sdk.utils.LocalUtils;
 
 import java.util.List;
@@ -213,7 +214,6 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
                 break;
             } else {
                 SPGlobalManager.setLanguage(Constant.TC);
-
                 LocalUtils.initLocal(App.mApp);
             }
         }

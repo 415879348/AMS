@@ -42,6 +42,7 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         et_account = findViewById(R.id.et_account);
         et_password = findViewById(R.id.et_password);
         findViewById(R.id.mtv_login).setOnClickListener(v -> {
+//            mPresenter.login(new LoginVo("test", "123456"));
             if (ClickUtil.isFastDoubleClick()) {
                 return;
             }
@@ -56,8 +57,6 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
                 return;
             }
             mPresenter.login(new LoginVo(account, password));
-
-//                mPresenter.login(new LoginVo("test", "123456"));
         });
     }
 

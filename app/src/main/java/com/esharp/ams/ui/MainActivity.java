@@ -27,6 +27,8 @@ import com.esharp.sdk.widget.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
 import org.greenrobot.eventbus.EventBus;
 import java.util.Objects;
+
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import cn.jpush.android.api.JPushInterface;
 
@@ -52,17 +54,28 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        toAlertFragment(savedInstanceState);
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Bundle bundle = intent.getExtras();
-        if(bundle != null) {
-            AssetAlertBean assetAlertBean = (AssetAlertBean) bundle.getSerializable("AssetAlertBean");
-            LogUtils.json(assetAlertBean);
-            Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
-            ((HomeFragment)mPagerAdapter.getItem(0)).selectPage(2);
-            EventBus.getDefault().post(new EventAlert());
-        }
         setIntent(intent);
+        toAlertFragment(intent.getExtras());
+    }
+
+    private void toAlertFragment(Bundle bundle){
+        if(bundle != null) {
+            String target = bundle.getString("TARGET");
+            LogUtils.json(target);
+            if ("AlertFragment".equals(target)) {
+                Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
+                ((HomeFragment)mPagerAdapter.getItem(0)).selectPage(2);
+                EventBus.getDefault().post(new EventAlert());
+            }
+        }
     }
 
     @Override

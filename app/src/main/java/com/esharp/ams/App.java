@@ -5,7 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Build;
+import android.util.DisplayMetrics;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -16,6 +18,7 @@ import com.esharp.sdk.bean.request.JPRegisterVo;
 import com.esharp.sdk.http.HttpFunction;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.SchedulerUtils;
+import com.esharp.sdk.utils.FontUtil;
 import com.esharp.sdk.utils.LocalUtils;
 import com.esharp.sdk.utils.ResUtils;
 import cn.jpush.android.api.JPushInterface;

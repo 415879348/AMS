@@ -1,122 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="networkOrSystemTimeIssueTryLater">抱歉！网络出现问题。请您检查网络连接和系统时间，并再试一次。谢谢！</string>
+    <string name="networkOrSystemTimeIssueTryLater">抱歉！網絡出現問題。請您檢查網絡連接和系統時間，並再試一次。謝謝！</string>
     <string name="the_maximum_character_length_is">字符長度最大為%d</string>
     <string name="ensureemailok">好的</string>
     <string name="spsdk_cancel">取消</string>
 
 
-    <string name="spsdk_camera_storage_permission">请打开相机授权SD卡的读/写功能</string>
-    <string name="spsdk_title">标题</string>
-    <string name="spsdk_confirm">确认</string>
+    <string name="spsdk_camera_storage_permission">請打開相機授權SD卡的讀/寫功能</string>
+    <string name="spsdk_title">標題</string>
+    <string name="spsdk_confirm">確認</string>
 
-    <string name="spsdk_tab_title_home">首页</string>
-    <string name="spsdk_tab_title_statistics">统计</string>
-    <string name="spsdk_tab_title_message">讯息</string>
+    <string name="spsdk_tab_title_home">首頁</string>
+    <string name="spsdk_tab_title_statistics">統計</string>
+    <string name="spsdk_tab_title_message">訊息</string>
     <string name="spsdk_tab_title_profile">我的</string>
 
-    <string name="spsdk_tab_schedule">待办</string>
-    <string name="spsdk_tab_warning">警报</string>
+    <string name="spsdk_tab_schedule">待辦</string>
+    <string name="spsdk_tab_warning">警報</string>
     <string name="spsdk_tab_attendance">考勤</string>
-    <string name="spsdk_tab_amend">补卡</string>
-    <string name="spsdk_tab_leave">请假</string>
+    <string name="spsdk_tab_amend">補卡</string>
+    <string name="spsdk_tab_leave">請假</string>
     <string name="spsdk_tab_overtime">加班</string>
 
-    <string name="spsdk_tab_statistics_title_team">团队统计</string>
-    <string name="spsdk_tab_statistics_title_me">我的统计</string>
+    <string name="spsdk_tab_statistics_title_team">團隊統計</string>
+    <string name="spsdk_tab_statistics_title_me">我的統計</string>
 
     <string name="spsdk_back">返回</string>
-    <string name="spsdk_loading">加载中……</string>
+    <string name="spsdk_loading">加載中……</string>
 
     <string name="spsdk_all">全部</string>
     <string name="spsdk_view_all">查看\n全部</string>
 
-    <string name="spsdk_leave_type">请假类型</string>
-    <string name="spsdk_leave_duration">请假时长</string>
-    <string name="spsdk_leave_season">请假事由</string>
-    <string name="spsdk_enter_leave_season">请填写请假事由</string>
-    <string name="spsdk_enter_overtime_season">请填写加班原因</string>
+    <string name="spsdk_leave_type">請假類型</string>
+    <string name="spsdk_leave_duration">請假時長</string>
+    <string name="spsdk_leave_season">請假事由</string>
+    <string name="spsdk_enter_leave_season">請填寫請假事由</string>
+    <string name="spsdk_enter_overtime_season">請填寫加班原因</string>
 
-    <string name="spsdk_start_time">开始时间</string>
-    <string name="spsdk_select_start_time">请选择开始时间</string>
-    <string name="spsdk_end_time">结束时间</string>
-    <string name="spsdk_select_end_time">请选择结束时间</string>
-    <string name="spsdk_enter_duration">请输入时长</string>
-    <string name="spsdk_overtime_duration">加班时长</string>
+    <string name="spsdk_start_time">開始時間</string>
+    <string name="spsdk_select_start_time">請選擇開始時間</string>
+    <string name="spsdk_end_time">結束時間</string>
+    <string name="spsdk_select_end_time">請選擇結束時間</string>
+    <string name="spsdk_enter_duration">請輸入時長</string>
+    <string name="spsdk_overtime_duration">加班時長</string>
 
 
-    <string name="spsdk_commit_at">提交于</string>
+    <string name="spsdk_commit_at">提交於</string>
     <string name="spsdk_see_more">查看更多</string>
 
-    <string name="spsdk_amend_record">补卡记录</string>
-    <string name="spsdk_amend_time">补卡时间</string>
-    <string name="spsdk_amend_season">补卡理由</string>
+    <string name="spsdk_amend_record">補卡記錄</string>
+    <string name="spsdk_amend_time">補卡時間</string>
+    <string name="spsdk_amend_season">補卡理由</string>
 
     <string name="spsdk_overtime_season">加班原因</string>
 
-    <string name="spsdk_time">时间</string>
-    <string name="spsdk_passed">已通过</string>
-    <string name="spsdk_approve">审批</string>
-    <string name="spsdk_temperature">体温</string>
-    <string name="spsdk_pending">待我处理中</string>
-    <string name="spsdk_revoke">撤销</string>
-    <string name="spsdk_rejected">已拒绝</string>
-    <string name="spsdk_approving">审批中</string>
+    <string name="spsdk_time">時間</string>
+    <string name="spsdk_passed">已通過</string>
+    <string name="spsdk_approve">審批</string>
+    <string name="spsdk_temperature">體溫</string>
+    <string name="spsdk_pending">待我處理中</string>
+    <string name="spsdk_revoke">撤銷</string>
+    <string name="spsdk_rejected">已拒絕</string>
+    <string name="spsdk_approving">審批中</string>
     <string name="spsdk_search">搜索</string>
-    <string name="spsdk_alarm_details">警报详情</string>
+    <string name="spsdk_alarm_details">警報詳情</string>
 
-    <string name="spsdk_attendance_record">考勤记录</string>
-    <string name="spsdk_repair_record">补卡记录</string>
-    <string name="spsdk_leave_record">请假记录</string>
-    <string name="spsdk_overtime_record">加班记录</string>
+    <string name="spsdk_attendance_record">考勤記錄</string>
+    <string name="spsdk_repair_record">補卡記錄</string>
+    <string name="spsdk_leave_record">請假記錄</string>
+    <string name="spsdk_overtime_record">加班記錄</string>
 
-    <string name="spsdk_attendance_record_detail">考勤记录详情</string>
-    <string name="spsdk_amend_record_detail">补卡记录详情</string>
-    <string name="spsdk_leave_record_detail">请假记录详情</string>
-    <string name="spsdk_overtime_record_detail">加班记录详情</string>
+    <string name="spsdk_attendance_record_detail">考勤記錄詳情</string>
+    <string name="spsdk_amend_record_detail">補卡記錄詳情</string>
+    <string name="spsdk_leave_record_detail">請假記錄詳情</string>
+    <string name="spsdk_overtime_record_detail">加班記錄詳情</string>
 
-    <string name="spsdk_apply_leave">请假申请</string>
-    <string name="spsdk_apply_amend">补卡申请</string>
-    <string name="spsdk_apply_overtime">加班申请</string>
+    <string name="spsdk_apply_leave">請假申請</string>
+    <string name="spsdk_apply_amend">補卡申請</string>
+    <string name="spsdk_apply_overtime">加班申請</string>
     <string name="spsdk_commit">提交</string>
-    <string name="spsdk_staff">人员</string>
-    <string name="spsdk_department">部门</string>
+    <string name="spsdk_staff">人員</string>
+    <string name="spsdk_department">部門</string>
 
-    <string name="spsdk_original_password">原密码</string>
-    <string name="spsdk_enter_original_password">请输入原密码</string>
-    <string name="spsdk_new_password">新密码</string>
-    <string name="spsdk_enter_new_password">请输入新密码</string>
-    <string name="spsdk_confirm_new_password">确认新密码</string>
-    <string name="spsdk_please_confirm_new_password">请确认新密码</string>
-    <string name="spsdk_tip_password">密码必须是8–16位的英文字母、数字字符组合\n(不能是纯数字)</string>
+    <string name="spsdk_original_password">原密碼</string>
+    <string name="spsdk_enter_original_password">請輸入原密碼</string>
+    <string name="spsdk_new_password">新密碼</string>
+    <string name="spsdk_enter_new_password">請輸入新密碼</string>
+    <string name="spsdk_confirm_new_password">確認新密碼</string>
+    <string name="spsdk_please_confirm_new_password">請確認新密碼</string>
+    <string name="spsdk_tip_password">密碼必須是8–16位的英文字母、數字字符組合\n(不能是純數字)</string>
 
-    <string name="spsdk_enter_phone">请输入手机号码</string>
-    <string name="spsdk_enter_please">请输入</string>
-    <string name="spsdk_verification_code">验证码</string>
-    <string name="spsdk_enter_verification_code">请输入验证码</string>
-    <string name="spsdk_get_verification_code">获取验证码</string>
-    <string name="spsdk_forget_password">忘记密码</string>
+    <string name="spsdk_enter_phone">請輸入手機號碼</string>
+    <string name="spsdk_enter_please">請輸入</string>
+    <string name="spsdk_verification_code">驗證碼</string>
+    <string name="spsdk_enter_verification_code">請輸入驗證碼</string>
+    <string name="spsdk_get_verification_code">獲取驗證碼</string>
+    <string name="spsdk_forget_password">忘記密碼</string>
     <string name="spsdk_login">登入</string>
     <string name="spsdk_logout">登出</string>
-    <string name="spsdk_login_user">用户名密码登入</string>
-    <string name="spsdk_login_phone">手机号码登入</string>
-    <string name="spsdk_phone_number">手机号码</string>
-    <string name="spsdk_username">用户名</string>
-    <string name="spsdk_password">密码</string>
-    <string name="spsdk_modify_password">更改密码</string>
+    <string name="spsdk_login_user">用戶名密碼登入</string>
+    <string name="spsdk_login_phone">手機號碼登入</string>
+    <string name="spsdk_phone_number">手機號碼</string>
+    <string name="spsdk_username">用戶名</string>
+    <string name="spsdk_password">密碼</string>
+    <string name="spsdk_modify_password">更改密碼</string>
 
-    <string name="spsdk_select_check_in_time">请选择打卡时间</string>
-    <string name="spsdk_register_temperature">请登记体温</string>
-    <string name="spsdk_fill_amend_season">请填写补卡理由</string>
+    <string name="spsdk_select_check_in_time">請選擇打卡時間</string>
+    <string name="spsdk_register_temperature">請登記體溫</string>
+    <string name="spsdk_fill_amend_season">請填寫補卡理由</string>
     <string name="spsdk_business_leave">事假</string>
-    <string name="spsdk_abnormal_temperature">体温异常</string>
-    <string name="spsdk_detection_time">检测时间</string>
+    <string name="spsdk_abnormal_temperature">體溫異常</string>
+    <string name="spsdk_detection_time">檢測時間</string>
 
-    <string name="spsdk_select_people">已选择：%d 人</string>
-    <string name="spsdk_most_select_people">最多可选择：%d 人</string>
-    <string name="spsdk_confirm_people">确认 (%d/%d)</string>
+    <string name="spsdk_select_people">已選擇：%d 人</string>
+    <string name="spsdk_most_select_people">最多可選擇：%d 人</string>
+    <string name="spsdk_confirm_people">確認 (%d/%d)</string>
 
-    <string name="spsdk_placeholder_hours">%s 小时</string>
+    <string name="spsdk_placeholder_hours">%s 小時</string>
 
 
     <string name="spsdk_duration_today">今日</string>
@@ -129,8 +129,8 @@
 
     <string name="spsdk_duration_this_month">本月</string>
     <string name="spsdk_duration_last_month">上月</string>
-    <string name="spsdk_duration_last_three_month">最近三个月</string>
+    <string name="spsdk_duration_last_three_month">最近三個月</string>
 
-<!--    ==================================-->
+    <!--    ==================================-->
 
 </resources>

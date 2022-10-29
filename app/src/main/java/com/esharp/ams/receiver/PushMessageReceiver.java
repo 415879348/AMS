@@ -2,11 +2,13 @@ package com.esharp.ams.receiver;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.esharp.ams.notify.NotificationSender;
+import com.esharp.ams.ui.MainActivity;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.bean.request.JPRegisterVo;
@@ -59,18 +61,20 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     @Override
     public void onNotifyMessageOpened(Context context, NotificationMessage message) {
         Log.e(TAG, "[onNotifyMessageOpened] " + message);
-//        try {
-//            //打开自定义的Activity
-//            Intent i = new Intent(context, MainActivity.class);
-//            Bundle bundle = new Bundle();
-//            bundle.putString(JPushInterface.EXTRA_NOTIFICATION_TITLE, message.notificationTitle);
-//            bundle.putString(JPushInterface.EXTRA_ALERT, message.notificationContent);
-//            i.putExtras(bundle);
-//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
-//            context.startActivity(i);
-//        } catch (Throwable throwable){
-//            LogUtils.json(throwable);
-//        }
+        LogUtils.json(message);
+        try {
+            //打开自定义的Activity
+            Intent i = new Intent(context, MainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("TARGET", "AlertFragment");
+            bundle.putString(JPushInterface.EXTRA_NOTIFICATION_TITLE, message.notificationTitle);
+            bundle.putString(JPushInterface.EXTRA_ALERT, message.notificationContent);
+            i.putExtras(bundle);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+            context.startActivity(i);
+        } catch (Throwable throwable){
+            LogUtils.json(throwable);
+        }
     }
 
     @Override
@@ -96,7 +100,9 @@ public class PushMessageReceiver extends JPushMessageReceiver {
 
     @Override
     public void onNotifyMessageArrived(Context context, NotificationMessage message) {
-        Log.e(TAG, "[onNotifyMessageArrived] " + message);
+        LogUtils.e(TAG, "[onNotifyMessageArrived] " + message);
+        LogUtils.json(message);
+
     }
 
     @Override
