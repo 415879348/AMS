@@ -55,7 +55,8 @@
         <service android:name=".service.UserService" android:enabled="true" android:exported="false" android:process=":pushcore">
             <intent-filter>
                 <action android:name="cn.jiguang.user.service.action">
-                </action></intent-filter>
+                </action>
+            </intent-filter>
         </service>
 
         <!-- Required since 3.0.7 -->

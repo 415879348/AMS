@@ -638,7 +638,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
         }
     }
 
-    private void permission(@PermissionConstants.Permission final String... permissions) {
+    private void permission(@PermissionConstants.PermissionGroup final String... permissions) {
         PermissionUtils.permission(permissions)
                 .callback(new PermissionUtils.FullCallback() {
 

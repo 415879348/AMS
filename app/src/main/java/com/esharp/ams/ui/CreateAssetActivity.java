@@ -517,7 +517,7 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
         }
     }
 
-    private void permission(@PermissionConstants.Permission final String... permissions) {
+    private void permission(@PermissionConstants.PermissionGroup final String... permissions) {
         PermissionUtils.permission(permissions)
                 .callback(new PermissionUtils.FullCallback() {
 

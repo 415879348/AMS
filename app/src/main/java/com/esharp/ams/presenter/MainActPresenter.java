@@ -26,7 +26,7 @@ public class MainActPresenter extends BasePresenter<MainActContract.IHost> imple
     public void jpRegisterId(Context context) {
         if (! TextUtils.isEmpty(JPushInterface.getRegistrationID(context))) {
             JPRegisterVo vo = new JPRegisterVo();
-            vo.setRegisterId("190e35f7e0b894217f2");
+            vo.setRegisterId(JPushInterface.getRegistrationID(context));
             HttpService.get().jpRegisterId(vo)
                     .map(new HttpFunction<>())
                     .compose(SchedulerUtils.io_main_single())

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
             app:spsdk_icon="@mipmap/add"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:spsdk_text="@string/create" />
 
         <com.esharp.sdk.widget.SPIconTextView

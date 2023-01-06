@@ -24,6 +24,8 @@ public interface Constant {
     String TAG = "tag";
     String DATA = "data";
 
+    String VERSION = "V1.0.";
+
     int DEFAULT_PAGE_SIZE = 10;
 
     //1请假，2销假，3薪资，4补签，5加班

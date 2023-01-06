@@ -1,5 +1,7 @@
 package com.esharp.ams.ui.fragment;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.contract.ProfileContract;
 import com.esharp.ams.presenter.ProfilePresenter;
 import com.esharp.ams.ui.LoginTMSActivity;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.bean.response.AssetAlertBean;
@@ -40,6 +43,7 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
     TextView tv_manage;
     SPShowView sv_username;
     SPShowView sv_phone;
+    TextView tv_version;
     MyTextView mv_logout;
 
     @Override
@@ -51,6 +55,7 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
         tv_manage = view.findViewById(R.id.tv_manage);
         sv_username = view.findViewById(R.id.sv_username);
         sv_phone = view.findViewById(R.id.sv_phone);
+        tv_version = view.findViewById(R.id.tv_version);
         mv_logout = view.findViewById(R.id.mv_logout);
         mv_logout.setOnClickListener(v -> {
             if (ClickUtil.isFastDoubleClick()) {
@@ -60,7 +65,7 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
         });
 
         setUserInfo(SPGlobalManager.getUserVo());
-
+        tv_version.setText(getVersionName());
         mPresenter.auth();
     }
 
@@ -86,6 +91,17 @@ public class ProfileFragment extends BaseMvpFragment<ProfileContract.Presenter, 
             sv_phone.setDetail(it.getPhone());
             sv_username.setDetail(it.getUsername());
         }
+    }
+
+    private String getVersionName(){
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "NameNotFoundException";
+        }
+        return Constant.VERSION + packageInfo.versionCode+"";
     }
 
     @Override
