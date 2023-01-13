@@ -6,6 +6,8 @@ import com.esharp.sdk.base.BasePresenter;
 import com.esharp.sdk.http.HttpFunction;
 import com.esharp.sdk.http.HttpService;
 import com.esharp.sdk.rxjava.SchedulerUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomePresenter extends BasePresenter<HomeContract.View> implements HomeContract.Presenter {
 
@@ -28,7 +30,9 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
     @Override
     public void workOrderCountOver() {
-        HttpService.get().workOrderCountOver()
+        Map<String, String> map = new HashMap<>();
+        map.put("overStep", "0");
+        HttpService.get().workOrderCountOver(map)
                 .map(new HttpFunction<>())
                 .compose(SchedulerUtils.io_main_single())
                 .subscribe(new BaseObserver<>(mView, mView::workOrderCountOver));

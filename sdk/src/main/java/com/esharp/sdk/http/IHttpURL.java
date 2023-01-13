@@ -15,7 +15,7 @@ public interface IHttpURL {
     String TEST_LOGIN_URL = "http://182.92.123.13:8061/server/auth/";
 
     String RELEASE_BASE_URL = "https://api.kahetech.com/ams/app/";
-//    String RELEASE_BASE_URL = "http://119.91.219.249:8900/ams/app/";
+//    String RELEASE_BASE_URL = "http://192.168.10.27:9999/ams/app/";
     String RELEASE_IMAGE_URL = "https://api.kahetech.com/ams/";
     String LOGIN_URL = TEST_LOGIN_URL;
 

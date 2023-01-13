@@ -38,5 +38,11 @@
             app:spsdk_show_text_title="@string/remark"
             app:spsdk_show_text_detail=""
             />
+
+        <com.esharp.sdk.widget.AutoNextLineLinearlayout
+            android:id="@+id/ll_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

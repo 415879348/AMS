@@ -14,6 +14,7 @@ import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.WorkOrderContract;
 import com.esharp.ams.dialog.FilterWorkOrderDialog;
 import com.esharp.ams.eventbus.EventBacklog;
+import com.esharp.ams.eventbus.EventWorkOrder;
 import com.esharp.ams.presenter.WorkOrderPresenter;
 import com.esharp.ams.ui.MainActivity;
 import com.esharp.ams.ui.WorkOrderCreateActivity;
@@ -27,6 +28,8 @@ import com.esharp.sdk.widget.SPShowTextView;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayout;
 import com.esharp.sdk.widget.swipy.SwipyRefreshLayoutDirection;
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.Map;
 import androidx.activity.result.ActivityResultLauncher;
@@ -38,6 +41,12 @@ public class WorkOrderFragment extends BaseMvpFragment<WorkOrderContract.Present
     @Override
     protected Pair<Integer, WorkOrderContract.Presenter> layoutAndPresenter() {
         return Pair.create(R.layout.fragment_work_order, new WorkOrderPresenter(this));
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
     private SPIconTextView itv_create, itv_filter;
@@ -64,6 +73,7 @@ public class WorkOrderFragment extends BaseMvpFragment<WorkOrderContract.Present
 
     @Override
     protected void init(View view) {
+        EventBus.getDefault().register(this);
         refreshLayout = view.findViewById(R.id.refreshLayout);
         itv_create = view.findViewById(R.id.itv_create);
         itv_filter = view.findViewById(R.id.itv_filter);
@@ -137,5 +147,10 @@ public class WorkOrderFragment extends BaseMvpFragment<WorkOrderContract.Present
     @Override
     public void refreshFinish() {
         if (refreshLayout != null) refreshLayout.setRefreshing(false);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventWorkOrder it) {
+        initData();
     }
 }

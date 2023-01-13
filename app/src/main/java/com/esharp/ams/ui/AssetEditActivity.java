@@ -34,6 +34,7 @@ import com.esharp.sdk.bean.response.DeviceBean;
 import com.esharp.sdk.bean.response.DeviceFieldValueBean;
 import com.esharp.sdk.bean.response.DeviceInfoForm;
 import com.esharp.sdk.bean.response.DictionaryBean;
+import com.esharp.sdk.bean.response.UrlsBean;
 import com.esharp.sdk.dialog.CustomDialogBuilder;
 import com.esharp.sdk.dialog.ListPopWindow;
 import com.esharp.sdk.http.GlideUtils;
@@ -373,8 +374,9 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                 Map.Entry<String, String > entry = iterator.next();
                 documentIds.add(entry.getValue());
             }
-            it.setDocumentIds(documentIds);
-
+            if (! documentIds.isEmpty()) {
+                it.setDocumentIds(documentIds);
+            }
             if (! TextUtils.isEmpty(size_l)){
                 it.setLength(size_l);
             }
@@ -443,11 +445,11 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
             scv_warranty_period.setContent(DateTimeUtils.millis2Date(it.getWarrantyDate()));
         }
 
-        List<DeviceBean.UrlsBean> urls = it.getUrls();
+        List<UrlsBean> urls = it.getUrls();
         ll_images.removeAllViews();
         for (int i = 0; i < urls.size(); i++) {
             String photoUrl = urls.get(i).getUrl();
-            String photoID = urls.get(i).getId();
+            String photoID = urls.get(i).getId()+"";
             DeleteImageView deleteImageView = new DeleteImageView(this);
             deleteImageView.setDeleteTag(photoID);
             deleteImageView.setDeleteClick(v -> {
@@ -658,10 +660,11 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
     private void selectPicture() {
         if (ll_images.getChildCount() == 3) {
-            showToast(R.string.photo_max);
+            showToast(R.string.photo_max3);
         }
         PictureSelector.create(this)
-                .openGallery(PictureMimeType.ofImage())
+//                .openGallery(PictureMimeType.ofImage())
+                .openCamera(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
                 .maxSelectNum(3 - ll_images.getChildCount())
                 .imageSpanCount(4)

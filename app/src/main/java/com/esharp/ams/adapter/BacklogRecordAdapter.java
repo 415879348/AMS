@@ -57,11 +57,7 @@ public class BacklogRecordAdapter extends BaseAdapter<WorkOrderBean, BacklogReco
             }
 
             tv_job_name.setText(it.getTitle());
-            if (it.getType() == 0) {
-                tv_job_type.setText(ResUtils.getString(R.string.repair_work_order));
-            } else {
-                tv_job_type.setText(ResUtils.getString(R.string.regular_maintenance));
-            }
+            tv_job_type.setText(it.getType());
 
 //            -1:撤銷 0:結束 1:申請 2:審批 3:處理
             switch (it.getStep()) {

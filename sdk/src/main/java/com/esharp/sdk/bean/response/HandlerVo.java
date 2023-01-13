@@ -1,6 +1,7 @@
 package com.esharp.sdk.bean.response;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class HandlerVo implements Serializable {
 
@@ -16,7 +17,7 @@ public class HandlerVo implements Serializable {
     private String content;
     private String processId;
     private Integer isOver;
-
+    private List<String> documentIds;
 
     public Long getId() {
         return id;
@@ -50,4 +51,11 @@ public class HandlerVo implements Serializable {
         this.isOver = isOver;
     }
 
+    public List<String> getDocumentIds() {
+        return documentIds;
+    }
+
+    public void setDocumentIds(List<String> documentIds) {
+        this.documentIds = documentIds;
+    }
 }

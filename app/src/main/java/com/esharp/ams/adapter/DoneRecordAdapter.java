@@ -60,12 +60,8 @@ public class DoneRecordAdapter extends BaseAdapter<WorkOrderBean, OnClickCallbac
 
             tv_job_name.setText(it.getTitle());
 
-            //工单类型 1：维修工单 2：定期保养
-            if (it.getType() == 1) {
-                tv_job_type.setText(ResUtils.getString(com.esharp.ams.R.string.repair_work_order));
-            } else {
-                tv_job_type.setText(ResUtils.getString(com.esharp.ams.R.string.regular_maintenance));
-            }
+            //工单类型
+            tv_job_type.setText(it.getType());
 
             if (it.getOverTime() != null) {
                 tv_completion_time.setText(DateTimeUtils.millis2Date(it.getOverTime()));

@@ -367,8 +367,9 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
                 Map.Entry<String, String > entry = iterator.next();
                 documentIds.add(entry.getValue());
             }
-            it.setDocumentIds(documentIds);
-
+            if (! documentIds.isEmpty()) {
+                it.setDocumentIds(documentIds);
+            }
             if (! TextUtils.isEmpty(size_l)) {
                 it.setLength(size_l);
             }
@@ -537,10 +538,11 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     private void selectPicture() {
         if (ll_images.getChildCount() == 3) {
-            showToast(R.string.photo_max);
+            showToast(R.string.photo_max3);
         }
         PictureSelector.create(this)
-                .openGallery(PictureMimeType.ofImage())
+//                .openGallery(PictureMimeType.ofImage())
+                .openCamera(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
                 .maxSelectNum(3 - ll_images.getChildCount())
                 .imageSpanCount(4)

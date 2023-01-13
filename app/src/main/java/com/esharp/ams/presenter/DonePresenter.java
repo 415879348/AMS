@@ -35,6 +35,7 @@ public class DonePresenter extends BasePresenter<DoneContract.View> implements D
         map.put("current", current + "");
         map.put("size", Constant.SIZE + "");
         map.put("step", "0"); // 0待办， 1已办
+        map.put("overStep", "0");
         HttpService.get().workOrderProcess(map)
                 .lift(new HttpResultOperator<>())
                 .compose(SchedulerUtils.io_main_single())

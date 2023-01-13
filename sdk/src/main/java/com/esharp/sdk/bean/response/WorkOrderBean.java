@@ -27,7 +27,7 @@ public class WorkOrderBean implements Serializable {
      * step : 步驟 -1:撤銷 0:結束 1:申請 2:審批 3:處理
      * superOrder : 0
      * title :
-     * type : 類型 1:維修工單 2:定時保養
+     * type : 工單類型
      */
 
     private String address;
@@ -54,7 +54,7 @@ public class WorkOrderBean implements Serializable {
     private Integer superOrder;
     private String title;
 
-    private Integer type;
+    private String type;
 
     public String getAddress() {
         return address;
@@ -232,11 +232,11 @@ public class WorkOrderBean implements Serializable {
         this.title = title;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 

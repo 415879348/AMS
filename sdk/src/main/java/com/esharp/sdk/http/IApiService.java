@@ -219,7 +219,7 @@ public interface IApiService {
      * @return
      */
     @GET("work/order/count/over")
-    Single<HttpResult<Integer>> workOrderCountOver();
+    Single<HttpResult<Integer>> workOrderCountOver(@QueryMap Map<String, String> params);
 
     /**
      * 節點查詢 詳情頁面顯示執行信息列表

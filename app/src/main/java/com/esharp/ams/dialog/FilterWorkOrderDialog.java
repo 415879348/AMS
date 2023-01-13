@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.blankj.utilcode.util.LogUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.ui.MainActivity;
+import com.esharp.sdk.bean.response.DictionaryBean;
 import com.esharp.sdk.bean.response.StepVo;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderTypeVo;
@@ -43,8 +44,6 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
 
     private final SPCardEditView cev_job_number_name;
 
-    private ListPopWindow<WorkOrderTypeVo> typePop;
-
     private ListPopWindow<StepVo> stepPop;
 
     private ListPopWindow<UserVo> handlerPop;
@@ -52,6 +51,8 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
     private List<WorkOrderTypeVo> typeList = new ArrayList<>();
 
     private List<StepVo> stepList = new ArrayList<>();
+
+    private ListPopWindow<DictionaryBean> typePop;
 
     public FilterWorkOrderDialog(@NonNull MainActivity mView) {
         super(mView, R.layout.dialog_filter_work_order);
@@ -83,17 +84,6 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
         stepList.add(p4);
         stepList.add(p5);
 
-        WorkOrderTypeVo vo1 = new WorkOrderTypeVo();
-        vo1.setTypeId("1");
-        vo1.setTypeName(ResUtils.getString(R.string.job_fault));
-
-        WorkOrderTypeVo vo2 = new WorkOrderTypeVo();
-        vo2.setTypeId("2");
-        vo2.setTypeName(ResUtils.getString(R.string.job_maintain));
-
-        typeList.add(vo1);
-        typeList.add(vo2);
-
         cev_job_number_name = findViewById(R.id.cev_job_number_name);
         scv_handler = findViewById(R.id.scv_handler);
         scv_type = findViewById(R.id.scv_type);
@@ -109,11 +99,11 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
         });
 
         scv_type.setOnItemClick(v -> {
-            WorkOrderTypeVo vo = (WorkOrderTypeVo) v.getTag();
+            DictionaryBean vo = (DictionaryBean) v.getTag();
             if (vo == null) {
                 typePop.show(scv_type, "");
             } else {
-                typePop.show(scv_type, vo.getTypeId());
+                typePop.show(scv_type, vo.getId());
             }
         });
 
@@ -154,22 +144,24 @@ public class FilterWorkOrderDialog extends BaseAlertDialog {
                 .compose(SchedulerUtils.io_main_single())
                 .lift(new ProgressOperator<>(mView, -1))
                 .subscribe(it -> {
-                    handlerPop = new ListPopWindow<>(scv_handler, mView, it, vo -> {
-                        LogUtils.json(vo);
-                        scv_handler.setTag(vo);
-                        scv_handler.setContent(vo.getUsername());
-                    });
-
-                    typePop = new ListPopWindow<>(scv_type, mView, typeList, vo -> {
-                        LogUtils.json(vo);
-                        scv_type.setTag(vo);
-                        scv_type.setContent(vo.getTypeName());
-                    });
-
                     stepPop = new ListPopWindow<>(scv_progress, mView, stepList, vo -> {
                         LogUtils.json(vo);
                         scv_progress.setTag(vo);
                         scv_progress.setContent(vo.getProgressName());
+                    });
+                });
+
+        Map<String, String> map = new HashMap<>();
+        map.put("dictType", "4");
+        HttpService.get().dictAll(map)
+                .lift(new HttpResultOperator<>())
+                .compose(SchedulerUtils.io_main_single())
+                .lift(new ProgressOperator<>(mView, -1))
+                .subscribe(it -> {
+                    typePop = new ListPopWindow<>(scv_type, mView, it, vo -> {
+                        LogUtils.json(vo);
+                        scv_type.setTag(vo);
+                        scv_type.setContent(vo.getDictName());
                     });
                 });
     }

@@ -56,6 +56,25 @@
         tools:visibility="visible"
         />
 
+    <com.esharp.sdk.widget.AutoNextLineLinearlayout
+        android:id="@+id/ll_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <com.esharp.sdk.widget.MyTextView
+        android:id="@+id/mv_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spsdk_dp_35"
+        android:layout_margin="@dimen/spsdk_dp_10"
+        android:paddingHorizontal="@dimen/spsdk_dp_5"
+        android:text="@string/upload_picture"
+        android:textSize="@dimen/spsdk_ts_16"
+        android:textColor="@color/spsdk_color_white"
+        android:gravity="center"
+        app:stv_corner="@dimen/spsdk_dp_5"
+        app:stv_solid="@color/spsdk_color_blue" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

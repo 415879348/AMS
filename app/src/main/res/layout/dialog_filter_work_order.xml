@@ -41,6 +41,7 @@
             android:layout_height="match_parent"
             android:paddingEnd="@dimen/spsdk_dp_30"
             android:orientation="horizontal"
+            android:visibility="gone"
             >
             <com.esharp.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_handler"

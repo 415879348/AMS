@@ -10,21 +10,28 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.WorkOrderDetailContract;
 import com.esharp.ams.dialog.WorkOrderHandleDialog;
+import com.esharp.ams.eventbus.EventWorkOrder;
 import com.esharp.ams.presenter.WorkOrderDetailPresenter;
 import com.esharp.sdk.Constant;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.NodeVo;
+import com.esharp.sdk.bean.response.UrlsBean;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
+import com.esharp.sdk.http.GlideUtils;
 import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.DateTimeUtils;
 import com.esharp.sdk.utils.ResUtils;
+import com.esharp.sdk.widget.AutoNextLineLinearlayout;
 import com.esharp.sdk.widget.MyTextView;
+import com.esharp.sdk.widget.RadiusImageView;
 import com.esharp.sdk.widget.SPSelectorView;
 import com.esharp.sdk.widget.SPShowTextView;
+import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.cardview.widget.CardView;
@@ -86,7 +93,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             if (ClickUtil.isFastDoubleClick()) {
                 return;
             }
-            WorkOrderHandleDialog dialog = new WorkOrderHandleDialog(this);
+            WorkOrderHandleDialog dialog = new WorkOrderHandleDialog(this, mWorkOrderBean);
             dialog.setOnClickListener(
                     vo -> {
                         if (mWorkOrderBean != null && nodeVo != null) {
@@ -132,15 +139,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         stv_job_name.setDetail(it.getTitle());
 
         stv_job_type = findViewById(R.id.stv_job_type);
-
-        switch (it.getType()) {
-            case 1:
-                stv_job_type.setDetail(ResUtils.getString(R.string.job_fault));
-                break;
-            case 2:
-                stv_job_type.setDetail(ResUtils.getString(R.string.job_maintain));
-                break;
-        }
+        stv_job_type.setDetail(it.getType());
 
         stv_asset_name = findViewById(R.id.stv_asset_name);
         stv_asset_name.setDetail(it.getDeviceName());
@@ -167,6 +166,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         for (int i = 0; i < it.size(); i++) {
             NodeVo vo = it.get(i);
             CardView item_handler = (CardView) LayoutInflater.from(this).inflate(R.layout.item_handler, ll_handler, false);
+            ll_handler.addView(item_handler);
             stv_handler = item_handler.findViewById(R.id.stv_handler);
             stv_handler.setDetail(vo.getUsername());
             stv_processing_time = item_handler.findViewById(R.id.stv_processing_time);
@@ -175,7 +175,21 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             }
             stv_remark2 = item_handler.findViewById(R.id.stv_remark2);
             stv_remark2.setDetail(vo.getContent());
-            ll_handler.addView(item_handler);
+            AutoNextLineLinearlayout ll_images = item_handler.findViewById(R.id.ll_images);
+            ll_images.removeAllViews();
+            List<UrlsBean> urls = vo.getUrls();
+            if (urls.size() > 0) {
+                for (int j = 0; j < urls.size(); j++) {
+                    RadiusImageView riv = new RadiusImageView(WorkOrderDetailActivity.this);
+                    LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(SizeUtils.dp2px(80),SizeUtils.dp2px(80));
+                    param.leftMargin = 20;
+                    riv.setPadding(SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5));
+                    riv.setLayoutParams(param);
+                    riv.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_grey));
+                    ll_images.addView(riv);
+                    GlideUtils.showImage(riv, urls.get(j).getUrl());
+                }
+            }
         }
 
     }
@@ -183,6 +197,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     @Override
     public void workOrderProcessSuc(Boolean it) {
         if (it) {
+            EventBus.getDefault().post(new EventWorkOrder());
             setResult(Activity.RESULT_OK, new Intent().putExtra(Constant.REFRESH_DATA, "success"));
             finish();
         }

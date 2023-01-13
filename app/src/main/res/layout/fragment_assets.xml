@@ -15,8 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
             app:spsdk_icon="@mipmap/add"
-            android:visibility="visible"
+            android:visibility="gone"
             app:spsdk_text="@string/create" />
+
+        <com.esharp.sdk.widget.SPShowTextView
+            android:id="@+id/stv_data_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spsdk_edit_height"
+            android:layout_marginStart="@dimen/spsdk_dp_5"
+            app:spsdk_show_text_title="@string/amount"
+            app:spsdk_show_text_detail="Charlie"
+            />
 
         <com.esharp.sdk.widget.SPIconTextView
             android:id="@+id/itv_edit"
@@ -48,14 +57,7 @@
             app:spsdk_text="@string/filter" />
     </RelativeLayout>
 
-    <com.esharp.sdk.widget.SPShowTextView
-        android:id="@+id/stv_data_count"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/spsdk_edit_height"
-        android:layout_marginStart="@dimen/spsdk_dp_5"
-        app:spsdk_show_text_title="@string/amount"
-        app:spsdk_show_text_detail="Charlie"
-        />
+
 
     <include
         layout="@layout/item_assets_title"

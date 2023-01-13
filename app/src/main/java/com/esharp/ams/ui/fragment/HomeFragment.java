@@ -11,6 +11,7 @@ import com.esharp.ams.adapter.HomeFragmentPagerAdapter;
 import com.esharp.ams.contract.HomeContract;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.eventbus.EventBacklog;
+import com.esharp.ams.eventbus.EventWorkOrder;
 import com.esharp.ams.presenter.HomePresenter;
 import com.esharp.sdk.base.BaseMvpFragment;
 import com.esharp.sdk.utils.ResUtils;
@@ -87,6 +88,12 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, MainAc
         mPresenter.workOrderCountOver();
 //        状态 0：未处理 1：已处理
         mPresenter.deviceAlertLogCount(0);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventWorkOrder it) {
+        mPresenter.workOrderCountProcess();
+        mPresenter.workOrderCountOver();
     }
 
     private TabLayout.Tab returnTab(TabLayout tabLayout, int position) {

@@ -1,6 +1,7 @@
 package com.esharp.sdk.bean.response;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class NodeVo implements Serializable {
 
@@ -18,19 +19,19 @@ public class NodeVo implements Serializable {
      * userId : 0
      * username :
      */
-
     private String content;
-    private Integer duration;
+    private Long duration;
     private Long endTime;
     private Long id;
     private Integer orderId;
     private String orderNumber;
     private Integer result;
-    private String startTime;
+    private Long startTime;
     private Integer status;
     private Integer type;
     private Integer userId;
     private String username;
+    private List<UrlsBean> urls;
 
     public String getContent() {
         return content;
@@ -40,11 +41,11 @@ public class NodeVo implements Serializable {
         this.content = content;
     }
 
-    public Integer getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
-    public void setDuration(Integer duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
@@ -88,14 +89,6 @@ public class NodeVo implements Serializable {
         this.result = result;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -126,5 +119,21 @@ public class NodeVo implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<UrlsBean> getUrls() {
+        return urls;
+    }
+
+    public void setUrls(List<UrlsBean> urls) {
+        this.urls = urls;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
     }
 }

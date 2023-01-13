@@ -102,70 +102,7 @@ public class DeviceBean extends ListPopWindow.Item implements Serializable {
         return deviceName;
     }
 
-    public static class UrlsBean implements Serializable {
-        /**
-         * createTime :
-         * extension :
-         * id : 0
-         * joinId : 0
-         * type : 0
-         * url :
-         */
-        private String createTime;
-        private String extension;
-        private String id;
-        private Integer joinId;
-        private Integer type;
-        private String url;
 
-        public String getCreateTime() {
-            return createTime;
-        }
-
-        public void setCreateTime(String createTime) {
-            this.createTime = createTime;
-        }
-
-        public String getExtension() {
-            return extension;
-        }
-
-        public void setExtension(String extension) {
-            this.extension = extension;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public Integer getJoinId() {
-            return joinId;
-        }
-
-        public void setJoinId(Integer joinId) {
-            this.joinId = joinId;
-        }
-
-        public Integer getType() {
-            return type;
-        }
-
-        public void setType(Integer type) {
-            this.type = type;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-    }
 
     public Integer getActive() {
         return active;

@@ -24,7 +24,7 @@ public interface Constant {
     String TAG = "tag";
     String DATA = "data";
 
-    String VERSION = "V1.0.";
+    String VERSION = "V1.2.";
 
     int DEFAULT_PAGE_SIZE = 10;
 
