@@ -1,5 +1,7 @@
 package com.esharp.sdk;
 
+import com.blankj.utilcode.util.SizeUtils;
+
 import java.util.Locale;
 
 /**
@@ -65,6 +67,8 @@ public interface Constant {
 
     int SIZE = 20;
     String REFRESH_DATA = "REFRESH_DATA";
+
+    int CROP_IMAGE_WIDE_HIGH = SizeUtils.dp2px( 240);
 
 }
 

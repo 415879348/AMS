@@ -660,7 +660,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
 
     private void selectPicture() {
         if (ll_images.getChildCount() == 3) {
-            showToast(R.string.photo_max3);
+            showToast(R.string.photo_max6);
         }
         PictureSelector.create(this)
 //                .openGallery(PictureMimeType.ofImage())
@@ -680,7 +680,7 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
                 .showCropGrid(true)
                 .rotateEnabled(false)
                 .scaleEnabled(true)
-                .cropImageWideHigh(SizeUtils.dp2px( 60), SizeUtils.dp2px( 60))
+                .cropImageWideHigh(Constant.CROP_IMAGE_WIDE_HIGH, Constant.CROP_IMAGE_WIDE_HIGH)
                 .forResult(new OnResultCallbackListener<LocalMedia>() {
 
                     @Override

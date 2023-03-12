@@ -1,5 +1,6 @@
 package com.esharp.ams.ui;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 import com.esharp.ams.R;
 import com.esharp.ams.adapter.MainFragmentPagerAdapter;
 import com.esharp.ams.contract.MainActContract;
 import com.esharp.ams.eventbus.EventAlert;
+import com.esharp.ams.eventbus.EventBacklog;
 import com.esharp.ams.factory.FragmentFactory;
 import com.esharp.ams.presenter.MainActPresenter;
 import com.esharp.ams.ui.fragment.HomeFragment;
@@ -26,6 +29,7 @@ import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
 import org.greenrobot.eventbus.EventBus;
+import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
@@ -74,6 +78,10 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
                 Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
                 ((HomeFragment)mPagerAdapter.getItem(0)).selectPage(2);
                 EventBus.getDefault().post(new EventAlert());
+            } else if ("BacklogFragment".equals(target)) {
+                Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
+                ((HomeFragment)mPagerAdapter.getItem(0)).selectPage(0);
+                EventBus.getDefault().post(new EventBacklog());
             }
         }
     }
@@ -120,6 +128,27 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         Objects.requireNonNull(mTabLayout.getTabAt(0)).select();
+
+
+//        AndPermission.with(this).runtime()
+//                .permission(Manifest.permission.POST_NOTIFICATIONS).onGranted {
+//        }.onDenied {
+//        }.start()
+
+        PermissionUtils.permission(Manifest.permission.POST_NOTIFICATIONS)
+                .callback(new PermissionUtils.FullCallback() {
+
+                    @Override
+                    public void onGranted(List<String> permissionsGranted) {
+                        LogUtils.json(permissionsGranted);
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
+                        LogUtils.json(permissionsDeniedForever);
+                        LogUtils.json(permissionsDenied);
+                    }
+                }).request();
     }
 
     @Override

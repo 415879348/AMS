@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.esharp.ams.R;
 import com.esharp.ams.ui.CreateAssetActivity;
 import com.esharp.ams.ui.WorkOrderDetailActivity;
+import com.esharp.sdk.Constant;
 import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseObserver;
 import com.esharp.sdk.bean.request.FileVo;
@@ -139,23 +140,34 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                 ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
                 return;
             }
-            HandlerVo vo = new HandlerVo();
-            vo.setContent(remark);
-            vo.setIsOver(0);
-            List<String> documentIds = new ArrayList<>();
-            Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<String, String > entry = iterator.next();
-                documentIds.add(entry.getValue());
-            }
-            if (! documentIds.isEmpty()) {
-                vo.setDocumentIds(documentIds);
-            }
-            it.onClick(vo);
+            new CustomDialogBuilder(mView)
+                    .setTitle(ResUtils.getString(R.string.tab_title_work_order))
+                    .setMessage(ResUtils.getString(R.string.spsdk_is_back))
+                    .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
+                        dialog.dismiss();
+                    }, true)
+                    .setPositiveButton(R.string.spsdk_confirm, (dialog, which) -> {
+                        HandlerVo vo = new HandlerVo();
+                        vo.setContent(remark);
+                        vo.setIsOver(0);
+                        List<String> documentIds = new ArrayList<>();
+                        Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
+                        while (iterator.hasNext()) {
+                            Map.Entry<String, String > entry = iterator.next();
+                            documentIds.add(entry.getValue());
+                        }
+                        if (! documentIds.isEmpty()) {
+                            vo.setDocumentIds(documentIds);
+                        }
+                        it.onClick(vo);
+                        dialog.dismiss();
+                    }, true)
+                    .create().show();
         });
         LogUtils.i(mWorkOrderBean.getApplyId(), SPGlobalManager.getUserVo().getId());
         if ((mWorkOrderBean.getApplyId() + "").equals(SPGlobalManager.getUserVo().getId())) {
             mv_assign.setText(ResUtils.getString(R.string.assign));
+            mv_assign.setSolid(ResUtils.getColor(R.color.spsdk_color_blue));
             mv_assign.setOnClickListener(v-> {
                 if (sv_selector.getVisibility() == View.GONE) {
                     sv_selector.setVisibility(View.VISIBLE);
@@ -189,26 +201,58 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
             });
         } else {
             mv_assign.setText(ResUtils.getString(R.string.go_back));
+            mv_assign.setSolid(ResUtils.getColor(R.color.spsdk_color_red));
             mv_assign.setOnClickListener(v-> {
-                String remark = nv_remark.getContent();
-                if (TextUtils.isEmpty(remark)) {
-                    ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
-                    return;
-                }
-                HandlerVo vo = new HandlerVo();
-                vo.setContent(remark);
-                vo.setIsOver(1);
-                vo.setProcessId(mWorkOrderBean.getApplyId()+"");
-                List<String> documentIds = new ArrayList<>();
-                Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
-                while (iterator.hasNext()) {
-                    Map.Entry<String, String > entry = iterator.next();
-                    documentIds.add(entry.getValue());
-                }
-                if (! documentIds.isEmpty()) {
-                    vo.setDocumentIds(documentIds);
-                }
-                it2.onClick(vo);
+                new CustomDialogBuilder(mView)
+                        .setTitle(ResUtils.getString(R.string.tab_title_work_order))
+                        .setMessage(ResUtils.getString(R.string.spsdk_is_back))
+                        .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
+                            dialog.dismiss();
+                        }, true)
+                        .setPositiveButton(R.string.spsdk_confirm, (dialog, which) -> {
+                            String remark = nv_remark.getContent();
+                            if (TextUtils.isEmpty(remark)) {
+                                ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+                                dialog.dismiss();
+                                return;
+                            }
+                            HandlerVo vo = new HandlerVo();
+                            vo.setContent(remark);
+                            vo.setIsOver(1);
+                            vo.setProcessId(mWorkOrderBean.getApplyId()+"");
+                            List<String> documentIds = new ArrayList<>();
+                            Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
+                            while (iterator.hasNext()) {
+                                Map.Entry<String, String > entry = iterator.next();
+                                documentIds.add(entry.getValue());
+                            }
+                            if (! documentIds.isEmpty()) {
+                                vo.setDocumentIds(documentIds);
+                            }
+                            it2.onClick(vo);
+                            dialog.dismiss();
+                        }, true)
+                        .create().show();
+
+//                String remark = nv_remark.getContent();
+//                if (TextUtils.isEmpty(remark)) {
+//                    ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+//                    return;
+//                }
+//                HandlerVo vo = new HandlerVo();
+//                vo.setContent(remark);
+//                vo.setIsOver(1);
+//                vo.setProcessId(mWorkOrderBean.getApplyId()+"");
+//                List<String> documentIds = new ArrayList<>();
+//                Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
+//                while (iterator.hasNext()) {
+//                    Map.Entry<String, String > entry = iterator.next();
+//                    documentIds.add(entry.getValue());
+//                }
+//                if (! documentIds.isEmpty()) {
+//                    vo.setDocumentIds(documentIds);
+//                }
+//                it2.onClick(vo);
             });
         }
         return this;
@@ -265,7 +309,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                 .showCropGrid(true)
                 .rotateEnabled(false)
                 .scaleEnabled(true)
-                .cropImageWideHigh(SizeUtils.dp2px( 60), SizeUtils.dp2px( 60))
+                .cropImageWideHigh(Constant.CROP_IMAGE_WIDE_HIGH, Constant.CROP_IMAGE_WIDE_HIGH)
                 .forResult(new OnResultCallbackListener<LocalMedia>() {
 
                     @Override

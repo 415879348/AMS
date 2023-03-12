@@ -130,7 +130,8 @@
     <string name="spsdk_duration_this_month">本月</string>
     <string name="spsdk_duration_last_month">上月</string>
     <string name="spsdk_duration_last_three_month">最近三個月</string>
-
+    <string name="spsdk_is_back">是否退回</string>
+    <string name="spsdk_is_finish">是否結束</string>
     <!--    ==================================-->
 
 </resources>

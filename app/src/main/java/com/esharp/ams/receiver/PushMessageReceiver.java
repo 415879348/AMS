@@ -3,22 +3,19 @@ package com.esharp.ams.receiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
+import com.esharp.ams.App;
+import com.esharp.ams.notify.NotificationChannels;
 import com.esharp.ams.notify.NotificationSender;
+import com.esharp.ams.notify.NotificationUtil;
 import com.esharp.ams.ui.MainActivity;
 import com.esharp.sdk.SPGlobalManager;
-import com.esharp.sdk.base.BaseObserver;
-import com.esharp.sdk.bean.request.JPRegisterVo;
 import com.esharp.sdk.bean.response.AssetAlertBean;
+import com.esharp.sdk.bean.response.NotificationVo;
 import com.esharp.sdk.bean.response.UserVo;
-import com.esharp.sdk.dialog.ListPopWindow;
-import com.esharp.sdk.http.HttpFunction;
-import com.esharp.sdk.http.HttpService;
-import com.esharp.sdk.rxjava.SchedulerUtils;
 import com.google.gson.Gson;
+import androidx.core.app.NotificationCompat;
 import cn.jpush.android.api.CmdMessage;
 import cn.jpush.android.api.CustomMessage;
 import cn.jpush.android.api.JPushInterface;
@@ -62,19 +59,45 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     public void onNotifyMessageOpened(Context context, NotificationMessage message) {
         Log.e(TAG, "[onNotifyMessageOpened] " + message);
         LogUtils.json(message);
-        try {
-            //打开自定义的Activity
-            Intent i = new Intent(context, MainActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("TARGET", "AlertFragment");
-            bundle.putString(JPushInterface.EXTRA_NOTIFICATION_TITLE, message.notificationTitle);
-            bundle.putString(JPushInterface.EXTRA_ALERT, message.notificationContent);
-            i.putExtras(bundle);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
-            context.startActivity(i);
-        } catch (Throwable throwable){
-            LogUtils.json(throwable);
+
+        NotificationVo notificationVo = new Gson().fromJson(message.notificationExtras, NotificationVo.class);
+        Bundle bundle = new Bundle();
+//        type=1跳到現在警報 =2跳到待辦
+        switch (notificationVo.getType()) {
+            case 1:
+                bundle.putString("TARGET", "AlertFragment");
+            case 2:
+                bundle.putString("TARGET", "BacklogFragment");
+                break;
         }
+        NotificationCompat.Builder builder = NotificationUtil.createBaseNotification(NotificationChannels.getInstance().NOTICE_ALERT);
+        builder.setContentTitle(message.notificationTitle);
+        builder.setSubText(notificationVo.getSendTime());
+        builder.setContentText(message.notificationContent);
+        Intent intent = new Intent(App.mApp, MainActivity.class);
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+
+//        PendingIntent pendingIntent = PendingIntent.getActivity(App.mApp, (int) ((Math.random() * 100000000)),
+//                intent, Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : PendingIntent.FLAG_UPDATE_CURRENT);
+//        int notificationID = (int) ((Math.random() * 100000000));
+//        builder.setContentIntent(pendingIntent);
+//        NotificationUtil.getNotificationManager().notify(notificationID, builder.build());
+
+//        try {
+//            //打开自定义的Activity
+//            Intent i = new Intent(context, MainActivity.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putString("TARGET", "AlertFragment");
+//            bundle.putString(JPushInterface.EXTRA_NOTIFICATION_TITLE, message.notificationTitle);
+//            bundle.putString(JPushInterface.EXTRA_ALERT, message.notificationContent);
+//            i.putExtras(bundle);
+//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+//            context.startActivity(i);
+//        } catch (Throwable throwable) {
+//            LogUtils.json(throwable);
+//        }
     }
 
     @Override
@@ -102,7 +125,6 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     public void onNotifyMessageArrived(Context context, NotificationMessage message) {
         LogUtils.e(TAG, "[onNotifyMessageArrived] " + message);
         LogUtils.json(message);
-
     }
 
     @Override
