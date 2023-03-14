@@ -85,8 +85,6 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
 
     Map<String, String> photoMap = new HashMap<>();
 
-    private final int MAX_SELECT_NUM = 6;
-
     private ListPopWindow<DictionaryBean> assetTypePop, assetBrandPop, assetModelPop;
     private ListPopWindow<DeviceBean> assetPop;
 
@@ -539,14 +537,15 @@ public class CreateAssetActivity extends BaseMvpActivity<CreateAssetContract.Pre
     }
 
     private void selectPicture() {
-        if (ll_images.getChildCount() == MAX_SELECT_NUM) {
+        if (ll_images.getChildCount() == Constant.MAX_SELECT_NUM) {
             showToast(R.string.photo_max6);
+            return;
         }
         PictureSelector.create(this)
 //                .openGallery(PictureMimeType.ofImage())
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
-                .maxSelectNum(MAX_SELECT_NUM - ll_images.getChildCount())
+                .maxSelectNum(Constant.MAX_SELECT_NUM - ll_images.getChildCount())
                 .imageSpanCount(4)
                 .selectionMode(PictureConfig.MULTIPLE)
                 .isPreviewImage(true)

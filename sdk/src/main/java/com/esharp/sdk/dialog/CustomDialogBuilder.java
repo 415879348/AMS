@@ -143,7 +143,7 @@ public class CustomDialogBuilder implements DialogBuilder {
         if (!TextUtils.isEmpty(cancel_btnText)) {
             cancel.setText(cancel_btnText);
             if (cancel_btnClickListener != null) {
-                confirm.setOnClickListener(v -> cancel_btnClickListener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE));
+                cancel.setOnClickListener(v -> cancel_btnClickListener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE));
             } else {
                 cancel.setOnClickListener(v -> dialog.dismiss());
             }

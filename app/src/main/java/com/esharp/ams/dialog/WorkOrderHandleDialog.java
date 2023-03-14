@@ -145,7 +145,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                     .setMessage(ResUtils.getString(R.string.spsdk_is_back))
                     .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
                         dialog.dismiss();
-                    }, true)
+                    })
                     .setPositiveButton(R.string.spsdk_confirm, (dialog, which) -> {
                         HandlerVo vo = new HandlerVo();
                         vo.setContent(remark);
@@ -208,7 +208,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                         .setMessage(ResUtils.getString(R.string.spsdk_is_back))
                         .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
                             dialog.dismiss();
-                        }, true)
+                        })
                         .setPositiveButton(R.string.spsdk_confirm, (dialog, which) -> {
                             String remark = nv_remark.getContent();
                             if (TextUtils.isEmpty(remark)) {
@@ -290,6 +290,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
     private void selectPicture() {
         if (ll_images.getChildCount() == 6) {
             ToastUtils.showShort(R.string.photo_max6);
+            return;
         }
         PictureSelector.create(mView)
 //                .openGallery(PictureMimeType.ofImage())

@@ -69,7 +69,7 @@ public interface Constant {
     String REFRESH_DATA = "REFRESH_DATA";
 
     int CROP_IMAGE_WIDE_HIGH = SizeUtils.dp2px( 240);
-
+    int MAX_SELECT_NUM = 6;
 }
 
 

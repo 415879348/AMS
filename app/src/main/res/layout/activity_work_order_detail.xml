@@ -56,6 +56,13 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+
+
         <!--资产信息-->
         <TextView
             style="@style/spsdk_text_main16"

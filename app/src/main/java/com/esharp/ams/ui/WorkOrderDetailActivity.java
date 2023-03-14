@@ -67,7 +67,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
 
     private int mMode = NORMAL;
 
-    private LinearLayout ll_handler = null;
+    private LinearLayout ll_handler, ll_images;
 
     private SPShowTextView stv_job_number, stv_job_name, stv_job_type,
             stv_asset_name, stv_location, stv_originator,
@@ -87,6 +87,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
 
         TextView title_text = findViewById(R.id.title_text);
         title_text.setText(R.string.job_detail);
+        ll_images = findViewById(R.id.ll_images);
 
         mv_handle = findViewById(R.id.mv_handle);
         mv_handle.setOnClickListener(v -> {
@@ -155,6 +156,21 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
 
         stv_remark = findViewById(R.id.stv_remark);
         stv_remark.setDetail(it.getRemark());
+
+        ll_images.removeAllViews();
+        List<UrlsBean> urls = it.getUrls();
+        if (urls.size() > 0) {
+            for (int j = 0; j < urls.size(); j++) {
+                RadiusImageView riv = new RadiusImageView(WorkOrderDetailActivity.this);
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(SizeUtils.dp2px(80),SizeUtils.dp2px(80));
+                param.leftMargin = 20;
+                riv.setPadding(SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5));
+                riv.setLayoutParams(param);
+                riv.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_grey));
+                ll_images.addView(riv);
+                GlideUtils.showImage(riv, urls.get(j).getUrl());
+            }
+        }
     }
 
     @Override

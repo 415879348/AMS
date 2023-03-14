@@ -659,14 +659,15 @@ public class AssetEditActivity extends BaseMvpActivity<AssetEditContract.Present
     }
 
     private void selectPicture() {
-        if (ll_images.getChildCount() == 3) {
+        if (ll_images.getChildCount() == Constant.MAX_SELECT_NUM) {
             showToast(R.string.photo_max6);
+            return;
         }
         PictureSelector.create(this)
 //                .openGallery(PictureMimeType.ofImage())
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
-                .maxSelectNum(3 - ll_images.getChildCount())
+                .maxSelectNum(Constant.MAX_SELECT_NUM - ll_images.getChildCount())
                 .imageSpanCount(4)
                 .selectionMode(PictureConfig.MULTIPLE)
                 .isPreviewImage(true)

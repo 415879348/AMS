@@ -1,6 +1,7 @@
 package com.esharp.sdk.bean.response;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class WorkOrderBean implements Serializable {
 
@@ -53,7 +54,7 @@ public class WorkOrderBean implements Serializable {
     private Integer step;
     private Integer superOrder;
     private String title;
-
+    private List<UrlsBean> urls;
     private String type;
 
     public String getAddress() {
@@ -246,5 +247,13 @@ public class WorkOrderBean implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<UrlsBean> getUrls() {
+        return urls;
+    }
+
+    public void setUrls(List<UrlsBean> urls) {
+        this.urls = urls;
     }
 }

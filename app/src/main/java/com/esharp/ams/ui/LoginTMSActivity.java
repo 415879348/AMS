@@ -42,21 +42,21 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         et_account = findViewById(R.id.et_account);
         et_password = findViewById(R.id.et_password);
         findViewById(R.id.mtv_login).setOnClickListener(v -> {
-//            mPresenter.login(new LoginVo("admin", "123456"));
-            if (ClickUtil.isFastDoubleClick()) {
-                return;
-            }
-            String account = et_account.getText().toString();
-            if (TextUtils.isEmpty(account)) {
-                showToast(ResUtils.getString(R.string.please_enter_account));
-                return;
-            }
-            String password = et_password.getText().toString();
-            if (TextUtils.isEmpty(password)) {
-                showToast(ResUtils.getString(R.string.please_enter_password));
-                return;
-            }
-            mPresenter.login(new LoginVo(account, password));
+            mPresenter.login(new LoginVo("admin", "123456"));
+//            if (ClickUtil.isFastDoubleClick()) {
+//                return;
+//            }
+//            String account = et_account.getText().toString();
+//            if (TextUtils.isEmpty(account)) {
+//                showToast(ResUtils.getString(R.string.please_enter_account));
+//                return;
+//            }
+//            String password = et_password.getText().toString();
+//            if (TextUtils.isEmpty(password)) {
+//                showToast(ResUtils.getString(R.string.please_enter_password));
+//                return;
+//            }
+//            mPresenter.login(new LoginVo(account, password));
         });
     }
 
