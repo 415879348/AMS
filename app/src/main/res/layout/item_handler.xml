@@ -15,13 +15,26 @@
         android:padding="@dimen/spsdk_dp_10"
         android:orientation="vertical">
 
-        <com.esharp.sdk.widget.SPShowTextView
-            android:id="@+id/stv_handler"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/spsdk_dp_25"
-            app:spsdk_show_text_title="@string/handler"
-            app:spsdk_show_text_detail=""
-            />
+            android:layout_height="wrap_content">
+            <com.esharp.sdk.widget.SPShowTextView
+                android:id="@+id/stv_handler"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_25"
+                app:spsdk_show_text_title="@string/handler"
+                app:spsdk_show_text_detail=""
+                />
+            <com.esharp.sdk.widget.SPIconTextView
+                android:id="@+id/itv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spsdk_dp_25"
+                android:layout_alignParentEnd="true"
+                app:spsdk_icon="@mipmap/edit"
+                android:visibility="visible"
+                app:spsdk_text="@string/edit" />
+        </RelativeLayout>
+
 
         <com.esharp.sdk.widget.SPShowTextView
             android:id="@+id/stv_processing_time"

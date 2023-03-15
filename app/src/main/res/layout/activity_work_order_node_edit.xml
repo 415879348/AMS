@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.esharp.sdk.widget.MyNestedScrollView2
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spsdk_dp_5"
+    android:fadingEdge="none"
+    android:fadingEdgeLength="0dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <com.esharp.sdk.widget.MyTextView
+            android:id="@+id/mv_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/spsdk_dp_35"
+            android:layout_margin="@dimen/spsdk_dp_10"
+            android:paddingHorizontal="@dimen/spsdk_dp_5"
+            android:text="@string/upload_picture"
+            android:textSize="@dimen/spsdk_ts_16"
+            android:textColor="@color/spsdk_color_white"
+            android:gravity="center"
+            app:stv_corner="@dimen/spsdk_dp_5"
+            app:stv_solid="@color/spsdk_color_blue" />
+
+        <com.esharp.sdk.widget.AutoNextLineLinearlayout
+            android:id="@+id/ll_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+
+        <com.esharp.sdk.widget.SPCardEditView
+            android:id="@+id/cev_remark"
+            style="@style/spsdk_edit_view_card"
+            app:spsdk_card_edit_hint="@string/remark"
+            app:spsdk_card_edit_content_type="text"
+            app:spsdk_card_edit_max_length="200"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spsdk_dp_10"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+<!--            <com.esharp.sdk.widget.MyTextView-->
+<!--                android:id="@+id/mv_reset"-->
+<!--                android:layout_width="@dimen/spsdk_dp_100"-->
+<!--                android:layout_height="@dimen/spsdk_dp_40"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:text="@string/reset"-->
+<!--                android:textSize="@dimen/spsdk_ts_16"-->
+<!--                android:textColor="@color/spsdk_color_white"-->
+<!--                android:gravity="center"-->
+<!--                app:stv_corner="@dimen/spsdk_dp_20"-->
+<!--                app:stv_solid="@color/spsdk_color_gray2" />-->
+
+            <com.esharp.sdk.widget.MyTextView
+                android:id="@+id/mv_confirm"
+                android:layout_width="@dimen/spsdk_dp_100"
+                android:layout_height="@dimen/spsdk_dp_40"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/confirm"
+                android:textSize="@dimen/spsdk_ts_16"
+                android:textColor="@color/spsdk_color_white"
+                android:gravity="center"
+                app:stv_corner="@dimen/spsdk_dp_20"
+                app:stv_solid="@color/spsdk_color_blue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.esharp.sdk.widget.MyNestedScrollView2>
+
+

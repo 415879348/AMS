@@ -11,6 +11,7 @@ import com.esharp.sdk.bean.request.LeaveVo;
 import com.esharp.sdk.bean.request.LoginVo;
 import com.esharp.sdk.bean.request.OverTimeApplyVo;
 import com.esharp.sdk.bean.request.RequestApplyVo;
+import com.esharp.sdk.bean.request.WorkOrderNodeVo;
 import com.esharp.sdk.bean.response.AlertDetailVo;
 import com.esharp.sdk.bean.response.AlertVo;
 import com.esharp.sdk.bean.response.ApplyRecordVo;
@@ -452,4 +453,10 @@ public interface IApiService {
 
     @GET("dept/list")
     Single<HttpResult<List<DepartmentVo>>> departmentList();
+
+    @GET("work/order/node/search/{nodeId}")
+    Single<HttpResult<WorkOrderNodeVo>> nodeSearch(@Path("nodeId") Long nodeId);
+
+    @POST("work/order/node/update")
+    Single<HttpResult<Boolean>> nodeUpdate(@Body HandlerVo vo);
 }

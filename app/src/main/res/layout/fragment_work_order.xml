@@ -14,9 +14,11 @@
             android:id="@+id/itv_create"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
+            android:layout_toEndOf="@+id/stv_data_count"
+            android:layout_marginStart="@dimen/spsdk_dp_5"
             app:spsdk_icon="@mipmap/add"
             app:spsdk_text="@string/create"
-            android:visibility="gone"
+            android:visibility="visible"
             />
 
         <com.esharp.sdk.widget.SPShowTextView

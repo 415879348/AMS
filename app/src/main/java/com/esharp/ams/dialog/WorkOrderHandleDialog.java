@@ -288,7 +288,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
     }
 
     private void selectPicture() {
-        if (ll_images.getChildCount() == 6) {
+        if (ll_images.getChildCount() == Constant.MAX_SELECT_NUM) {
             ToastUtils.showShort(R.string.photo_max6);
             return;
         }
@@ -296,7 +296,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
 //                .openGallery(PictureMimeType.ofImage())
                 .openCamera(PictureMimeType.ofImage())
                 .imageEngine(new PicImageEngine())
-                .maxSelectNum(6 - ll_images.getChildCount())
+                .maxSelectNum(Constant.MAX_SELECT_NUM - ll_images.getChildCount())
                 .imageSpanCount(4)
                 .selectionMode(PictureConfig.MULTIPLE)
                 .isPreviewImage(true)

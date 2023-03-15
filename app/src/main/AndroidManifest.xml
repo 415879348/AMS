@@ -34,6 +34,9 @@
             android:name=".ui.WorkOrderDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.WorkOrderNodeEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.CreateAssetActivity"
             android:screenOrientation="portrait" />
         <activity

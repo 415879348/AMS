@@ -29,11 +29,13 @@ import com.esharp.sdk.utils.ResUtils;
 import com.esharp.sdk.widget.AutoNextLineLinearlayout;
 import com.esharp.sdk.widget.MyTextView;
 import com.esharp.sdk.widget.RadiusImageView;
+import com.esharp.sdk.widget.SPIconTextView;
 import com.esharp.sdk.widget.SPSelectorView;
 import com.esharp.sdk.widget.SPShowTextView;
 import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.cardview.widget.CardView;
 
 public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailContract.Presenter> implements WorkOrderDetailContract.View {
@@ -47,14 +49,14 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         startActivity(context, it, NORMAL, null);
     }
 
-    public static void startActivity(Context context, WorkOrderBean it, int mode, ActivityResultLauncher<Intent> mLauncher) {
+    public static void startActivity(Context context, WorkOrderBean it, int mode, ActivityResultLauncher<Intent> launcher) {
         Intent intent = new Intent(context, WorkOrderDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("WorkOrderBean", it);
         bundle.putSerializable("Mode", mode);
         intent.putExtras(bundle);
-        if (mLauncher != null) {
-            mLauncher.launch(intent);
+        if (launcher != null) {
+            launcher.launch(intent);
         } else {
             context.startActivity(intent);
         }
@@ -79,6 +81,8 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     private MyTextView mv_handle;
 
     private NodeVo nodeVo = null;
+
+    private ActivityResultLauncher<Intent> mLauncher = null;
 
     @Override
     protected void init() {
@@ -124,9 +128,16 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             }
         }
         LogUtils.json(mWorkOrderBean);
-        mPresenter.userAll();
+//        mPresenter.userAll();
         mPresenter.workOrderID(mWorkOrderBean.getId()+"");
         mPresenter.workOrderNode(mWorkOrderBean.getId()+"");
+
+        mLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            Intent intent;
+            if (result.getResultCode() == Activity.RESULT_OK && (intent = result.getData()) != null && (intent.getStringExtra(Constant.REFRESH_DATA)) != null) {
+                mPresenter.workOrderNode(mWorkOrderBean.getId()+"");
+            }
+        });
     }
 
     @Override
@@ -185,6 +196,11 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             ll_handler.addView(item_handler);
             stv_handler = item_handler.findViewById(R.id.stv_handler);
             stv_handler.setDetail(vo.getUsername());
+            SPIconTextView itv_edit = item_handler.findViewById(R.id.itv_edit);
+            itv_edit.setOnClickListener(v -> {
+                WorkOrderNodeEditActivity.startActivity(WorkOrderDetailActivity.this, vo, mLauncher);
+            });
+
             stv_processing_time = item_handler.findViewById(R.id.stv_processing_time);
             if (vo.getEndTime() != null) {
                 stv_processing_time.setDetail(DateTimeUtils.millis2Date(vo.getEndTime()));
