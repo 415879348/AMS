@@ -193,6 +193,7 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         }
         nodeVo = it.get(it.size() - 1);
         ll_handler = findViewById(R.id.ll_handler);
+        ll_handler.removeAllViews();
 
         for (int i = 0; i < it.size(); i++) {
             NodeVo vo = it.get(i);
@@ -206,7 +207,8 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             });
             LogUtils.json(vo);
             LogUtils.json(SPGlobalManager.getUserVo());
-            if ((vo.getUserId() + "").equals(SPGlobalManager.getUserVo().getId())) {
+            if ((vo.getUserId() + "").equals(SPGlobalManager.getUserVo().getId()) ||
+                    vo.getStatus() == 1) {
                 itv_edit.setVisibility(View.VISIBLE);
             } else {
                 itv_edit.setVisibility(View.GONE);
