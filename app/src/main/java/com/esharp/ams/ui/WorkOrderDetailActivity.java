@@ -17,6 +17,7 @@ import com.esharp.ams.dialog.WorkOrderHandleDialog;
 import com.esharp.ams.eventbus.EventWorkOrder;
 import com.esharp.ams.presenter.WorkOrderDetailPresenter;
 import com.esharp.sdk.Constant;
+import com.esharp.sdk.SPGlobalManager;
 import com.esharp.sdk.base.BaseMvpActivity;
 import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UrlsBean;
@@ -187,6 +188,9 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
     @Override
     public void workOrderNodeSuc(List<NodeVo> it) {
         LogUtils.json(it);
+        if (it.size() < 1){
+            return;
+        }
         nodeVo = it.get(it.size() - 1);
         ll_handler = findViewById(R.id.ll_handler);
 
@@ -200,7 +204,13 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             itv_edit.setOnClickListener(v -> {
                 WorkOrderNodeEditActivity.startActivity(WorkOrderDetailActivity.this, vo, mLauncher);
             });
-
+            LogUtils.json(vo);
+            LogUtils.json(SPGlobalManager.getUserVo());
+            if ((vo.getUserId() + "").equals(SPGlobalManager.getUserVo().getId())) {
+                itv_edit.setVisibility(View.VISIBLE);
+            } else {
+                itv_edit.setVisibility(View.GONE);
+            }
             stv_processing_time = item_handler.findViewById(R.id.stv_processing_time);
             if (vo.getEndTime() != null) {
                 stv_processing_time.setDetail(DateTimeUtils.millis2Date(vo.getEndTime()));

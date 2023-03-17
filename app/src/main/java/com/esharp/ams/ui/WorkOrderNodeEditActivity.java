@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
 import android.widget.LinearLayout;
@@ -17,6 +18,7 @@ import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.esharp.ams.R;
 import com.esharp.ams.contract.WorkOrderNodeEditContract;
@@ -111,6 +113,11 @@ public class WorkOrderNodeEditActivity extends BaseMvpActivity<WorkOrderNodeEdit
         mv_confirm.setOnClickListener(v -> {
             HandlerVo vo = new HandlerVo();
             vo.setId(mNodeVo.getId());
+            String remark = cev_remark.getContent();
+            if (TextUtils.isEmpty(remark)) {
+                ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+                return;
+            }
             vo.setContent(cev_remark.getContent());
             List<String> documentIds = new ArrayList<>();
             Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
@@ -201,7 +208,7 @@ public class WorkOrderNodeEditActivity extends BaseMvpActivity<WorkOrderNodeEdit
                                 LogUtils.i(imgBase64);
 
                                 FileVo vo = new FileVo();
-                                vo.setType(0);
+                                vo.setType(7);
                                 vo.setExtension("jpeg");
                                 vo.setBase64(imgBase64);
                                 files.getDocumentForms().add(vo);

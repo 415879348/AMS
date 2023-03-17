@@ -457,6 +457,6 @@ public interface IApiService {
     @GET("work/order/node/search/{nodeId}")
     Single<HttpResult<WorkOrderNodeVo>> nodeSearch(@Path("nodeId") Long nodeId);
 
-    @POST("work/order/node/update")
+    @PUT("work/order/node/update")
     Single<HttpResult<Boolean>> nodeUpdate(@Body HandlerVo vo);
 }
