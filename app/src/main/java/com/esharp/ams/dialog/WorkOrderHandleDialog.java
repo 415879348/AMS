@@ -62,6 +62,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.PrimitiveIterator;
 
 import androidx.annotation.NonNull;
 
@@ -134,6 +135,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
     }
 
     public BaseAlertDialog setOnClickListener(OnClickCallback<HandlerVo> it, OnClickCallback<HandlerVo> it2) {
+        //finish
         mv_end.setOnClickListener(v-> {
             String remark = nv_remark.getContent();
             if (TextUtils.isEmpty(remark)) {
@@ -142,7 +144,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
             }
             new CustomDialogBuilder(mView)
                     .setTitle(ResUtils.getString(R.string.tab_title_work_order))
-                    .setMessage(ResUtils.getString(R.string.spsdk_is_back))
+                    .setMessage(ResUtils.getString(R.string.spsdk_is_finish))
                     .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
                         dialog.dismiss();
                     })
@@ -164,6 +166,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                     }, true)
                     .create().show();
         });
+
         LogUtils.i(mWorkOrderBean.getApplyId(), SPGlobalManager.getUserVo().getId());
         if ((mWorkOrderBean.getApplyId() + "").equals(SPGlobalManager.getUserVo().getId())) {
             mv_assign.setText(ResUtils.getString(R.string.assign));
@@ -176,27 +179,7 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                         UserVo bean = (UserVo) sv_selector.getTag();
                         selectorPopWindow.show(sv_selector, bean.getUsername());
                     });
-                } else {
-                    String remark = nv_remark.getContent();
-                    if (TextUtils.isEmpty(remark)) {
-                        ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
-                        return;
-                    }
-                    UserVo bean = (UserVo) sv_selector.getTag();
-                    HandlerVo vo = new HandlerVo();
-                    vo.setContent(remark);
-                    vo.setIsOver(1);
-                    vo.setProcessId(bean.getId());
-                    List<String> documentIds = new ArrayList<>();
-                    Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
-                    while (iterator.hasNext()) {
-                        Map.Entry<String, String > entry = iterator.next();
-                        documentIds.add(entry.getValue());
-                    }
-                    if (! documentIds.isEmpty()) {
-                        vo.setDocumentIds(documentIds);
-                    }
-                    it2.onClick(vo);
+                    confirm(it2);
                 }
             });
         } else {
@@ -233,26 +216,6 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                             dialog.dismiss();
                         }, true)
                         .create().show();
-
-//                String remark = nv_remark.getContent();
-//                if (TextUtils.isEmpty(remark)) {
-//                    ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
-//                    return;
-//                }
-//                HandlerVo vo = new HandlerVo();
-//                vo.setContent(remark);
-//                vo.setIsOver(1);
-//                vo.setProcessId(mWorkOrderBean.getApplyId()+"");
-//                List<String> documentIds = new ArrayList<>();
-//                Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
-//                while (iterator.hasNext()) {
-//                    Map.Entry<String, String > entry = iterator.next();
-//                    documentIds.add(entry.getValue());
-//                }
-//                if (! documentIds.isEmpty()) {
-//                    vo.setDocumentIds(documentIds);
-//                }
-//                it2.onClick(vo);
             });
         }
         return this;
@@ -396,5 +359,40 @@ public class WorkOrderHandleDialog extends BaseAlertDialog {
                     }
 
                 });
+    }
+
+     private void confirm(OnClickCallback<HandlerVo> it2) {
+         //appoint
+         mv_assign.setOnClickListener(v-> {
+                new CustomDialogBuilder(mView)
+                        .setTitle(ResUtils.getString(R.string.tab_title_work_order))
+                        .setMessage(ResUtils.getString(R.string.spsdk_is_appoint))
+                        .setNegativeButton(R.string.spsdk_cancel, (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .setPositiveButton(R.string.spsdk_confirm, (dialog, which) -> {
+                            String remark = nv_remark.getContent();
+                            if (TextUtils.isEmpty(remark)) {
+                                ToastUtils.showShort(ResUtils.getString(R.string.please_enter)+ ResUtils.getString(R.string.remark));
+                                return;
+                            }
+                            UserVo bean = (UserVo) sv_selector.getTag();
+                            HandlerVo vo = new HandlerVo();
+                            vo.setContent(remark);
+                            vo.setIsOver(1);
+                            vo.setProcessId(bean.getId());
+                            List<String> documentIds = new ArrayList<>();
+                            Iterator<Map.Entry<String, String >> iterator = photoMap.entrySet().iterator();
+                            while (iterator.hasNext()) {
+                                Map.Entry<String, String > entry = iterator.next();
+                                documentIds.add(entry.getValue());
+                            }
+                            if (! documentIds.isEmpty()) {
+                                vo.setDocumentIds(documentIds);
+                            }
+                            it2.onClick(vo);
+                            dialog.dismiss();
+                        }, true) .create().show();
+         });
     }
 }

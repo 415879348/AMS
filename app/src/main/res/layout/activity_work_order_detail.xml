@@ -54,14 +54,27 @@
                 app:spsdk_show_text_detail=""
                 />
 
+            <LinearLayout
+                android:id="@+id/ll_appendix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    style="@style/spsdk_text_main14"
+                    android:text="@string/appendix"
+                    />
+
+                <com.esharp.sdk.widget.AutoNextLineLinearlayout
+                    android:id="@+id/ll_images"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </LinearLayout>
+
         </LinearLayout>
-
-        <com.esharp.sdk.widget.AutoNextLineLinearlayout
-            android:id="@+id/ll_images"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
-
 
         <!--资产信息-->
         <TextView

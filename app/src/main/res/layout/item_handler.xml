@@ -31,7 +31,7 @@
                 android:layout_height="@dimen/spsdk_dp_25"
                 android:layout_alignParentEnd="true"
                 app:spsdk_icon="@mipmap/edit"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:spsdk_text="@string/edit" />
         </RelativeLayout>
 
@@ -52,10 +52,26 @@
             app:spsdk_show_text_detail=""
             />
 
-        <com.esharp.sdk.widget.AutoNextLineLinearlayout
-            android:id="@+id/ll_images"
+        <LinearLayout
+            android:id="@+id/ll_appendix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                style="@style/spsdk_text_main14"
+                android:text="@string/appendix"
+                />
+
+            <com.esharp.sdk.widget.AutoNextLineLinearlayout
+                android:id="@+id/ll_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

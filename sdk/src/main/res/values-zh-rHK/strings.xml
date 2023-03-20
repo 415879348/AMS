@@ -132,6 +132,7 @@
     <string name="spsdk_duration_last_three_month">最近三個月</string>
     <string name="spsdk_is_back">是否退回</string>
     <string name="spsdk_is_finish">是否結束</string>
+    <string name="spsdk_is_appoint">是否指派</string>
     <!--    ==================================-->
 
 </resources>

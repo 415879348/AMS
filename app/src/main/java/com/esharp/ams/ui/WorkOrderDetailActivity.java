@@ -23,6 +23,7 @@ import com.esharp.sdk.bean.response.NodeVo;
 import com.esharp.sdk.bean.response.UrlsBean;
 import com.esharp.sdk.bean.response.UserVo;
 import com.esharp.sdk.bean.response.WorkOrderBean;
+import com.esharp.sdk.dialog.PicturePreviewDialog;
 import com.esharp.sdk.http.GlideUtils;
 import com.esharp.sdk.utils.ClickUtil;
 import com.esharp.sdk.utils.DateTimeUtils;
@@ -172,6 +173,11 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
         ll_images.removeAllViews();
         List<UrlsBean> urls = it.getUrls();
         if (urls.size() > 0) {
+            findViewById(R.id.ll_appendix).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.ll_appendix).setVisibility(View.GONE);
+        }
+        if (urls.size() > 0) {
             for (int j = 0; j < urls.size(); j++) {
                 RadiusImageView riv = new RadiusImageView(WorkOrderDetailActivity.this);
                 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(SizeUtils.dp2px(80),SizeUtils.dp2px(80));
@@ -179,8 +185,10 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
                 riv.setPadding(SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5));
                 riv.setLayoutParams(param);
                 riv.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_grey));
+                String url = urls.get(j).getUrl();
+                riv.setOnClickListener(v -> new PicturePreviewDialog(WorkOrderDetailActivity.this, url).show());
                 ll_images.addView(riv);
-                GlideUtils.showImage(riv, urls.get(j).getUrl());
+                GlideUtils.showImage(riv, url);
             }
         }
     }
@@ -223,6 +231,11 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             ll_images.removeAllViews();
             List<UrlsBean> urls = vo.getUrls();
             if (urls.size() > 0) {
+                item_handler.findViewById(R.id.ll_appendix).setVisibility(View.VISIBLE);
+            } else {
+                item_handler.findViewById(R.id.ll_appendix).setVisibility(View.GONE);
+            }
+            if (urls.size() > 0) {
                 for (int j = 0; j < urls.size(); j++) {
                     RadiusImageView riv = new RadiusImageView(WorkOrderDetailActivity.this);
                     LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(SizeUtils.dp2px(80),SizeUtils.dp2px(80));
@@ -230,8 +243,10 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
                     riv.setPadding(SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5), SizeUtils.dp2px(5));
                     riv.setLayoutParams(param);
                     riv.setBackground(ResUtils.getDrawable(R.drawable.spsdk_shape_rec_grey));
+                    String url = urls.get(j).getUrl();
+                    riv.setOnClickListener(v -> new PicturePreviewDialog(WorkOrderDetailActivity.this, url).show());
                     ll_images.addView(riv);
-                    GlideUtils.showImage(riv, urls.get(j).getUrl());
+                    GlideUtils.showImage(riv, url);
                 }
             }
         }
