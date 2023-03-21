@@ -210,17 +210,18 @@ public class WorkOrderDetailActivity extends BaseMvpActivity<WorkOrderDetailCont
             stv_handler = item_handler.findViewById(R.id.stv_handler);
             stv_handler.setDetail(vo.getUsername());
             SPIconTextView itv_edit = item_handler.findViewById(R.id.itv_edit);
+            itv_edit.setVisibility(View.GONE);
             itv_edit.setOnClickListener(v -> {
                 WorkOrderNodeEditActivity.startActivity(WorkOrderDetailActivity.this, vo, mLauncher);
             });
             LogUtils.json(vo);
             LogUtils.json(SPGlobalManager.getUserVo());
-            if ((vo.getUserId() + "").equals(SPGlobalManager.getUserVo().getId()) ||
-                    vo.getStatus() == 1) {
-                itv_edit.setVisibility(View.VISIBLE);
-            } else {
-                itv_edit.setVisibility(View.GONE);
-            }
+//            if ((vo.getUserId() + "").equals(SPGlobalManager.getUserVo().getId()) ||
+//                    vo.getStatus() == 1) {
+//                itv_edit.setVisibility(View.VISIBLE);
+//            } else {
+//                itv_edit.setVisibility(View.GONE);
+//            }
             stv_processing_time = item_handler.findViewById(R.id.stv_processing_time);
             if (vo.getEndTime() != null) {
                 stv_processing_time.setDetail(DateTimeUtils.millis2Date(vo.getEndTime()));

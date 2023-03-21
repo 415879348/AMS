@@ -1,6 +1,7 @@
 package com.esharp.sdk.http;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
@@ -68,7 +69,7 @@ public class GlideUtils {
                 .into(imageView);
     }
 
-    public static void downLoadImage(Context context, String url, SingleEmitter<File> emitter) {
+    public static void downLoadFile(Context context, String url, SingleEmitter<File> emitter) {
         Token token = SPGlobalManager.getToken();
         Glide.with(context)
                 .asFile()
@@ -95,4 +96,45 @@ public class GlideUtils {
                 });
     }
 
+    public static void downLoadImage(Context context, String url, SingleEmitter<Bitmap> emitter) {
+        Token token = SPGlobalManager.getToken();
+        Glide.with(context)
+                .asBitmap()
+                .load(new GlideUrl(IHttpURL.getImageUrl(url), new LazyHeaders.Builder()
+                        .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
+                        .build()))
+                .error(R.mipmap.spsdk_pic_error)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        emitter.onSuccess(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                        emitter.onError(new Exception());
+                    }
+                });
+    }
+
+    public static void downLoadDrawable(Context context, String url, SingleEmitter<Drawable> emitter) {
+        Token token = SPGlobalManager.getToken();
+        Glide.with(context)
+                .asDrawable()
+                .load(new GlideUrl(IHttpURL.getImageUrl(url), new LazyHeaders.Builder()
+                        .addHeader(Constant.Authorization, token == null ? Constant.TOKEN_HEAD_BEARER : Constant.TOKEN_HEAD_BEARER + token.getToken())
+                        .build()))
+                .error(R.mipmap.spsdk_pic_error)
+                .into(new CustomTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        emitter.onSuccess(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                        emitter.onError(new Exception());
+                    }
+                });
+    }
 }
