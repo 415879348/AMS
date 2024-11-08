@@ -37,7 +37,7 @@
                     app:stv_right_top_corner="true"
                     app:stv_solid="@color/spsdk_color_white" />
 
-                <com.esharp.sdk.widget.MyTextView
+                <com.continental.sdk.widget.MyTextView
                     android:id="@+id/cancel"
                     android:layout_width="@dimen/spsdk_dp_5"
                     android:layout_height="@dimen/spsdk_dp_5"
@@ -49,7 +49,7 @@
                     app:stv_state_drawable_height="@dimen/spsdk_dp_15"
                     app:stv_state_drawable_width="@dimen/spsdk_dp_15" />
 
-                <com.esharp.sdk.widget.MyNestedScrollView2
+                <com.continental.sdk.widget.MyNestedScrollView2
                     android:id="@+id/scrollView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

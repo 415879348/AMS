@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2
+<com.continental.sdk.widget.MyNestedScrollView2
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
@@ -21,7 +21,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             >
-            <com.esharp.sdk.widget.SPCardEditView
+            <com.continental.sdk.widget.SPCardEditView
                 android:id="@+id/cev_job_number_name"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -43,7 +43,7 @@
             android:orientation="horizontal"
             android:visibility="gone"
             >
-            <com.esharp.sdk.widget.SPSelectorCardView
+            <com.continental.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_handler"
                 style="@style/spsdk_selector_card"
                 app:spsdk_selector_hint="@string/handler"
@@ -57,7 +57,7 @@
             android:paddingEnd="@dimen/spsdk_dp_30"
             android:orientation="horizontal"
             >
-            <com.esharp.sdk.widget.SPSelectorCardView
+            <com.continental.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_type"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -68,7 +68,7 @@
                 app:spsdk_selector_icon_height="@dimen/spsdk_dp_25"
                 />
 
-            <com.esharp.sdk.widget.SPSelectorCardView
+            <com.continental.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_progress"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -86,7 +86,7 @@
             android:orientation="horizontal"
             android:paddingEnd="@dimen/spsdk_dp_30"
             >
-            <com.esharp.sdk.widget.SPSelectorCardView
+            <com.continental.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_date_from"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
                 app:spsdk_selector_icon="@mipmap/calendar"
                 />
 
-            <com.esharp.sdk.widget.SPSelectorCardView
+            <com.continental.sdk.widget.SPSelectorCardView
                 android:id="@+id/scv_date_to"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -117,6 +117,6 @@
 
     </LinearLayout>
 
-</com.esharp.sdk.widget.MyNestedScrollView2>
+</com.continental.sdk.widget.MyNestedScrollView2>
 
 

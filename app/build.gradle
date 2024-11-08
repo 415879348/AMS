@@ -1,12 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
+    namespace "tel.pingme"
 
     defaultConfig {
-        applicationId "com.esharp.ams"
+//        applicationId "com.continental.ams"
+        applicationId "com.continental.ams"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
 //        versionCode 1
 //        versionName "1.0"
 
@@ -19,9 +21,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
-            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+            // 注意：这里需要添加项目所需 CPU 类型的最小集
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86_64", "x86"
         }
 
         resConfigs "en", "zh-rCN", "zh-rHK"
@@ -32,7 +33,7 @@ android {
 
                 JPUSH_PKGNAME : applicationId,
                 //JPush 上注册的包名对应的 Appkey.
-                JPUSH_APPKEY : "18442cddf5573039e8d8695e",
+                JPUSH_APPKEY : "bdcb20620cb5543dfc04d392",
                 //暂时填写默认值即可.
                 JPUSH_CHANNEL : "developer-default",
 
@@ -50,8 +51,18 @@ android {
         ]
     }
 
+    signingConfigs {
+        release {
+            keyPassword 'continental@123'
+            keyAlias 'continental'
+            storeFile file('asapp.keystore')
+            storePassword 'continental@123'
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -60,8 +71,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -80,6 +91,6 @@ dependencies {
 //    implementation 'cn.jiguang.sdk:jpush:4.8.1'
 
     implementation 'cn.jiguang.sdk:jpush-google:4.8.1'  // 此处以JPush 4.8.1 Google Play版本为例
-    implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play 版本为例。
+    implementation 'cn.jiguang.sdk:jcore-google:3.3.2'  // 此处以JCore 3.3.2 Google Play版本为例。
 
 }

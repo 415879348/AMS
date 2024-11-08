@@ -18,7 +18,7 @@
             android:layout_marginStart="@dimen/spsdk_dp_5"
             />
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_approver_name"
             style="@style/spsdk_text_main18"
             android:text="@string/spsdk_all"
@@ -107,7 +107,7 @@
 
             </LinearLayout>
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_confirm"
                 android:layout_width="@dimen/spsdk_dp_120"
                 android:layout_height="@dimen/spsdk_dp_40"

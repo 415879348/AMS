@@ -20,14 +20,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_signTime"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_time"
                 app:spsdk_show_text_detail="2021-08-25 09:15:00"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_temperature"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_temperature"

@@ -143,7 +143,7 @@
 
     </LinearLayout>
 
-    <com.esharp.sdk.widget.MyTextView
+    <com.continental.sdk.widget.MyTextView
         android:id="@+id/mv_commit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_40"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.esharp.sdk.widget.SPEditView
+    <com.continental.sdk.widget.SPEditView
         android:id="@+id/ev_start_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_title_height"
@@ -18,7 +18,7 @@
         app:spsdk_input_content_enabled="disable"
         />
 
-    <com.esharp.sdk.widget.SPEditView
+    <com.continental.sdk.widget.SPEditView
         android:id="@+id/ev_end_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_title_height"
@@ -31,7 +31,7 @@
         app:spsdk_input_content_enabled="disable"
         />
 
-    <com.esharp.sdk.widget.SPEditView
+    <com.continental.sdk.widget.SPEditView
         android:id="@+id/ev_ot_duration"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_title_height"
@@ -41,7 +41,7 @@
         app:spsdk_input_warning_sign="show"
         />
 
-    <com.esharp.sdk.widget.SPNoteView
+    <com.continental.sdk.widget.SPNoteView
         android:id="@+id/nv_ot_reason"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_100"

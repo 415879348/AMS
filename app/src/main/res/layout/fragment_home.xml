@@ -15,7 +15,7 @@
         />
 
 
-    <com.esharp.sdk.widget.NoScrollViewPager
+    <com.continental.sdk.widget.NoScrollViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

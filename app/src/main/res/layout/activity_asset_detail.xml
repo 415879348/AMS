@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2
+<com.continental.sdk.widget.MyNestedScrollView2
     android:id="@+id/scrollView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -32,7 +32,7 @@
             android:padding="@dimen/spsdk_dp_10"
             android:orientation="vertical">
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_number"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -40,7 +40,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_type"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -56,7 +56,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_brand"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -64,7 +64,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_model"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -72,7 +72,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_size"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -88,7 +88,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_weight"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.esharp.sdk.widget.SPShowTextView
+                <com.continental.sdk.widget.SPShowTextView
                     android:id="@+id/stv_color"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/spsdk_dp_25"
@@ -117,7 +117,7 @@
 
             </LinearLayout>
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_place_of_production"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_date_of_manufacture"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -133,7 +133,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_warranty_period"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -141,7 +141,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_up_assets"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -149,7 +149,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_status"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -157,7 +157,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_asset_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 android:orientation="horizontal">
 
-                <com.esharp.sdk.widget.SPShowTextView
+                <com.continental.sdk.widget.SPShowTextView
                     android:id="@+id/stv_asset_picture"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/spsdk_dp_60"
@@ -182,7 +182,7 @@
 
             </LinearLayout>
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_creation_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -190,7 +190,7 @@
                 android:layout_marginVertical="@dimen/spsdk_dp_5"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_update_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -202,6 +202,6 @@
 
     </LinearLayout>
 
-</com.esharp.sdk.widget.MyNestedScrollView2>
+</com.continental.sdk.widget.MyNestedScrollView2>
 
 

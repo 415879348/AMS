@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2
+<com.continental.sdk.widget.MyNestedScrollView2
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
@@ -26,12 +26,12 @@
             android:layout_marginTop="@dimen/spsdk_dp_5"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_name"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/job_name"/>
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
            android:id="@+id/scv_type"
             style="@style/spsdk_selector_card"
            app:spsdk_selector_hint="@string/job_type"
@@ -49,14 +49,14 @@
             android:layout_marginTop="@dimen/spsdk_dp_5"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_asset_select"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/asset_select"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_location"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/location"/>
@@ -72,14 +72,14 @@
             android:layout_marginTop="@dimen/spsdk_dp_5"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_handler"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/handler"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_remark"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/remark"
@@ -94,7 +94,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_reset"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
@@ -106,7 +106,7 @@
                 app:stv_corner="@dimen/spsdk_dp_20"
                 app:stv_solid="@color/spsdk_color_gray2" />
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_confirm"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
@@ -122,6 +122,6 @@
 
     </LinearLayout>
 
-</com.esharp.sdk.widget.MyNestedScrollView2>
+</com.continental.sdk.widget.MyNestedScrollView2>
 
 

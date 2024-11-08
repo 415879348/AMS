@@ -62,7 +62,7 @@
                 android:paddingLeft="@dimen/spsdk_dp_10"
                 android:hint="@string/spsdk_enter_verification_code"/>
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_get_verification_code"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -79,7 +79,7 @@
 
         </LinearLayout>
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_verification_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_40"
@@ -92,7 +92,7 @@
             app:stv_corner="@dimen/spsdk_dp_10"
             app:stv_solid="@color/spsdk_color_blue" />
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_change_user_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
 
         </LinearLayout>
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_user_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_40"
@@ -166,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_change_phone_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 android:textColor="@color/spsdk_main_color"
                 android:text="@string/spsdk_login_phone"/>
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -34,7 +34,7 @@
     <View
         style="@style/spsdk_divide_line_horizontal"/>
 
-    <com.esharp.sdk.widget.SPNoteView
+    <com.continental.sdk.widget.SPNoteView
         android:id="@+id/nv_remark"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_100"
@@ -44,7 +44,7 @@
         app:spsdk_note_warning_sign="hide"
         />
 
-    <com.esharp.sdk.widget.SPSelectorView
+    <com.continental.sdk.widget.SPSelectorView
         android:id="@+id/sv_selector"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -56,13 +56,13 @@
         tools:visibility="visible"
         />
 
-    <com.esharp.sdk.widget.AutoNextLineLinearlayout
+    <com.continental.sdk.widget.AutoNextLineLinearlayout
         android:id="@+id/ll_images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"/>
 
-    <com.esharp.sdk.widget.MyTextView
+    <com.continental.sdk.widget.MyTextView
         android:id="@+id/mv_upload"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/spsdk_dp_35"
@@ -81,7 +81,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_reset"
             android:layout_width="@dimen/spsdk_dp_100"
             android:layout_height="@dimen/spsdk_dp_40"
@@ -93,7 +93,7 @@
             app:stv_corner="@dimen/spsdk_dp_20"
             app:stv_solid="@color/spsdk_color_red" />
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_assign"
             android:layout_width="@dimen/spsdk_dp_100"
             android:layout_height="@dimen/spsdk_dp_40"

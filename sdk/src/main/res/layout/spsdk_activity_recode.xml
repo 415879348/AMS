@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.esharp.sdk.widget.swipy.SwipyRefreshLayout
+    <com.continental.sdk.widget.swipy.SwipyRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,6 +20,6 @@
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    </com.esharp.sdk.widget.swipy.SwipyRefreshLayout>
+    </com.continental.sdk.widget.swipy.SwipyRefreshLayout>
 
 </LinearLayout>

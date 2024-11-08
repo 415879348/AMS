@@ -35,7 +35,7 @@
             android:layout_marginTop="@dimen/spsdk_dp_3"
             android:orientation="vertical">
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_leave_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 app:spsdk_show_text_detail="@string/spsdk_business_leave"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 app:spsdk_show_text_detail="2021-08-25 09:15:00"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

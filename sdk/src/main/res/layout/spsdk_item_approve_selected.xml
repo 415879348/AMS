@@ -22,7 +22,7 @@
 <!--            android:scaleType="centerInside"-->
 <!--            android:src="@mipmap/spsdk_ic_launcher" />-->
 
-        <com.esharp.sdk.widget.RadiusImageView
+        <com.continental.sdk.widget.RadiusImageView
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/spsdk_dp_60"
             android:layout_height="@dimen/spsdk_dp_60"

@@ -45,7 +45,7 @@
 
     <View style="@style/spsdk_divide_line_horizontal"/>
 
-    <com.esharp.sdk.widget.SPShowView
+    <com.continental.sdk.widget.SPShowView
         android:id="@+id/sp_username"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -55,7 +55,7 @@
         app:spsdk_show_detail="charlie.deng"
         />
 
-    <com.esharp.sdk.widget.SPShowView
+    <com.continental.sdk.widget.SPShowView
         android:id="@+id/sp_phone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -65,7 +65,7 @@
         app:spsdk_show_detail="+ 86 137 9840 0900"
         />
 
-    <com.esharp.sdk.widget.SPShowView
+    <com.continental.sdk.widget.SPShowView
         android:id="@+id/sp_change_password"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -77,7 +77,7 @@
     <View
         style="@style/spsdk_space"/>
 
-    <com.esharp.sdk.widget.MyTextView
+    <com.continental.sdk.widget.MyTextView
         android:id="@+id/mv_logout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_40"

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
 <!--    对应讯息里面的警报条目点击-->
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_userName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -15,7 +15,7 @@
         app:spsdk_show_text_detail="Charlie"
         app:spsdk_show_text_title="@string/spsdk_staff" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_department"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -23,7 +23,7 @@
         app:spsdk_show_text_detail="项目部"
         app:spsdk_show_text_title="@string/spsdk_department" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_amend_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -31,7 +31,7 @@
         app:spsdk_show_text_detail="2021-08-25 09:15:00"
         app:spsdk_show_text_title="@string/spsdk_amend_time" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_temperature"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -39,14 +39,14 @@
         app:spsdk_show_text_detail="36.5 ℃"
         app:spsdk_show_text_title="@string/spsdk_temperature" />
 
-    <com.esharp.sdk.widget.SPIconTextView
+    <com.continental.sdk.widget.SPIconTextView
         android:id="@+id/itv_address"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
         app:spsdk_icon="@mipmap/spsdk_location"
         />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_commit_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"

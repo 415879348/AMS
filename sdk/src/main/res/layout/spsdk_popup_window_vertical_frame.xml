@@ -59,7 +59,7 @@
                     android:background="@color/spsdk_transparent_00"
                     android:orientation="vertical">
 
-                    <com.esharp.sdk.widget.MyNestedScrollView2
+                    <com.continental.sdk.widget.MyNestedScrollView2
                         android:id="@+id/scrollView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

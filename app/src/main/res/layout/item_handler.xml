@@ -18,14 +18,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_handler"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/spsdk_dp_25"
                 app:spsdk_show_text_title="@string/handler"
                 app:spsdk_show_text_detail=""
                 />
-            <com.esharp.sdk.widget.SPIconTextView
+            <com.continental.sdk.widget.SPIconTextView
                 android:id="@+id/itv_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/spsdk_dp_25"
@@ -36,7 +36,7 @@
         </RelativeLayout>
 
 
-        <com.esharp.sdk.widget.SPShowTextView
+        <com.continental.sdk.widget.SPShowTextView
             android:id="@+id/stv_processing_time"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_25"
@@ -44,7 +44,7 @@
             app:spsdk_show_text_detail=""
             />
 
-        <com.esharp.sdk.widget.SPShowTextView
+        <com.continental.sdk.widget.SPShowTextView
             android:id="@+id/stv_remark2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_25"
@@ -65,7 +65,7 @@
                 android:text="@string/appendix"
                 />
 
-            <com.esharp.sdk.widget.AutoNextLineLinearlayout
+            <com.continental.sdk.widget.AutoNextLineLinearlayout
                 android:id="@+id/ll_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

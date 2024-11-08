@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             style="@style/spsdk_text"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
@@ -69,7 +69,7 @@
 
         </LinearLayout>
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mtv_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_40"

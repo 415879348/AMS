@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2
+<com.continental.sdk.widget.MyNestedScrollView2
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
@@ -26,79 +26,79 @@
             android:layout_marginTop="@dimen/spsdk_dp_5"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_number"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/asset_number"/>
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_name"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/asset_name"
 
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_type"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/asset_type"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_brand"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/brand"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_model"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/model"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_up_assets"
             style="@style/spsdk_selector_card"
             app:spsdk_selector_hint="@string/up_assets"
             app:spsdk_selector_icon="@mipmap/arrow_down"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_location"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/location"/>
 
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_l"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_l"
             app:spsdk_card_edit_content_type="number"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_w"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_w"
             app:spsdk_card_edit_content_type="number"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_h"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/size_h"
             app:spsdk_card_edit_content_type="number"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_place_of_production"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/place_of_production"/>
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_weight"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/weight"
@@ -113,7 +113,7 @@
             android:gravity="center_vertical"
             >
 
-            <com.esharp.sdk.widget.SPCardEditView
+            <com.continental.sdk.widget.SPCardEditView
                 android:id="@+id/cev_color"
                 style="@style/spsdk_edit_view_card"
                 android:layout_width="0dp"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 app:spsdk_card_edit_hint="@string/asset_color"/>
 
-            <com.esharp.sdk.widget.RadiusImageView
+            <com.continental.sdk.widget.RadiusImageView
                 android:id="@+id/iv_color"
                 android:layout_width="@dimen/spsdk_dp_35"
                 android:layout_height="@dimen/spsdk_dp_35"
@@ -130,7 +130,7 @@
                 />
         </LinearLayout>
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_date_of_manufacture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
             app:spsdk_selector_icon="@mipmap/calendar"
             />
 
-        <com.esharp.sdk.widget.SPSelectorCardView
+        <com.continental.sdk.widget.SPSelectorCardView
             android:id="@+id/scv_warranty_period"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
             app:spsdk_selector_icon="@mipmap/calendar"
             />
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_remark"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/remark"
@@ -168,7 +168,7 @@
 <!--            android:layout_marginStart="@dimen/spsdk_dp_10"-->
 <!--            />-->
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_upload"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_dp_35"
@@ -181,7 +181,7 @@
             app:stv_corner="@dimen/spsdk_dp_5"
             app:stv_solid="@color/spsdk_color_blue" />
 
-        <com.esharp.sdk.widget.AutoNextLineLinearlayout
+        <com.continental.sdk.widget.AutoNextLineLinearlayout
             android:id="@+id/ll_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -194,7 +194,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_reset"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
@@ -206,7 +206,7 @@
                 app:stv_corner="@dimen/spsdk_dp_20"
                 app:stv_solid="@color/spsdk_color_gray2" />
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_confirm"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
@@ -221,6 +221,6 @@
         </LinearLayout>
     </LinearLayout>
 
-</com.esharp.sdk.widget.MyNestedScrollView2>
+</com.continental.sdk.widget.MyNestedScrollView2>
 
 

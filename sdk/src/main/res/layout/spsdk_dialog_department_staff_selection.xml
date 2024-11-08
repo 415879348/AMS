@@ -44,7 +44,7 @@
         android:layout_marginHorizontal="@dimen/spsdk_dp_20"
         >
 
-        <com.esharp.sdk.widget.SPSelectorView
+        <com.continental.sdk.widget.SPSelectorView
             android:id="@+id/ssv_department"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -54,7 +54,7 @@
             app:spsdk_selector_icon="@mipmap/spsdk_ic_launcher"
             />
 
-        <com.esharp.sdk.widget.SPSelectorView
+        <com.continental.sdk.widget.SPSelectorView
             android:id="@+id/ssv_staff"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -67,7 +67,7 @@
 
     </LinearLayout>
 
-    <com.esharp.sdk.widget.SPEditView
+    <com.continental.sdk.widget.SPEditView
         android:id="@+id/ev_date"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -96,7 +96,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_cancel"
             android:layout_width="@dimen/spsdk_dp_100"
             android:layout_height="match_parent"
@@ -109,7 +109,7 @@
             app:stv_corner="@dimen/spsdk_dp_10"
             app:stv_solid="@color/spsdk_color_black_1" />
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_commit"
             android:layout_width="@dimen/spsdk_dp_100"
             android:layout_height="match_parent"

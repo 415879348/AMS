@@ -38,28 +38,28 @@
             android:layout_below="@+id/iv_icon"
             android:orientation="vertical">
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_leave_type"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_leave_type"
                 app:spsdk_show_text_detail="@string/spsdk_business_leave"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_start_time"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_start_time"
                 app:spsdk_show_text_detail="2021-08-25 09:15:00"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_end_time"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_end_time"
                 app:spsdk_show_text_detail="2021-08-25 09:15:00"
                 />
 
-            <com.esharp.sdk.widget.SPShowTextView
+            <com.continental.sdk.widget.SPShowTextView
                 android:id="@+id/stv_commit_time"
                 style="@style/spsdk_space_height"
                 app:spsdk_show_text_title="@string/spsdk_commit_at"

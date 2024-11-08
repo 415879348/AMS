@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mtv_handle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/spsdk_dp_30"

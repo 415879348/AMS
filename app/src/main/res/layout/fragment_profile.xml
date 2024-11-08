@@ -55,7 +55,7 @@
 
     <View style="@style/spsdk_divide_line_horizontal"/>
 
-    <com.esharp.sdk.widget.SPShowView
+    <com.continental.sdk.widget.SPShowView
         android:id="@+id/sv_phone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -65,7 +65,7 @@
         app:spsdk_show_title="@string/phone_number"
         />
 
-    <com.esharp.sdk.widget.SPShowView
+    <com.continental.sdk.widget.SPShowView
         android:id="@+id/sv_username"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_30"
@@ -87,7 +87,7 @@
         android:textStyle="bold"
         />
 
-    <com.esharp.sdk.widget.MyTextView
+    <com.continental.sdk.widget.MyTextView
         android:id="@+id/mv_logout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_dp_40"

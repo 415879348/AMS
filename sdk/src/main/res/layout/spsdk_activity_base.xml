@@ -17,7 +17,7 @@
         app:stv_shaderMode="topToBottom"
         tools:layout_height="30dp" />
 
-    <com.esharp.sdk.widget.SPTitleView
+    <com.continental.sdk.widget.SPTitleView
         android:id="@+id/title_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_title_height"

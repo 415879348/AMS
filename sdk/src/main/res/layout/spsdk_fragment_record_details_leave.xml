@@ -6,7 +6,7 @@
     android:padding="@dimen/spsdk_dp_5"
     android:orientation="vertical">
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_userName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -14,7 +14,7 @@
         app:spsdk_show_text_detail="Charlie"
         app:spsdk_show_text_title="@string/spsdk_staff" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_department"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -22,7 +22,7 @@
         app:spsdk_show_text_detail="项目部"
         app:spsdk_show_text_title="@string/spsdk_department" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_leaveTypeName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -30,7 +30,7 @@
         app:spsdk_show_text_detail="事假"
         app:spsdk_show_text_title="@string/spsdk_leave_type" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_start_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -38,7 +38,7 @@
         app:spsdk_show_text_detail="2021-08-25 09:15:00"
         app:spsdk_show_text_title="@string/spsdk_start_time" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_end_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -46,7 +46,7 @@
         app:spsdk_show_text_detail="2021-08-25 09:15:00"
         app:spsdk_show_text_title="@string/spsdk_end_time" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_leave_duration"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -54,7 +54,7 @@
         app:spsdk_show_text_detail="@string/spsdk_placeholder_hours"
         app:spsdk_show_text_title="@string/spsdk_leave_duration" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_leave_reason"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"
@@ -62,7 +62,7 @@
         app:spsdk_show_text_detail="出去浪"
         app:spsdk_show_text_title="@string/spsdk_leave_season" />
 
-    <com.esharp.sdk.widget.SPShowTextView
+    <com.continental.sdk.widget.SPShowTextView
         android:id="@+id/stv_commit_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/spsdk_edit_height"

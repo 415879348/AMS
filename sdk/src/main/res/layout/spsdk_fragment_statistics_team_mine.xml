@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-   <com.esharp.sdk.widget.MyTextView
+   <com.continental.sdk.widget.MyTextView
        android:id="@+id/mtv_date_selector"
        style="@style/spsdk_text_main12"
        android:text="2021.09.01 - 2021.10.01"

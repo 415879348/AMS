@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.esharp.sdk.widget.MyNestedScrollView2
+<com.continental.sdk.widget.MyNestedScrollView2
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
@@ -16,7 +16,7 @@
         android:orientation="vertical"
         >
 
-        <com.esharp.sdk.widget.MyTextView
+        <com.continental.sdk.widget.MyTextView
             android:id="@+id/mv_upload"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_dp_35"
@@ -29,13 +29,13 @@
             app:stv_corner="@dimen/spsdk_dp_5"
             app:stv_solid="@color/spsdk_color_blue" />
 
-        <com.esharp.sdk.widget.AutoNextLineLinearlayout
+        <com.continental.sdk.widget.AutoNextLineLinearlayout
             android:id="@+id/ll_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>
 
-        <com.esharp.sdk.widget.SPCardEditView
+        <com.continental.sdk.widget.SPCardEditView
             android:id="@+id/cev_remark"
             style="@style/spsdk_edit_view_card"
             app:spsdk_card_edit_hint="@string/remark"
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-<!--            <com.esharp.sdk.widget.MyTextView-->
+<!--            <com.continental.sdk.widget.MyTextView-->
 <!--                android:id="@+id/mv_reset"-->
 <!--                android:layout_width="@dimen/spsdk_dp_100"-->
 <!--                android:layout_height="@dimen/spsdk_dp_40"-->
@@ -62,7 +62,7 @@
 <!--                app:stv_corner="@dimen/spsdk_dp_20"-->
 <!--                app:stv_solid="@color/spsdk_color_gray2" />-->
 
-            <com.esharp.sdk.widget.MyTextView
+            <com.continental.sdk.widget.MyTextView
                 android:id="@+id/mv_confirm"
                 android:layout_width="@dimen/spsdk_dp_100"
                 android:layout_height="@dimen/spsdk_dp_40"
@@ -77,6 +77,6 @@
 
     </LinearLayout>
 
-</com.esharp.sdk.widget.MyNestedScrollView2>
+</com.continental.sdk.widget.MyNestedScrollView2>
 
 

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.esharp.sdk.widget.SPIconTextView
+        <com.continental.sdk.widget.SPIconTextView
             android:id="@+id/itv_create"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
@@ -21,7 +21,7 @@
             android:visibility="gone"
             />
 
-        <com.esharp.sdk.widget.SPShowTextView
+        <com.continental.sdk.widget.SPShowTextView
             android:id="@+id/stv_data_count"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
@@ -30,7 +30,7 @@
             app:spsdk_show_text_detail="Charlie"
             />
 
-        <com.esharp.sdk.widget.SPIconTextView
+        <com.continental.sdk.widget.SPIconTextView
             android:id="@+id/itv_filter"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/spsdk_edit_height"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         />
 
-    <com.esharp.sdk.widget.swipy.SwipyRefreshLayout
+    <com.continental.sdk.widget.swipy.SwipyRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,6 +61,6 @@
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    </com.esharp.sdk.widget.swipy.SwipyRefreshLayout>
+    </com.continental.sdk.widget.swipy.SwipyRefreshLayout>
 
 </LinearLayout>
