@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
-
+    compileSdk 33
+    namespace "com.continental.sdk"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33

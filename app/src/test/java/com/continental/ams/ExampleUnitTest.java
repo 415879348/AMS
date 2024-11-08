@@ -1,4 +1,4 @@
-package com.esharp.sdk;
+package com.continental.ams;
 
 import org.junit.Test;
 
