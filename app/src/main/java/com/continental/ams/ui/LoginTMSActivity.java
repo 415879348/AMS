@@ -42,7 +42,7 @@ public class LoginTMSActivity extends BaseMvpActivity<LoginActContract.Presenter
         et_account = findViewById(R.id.et_account);
         et_password = findViewById(R.id.et_password);
         findViewById(R.id.mtv_login).setOnClickListener(v -> {
-//            mPresenter.login(new LoginVo("admin", "123456"));
+            mPresenter.login(new LoginVo("esharpAdmin1", "123456"));
             if (ClickUtil.isFastDoubleClick()) {
                 return;
             }
