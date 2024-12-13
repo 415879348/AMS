@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/spsdk_dp_5"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <com.continental.sdk.widget.SPShowTextView
+        android:id="@+id/tv_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/tab_title_work_order"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <com.continental.sdk.widget.SPShowTextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/type"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <com.continental.sdk.widget.SPShowTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/spsdk_time"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <com.continental.sdk.widget.SPShowTextView
+        android:id="@+id/tv_operator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spsdk_dp_5"
+        app:spsdk_show_text_title="@string/operator"
+        app:spsdk_show_text_detail="Charlie"
+        />
+
+    <View
+        style="@style/spsdk_divide_line_horizontal"
+        />
+</LinearLayout>

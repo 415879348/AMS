@@ -192,7 +192,6 @@ public class LaunchActivity extends BaseMvpActivity<LaunchActContract.Presenter>
     public void language(List<LanguageVo> it) {
         LogUtils.json(it);
 
-
         SPLocal systemLocal = SPGlobalManager.getLanguage();
         LogUtils.json(systemLocal);
 //        zh_HK,zh_CN,en_US

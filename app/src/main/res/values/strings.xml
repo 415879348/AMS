@@ -130,4 +130,6 @@
     <string name="go_back">退回</string>
     <string name="photos_videos_permission_access">请允许AMS获得照片和视频权限</string>
     <string name="appendix">附件: </string>
+    <string name="type">类型</string>
+    <string name="operator">操作员</string>
 </resources>

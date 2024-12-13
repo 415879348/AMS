@@ -9,6 +9,7 @@ import com.continental.ams.contract.AlertContract;
 import com.continental.ams.contract.HomeContract;
 import com.continental.ams.eventbus.EventAlert;
 import com.continental.ams.presenter.AlertPresenter;
+import com.continental.ams.ui.AlertLogDetailActivity;
 import com.continental.sdk.base.BaseMvpFragment;
 import com.continental.sdk.bean.response.AssetAlertVo;
 import com.continental.sdk.widget.swipy.SwipyRefreshLayout;
@@ -55,9 +56,7 @@ public class AlertFragment extends BaseMvpFragment<AlertContract.Presenter, Home
         });
 
         mRecyclerView.setAdapter(mAlertRecordAdapter = new AlertRecordAdapter(vo -> {
-            if (vo.getStatus() == 0) {
-                mPresenter.deviceAlertLogProcess(vo.getId());
-            }
+            AlertLogDetailActivity.startActivity(mContext, vo);
         }));
 
         initData();

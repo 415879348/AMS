@@ -1,7 +1,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@mipmap/asset_clicked" android:state_selected="true" />
-    <item android:drawable="@mipmap/asset_clicked" android:state_focused="true" />
-    <item android:drawable="@mipmap/asset_clicked" android:state_pressed="true" />
-    <item android:drawable="@mipmap/asset" />
+    <item android:drawable="@mipmap/asset_clicked2" android:state_selected="true" />
+    <item android:drawable="@mipmap/asset_clicked2" android:state_focused="true" />
+    <item android:drawable="@mipmap/asset_clicked2" android:state_pressed="true" />
+    <item android:drawable="@mipmap/asset2" />
 
 </selector>

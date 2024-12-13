@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/item_done_title"
-        android:layout_height="@dimen/spsdk_dp_30"
-        android:layout_width="match_parent"
-        />
+<!--    <include-->
+<!--        layout="@layout/item_done_title"-->
+<!--        android:layout_height="@dimen/spsdk_dp_30"-->
+<!--        android:layout_width="match_parent"-->
+<!--        />-->
 
     <com.continental.sdk.widget.swipy.SwipyRefreshLayout
         android:id="@+id/refreshLayout"

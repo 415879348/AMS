@@ -271,6 +271,14 @@ public interface IApiService {
     Single<HttpResult<AssetAlertVo>> deviceAlertLog(@QueryMap Map<String, String> params);
 
     /**
+     * 主鍵查詢 警报詳情頁面用到
+     * @param id 工單主鍵
+     * @return
+     */
+    @GET("device/alert/log")
+    Single<HttpResult<WorkOrderBean>> deviceAlertLogID(@Path("id") String id);
+
+    /**
      * 资产警报记录总数
      * @param status 0：未处理 1：已处理
      * @return

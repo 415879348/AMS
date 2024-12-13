@@ -174,7 +174,7 @@ public class MainActivity extends BaseMvpActivity<MainActContract.Presenter> imp
             }
             break;
             case 2: {
-                icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_trouble));
+                icon.setImageDrawable(ResUtils.getDrawable(R.drawable.selector_tab_order));
                 tile.setText(ResUtils.getString(R.string.tab_title_work_order));
             }
             break;
